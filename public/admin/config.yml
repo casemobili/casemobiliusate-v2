@@ -1,0 +1,128 @@
+# Decap CMS — configurazione per CaseMobiliUsate.com
+# Documentazione: https://decapcms.org/docs/
+
+# === Backend ===
+# MODALITÀ DI TEST LOCALE — niente login richiesto, niente GitHub.
+# Tutto resta in memoria del browser per provare l'editor (NON salva su disco).
+# Quando andiamo online, switcho a "git-gateway" + Netlify Identity.
+backend:
+  name: test-repo
+
+# Locale fix per editor
+locale: it
+
+# Cartelle media
+media_folder: 'public/images/articoli'
+public_folder: '/images/articoli'
+
+# === SITE URL ===
+site_url: https://www.casemobiliusate.com
+display_url: https://www.casemobiliusate.com
+logo_url: /favicon.svg
+
+# === COLLECTIONS ===
+collections:
+  # ─── Articoli (cluster) ─────────────────────────────────────────────
+  - name: 'articoli'
+    label: 'Articoli'
+    label_singular: 'Articolo'
+    folder: 'src/content/articoli'
+    create: true
+    slug: '{{slug}}'
+    extension: 'mdx'
+    format: 'frontmatter'
+    summary: '{{titolo}} · {{pillar}} · {{readingTime}} min'
+    fields:
+      - { name: 'titolo', label: 'Titolo SEO (H1)', widget: 'string', hint: '30-65 caratteri. Deve contenere la focus keyword.' }
+      - { name: 'sottotitolo', label: 'Sottotitolo (lead di apertura)', widget: 'text', hint: '80-280 caratteri. Compare sotto il titolo.' }
+      - name: 'pillar'
+        label: 'Pillar di appartenenza'
+        widget: 'select'
+        default: 'normativa'
+        options:
+          - { label: 'Normativa & Permessi', value: 'normativa' }
+          - { label: 'Prezzi & Valutazione', value: 'prezzi' }
+          - { label: 'Marche & Modelli', value: 'marche' }
+          - { label: 'Trasporto & Installazione', value: 'trasporto' }
+          - { label: 'Vivere in Casa Mobile', value: 'vivere' }
+          - { label: 'Dove Mettere & Campeggi', value: 'dove-mettere' }
+          - { label: 'Confronti & Tipologie', value: 'tipologie' }
+          - { label: "Guide all'Acquisto", value: 'guide-acquisto' }
+      - { name: 'focusKeyword', label: 'Focus keyword SEO', widget: 'string', hint: 'La query principale per cui vuoi posizionarti. Verrà controllata dal SEO Score.' }
+      - { name: 'keywordsSecondarie', label: 'Keyword secondarie (sinonimi, varianti)', widget: 'list', required: false, default: [] }
+      - { name: 'metaDescription', label: 'Meta description (Google snippet)', widget: 'text', hint: 'Tra 120 e 160 caratteri. Deve contenere la focus keyword e promettere un beneficio concreto.' }
+      - { name: 'coverImage', label: 'Immagine di copertina', widget: 'image', required: false, hint: 'JPG ottimizzata, almeno 1280×720, sotto i 400 KB.' }
+      - { name: 'coverImageAlt', label: 'Alt text immagine', widget: 'string', required: false, hint: '10-125 caratteri descrittivi.' }
+      - { name: 'coverImageCredit', label: 'Crediti immagine (autore + fonte)', widget: 'string', required: false, hint: 'Es. "Foto: Mario Rossi su Pexels"' }
+      - { name: 'dataPubblicazione', label: 'Data pubblicazione', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - { name: 'dataAggiornamento', label: 'Data ultimo aggiornamento', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false }
+      - { name: 'autore', label: 'Autore', widget: 'select', default: 'andrea-bressan', options: ['andrea-bressan'] }
+      - { name: 'readingTime', label: 'Minuti di lettura (stima)', widget: 'number', value_type: 'int', default: 5, min: 1, max: 60 }
+      - { name: 'tldr', label: 'Box TL;DR (in sintesi)', widget: 'text', required: false, hint: 'Le 3-5 cose che il lettore deve sapere subito. Aiuta il piazzamento nelle AI Overview.' }
+      - name: 'faq'
+        label: 'FAQ (per schema FAQPage)'
+        widget: 'list'
+        required: false
+        hint: 'Almeno 5-8 FAQ per articolo. Verranno serializzate come schema FAQPage.'
+        fields:
+          - { name: 'domanda', label: 'Domanda', widget: 'string' }
+          - { name: 'risposta', label: 'Risposta (HTML supportato)', widget: 'text' }
+      - { name: 'articoliCorrelati', label: 'Articoli correlati (slug, max 3)', widget: 'list', required: false, default: [] }
+      - { name: 'noindex', label: 'Nascondi a Google (noindex)', widget: 'boolean', default: false }
+      - { name: 'body', label: "Contenuto articolo", widget: 'markdown', hint: 'Markdown. Almeno 1.500 parole per articoli pillar, 800+ per cluster. Usa H2 per sezioni principali.' }
+
+  # ─── Pillar (hub) ────────────────────────────────────────────────────
+  - name: 'pillar'
+    label: 'Pillar (hub)'
+    label_singular: 'Pillar'
+    folder: 'src/content/pillar'
+    create: true
+    slug: '{{slug}}'
+    extension: 'mdx'
+    format: 'frontmatter'
+    fields:
+      - { name: 'titolo', label: 'Titolo H1', widget: 'string' }
+      - { name: 'descrizione', label: 'Descrizione lead', widget: 'text' }
+      - { name: 'focusKeyword', label: 'Focus keyword', widget: 'string', required: false }
+      - { name: 'metaDescription', label: 'Meta description', widget: 'text', required: false }
+      - name: 'faq'
+        label: 'FAQ'
+        widget: 'list'
+        required: false
+        fields:
+          - { name: 'domanda', label: 'Domanda', widget: 'string' }
+          - { name: 'risposta', label: 'Risposta', widget: 'text' }
+      - { name: 'body', label: 'Contenuto pillar', widget: 'markdown' }
+
+  # ─── Autori ───────────────────────────────────────────────────────────
+  - name: 'autori'
+    label: 'Autori'
+    folder: 'src/content/autori'
+    create: true
+    slug: '{{slug}}'
+    extension: 'json'
+    format: 'json'
+    fields:
+      - { name: 'nome', label: 'Nome', widget: 'string' }
+      - { name: 'ruolo', label: 'Ruolo', widget: 'string' }
+      - { name: 'bio', label: 'Bio breve', widget: 'text' }
+      - { name: 'avatar', label: 'Avatar', widget: 'image', required: false }
+      - { name: 'isPseudonym', label: 'È uno pseudonimo (dichiarato in bio)', widget: 'boolean', default: false }
+
+  # ─── Settings (singleton) ─────────────────────────────────────────────
+  - name: 'settings'
+    label: 'Impostazioni sito'
+    files:
+      - file: 'src/content/settings.json'
+        name: 'general'
+        label: 'Generale'
+        fields:
+          - { name: 'siteName', label: 'Nome sito', widget: 'string' }
+          - { name: 'siteUrl', label: 'URL sito', widget: 'string' }
+          - { name: 'defaultMetaTitle', label: 'Title default', widget: 'string' }
+          - { name: 'defaultMetaDescription', label: 'Meta description default', widget: 'text' }
+          - { name: 'publisher', label: 'Publisher (footer)', widget: 'string' }
+          - { name: 'socialFacebook', label: 'URL Facebook', widget: 'string' }
+          - { name: 'socialInstagram', label: 'URL Instagram', widget: 'string' }
+          - { name: 'socialYoutube', label: 'URL YouTube', widget: 'string' }
+          - { name: 'socialReddit', label: 'URL Reddit', widget: 'string' }

@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  category: string;
+  title: string;
+  excerpt: string;
+  date?: string;
+  readTime?: string;
+}
+
+const { href, category, title, excerpt, date, readTime } = Astro.props;
+---
+
+<a href={href} class="block rounded-xl overflow-hidden no-underline border transition-all hover:shadow-lg" style="border-color:var(--color-linen-200);background-color:white">
+  <div class="aspect-[16/9] flex items-center justify-center text-5xl font-bold" style="background:linear-gradient(135deg,var(--color-forest-100),var(--color-linen-100));color:var(--color-forest-300);font-family:var(--font-display)">CMU</div>
+  <div class="p-5">
+    <div class="text-xs uppercase tracking-wider font-semibold mb-2" style="color:var(--color-brass-700)">{category}</div>
+    <h3 class="text-lg font-semibold m-0 leading-snug" style="font-family:var(--font-display);color:var(--color-forest-800)">{title}</h3>
+    <p class="text-sm mt-2 leading-relaxed" style="color:var(--color-ink-700)">{excerpt}</p>
+    <div class="flex items-center gap-3 mt-4 text-xs" style="color:var(--color-ink-500)">
+      {date && <span>{date}</span>}
+      {date && readTime && <span>·</span>}
+      {readTime && <span>{readTime}</span>}
+    </div>
+  </div>
+</a>

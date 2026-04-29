@@ -1,0 +1,62 @@
+---
+import { PILLARS, SITE } from '~/lib/site';
+
+const path = Astro.url.pathname;
+function isActive(href: string) {
+  return path === href || path.startsWith(href + '/');
+}
+---
+
+<header class="sticky top-0 z-40 backdrop-blur bg-paper/90 border-b" style="border-color:var(--color-linen-200)">
+  <nav class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-6">
+    <a href="/" class="no-underline flex items-baseline gap-1 font-semibold text-xl" style="font-family:var(--font-display);color:var(--color-forest-700)">
+      <span>CaseMobili</span><span style="color:var(--color-linen-500)">Usate</span>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-1 text-sm">
+      {PILLARS.map((p) => (
+        <li>
+          <a
+            href={`/${p.slug}`}
+            class:list={[
+              'px-3 py-2 rounded-md no-underline transition-colors',
+              isActive(`/${p.slug}`) ? 'bg-forest-50 text-forest-800' : 'text-ink-700 hover:bg-linen-50',
+            ]}
+          >
+            {p.short}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <a href="/community" class="hidden md:inline-flex btn-secondary text-sm py-2 px-4">Community</a>
+      <a href="/strumenti" class="hidden sm:inline-flex btn-primary text-sm py-2 px-4">Strumenti</a>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2" aria-label="Apri menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="lg:hidden hidden border-t" style="border-color:var(--color-linen-200)">
+    <ul class="max-w-7xl mx-auto px-4 py-3 space-y-1">
+      {PILLARS.map((p) => (
+        <li>
+          <a href={`/${p.slug}`} class="block px-3 py-2 rounded-md no-underline text-ink-900 hover:bg-linen-50">{p.title}</a>
+        </li>
+      ))}
+      <li><a href="/strumenti" class="block px-3 py-2 rounded-md no-underline">Strumenti</a></li>
+      <li><a href="/community" class="block px-3 py-2 rounded-md no-underline">Community</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+</script>

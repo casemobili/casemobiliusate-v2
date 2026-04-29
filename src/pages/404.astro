@@ -1,0 +1,16 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+---
+<BaseLayout title="Pagina non trovata" description="La pagina che cerchi non esiste o è stata spostata." noindex={true}>
+  <div class="max-w-3xl mx-auto px-4 md:px-6 py-24 text-center">
+    <div class="text-7xl font-bold mb-4" style="color:var(--color-forest-300);font-family:var(--font-display)">404</div>
+    <h1>Questa casa mobile è stata trasportata altrove</h1>
+    <p class="text-lg mt-6 mb-8" style="color:var(--color-ink-700)">
+      La pagina che cerchi non esiste, è stata spostata, o forse non l'abbiamo ancora scritta. Torna alla home o esplora i pilastri.
+    </p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="/" class="btn-primary">Torna alla home</a>
+      <a href="/strumenti" class="btn-secondary">Vai agli strumenti</a>
+    </div>
+  </div>
+</BaseLayout>

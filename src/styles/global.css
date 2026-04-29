@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+/*
+ * Palette CaseMobiliUsate.com
+ * Coerente con Ogilvy (legno, lino, oro caldo, serif elegante — Ogilvy on Advertising p.708)
+ * e con il sistema visivo Luxury Camp (lusso italiano + natura + autenticità).
+ * Riferimenti: [[2026-04-28-ogilvy-on-advertising]], [[copywriting-maestri]], CopyMastery moduli 05 e 11.
+ */
+
+@theme {
+  /* Verde bosco italiano — autorità, natura, fiducia */
+  --color-forest-50: #f3f5f1;
+  --color-forest-100: #e2e8dc;
+  --color-forest-200: #c2cdb6;
+  --color-forest-300: #94a684;
+  --color-forest-400: #6c805a;
+  --color-forest-500: #4d6440;
+  --color-forest-600: #3a4f30;
+  --color-forest-700: #2b3a24;
+  --color-forest-800: #1f2a1b;
+  --color-forest-900: #141a11;
+
+  /* Oro brunito / ottone — lusso caldo, italianità, CTA premium */
+  --color-brass-50: #faf5e8;
+  --color-brass-100: #f3e9c8;
+  --color-brass-200: #e6d094;
+  --color-brass-300: #d4b365;
+  --color-brass-400: #b89653;
+  --color-brass-500: #9a7a3e;
+  --color-brass-600: #7c612e;
+  --color-brass-700: #5e4a23;
+
+  /* Lino / sabbia / carta — base calda, eleganza Ogilvy */
+  --color-paper: #faf7f0;
+  --color-linen-50: #f5f0e3;
+  --color-linen-100: #ebe2cc;
+  --color-linen-200: #ddd0b0;
+  --color-linen-300: #c4b48f;
+
+  /* Inchiostro — testi e contrasti */
+  --color-ink-900: #1a1a14;
+  --color-ink-700: #353530;
+  --color-ink-500: #6b6b62;
+  --color-ink-300: #a8a89e;
+
+  /* Tipografia — Cormorant Garamond (display italiano elegante) + Inter (body leggibile) */
+  --font-display: "Cormorant Garamond", "Lora", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink-900);
+    background-color: var(--color-paper);
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply text-base;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    @apply font-medium tracking-tight;
+    color: var(--color-forest-800);
+    line-height: 1.15;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl lg:text-7xl;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  h2 { @apply text-4xl md:text-5xl mt-12 mb-4; font-weight: 500; }
+  h3 { @apply text-2xl md:text-3xl mt-8 mb-3; font-weight: 600; }
+  h4 { @apply text-xl md:text-2xl mt-6 mb-2; font-weight: 600; }
+
+  p { @apply my-4; }
+
+  a {
+    color: var(--color-forest-700);
+    @apply underline decoration-1 underline-offset-4 transition-colors;
+    text-decoration-color: var(--color-brass-300);
+  }
+  a:hover {
+    color: var(--color-brass-600);
+    text-decoration-color: var(--color-brass-500);
+  }
+
+  /* Liste: stile reset di default — i bullet vengono applicati solo dentro .prose-article (vedi sotto)
+     Questo evita che il <ul> del menu di navigazione mostri puntini indesiderati */
+  ul, ol { list-style: none; padding-left: 0; }
+  li { @apply my-1; }
+
+  /* Ripristina liste classiche solo dentro contenuti editoriali */
+  .prose-article ul, .prose-article ol { @apply my-4 pl-6; }
+  .prose-article ul { list-style: disc; }
+  .prose-article ol { list-style: decimal; }
+  .prose-article li { @apply my-2; }
+
+  blockquote {
+    @apply pl-6 my-8 italic;
+    border-left: 3px solid var(--color-brass-400);
+    color: var(--color-ink-700);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  code {
+    @apply px-1.5 py-0.5 rounded text-sm;
+    background-color: var(--color-linen-50);
+    color: var(--color-forest-800);
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+
+  table {
+    @apply w-full my-6 border-collapse;
+  }
+  th, td {
+    @apply px-4 py-3 text-left;
+    border-bottom: 1px solid var(--color-linen-200);
+  }
+  th {
+    @apply font-semibold text-sm uppercase tracking-wider;
+    color: var(--color-forest-800);
+    background-color: var(--color-linen-50);
+  }
+
+  hr {
+    @apply my-12;
+    border: none;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-linen-300), transparent);
+  }
+
+  ::selection {
+    background-color: var(--color-brass-200);
+    color: var(--color-forest-900);
+  }
+}
+
+@layer components {
+  .prose-article {
+    @apply max-w-3xl mx-auto;
+  }
+
+  .prose-article > p {
+    @apply text-lg;
+    line-height: 1.75;
+  }
+
+  .eyebrow {
+    @apply text-xs uppercase font-semibold tracking-widest;
+    color: var(--color-brass-600);
+    font-family: var(--font-sans);
+  }
+
+  .tldr-box {
+    @apply rounded-sm p-6 my-8;
+    background-color: var(--color-linen-50);
+    border-left: 4px solid var(--color-brass-400);
+  }
+
+  .tldr-box-title {
+    @apply font-semibold uppercase text-xs tracking-widest mb-2;
+    color: var(--color-brass-700);
+    font-family: var(--font-sans);
+  }
+
+  /* Bottoni: neutralità tipografica + accento brass per il primario */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium no-underline transition-all;
+    background-color: var(--color-forest-800);
+    color: var(--color-paper);
+    letter-spacing: 0.01em;
+    border-radius: 2px;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-forest-900);
+    color: var(--color-brass-200);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 16px -8px rgba(20,26,17,0.4);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium no-underline transition-all;
+    background-color: transparent;
+    color: var(--color-forest-800);
+    border: 1px solid var(--color-forest-800);
+    letter-spacing: 0.01em;
+    border-radius: 2px;
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-forest-800);
+    color: var(--color-paper);
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 font-medium no-underline transition-all;
+    background-color: var(--color-brass-500);
+    color: var(--color-forest-900);
+    letter-spacing: 0.01em;
+    border-radius: 2px;
+  }
+  .btn-accent:hover {
+    background-color: var(--color-brass-600);
+    color: var(--color-paper);
+  }
+
+  .pillar-card {
+    @apply block p-7 no-underline transition-all;
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-linen-200);
+    border-radius: 2px;
+  }
+  .pillar-card:hover {
+    border-color: var(--color-brass-400);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -12px rgba(20,26,17,0.18);
+  }
+
+  .pillar-card a, .pillar-card { color: inherit; text-decoration: none; }
+}

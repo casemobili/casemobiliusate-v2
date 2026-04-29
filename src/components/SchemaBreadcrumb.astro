@@ -1,0 +1,40 @@
+---
+import { SITE } from '~/lib/site';
+
+interface Crumb {
+  name: string;
+  url: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    item: c.url.startsWith('http') ? c.url : `${SITE.url}${c.url}`,
+  })),
+};
+---
+<nav aria-label="Breadcrumb" class="text-sm py-3" style="color:var(--color-ink-500)">
+  {items.map((c, i) => (
+    <span>
+      {i < items.length - 1 ? (
+        <>
+          <a href={c.url} class="no-underline hover:underline">{c.name}</a>
+          <span class="mx-2">/</span>
+        </>
+      ) : (
+        <span style="color:var(--color-ink-700)">{c.name}</span>
+      )}
+    </span>
+  ))}
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

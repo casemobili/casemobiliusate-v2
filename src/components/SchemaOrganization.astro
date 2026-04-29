@@ -1,0 +1,28 @@
+---
+import { SITE, AUTHOR } from '~/lib/site';
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  logo: `${SITE.url}/logo.png`,
+  description: SITE.defaultDescription,
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.publisher,
+  },
+  founder: {
+    '@type': 'Person',
+    name: AUTHOR.name,
+    jobTitle: AUTHOR.role,
+    address: { '@type': 'PostalAddress', addressLocality: AUTHOR.city, addressCountry: 'IT' },
+  },
+  sameAs: [
+    SITE.social.facebookGroup,
+    SITE.social.instagram,
+    SITE.social.youtube,
+    SITE.social.reddit,
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

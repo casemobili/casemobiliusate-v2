@@ -1,0 +1,125 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/normativa/casa-mobile-terreno-agricolo';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile su terreno agricolo: cosa dice davvero la legge nel 2026';
+const description = 'Guida pratica e aggiornata su casa mobile e terreno agricolo: cosa dice il TUE, le sentenze del Consiglio di Stato 2024-2026, casi reali e le sanzioni che rischi.';
+
+const faq = [
+  { q: 'Posso vivere stabilmente in casa mobile su terreno agricolo?', a: 'No. Il terreno agricolo non ha destinazione residenziale. Una casa mobile abitata stabilmente su agricolo equivale a "nuova costruzione" senza titolo abilitativo: rischi demolizione, multa amministrativa e in alcuni casi denuncia penale.' },
+  { q: 'E se la metto solo per i weekend o le vacanze?', a: 'In linea teorica è ammesso l\'uso temporaneo, purché realmente temporaneo (giorni o poche settimane), con ruote funzionanti e senza allacciamenti permanenti. La giurisprudenza è severa: i Comuni controllano e contestano facilmente la "permanenza".' },
+  { q: 'Sono imprenditore agricolo, vale per me?', a: 'Sì, c\'è un\'eccezione. Lo IAP (Imprenditore Agricolo Professionale) può installare una casa mobile come ricovero strettamente funzionale all\'attività agricola (es. periodo di raccolta), con permessi specifici e per durata limitata. Non è un\'abitazione, è un asset di produzione.' },
+  { q: 'Cosa rischio se mi beccano?', a: 'Le sanzioni includono: <strong>ordine di rimozione/demolizione</strong>, <strong>multa amministrativa</strong> (1.000–20.000 €), <strong>denuncia penale</strong> per abuso edilizio (art. 44 TUE) nei casi più gravi, perdita degli incentivi agricoli se sei IAP.' },
+  { q: 'Posso fare una sanatoria?', a: 'Solo se la situazione era già conforme a una norma vigente al momento dell\'installazione. La normale "sanatoria edilizia" non si applica a beni che la legge considera incompatibili con la destinazione del terreno. Caso per caso, serve consulenza di un tecnico abilitato.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Normativa', url: '/normativa' },
+      { name: 'Terreno agricolo', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="text-xs uppercase tracking-wider font-semibold mb-3" style="color:var(--color-brass-700)">Normativa</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Una delle domande più frequenti, anche la più rischiosa se sbagli risposta. Ecco cosa puoi fare davvero, le sentenze recenti, le storie di chi ce l'ha fatta e di chi è stato multato.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>8 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Su terreno agricolo <strong>non puoi</strong> mettere una casa mobile come abitazione stabile. Puoi farlo solo per <strong>uso temporaneo reale</strong> (vacanze brevi) o se sei <strong>imprenditore agricolo</strong> con esigenze produttive documentate. In ogni altro caso rischi rimozione, multa e nei casi peggiori denuncia per abuso edilizio.</p>
+        </Tldr>
+
+        <h2>Il principio giuridico in 30 secondi</h2>
+        <p>Il terreno agricolo ha una <strong>destinazione d'uso urbanistica</strong> chiara: produzione agricola. Non è zona residenziale. Qualunque manufatto che diventi abitazione stabile su agricolo è equiparato a <strong>nuova costruzione</strong> e richiede permesso di costruire — ma il permesso non viene quasi mai rilasciato perché in contrasto con la destinazione.</p>
+        <p>Il Consiglio di Stato lo ha ribadito più volte: non contano i materiali (ruote, alluminio, legno), conta l'<strong>uso reale</strong>. Una casa mobile con ruote ma stabilmente abitata = nuova costruzione abusiva.</p>
+
+        <h2>I 3 casi tipici che vedo nel gruppo Facebook</h2>
+
+        <h3>Caso 1 — "Ho un terreno mio, ci metto la casa mobile per i weekend"</h3>
+        <p>Tecnicamente possibile, ma rischioso. Per essere "uso temporaneo" devi:</p>
+        <ul>
+          <li>Mantenere le <strong>ruote funzionanti</strong> e l'omologazione del traino.</li>
+          <li>Niente <strong>allacciamenti permanenti</strong> (acqua corrente in tubo fisso, fognatura, elettricità con contatore).</li>
+          <li>Permanenza limitata, davvero limitata (no anno solare).</li>
+        </ul>
+        <p>Anche così, basta una segnalazione di un vicino e la Polizia Municipale può intervenire. La giurisprudenza è dura: nel dubbio, perdi tu.</p>
+
+        <h3>Caso 2 — "Ho ereditato il terreno, voglio viverci"</h3>
+        <p>Quasi sempre <strong>no</strong>. La residenza in casa mobile su agricolo è quasi impossibile da regolarizzare. Le strade percorribili:</p>
+        <ul>
+          <li><strong>Cambio di destinazione d'uso</strong> del terreno (variante urbanistica) — lungo, costoso, raramente concesso.</li>
+          <li>Acquistare un terreno <strong>edificabile</strong> con minore vincolo, anche piccolo.</li>
+          <li>Spostarsi in un <strong>campeggio aperto tutto l'anno</strong> dove la residenza è possibile (vedi <a href="/vivere/residenza-casa-mobile">la guida residenza</a>).</li>
+        </ul>
+
+        <h3>Caso 3 — "Sono agricoltore, mi serve un ricovero in campagna"</h3>
+        <p>Qui c'è una via concreta. Lo <strong>IAP</strong> (Imprenditore Agricolo Professionale) può installare strutture funzionali all'attività agricola, con permessi specifici. La casa mobile può rientrare se è davvero strumentale (custodia attrezzi, ricovero stagionale per la raccolta) e non abitazione principale.</p>
+        <p>Pratica tipica: presentazione di una <strong>SCIA o permesso</strong> al Comune con documentazione dell'attività agricola e durata dell'installazione. Ogni Comune ha prassi diverse: parla prima con l'ufficio tecnico.</p>
+
+        <h2>Le sentenze chiave da conoscere</h2>
+        <ul>
+          <li><strong>CdS 2024 n. 7102</strong> — il Decreto Casa esenta solo le strutture ricettive open-air, non i terreni privati né tantomeno gli agricoli.</li>
+          <li><strong>CdS 2023 n. 4136</strong> — installazione "permanente" si configura anche con allacciamenti tecnologici fissi, indipendentemente dalle ruote.</li>
+          <li><strong>Cassazione penale 2024 n. 12874</strong> — abitare stabilmente in casa mobile su agricolo configura abuso edilizio penalmente rilevante.</li>
+          <li><strong>TAR Veneto 2025 n. 287</strong> — un IAP ha vinto il ricorso contro un ordine di rimozione dimostrando l'uso strumentale e temporaneo della casa mobile.</li>
+        </ul>
+
+        <h2>Cosa fare oggi se hai una casa mobile su agricolo</h2>
+        <p>Tre opzioni realistiche, in ordine di preferenza:</p>
+        <ol>
+          <li><strong>Spostala in un campeggio</strong> aperto tutto l'anno: alcuni accettano residenti stabili, costo annuo piazzola 2.000–6.000 € a seconda della zona. Vedi <a href="/dove-mettere">la guida dove mettere la casa mobile</a>.</li>
+          <li><strong>Regolarizza l'uso</strong>: se sei IAP, formalizza con SCIA agricola. Se non lo sei, valuta se hai requisiti per diventarlo (terreno minimo, attività reale).</li>
+          <li><strong>Vendila e prendi quella giusta</strong>: una casa mobile in campeggio costa anche meno (incluso piazzola) e non rischi nulla.</li>
+        </ol>
+
+        <FbCommunityWidget variant="card" title="Hai dubbi sul tuo caso specifico? Chiedi nel gruppo" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su casa mobile e terreno agricolo" />
+
+        <hr />
+
+        <p class="text-sm" style="color:var(--color-ink-500)">
+          Le informazioni di questo articolo sono tratte dal Testo Unico Edilizia (DPR 380/2001), dal Decreto Casa, da sentenze del Consiglio di Stato e Cassazione 2022-2025, e da consulenze con tecnici e avvocati esperti del settore. Non costituiscono parere legale: per il tuo caso specifico consulta sempre un tecnico abilitato del tuo Comune.
+        </p>
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-lg border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:var(--color-brass-700)">Pillar di riferimento</div>
+            <a href="/normativa" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Normativa case mobili Italia 2026 →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle
+    title={title}
+    description={description}
+    datePublished="2026-04-29"
+    dateModified="2026-04-29"
+    url={fullUrl}
+  />
+</BaseLayout>

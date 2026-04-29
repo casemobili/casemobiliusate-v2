@@ -1,0 +1,53 @@
+---
+import { evaluateSeo, levelColor, levelLabel } from '~/lib/seo-rankmath';
+import type { SeoInput } from '~/lib/seo-rankmath';
+
+interface Props {
+  input: SeoInput;
+  showDetail?: boolean;
+}
+
+const { input, showDetail = true } = Astro.props;
+const result = evaluateSeo(input);
+const color = levelColor(result.level);
+---
+
+<aside class="rounded-sm border p-5 my-8" style={`border-color:var(--color-linen-200);background-color:var(--color-paper)`}>
+  <div class="flex items-center justify-between gap-4 mb-3">
+    <div>
+      <div class="eyebrow">SEO Score (compatibile Rank Math)</div>
+      <h3 class="m-0 text-2xl" style={`color:${color};font-family:var(--font-display)`}>{result.score} / 100 — {levelLabel(result.level)}</h3>
+    </div>
+    <div class="text-sm text-right" style="color:var(--color-ink-500)">
+      <div><strong style="color:#2b3a24">{result.passed}</strong> passati</div>
+      <div><strong style="color:#b89653">{result.warned}</strong> da migliorare</div>
+      <div><strong style="color:#9a3030">{result.failed}</strong> da fixare</div>
+    </div>
+  </div>
+
+  <div class="h-2 rounded-full overflow-hidden" style="background-color:var(--color-linen-100)">
+    <div style={`width:${result.score}%;height:100%;background-color:${color};transition:width 0.4s`}></div>
+  </div>
+
+  {showDetail && (
+    <details class="mt-6">
+      <summary class="cursor-pointer text-sm font-medium" style="color:var(--color-forest-700)">Vedi i {result.checks.length} controlli</summary>
+      <ul class="mt-4 space-y-2 text-sm">
+        {result.checks.map((c) => (
+          <li class="flex items-start gap-3 py-1.5">
+            <span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold" style={
+              c.level === 'pass' ? 'background-color:#2b3a24;color:white'
+              : c.level === 'warn' ? 'background-color:#b89653;color:white'
+              : 'background-color:#9a3030;color:white'
+            }>{c.level === 'pass' ? '✓' : c.level === 'warn' ? '!' : '✗'}</span>
+            <div class="flex-1">
+              <div style="color:var(--color-ink-900)">{c.label}</div>
+              {c.hint && <div class="text-xs mt-0.5" style="color:var(--color-ink-500)">{c.hint}</div>}
+            </div>
+            <span class="text-xs shrink-0" style="color:var(--color-ink-500)">{c.weight} pt</span>
+          </li>
+        ))}
+      </ul>
+    </details>
+  )}
+</aside>

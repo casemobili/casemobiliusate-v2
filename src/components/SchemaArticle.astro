@@ -1,0 +1,41 @@
+---
+import { SITE, AUTHOR } from '~/lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  datePublished: string;
+  dateModified?: string;
+  image?: string;
+  author?: string;
+  url: string;
+}
+
+const { title, description, datePublished, dateModified, image, author, url } = Astro.props;
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  image: image ? [image] : undefined,
+  datePublished,
+  dateModified: dateModified || datePublished,
+  author: {
+    '@type': 'Person',
+    name: author || AUTHOR.name,
+    jobTitle: AUTHOR.role,
+    url: `${SITE.url}/chi-siamo`,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.publisher,
+    logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.png` },
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': url,
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

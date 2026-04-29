@@ -1,0 +1,10 @@
+---
+interface Props {
+  title?: string;
+}
+const { title = 'In sintesi' } = Astro.props;
+---
+<aside class="tldr-box" role="note">
+  <div class="tldr-box-title">{title}</div>
+  <div><slot /></div>
+</aside>

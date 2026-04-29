@@ -1,0 +1,140 @@
+---
+// Calcolatore prezzo casa mobile usata — interattivo, calcolo client-side
+// Logica semplice ma realistica, basata su benchmarks SERP + analisi competitor
+---
+
+<div class="rounded-2xl p-6 md:p-8 my-12 border" id="calc-prezzi" style="background-color:var(--color-forest-50);border-color:var(--color-forest-200)">
+  <div class="flex items-center gap-3 mb-2">
+    <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl" style="background-color:var(--color-forest-700);color:white">€</div>
+    <h2 class="text-2xl m-0" style="font-family:var(--font-display);color:var(--color-forest-800)">Calcolatore prezzo casa mobile usata</h2>
+  </div>
+  <p class="text-sm mb-6" style="color:var(--color-ink-700)">
+    Stima la fascia di prezzo realistica in base a marca, anno, dimensione e condizioni. Calcolo basato su benchmark di mercato 2026.
+  </p>
+
+  <form id="calc-form" class="grid md:grid-cols-2 gap-4">
+    <label class="block">
+      <span class="text-sm font-medium block mb-1">Marca</span>
+      <select name="brand" class="w-full px-3 py-2 rounded-md border" style="border-color:var(--color-linen-300);background-color:white">
+        <option value="3.5">Atlas</option>
+        <option value="3.8">Willerby</option>
+        <option value="3.0">Shelbox (out of production)</option>
+        <option value="3.6">IRM</option>
+        <option value="3.7">O'Hara</option>
+        <option value="3.4">Burstner</option>
+        <option value="4.0">Crippa Concept (premium)</option>
+        <option value="3.2">Adria</option>
+        <option value="3.0">Sun Roller</option>
+        <option value="2.8" selected>Altro / non lo so</option>
+      </select>
+    </label>
+
+    <label class="block">
+      <span class="text-sm font-medium block mb-1">Anno di costruzione</span>
+      <select name="year" class="w-full px-3 py-2 rounded-md border" style="border-color:var(--color-linen-300);background-color:white">
+        <option value="1.4">2023-2025 (semi-nuova)</option>
+        <option value="1.2" selected>2018-2022</option>
+        <option value="1.0">2013-2017</option>
+        <option value="0.7">2008-2012</option>
+        <option value="0.5">Prima del 2008</option>
+      </select>
+    </label>
+
+    <label class="block">
+      <span class="text-sm font-medium block mb-1">Dimensione</span>
+      <select name="size" class="w-full px-3 py-2 rounded-md border" style="border-color:var(--color-linen-300);background-color:white">
+        <option value="0.6">Compact (6×3 m, ~18 m²)</option>
+        <option value="0.85">Standard (7×3 m, ~21 m²)</option>
+        <option value="1.0" selected>Family (8×4 m, ~32 m²)</option>
+        <option value="1.25">Plus (9×4 m, ~36 m²)</option>
+        <option value="1.55">XL (10×4 m, ~40 m²+)</option>
+      </select>
+    </label>
+
+    <label class="block">
+      <span class="text-sm font-medium block mb-1">Condizioni</span>
+      <select name="cond" class="w-full px-3 py-2 rounded-md border" style="border-color:var(--color-linen-300);background-color:white">
+        <option value="1.3">Pari al nuovo (manutenzione campeggio)</option>
+        <option value="1.0" selected>Buone (uso normale)</option>
+        <option value="0.75">Usurate (necessita ritocchi)</option>
+        <option value="0.5">Da ristrutturare</option>
+      </select>
+    </label>
+
+    <label class="block md:col-span-2">
+      <span class="text-sm font-medium block mb-1">Accessori inclusi (seleziona quelli presenti)</span>
+      <div class="flex flex-wrap gap-3 mt-2 text-sm">
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="acc" value="0.10" /><span>Veranda</span>
+        </label>
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="acc" value="0.06" /><span>Aria condizionata</span>
+        </label>
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="acc" value="0.05" /><span>Casetta/ripostiglio</span>
+        </label>
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="acc" value="0.04" /><span>Mobili inclusi</span>
+        </label>
+        <label class="inline-flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="acc" value="0.03" /><span>Targata</span>
+        </label>
+      </div>
+    </label>
+
+    <div class="md:col-span-2 mt-2">
+      <button type="submit" class="btn-primary w-full sm:w-auto">Calcola fascia prezzo</button>
+    </div>
+  </form>
+
+  <div id="calc-result" class="mt-8 hidden">
+    <div class="rounded-lg p-6 border-2" style="background-color:white;border-color:var(--color-forest-500)">
+      <div class="text-xs uppercase tracking-wider font-semibold mb-2" style="color:var(--color-forest-700)">Stima di mercato 2026</div>
+      <div class="text-3xl md:text-4xl font-bold mb-3" id="calc-range" style="color:var(--color-forest-800);font-family:var(--font-display)"></div>
+      <div class="text-sm leading-relaxed" id="calc-note" style="color:var(--color-ink-700)"></div>
+      <div class="mt-4 pt-4 border-t text-xs" style="border-color:var(--color-linen-200);color:var(--color-ink-500)">
+        Stima indicativa basata su benchmark mercato 2026. Il prezzo reale dipende anche da posizione (campeggio specifico), urgenza venditore, accessori non standard. Per una valutazione precisa consulta sempre più offerte e fatti consigliare da chi conosce il modello.
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById('calc-form');
+    const result = document.getElementById('calc-result');
+    const range = document.getElementById('calc-range');
+    const note = document.getElementById('calc-note');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const brand = parseFloat(fd.get('brand'));
+      const year = parseFloat(fd.get('year'));
+      const size = parseFloat(fd.get('size'));
+      const cond = parseFloat(fd.get('cond'));
+      const accs = fd.getAll('acc').map(Number).reduce((a, b) => a + b, 0);
+
+      // base €5.500 → moltiplicatori
+      const base = 5500;
+      const core = base * brand * year * size * cond;
+      const withAcc = core * (1 + accs);
+      const low = Math.round(withAcc * 0.85 / 100) * 100;
+      const high = Math.round(withAcc * 1.15 / 100) * 100;
+      const center = Math.round(withAcc / 100) * 100;
+
+      range.textContent = `€ ${low.toLocaleString('it-IT')} – € ${high.toLocaleString('it-IT')}`;
+
+      let msg = `Valore centrale stimato: <strong>€ ${center.toLocaleString('it-IT')}</strong>. `;
+      if (cond <= 0.6) msg += 'Prezzo nella parte bassa: ricorda di aggiungere il budget per ristrutturazione (1.500–6.000 € tipici). ';
+      else if (cond >= 1.2) msg += 'Casa in ottime condizioni: poche occasioni sotto questa fascia, valuta più offerte simili prima di trattare. ';
+      if (size >= 1.25) msg += 'Le dimensioni grandi richiedono trasporto eccezionale: aggiungi 1.500–4.000 € se la sposti. ';
+      if (year <= 0.7) msg += 'Veicolo datato: verifica con cura impianti, isolamento e infiltrazioni prima di chiudere.';
+
+      note.innerHTML = msg;
+      result.classList.remove('hidden');
+      result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
+</script>

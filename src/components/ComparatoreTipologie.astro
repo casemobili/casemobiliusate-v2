@@ -1,0 +1,92 @@
+---
+// Comparatore interattivo tra tipologie abitative
+const tipologie = [
+  {
+    nome: 'Casa mobile',
+    prezzo: '6.000–50.000 €',
+    spazio: '20–40 m²',
+    spostabile: 'Sì (con trasporto eccezionale)',
+    permessi: 'Solo in struttura ricettiva, altrimenti permesso',
+    durata: '15–25 anni',
+    energia: 'Buona se isolata',
+    ideale: 'Vacanze in campeggio, vita semipermanente',
+  },
+  {
+    nome: 'Roulotte',
+    prezzo: '3.000–25.000 €',
+    spazio: '8–14 m²',
+    spostabile: 'Sì (traino auto)',
+    permessi: 'Veicolo, no permessi edilizi',
+    durata: '10–20 anni',
+    energia: 'Bassa',
+    ideale: 'Itineranti, fine settimana',
+  },
+  {
+    nome: 'Bungalow muratura',
+    prezzo: '40.000–150.000 €',
+    spazio: '30–80 m²',
+    spostabile: 'No',
+    permessi: 'Permesso di costruire',
+    durata: '50+ anni',
+    energia: 'Alta (varia)',
+    ideale: 'Seconda casa stabile',
+  },
+  {
+    nome: 'Tiny house',
+    prezzo: '25.000–90.000 €',
+    spazio: '15–30 m²',
+    spostabile: 'Su rimorchio, sì',
+    permessi: 'Zona grigia, dipende da uso',
+    durata: '20–40 anni',
+    energia: 'Ottima (off-grid possibile)',
+    ideale: 'Filosofia minimale, autosufficienza',
+  },
+  {
+    nome: 'Prefabbricata',
+    prezzo: '40.000–200.000 €',
+    spazio: '40–150 m²',
+    spostabile: 'No',
+    permessi: 'Permesso di costruire',
+    durata: '40+ anni',
+    energia: 'Alta',
+    ideale: 'Prima/seconda casa stabile',
+  },
+];
+
+const features = [
+  { key: 'prezzo', label: 'Prezzo tipico' },
+  { key: 'spazio', label: 'Spazio interno' },
+  { key: 'spostabile', label: 'Spostabile?' },
+  { key: 'permessi', label: 'Permessi richiesti' },
+  { key: 'durata', label: 'Durata media' },
+  { key: 'energia', label: 'Efficienza energetica' },
+  { key: 'ideale', label: 'Ideale per' },
+];
+---
+
+<div class="my-12">
+  <div class="flex items-center gap-3 mb-2">
+    <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl" style="background-color:var(--color-linen-500);color:white">⇄</div>
+    <h2 class="text-2xl m-0" style="font-family:var(--font-display);color:var(--color-forest-800)">Comparatore tipologie abitative</h2>
+  </div>
+  <p class="text-sm mb-6" style="color:var(--color-ink-700)">Casa mobile, roulotte, bungalow, tiny house, prefabbricata: tutto a confronto in una vista.</p>
+
+  <div class="overflow-x-auto rounded-lg border" style="border-color:var(--color-linen-200)">
+    <table class="min-w-full">
+      <thead>
+        <tr>
+          <th class="text-left">Caratteristica</th>
+          {tipologie.map((t) => (<th class="text-left whitespace-nowrap" style="background-color:var(--color-forest-50);color:var(--color-forest-800)">{t.nome}</th>))}
+        </tr>
+      </thead>
+      <tbody>
+        {features.map((f) => (
+          <tr>
+            <td class="font-medium" style="color:var(--color-forest-800)">{f.label}</td>
+            {tipologie.map((t) => (<td class="text-sm" style="color:var(--color-ink-700)">{t[f.key]}</td>))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

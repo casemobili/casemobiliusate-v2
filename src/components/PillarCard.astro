@@ -1,0 +1,25 @@
+---
+interface Props {
+  slug: string;
+  title: string;
+  desc: string;
+  icon: string;
+  color?: 'brand' | 'warm';
+}
+
+const { slug, title, desc, icon, color = 'brand' } = Astro.props;
+---
+
+<a href={`/${slug}`} class="pillar-card group">
+  <div class="flex items-center gap-3 mb-3">
+    <div
+      class="w-10 h-10 rounded-lg flex items-center justify-center text-xl font-bold"
+      style={color === 'brand'
+        ? 'background-color:var(--color-forest-100);color:var(--color-forest-700)'
+        : 'background-color:var(--color-linen-100);color:var(--color-brass-700)'}
+    >{icon}</div>
+    <h3 class="text-lg font-semibold m-0" style="font-family:var(--font-display);color:var(--color-forest-800)">{title}</h3>
+  </div>
+  <p class="text-sm leading-relaxed m-0" style="color:var(--color-ink-700)">{desc}</p>
+  <div class="mt-4 text-sm font-medium" style="color:var(--color-forest-700)">Esplora il pilastro →</div>
+</a>

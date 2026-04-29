@@ -1,0 +1,59 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import CalcolatorePrezzi from '~/components/CalcolatorePrezzi.astro';
+import ComparatoreTipologie from '~/components/ComparatoreTipologie.astro';
+import NewsletterSignup from '~/components/NewsletterSignup.astro';
+
+const title = 'Strumenti gratuiti: calcolatore prezzo, comparatore, checklist case mobili';
+const description = 'Strumenti interattivi per orientarti nel mondo delle case mobili usate: calcolatore prezzo, comparatore tipologie, checklist ispezione scaricabile.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Strumenti', url: '/strumenti' }]} />
+
+    <header class="max-w-3xl mb-8">
+      <h1>Strumenti gratuiti per chi cerca una casa mobile</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Quattro strumenti pratici per orientarti senza dover chiedere a un venditore. Calcolano prezzi, confrontano opzioni, ti danno le risposte che servono prima di firmare.
+      </p>
+    </header>
+
+    <CalcolatorePrezzi />
+
+    <ComparatoreTipologie />
+
+    <section id="checklist" class="my-12 rounded-2xl p-8 border-2" style="background-color:var(--color-linen-50);border-color:var(--color-linen-300)">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl" style="background-color:var(--color-linen-500);color:white">✓</div>
+        <h2 class="text-2xl m-0" style="font-family:var(--font-display);color:var(--color-forest-800)">Checklist ispezione (30 punti)</h2>
+      </div>
+      <p class="text-sm mb-6" style="color:var(--color-ink-700)">
+        Tutto quello che devi controllare prima di acquistare una casa mobile usata. Struttura, impianti, infiltrazioni, documenti. PDF stampabile, gratis.
+      </p>
+      <div class="flex flex-wrap gap-3 items-center">
+        <a href="#" class="btn-primary">Scarica il PDF (in arrivo)</a>
+        <span class="text-sm" style="color:var(--color-ink-500)">Inserisci la mail per riceverlo gratis</span>
+      </div>
+    </section>
+
+    <section id="mappa" class="my-12 rounded-2xl p-8 border" style="background-color:white;border-color:var(--color-linen-200)">
+      <div class="flex items-center gap-3 mb-2">
+        <div class="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-xl" style="background-color:var(--color-forest-700);color:white">⌖</div>
+        <h2 class="text-2xl m-0" style="font-family:var(--font-display);color:var(--color-forest-800)">Mappa campeggi che vendono case mobili usate</h2>
+      </div>
+      <p class="text-sm mb-6" style="color:var(--color-ink-700)">
+        I campeggi italiani che hanno case mobili usate disponibili, filtrabili per regione. Strumento in arrivo nelle prossime settimane.
+      </p>
+      <div class="aspect-[16/9] rounded-lg flex items-center justify-center text-lg" style="background-color:var(--color-linen-50);color:var(--color-ink-500)">
+        Mappa interattiva (in sviluppo)
+      </div>
+    </section>
+
+    <NewsletterSignup
+      title="Vuoi essere il primo ad avere checklist e mappa?"
+      subtitle="Iscriviti e ricevi via mail gli strumenti appena pronti, più tutte le novità del settore."
+    />
+  </div>
+</BaseLayout>

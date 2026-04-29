@@ -1,0 +1,55 @@
+---
+import { SITE } from '~/lib/site';
+
+interface Props {
+  variant?: 'card' | 'banner' | 'sidebar';
+  title?: string;
+}
+
+const { variant = 'card', title = 'Casa Mobili Italia: la community su Facebook' } = Astro.props;
+---
+
+{variant === 'card' && (
+  <div class="rounded-xl border-2 p-6 my-8" style="background-color:var(--color-forest-50);border-color:var(--color-forest-200)">
+    <div class="flex items-start gap-4">
+      <div class="shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-white text-xl font-bold" style="background-color:#1877f2">f</div>
+      <div class="flex-1">
+        <h3 class="text-xl font-semibold mb-2" style="margin-top:0">{title}</h3>
+        <p class="text-sm leading-relaxed mb-4" style="color:var(--color-ink-700)">
+          Il gruppo Facebook con migliaia di proprietari, futuri acquirenti e venditori di case mobili in Italia. Annunci verificati, esperienze reali, domande risposte da chi vive davvero in casa mobile.
+        </p>
+        <a href={SITE.social.facebookGroup} target="_blank" rel="noopener" class="btn-primary text-sm">
+          Unisciti al gruppo →
+        </a>
+      </div>
+    </div>
+  </div>
+)}
+
+{variant === 'banner' && (
+  <section class="my-16 py-12 px-6 rounded-2xl" style="background:linear-gradient(135deg,var(--color-forest-700) 0%,var(--color-forest-800) 100%);color:white">
+    <div class="max-w-3xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:rgba(255,255,255,0.15);color:#e8eee8">Community</div>
+      <h2 style="color:white;margin-top:0">Entra nella community delle case mobili</h2>
+      <p class="text-lg mt-4 mb-8" style="color:#d4dfd4">
+        Migliaia di persone che vivono davvero in casa mobile, comprano usato, condividono esperienze, segnalano truffe. La community più attiva d'Italia, gratis su Facebook.
+      </p>
+      <a href={SITE.social.facebookGroup} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-8 py-4 rounded-md font-semibold no-underline" style="background-color:white;color:var(--color-forest-800)">
+        Unisciti al gruppo Facebook →
+      </a>
+    </div>
+  </section>
+)}
+
+{variant === 'sidebar' && (
+  <aside class="rounded-lg border p-5 sticky top-20" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+    <div class="text-xs font-semibold uppercase tracking-wider mb-2" style="color:var(--color-brass-700)">Community</div>
+    <div class="font-semibold mb-2">Casa Mobili Italia</div>
+    <p class="text-sm leading-relaxed mb-3" style="color:var(--color-ink-700)">
+      Migliaia di proprietari condividono annunci, esperienze e consigli nel gruppo Facebook.
+    </p>
+    <a href={SITE.social.facebookGroup} target="_blank" rel="noopener" class="text-sm font-medium" style="color:var(--color-forest-700)">
+      Unisciti al gruppo →
+    </a>
+  </aside>
+)}

@@ -1,0 +1,40 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import { PILLARS } from '~/lib/site';
+
+export function getStaticPaths() {
+  // Solo i pillar che NON hanno pagina dedicata (normativa è già in /normativa/index.astro)
+  return PILLARS.filter((p) => p.slug !== 'normativa').map((p) => ({
+    params: { pillar: p.slug },
+    props: { pillar: p },
+  }));
+}
+
+const { pillar } = Astro.props;
+const title = pillar.title;
+const description = pillar.desc;
+---
+
+<BaseLayout title={`${title} — Pillar in arrivo`} description={description}>
+  <div class="max-w-3xl mx-auto px-4 md:px-6 py-12">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: pillar.short, url: `/${pillar.slug}` },
+    ]} />
+
+    <div class="text-xs uppercase tracking-wider font-semibold mb-3" style="color:var(--color-brass-700)">Pilastro</div>
+    <h1>{title}</h1>
+    <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">{description}</p>
+
+    <div class="rounded-2xl p-8 my-12" style="background-color:var(--color-linen-50);border:1px dashed var(--color-brass-400)">
+      <div class="text-xs uppercase tracking-wider font-semibold mb-2" style="color:var(--color-brass-700)">In costruzione</div>
+      <h2 style="margin-top:0">Pilastro in arrivo</h2>
+      <p>Questa è una bozza: il pilastro <strong>{title}</strong> sarà popolato con la pagina hub completa (TOC, contenuto editoriale, FAQ, articoli correlati) e tutti gli articoli del cluster nelle prossime settimane.</p>
+      <p class="m-0">Nel frattempo puoi esplorare i pilastri già pronti: <a href="/normativa">Normativa</a>, oppure i nostri <a href="/strumenti">strumenti gratuiti</a>.</p>
+    </div>
+
+    <FbCommunityWidget variant="card" />
+  </div>
+</BaseLayout>

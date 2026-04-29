@@ -1,0 +1,163 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import PillarCard from '~/components/PillarCard.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import NewsletterSignup from '~/components/NewsletterSignup.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import { PILLARS, SITE } from '~/lib/site';
+
+const articoliFeatured = [
+  {
+    href: '/normativa/casa-mobile-terreno-agricolo',
+    category: 'Normativa',
+    title: 'Casa mobile su terreno agricolo: cosa dice davvero la legge nel 2026',
+    excerpt: 'Sentenze, eccezioni del Decreto Casa, casi reali di chi ce l\'ha fatta e di chi è stato multato.',
+    date: '29 aprile 2026',
+    readTime: '8 min',
+  },
+  {
+    href: '/prezzi/quanto-costa-casa-mobile-usata',
+    category: 'Prezzi',
+    title: 'Quanto costa una casa mobile usata nel 2026: fasce reali e cosa fa salire il prezzo',
+    excerpt: 'Dati di mercato 2026: dai 5.000 € chiavi in mano da ritirare ai 50.000 € lusso pari al nuovo. Più calcolatore prezzi.',
+    date: '28 aprile 2026',
+    readTime: '10 min',
+  },
+  {
+    href: '/marche/atlas',
+    category: 'Marche',
+    title: 'Case mobili Atlas usate: storia, modelli più richiesti e cosa controllare',
+    excerpt: 'La storica inglese che ha definito gli standard. Modelli iconici, prezzi medi 2026 e check-list ispezione.',
+    date: '27 aprile 2026',
+    readTime: '7 min',
+  },
+];
+
+const faqHome = [
+  { q: 'Cosa si intende per casa mobile usata?', a: 'Una <strong>casa mobile usata</strong> è una struttura abitativa prefabbricata, montata su telaio con ruote, già utilizzata in precedenza da privati, campeggi o villaggi turistici. È costruita secondo direttiva europea EN 1647 e può essere installata in strutture ricettive open-air o, con permessi, su terreno privato.' },
+  { q: 'Quanto costa una casa mobile usata in Italia?', a: 'Nel 2026 i prezzi vanno da circa <strong>5.000 €</strong> per modelli vecchi da ristrutturare fino a <strong>50.000 €</strong> per modelli recenti pari al nuovo con accessori. La fascia più comune è 10.000–20.000 € per case di 2018–2022 in buone condizioni. Usa il <a href="/strumenti">nostro calcolatore</a> per una stima personalizzata.' },
+  { q: 'Posso vivere tutto l\'anno in una casa mobile?', a: 'Sì, è tecnicamente possibile e la <a href="/vivere/residenza-casa-mobile">residenza è ottenibile</a> in alcune condizioni, ma servono permessi specifici se la casa non è in struttura ricettiva. Il Decreto Casa esenta dall\'autorizzazione edilizia solo all\'interno di campeggi e villaggi turistici.' },
+  { q: 'Quali permessi servono per installare una casa mobile?', a: 'Dentro un campeggio o villaggio: <strong>nessun permesso edilizio</strong> (Decreto Casa). Su terreno privato: <strong>permesso di costruire</strong> se l\'installazione è permanente (ruote bloccate, allacciamenti fissi). Su terreno agricolo: solo per uso temporaneo legato all\'attività, mai abitativo permanente. Vedi <a href="/normativa">la guida normativa completa</a>.' },
+  { q: 'Quali sono le marche più affidabili di case mobili?', a: 'Le marche storiche più cercate nell\'usato sono <strong>Atlas, Willerby, IRM, O\'Hara, Burstner, Crippa Concept</strong>. Shelbox, italiana storica, è chiusa dal 2014 ma il suo usato è ancora molto richiesto per qualità costruttiva. Vedi <a href="/marche">il pillar marche</a>.' },
+];
+---
+
+<BaseLayout
+  title="Case Mobili Usate: La Guida Completa per Vivere in Libertà"
+  description="Il punto di riferimento italiano sulle case mobili usate. Normativa 2026, prezzi reali, marche, trasporto, vita quotidiana. Calcolatore prezzi e community attiva."
+>
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0" style="background:linear-gradient(135deg,var(--color-forest-50) 0%,var(--color-linen-50) 100%);"></div>
+    <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid lg:grid-cols-5 gap-12 items-center">
+      <div class="lg:col-span-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">
+          Aggiornato aprile 2026
+        </div>
+        <h1 class="mb-6" style="line-height:1.05">
+          Case mobili usate.<br/>
+          <span style="color:var(--color-brass-600)">Vivere in libertà,</span><br/>
+          senza vendere niente.
+        </h1>
+        <p class="text-lg md:text-xl mt-6 mb-8 max-w-2xl leading-relaxed" style="color:var(--color-ink-700)">
+          Il portale italiano indipendente che spiega davvero il mondo delle case mobili usate: normativa aggiornata, prezzi reali, marche a confronto, vita quotidiana. Senza vendere nulla, senza condizionamenti.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/strumenti" class="btn-primary">Calcola il prezzo →</a>
+          <a href="/normativa" class="btn-secondary">Leggi la guida normativa</a>
+        </div>
+        <div class="mt-8 flex flex-wrap gap-6 text-sm" style="color:var(--color-ink-500)">
+          <div class="flex items-center gap-2">
+            <span style="color:var(--color-forest-600)">●</span> Indipendenti
+          </div>
+          <div class="flex items-center gap-2">
+            <span style="color:var(--color-forest-600)">●</span> Aggiornati al 2026
+          </div>
+          <div class="flex items-center gap-2">
+            <span style="color:var(--color-forest-600)">●</span> Niente vendita, solo informazione
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-2 hidden lg:block">
+        <figure class="m-0">
+          <img
+            src="/images/hero-casa-mobile.jpg"
+            alt="Casa mobile in scenario naturale tranquillo, vista frontale con vegetazione intorno"
+            width="800"
+            height="1000"
+            class="aspect-[4/5] rounded-sm shadow-2xl object-cover w-full"
+            loading="eager"
+            data-credit="Foto: Gottapics su Pexels"
+          />
+          <figcaption class="text-xs mt-3 text-right" style="color:var(--color-ink-500)">
+            Foto: <a href="https://www.pexels.com/photo/scenic-mobile-homes-in-peaceful-countryside-setting-29110872/" target="_blank" rel="noopener nofollow" style="color:var(--color-ink-500)">Gottapics su Pexels</a>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <div class="text-center mb-12">
+      <div class="text-xs uppercase tracking-wider font-semibold mb-3" style="color:var(--color-brass-700)">Esplora per pilastro</div>
+      <h2 style="margin-top:0">Tutto quello che devi sapere, in 8 pilastri</h2>
+      <p class="text-lg mt-3 max-w-2xl mx-auto" style="color:var(--color-ink-700)">
+        Otto aree di approfondimento, oltre 80 guide, strumenti interattivi e una community reale.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {PILLARS.map((p) => <PillarCard {...p} />)}
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <div class="flex items-end justify-between mb-8 flex-wrap gap-4">
+      <div>
+        <div class="text-xs uppercase tracking-wider font-semibold mb-2" style="color:var(--color-brass-700)">Guide in evidenza</div>
+        <h2 style="margin-top:0">Le ultime guide</h2>
+      </div>
+      <a href="/guide" class="text-sm font-medium no-underline hover:underline" style="color:var(--color-forest-700)">Vedi tutte →</a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {articoliFeatured.map((a) => <ArticleCard {...a} />)}
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
+    <div class="grid md:grid-cols-3 gap-6 text-center">
+      <div class="p-8 rounded-xl border" style="border-color:var(--color-linen-200);background-color:white">
+        <div class="text-5xl font-bold mb-3" style="color:var(--color-forest-700);font-family:var(--font-display)">€</div>
+        <h3 class="text-xl mt-2" style="margin-top:0.5rem">Calcolatore prezzi</h3>
+        <p class="text-sm" style="color:var(--color-ink-700)">Stima la fascia di prezzo realistica in base a marca, anno, dimensioni e condizioni.</p>
+        <a href="/strumenti#calc-prezzi" class="text-sm font-medium mt-3 inline-block" style="color:var(--color-forest-700)">Apri il calcolatore →</a>
+      </div>
+      <div class="p-8 rounded-xl border" style="border-color:var(--color-linen-200);background-color:white">
+        <div class="text-5xl font-bold mb-3" style="color:var(--color-forest-700);font-family:var(--font-display)">⇄</div>
+        <h3 class="text-xl mt-2" style="margin-top:0.5rem">Comparatore tipologie</h3>
+        <p class="text-sm" style="color:var(--color-ink-700)">Casa mobile vs roulotte vs bungalow vs tiny house: tutto in una tabella.</p>
+        <a href="/strumenti#comparatore" class="text-sm font-medium mt-3 inline-block" style="color:var(--color-forest-700)">Apri il comparatore →</a>
+      </div>
+      <div class="p-8 rounded-xl border" style="border-color:var(--color-linen-200);background-color:white">
+        <div class="text-5xl font-bold mb-3" style="color:var(--color-forest-700);font-family:var(--font-display)">✓</div>
+        <h3 class="text-xl mt-2" style="margin-top:0.5rem">Checklist ispezione</h3>
+        <p class="text-sm" style="color:var(--color-ink-700)">30 punti da controllare prima di acquistare. Scaricabile in PDF.</p>
+        <a href="/strumenti#checklist" class="text-sm font-medium mt-3 inline-block" style="color:var(--color-forest-700)">Scarica la checklist →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <FbCommunityWidget variant="banner" />
+  </div>
+
+  <section class="max-w-3xl mx-auto px-4 md:px-6 py-12">
+    <FaqAccordion items={faqHome} title="Domande frequenti sulle case mobili usate" />
+  </section>
+
+  <div class="max-w-7xl mx-auto px-4 md:px-6">
+    <NewsletterSignup />
+  </div>
+</BaseLayout>
