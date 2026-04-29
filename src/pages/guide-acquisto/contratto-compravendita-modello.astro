@@ -1,0 +1,178 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/guide-acquisto/contratto-compravendita-modello';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Contratto compravendita casa mobile: modello e clausole (2026)';
+const description = 'Modello contratto compravendita casa mobile usata 2026: clausole essenziali, garanzie, gestione subentro piazzola, fiscale. Esempio scaricabile + checklist.';
+
+const faq = [
+  { q: 'Serve davvero un contratto scritto per casa mobile usata?', a: 'Sì, sempre. Anche se la casa mobile è bene mobile (non immobile), il contratto scritto è <strong>essenziale</strong> per: <strong>1)</strong> dimostrare la proprietà al campeggio (subentro piazzola); <strong>2)</strong> tutela legale in caso di vizi occulti; <strong>3)</strong> assicurazione (la compagnia chiede prova di acquisto); <strong>4)</strong> rivendita futura (nuovo acquirente vuole catena di proprietà). Compravendita "a stretta di mano" è la prima causa di problemi nel mercato dell\'usato.' },
+  { q: 'Il contratto deve essere autenticato dal notaio?', a: 'No, non è obbligatorio. Diversamente da un immobile, la casa mobile è bene mobile e il contratto è valido come <strong>scrittura privata</strong> tra le parti, anche senza notaio. Per maggiore sicurezza si può fare <strong>scrittura privata autenticata</strong> presso notaio (costo 200-500 €) o <strong>registrazione all\'Agenzia delle Entrate</strong> (imposta fissa 200 € + bolli) — entrambe danno data certa e tutela giuridica più forte. Per casa mobile sotto 10.000 €, scrittura privata semplice è scelta tipica.' },
+  { q: 'Cosa controllare prima di firmare?', a: 'Almeno 8 punti: <strong>1)</strong> dati anagrafici venditore (carta identità + codice fiscale); <strong>2)</strong> descrizione casa mobile (marca, modello, anno, dimensioni, n° serie); <strong>3)</strong> documenti: libretto manutenzione, eventuale certificato CE, fatture interventi recenti; <strong>4)</strong> verifica proprietà (chi te la vende è davvero il proprietario? Chiedi atto di acquisto originale); <strong>5)</strong> stato della piazzola: chi paga il subentro al campeggio? Tipicamente 200-800 €; <strong>6)</strong> presenza di gravami (sequestri, fermo amministrativo); <strong>7)</strong> garanzia per vizi occulti minimo 12 mesi (la legge ne dà 12 di default ma chiarisci); <strong>8)</strong> modalità pagamento (bonifico tracciabile, MAI contanti per importi >5.000 €).' },
+  { q: 'Quanto costa firmare il contratto e quali tasse pago?', a: 'Casa mobile è bene mobile. Imposte: <strong>scrittura privata semplice</strong>: 0 € (solo costo carta). <strong>Scrittura privata autenticata da notaio</strong>: 200-500 € parcella + 16 € bollo. <strong>Registrazione</strong> Agenzia Entrate: 200 € imposta fissa + 16 € bollo + eventuali diritti. Nessuna IVA per compravendita tra privati. Se compri da rivenditore con partita IVA: IVA al 22% inclusa nel prezzo (chiariscilo prima). Eventuale tassa di possesso regionale annua: 50-200 € secondo regione.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Guide acquisto', url: '/guide-acquisto' },
+      { name: 'Contratto compravendita', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Guide acquisto · Contratto</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Compravendita "a stretta di mano" è la prima causa di problemi nel mercato delle case mobili usate. Un contratto scritto da 1 pagina protegge entrambe le parti per anni. Ecco modello, clausole essenziali e checklist operativa.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>10 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Il contratto compravendita di una casa mobile è <strong>scrittura privata semplice</strong> tra venditore e acquirente. Non serve notaio (ma è opzionale per casi delicati). Deve contenere: <strong>identificazione casa mobile</strong> (marca, modello, anno, n° serie), <strong>prezzo</strong>, <strong>modalità pagamento tracciabile</strong>, <strong>gestione subentro piazzola</strong>, <strong>garanzia vizi occulti 12 mesi</strong>. Modello e checklist completa qui sotto.</p>
+      </Tldr>
+
+      <h2>Quando serve davvero un contratto</h2>
+      <p>Se compri una casa mobile usata, il contratto scritto è <strong>sempre</strong> raccomandato. Non è obbligatorio per legge tra privati (vendita di bene mobile è valida anche oralmente), ma serve in 4 situazioni concrete:</p>
+
+      <ol>
+        <li><strong>Subentro piazzola</strong>: il direttore del campeggio chiede prova di proprietà per intestare il subentro a tuo nome. Senza contratto, può rifiutarlo</li>
+        <li><strong>Assicurazione</strong>: la compagnia di assicurazione chiede atto di acquisto come prova di proprietà per emettere polizza</li>
+        <li><strong>Vizi occulti</strong>: se entro 12 mesi scopri difetti gravi nascosti (umidità strutturale, problemi di tetto, impianti non a norma), il contratto scritto ti tutela contro il venditore</li>
+        <li><strong>Rivendita futura</strong>: quando rivenderai, il nuovo acquirente vorrà la "catena di proprietà": atto di acquisto del proprietario precedente + tuo successivo</li>
+      </ol>
+
+      <h2>Modello contratto base (scrittura privata)</h2>
+
+      <p>Modello semplificato. Da personalizzare con i dati reali. Per casi delicati (importo &gt;30.000 €, dubbi sul venditore, gravami) consigliato consulto legale prima di firmare.</p>
+
+      <div class="my-8 p-6 rounded-lg" style="background:var(--color-paper)">
+        <h3 class="m-0">CONTRATTO DI COMPRAVENDITA DI CASA MOBILE</h3>
+        <p class="text-sm" style="color:var(--color-ink-500)">Tra privati - scrittura privata semplice</p>
+
+        <p><strong>Tra:</strong></p>
+        <p>Sig./ra [NOME COGNOME], nato/a a [LUOGO] il [DATA], residente in [INDIRIZZO COMPLETO], codice fiscale [CF], di seguito denominato "Venditore"</p>
+
+        <p><strong>e:</strong></p>
+        <p>Sig./ra [NOME COGNOME], nato/a a [LUOGO] il [DATA], residente in [INDIRIZZO COMPLETO], codice fiscale [CF], di seguito denominato "Acquirente"</p>
+
+        <p><strong>Si conviene quanto segue:</strong></p>
+
+        <p><strong>Articolo 1 — Oggetto.</strong> Il Venditore vende all\'Acquirente, che accetta, una casa mobile delle seguenti caratteristiche:</p>
+        <ul>
+          <li>Marca e modello: [es. Ridorev Bahia 8x4 m]</li>
+          <li>Anno di costruzione: [es. 2018]</li>
+          <li>Numero di serie/telaio: [es. RB123456789]</li>
+          <li>Dimensioni: [es. 8,00 × 4,00 metri]</li>
+          <li>Numero stanze: [es. 2 camere + soggiorno + bagno + cucina]</li>
+          <li>Stato: [es. usato in buone condizioni]</li>
+          <li>Posizione: piazzola n° [X] presso [NOME CAMPEGGIO/AGRITURISMO], indirizzo [INDIRIZZO]</li>
+        </ul>
+
+        <p><strong>Articolo 2 — Prezzo e pagamento.</strong> Il prezzo concordato è di € [IMPORTO] (euro [IMPORTO IN LETTERE]). Il pagamento avviene in unica soluzione tramite bonifico bancario sul conto IBAN [IBAN VENDITORE] entro [DATA] dalla firma del presente contratto. Il presente contratto vale come ricevuta di acconto/saldo all\'atto della firma.</p>
+
+        <p><strong>Articolo 3 — Stato dei beni e accessori inclusi.</strong> La casa mobile è venduta nello stato di fatto in cui si trova, già visionato e accettato dall\'Acquirente. Sono inclusi i seguenti accessori: [es. arredi interni, condizionatore, dehor di legno 4x2 m, barbecue]. Sono esclusi: [es. effetti personali del Venditore].</p>
+
+        <p><strong>Articolo 4 — Garanzia per vizi occulti.</strong> Il Venditore garantisce per 12 mesi dalla data di consegna la mancanza di vizi occulti che rendano la casa mobile inidonea all\'uso o ne diminuiscano apprezzabilmente il valore (art. 1490 ss. c.c.). I vizi devono essere denunciati per iscritto entro 8 giorni dalla scoperta.</p>
+
+        <p><strong>Articolo 5 — Subentro piazzola.</strong> Le parti concordano che il subentro nella piazzola di sosta presso [NOME CAMPEGGIO] è a carico del [Acquirente / Venditore], previa accettazione della direzione del campeggio. Eventuali oneri di subentro (€ [X]) sono a carico del [Acquirente / Venditore]. La piazzola è regolarmente pagata fino al [DATA].</p>
+
+        <p><strong>Articolo 6 — Documentazione consegnata.</strong> Il Venditore consegna all\'Acquirente: libretto di manutenzione, eventuale certificato CE, fatture degli interventi rilevanti degli ultimi 24 mesi, copia del precedente atto di acquisto.</p>
+
+        <p><strong>Articolo 7 — Dichiarazioni del Venditore.</strong> Il Venditore dichiara che la casa mobile è di sua piena e libera proprietà, libera da gravami, sequestri, fermi amministrativi o altri vincoli, e che non è oggetto di contestazioni in corso.</p>
+
+        <p><strong>Articolo 8 — Spese di registrazione.</strong> Eventuali spese di registrazione del presente atto presso l\'Agenzia delle Entrate o di autenticazione notarile, ove le parti decidessero di richiederla, sono a carico del [Acquirente / Venditore].</p>
+
+        <p><strong>Articolo 9 — Foro competente.</strong> Per qualunque controversia derivante dal presente contratto, è competente in via esclusiva il Foro di [LUOGO].</p>
+
+        <p>Letto, approvato e sottoscritto in [LUOGO], il [DATA].</p>
+
+        <p>Il Venditore: _____________________</p>
+        <p>L\'Acquirente: _____________________</p>
+      </div>
+
+      <h2>Le 5 clausole più importanti</h2>
+
+      <h3>1. Identificazione precisa della casa mobile</h3>
+      <p>Marca, modello, anno, numero di serie/telaio. Senza questi dati il contratto è generico e crea ambiguità in caso di disputa. Il numero di serie è fondamentale: dovrebbe essere visibile su una targhetta interna (di solito sotto la cucina o nel ripostiglio).</p>
+
+      <h3>2. Stato della casa mobile e accessori</h3>
+      <p>Specifica chiaramente cosa è incluso (arredi, dehor, condizionatore, BBQ) e cosa NO. Frase tipo: "venduta nello stato di fatto in cui si trova, già visionato dall\'Acquirente". Prima della firma, scatta foto dell\'interno e dell\'esterno: sono prova in caso di contestazioni.</p>
+
+      <h3>3. Pagamento tracciabile</h3>
+      <p>SEMPRE bonifico bancario, MAI contanti per importi sopra i 5.000 € (in Italia il limite legale di pagamento contante è stato 5.000 € fino al 2026). Anche per 4.000 € meglio bonifico: prova certa di pagamento. Mai assegni circolari di terzi.</p>
+
+      <h3>4. Subentro piazzola</h3>
+      <p>Chi paga il subentro al campeggio? Tipicamente 200-800 €. Verifica con il direttore campeggio se accetta il subentro PRIMA di firmare il contratto. Senza accettazione del subentro, la casa mobile è "ferma in piazzola" e devi spostarla (trasporto eccezionale 1.500-3.500 €). Verifica anche fino a quando la piazzola è pagata.</p>
+
+      <h3>5. Garanzia vizi occulti</h3>
+      <p>La legge italiana (art. 1495 c.c.) prevede 12 mesi di garanzia per vizi occulti su bene mobile usato, anche tra privati. Il contratto può confermare questa garanzia o estenderla. Importante: il vizio deve essere denunciato entro 8 giorni dalla scoperta, altrimenti decade. Esempi di vizio occulto: infiltrazioni nel tetto non visibili al sopralluogo, problemi strutturali al telaio, impianti non a norma.</p>
+
+      <h2>Checklist pre-firma (10 punti)</h2>
+      <ol>
+        <li>Carta identità e codice fiscale del Venditore (foto+confronto)</li>
+        <li>Atto di acquisto originale del Venditore (catena di proprietà)</li>
+        <li>Sopralluogo casa mobile: tetto, infissi, impianti elettrici/idraulici, segni di umidità</li>
+        <li>Foto interno+esterno datate prima della firma</li>
+        <li>Numero di serie/telaio visibile e annotato</li>
+        <li>Verifica con direttore campeggio: subentro accettato? Costi? Piazzola pagata fino a quando?</li>
+        <li>Eventuale gravami: chiedi al Venditore dichiarazione scritta</li>
+        <li>Modalità pagamento: bonifico tracciabile, IBAN del Venditore</li>
+        <li>Documentazione tecnica: libretto manutenzione, fatture interventi recenti, certificato CE se disponibile</li>
+        <li>Tempistica consegna: data trasferimento proprietà e materiale</li>
+      </ol>
+
+      <h2>Errori comuni da evitare</h2>
+      <ul>
+        <li><strong>Pagamento in contanti</strong> sopra 5.000 €: illegale, il bonifico è obbligatorio per importi maggiori</li>
+        <li><strong>Casa mobile senza numero di serie</strong>: prudenza alta, potrebbe essere stata "regolarizzata" con difficoltà o avere problemi di provenienza</li>
+        <li><strong>Subentro non concordato con il campeggio</strong>: hai comprato ma il direttore non accetta il tuo subentro = devi spostare la casa</li>
+        <li><strong>Mancanza di garanzia scritta</strong>: vizi scoperti dopo 6 mesi senza tutela legale</li>
+        <li><strong>Contratto generico copia-incolla da internet</strong>: privo di clausole specifiche per il tuo caso (subentro piazzola, accessori, foro competente)</li>
+        <li><strong>Caparra senza scadenza</strong>: se paghi caparra prima del rogito, fissa una data scadenza dopo cui la caparra è confiscata o restituita</li>
+      </ul>
+
+      <h2>Quando andare dal notaio</h2>
+      <p>Notaio non obbligatorio per casa mobile, ma utile in 4 casi:</p>
+      <ul>
+        <li>Importo &gt;30.000 €: investimento significativo, conviene tutela giuridica massima</li>
+        <li>Venditore non residente in Italia o estero: più complessità giuridica</li>
+        <li>Casa mobile con storia di proprietari multipli e documenti incompleti</li>
+        <li>Acquirente o Venditore società/azienda invece che privato</li>
+      </ul>
+
+      <p>Costi notaio: <strong>200-500 €</strong> per autentica scrittura privata. Costo limitato rispetto al valore protetto.</p>
+
+      <h2>Registrazione fiscale (opzionale)</h2>
+      <p>Puoi registrare il contratto all\'Agenzia delle Entrate per dare data certa: imposta fissa 200 € + bolli 16 €. Non obbligatorio per casa mobile, ma se l\'importo è alto e vuoi data certa opponibile a terzi (es. eredi del Venditore, creditori), la registrazione è utile.</p>
+
+      <h2>Vedi anche</h2>
+      <ul>
+        <li><a href="/guide-acquisto/10-truffe-piu-comuni">Le 10 truffe più comuni nell\'usato</a></li>
+        <li><a href="/normativa">Normativa case mobili: panoramica</a></li>
+        <li><a href="/dove-mettere/campeggi-aperti-tutto-anno">Campeggi aperti tutto l\'anno</a></li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sul contratto compravendita" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>
