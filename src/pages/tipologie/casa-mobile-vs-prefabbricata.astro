@@ -1,0 +1,118 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/tipologie/casa-mobile-vs-prefabbricata';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile vs casa prefabbricata: confronto pratico (guida 2026)';
+const description = 'Casa mobile o prefabbricata: differenze tecniche, normative, di costo, vita utile, valore immobiliare. Quale scegliere per ogni scenario d\'uso.';
+
+const faq = [
+  { q: 'Casa mobile o prefabbricata: quale costa meno?', a: 'Casa mobile costa significativamente meno: <strong>10.000-50.000 €</strong> (usato), 30-65k € (nuovo) contro <strong>60.000-200.000 €</strong> per una prefabbricata in legno o cemento. Ma la prefabbricata ha vita utile 40+ anni vs 20-25 della casa mobile, e genera <strong>valore immobiliare reale</strong> (puoi rivenderla come casa).' },
+  { q: 'La prefabbricata richiede permessi più complessi?', a: 'Sì. Una prefabbricata è una <strong>casa</strong>: richiede permesso di costruire, terreno edificabile, iter geometra/architetto (3.000-8.000 € di parcelle + oneri urbanistici 5.000-20.000 €), tempi 6-12 mesi prima dell\'inizio lavori. Casa mobile in campeggio: nessun permesso, installazione in giorni.' },
+  { q: 'Quale invecchia meglio?', a: 'La prefabbricata, decisamente. Prefabbricata in legno: 40-60 anni di vita utile con manutenzione standard. Prefabbricata in muratura industriale: 60+ anni. Casa mobile: 20-25 anni in condizioni normali, 30+ con manutenzione molto curata. La prefabbricata è investimento di lungo termine, casa mobile è bene di uso 10-25 anni.' },
+  { q: 'Posso vivere stabilmente in una prefabbricata?', a: 'Sì, è il suo scopo nativo. Una prefabbricata è progettata per uso residenziale stabile, con isolamento, impianti, dimensioni adatte (40-150 m²). Si ottiene residenza come casa standard. Casa mobile è progettata principalmente per vacanza/uso intermittente, anche se l\'uso residenza è ottenibile con condizioni specifiche.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Tipologie', url: '/tipologie' },
+      { name: 'Vs prefabbricata', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Confronti & Tipologie</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Sembrano alternative simili ("casa che si compra invece di costruire"), sono mondi diversi. Casa mobile è bene di consumo medio-termine in campeggio. Prefabbricata è investimento immobiliare a lungo termine su terreno tuo. Ecco il confronto pratico.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>6 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Differenze chiave: <strong>casa mobile</strong> 10-50k € (usato), bene mobile, 20-25 anni vita utile, in campeggio nessun permesso. <strong>Prefabbricata</strong> 60-200k €, immobile, 40+ anni vita, richiede permesso di costruire + terreno edificabile + 6-12 mesi iter. Per <strong>vacanza in campeggio</strong>: casa mobile. Per <strong>prima/seconda casa stabile</strong>: prefabbricata.</p>
+      </Tldr>
+
+      <h2>Tabella di confronto</h2>
+      <table>
+        <thead>
+          <tr><th>Caratteristica</th><th>Casa mobile</th><th>Prefabbricata</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Costo</td><td>10.000-50.000 €</td><td>60.000-200.000 €</td></tr>
+          <tr><td>Dimensione</td><td>20-40 m²</td><td>40-150 m²</td></tr>
+          <tr><td>Tipologia giuridica</td><td>Bene mobile</td><td>Immobile</td></tr>
+          <tr><td>Vita utile</td><td>20-25 anni</td><td>40-60+ anni</td></tr>
+          <tr><td>Tempo installazione</td><td>1-3 giorni (casa già pronta)</td><td>3-6 mesi (cantiere)</td></tr>
+          <tr><td>Permessi</td><td>Niente in campeggio, permesso costruire su privato</td><td>Permesso di costruire sempre</td></tr>
+          <tr><td>Spostabile</td><td>Sì (con trasporto eccezionale)</td><td>No (struttura fissa)</td></tr>
+          <tr><td>Valore immobiliare</td><td>No (bene mobile, deprezzamento rapido)</td><td>Sì (immobile, rivendita possibile)</td></tr>
+          <tr><td>Mutuo ipotecario</td><td>No</td><td>Sì</td></tr>
+          <tr><td>Adatta a residenza stabile</td><td>Sì con condizioni</td><td>Sì, scopo nativo</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Quando scegliere casa mobile</h2>
+      <ul>
+        <li>Vacanza famiglia in campeggio (4-12 settimane/anno)</li>
+        <li>Vita semipermanente in struttura ricettiva (residenza in campeggio)</li>
+        <li>Budget sotto 50.000 €</li>
+        <li>Vuoi flessibilità di poter spostare (con costi e tempi tipici trasporto eccezionale)</li>
+        <li>Non vuoi gestire iter edilizio + cantiere</li>
+      </ul>
+
+      <h2>Quando scegliere prefabbricata</h2>
+      <ul>
+        <li>Prima o seconda casa stabile su terreno tuo</li>
+        <li>Vuoi creare valore immobiliare (rivendita futura)</li>
+        <li>Hai terreno edificabile + budget 60-200.000 €</li>
+        <li>Pensi a 30+ anni di vita della struttura</li>
+        <li>Vuoi gestire l'investimento come "vera casa" (mutuo, ipoteca, rivendita immobiliare)</li>
+      </ul>
+
+      <h2>Costo totale 10 anni: confronto</h2>
+      <p>Esempio comparativo per uso 8 mesi/anno per 10 anni:</p>
+
+      <h3>Casa mobile in campeggio</h3>
+      <ul>
+        <li>Acquisto: 18.000 € (8×4 m, marche standard, condizioni buone)</li>
+        <li>Piazzola annuale: 4.000 € × 10 = 40.000 €</li>
+        <li>Manutenzione: 500 € × 10 = 5.000 €</li>
+        <li>Riassicurazione: 250 € × 10 = 2.500 €</li>
+        <li><strong>Totale 10 anni: 65.500 €</strong>. A fine: casa mobile vale 8.000 € (deprezzata)</li>
+      </ul>
+
+      <h3>Prefabbricata su terreno proprio (50 m²)</h3>
+      <ul>
+        <li>Terreno (se da acquistare, edificabile): 40.000-100.000 €</li>
+        <li>Costruzione prefabbricata: 80.000 €</li>
+        <li>Oneri urbanistici + parcelle: 10.000 €</li>
+        <li>Manutenzione: 600 € × 10 = 6.000 €</li>
+        <li>Tasse (IMU + TARI): 800 € × 10 = 8.000 €</li>
+        <li><strong>Totale 10 anni: 144.000 € (se terreno gratis 104.000)</strong>. A fine: immobile vale 90.000 € (immobile completo)</li>
+      </ul>
+
+      <p>Casa mobile costa meno upfront ma il costo "si scarica" senza generare valore residuale. Prefabbricata costa di più ma hai immobile a fine periodo. Decisione: <strong>orizzonte temporale + scopo + budget</strong>.</p>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su casa mobile vs prefabbricata" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

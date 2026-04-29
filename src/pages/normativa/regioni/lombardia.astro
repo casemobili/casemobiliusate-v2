@@ -1,0 +1,80 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/normativa/regioni/lombardia';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile in Lombardia: normativa, laghi e zone (2026)';
+const description = 'Casa mobile in Lombardia 2026: lago di Garda lato bresciano, laghi di Como e Iseo, normativa regionale e prassi residenza nei comuni lacustri.';
+
+const faq = [
+  { q: 'Dove sono i campeggi in Lombardia?', a: 'Concentrazione principale: <strong>Lago di Garda lato bresciano</strong> (Sirmione, Padenghe, Manerba, Salò, Desenzano), <strong>Lago di Como</strong> (Domaso, Sorico), <strong>Lago d\'Iseo</strong> (Sale Marasino, Iseo). Pianura padana praticamente assente. Totale ~30 strutture importanti.' },
+  { q: 'Quanto costa una piazzola in Lombardia?', a: 'Range 2026: <strong>3.500–5.500 €/anno</strong>. Garda lato bresciano: 3.500-5.500 € (premium per Sirmione e Manerba). Como: 3.000-4.500 €. Iseo: 2.800-4.000 €. Tra le aree più costose d\'Italia (rapporto qualità/spazio).' },
+  { q: 'I laghi sono adatti per uso annuale?', a: 'Sì. Garda in particolare ha microclima mite, decine di campeggi <strong>aperti tutto l\'anno</strong>, residenza ottenibile con prassi consolidate. Como e Iseo: clima più freddo in inverno (più vicini a montagna), serve casa mobile con isolamento adeguato (gamma all-season).' },
+  { q: 'Vincoli specifici lombardi?', a: 'Vincoli paesaggistici sui laghi (Codice dei Beni Culturali). Aree Natura 2000 numerose attorno ai laghi. Casa mobile fuori campeggio in zona vincolata: praticamente impossibile. Casa mobile in campeggio autorizzato: nessun problema.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Normativa', url: '/normativa' },
+      { name: 'Regioni', url: '/normativa#normative-regionali' },
+      { name: 'Lombardia', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Normativa · Regione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Lombardia: la concentrazione di campeggi è quasi tutta sui laghi, con Garda lato bresciano come polo principale. Microclima del Garda permette uso annuale, prezzi piazzola alti per scarsità di spazio. Ecco le 3 zone principali.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>5 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Lombardia: campeggi quasi tutti sui laghi (Garda, Como, Iseo). 30 strutture importanti. Costi piazzola: <strong>2.800–5.500 €/anno</strong>. Garda lato bresciano: 30+ strutture, premium, microclima mite, uso annuale fattibile. Como/Iseo: meno campeggi, clima più freddo in inverno.</p>
+      </Tldr>
+
+      <h2>Le 3 zone principali</h2>
+
+      <h3>Lago di Garda lato bresciano</h3>
+      <p>Polo principale lombardo, ~25 strutture. Comuni: Sirmione, Padenghe, Manerba, Moniga, Salò, Desenzano. Costi piazzola: <strong>3.500-5.500 €/anno</strong>. Microclima mite, oltre 50% strutture aperte 12 mesi. Prassi residenza consolidate (Sirmione, Manerba hanno residenti stabili da decenni).</p>
+
+      <h3>Lago di Como (zona alta)</h3>
+      <p>~5 strutture, Domaso, Sorico, Gera Lario. Costi piazzola: 3.000-4.500 €/anno. Stagione 8-9 mesi, alcuni 12. Clima più freddo invernale richiede casa mobile all-season per uso residenza.</p>
+
+      <h3>Lago d'Iseo</h3>
+      <p>~5 strutture, Sale Marasino, Iseo, Pisogne. Costi piazzola: 2.800-4.000 €/anno. Stagione 7-9 mesi. Più "naturale" e meno turistico di Como/Garda.</p>
+
+      <h2>Pianura padana</h2>
+      <p>Praticamente assente. Pochi campeggi nelle zone agricole padane, prevalentemente per turismo religioso (Cremona, Caravaggio) o nautico (zone fluviali). Non significativi per chi cerca casa mobile stanziale.</p>
+
+      <h2>Vincoli specifici</h2>
+      <ul>
+        <li><strong>Vincoli paesaggistici lacustri</strong>: tutti i laghi sono sotto tutela paesaggistica (Codice dei Beni Culturali D.Lgs. 42/2004). Casa mobile fuori campeggio in zona vincolata = autorizzazione paesaggistica preventiva, raramente concessa</li>
+        <li><strong>Aree Natura 2000</strong>: numerose attorno ai laghi (Riserva delle Torbiere del Sebino, Riserva del Mincio)</li>
+        <li><strong>Parchi regionali</strong>: Parco del Mincio, Parco dell'Adda Sud — vincoli stringenti</li>
+        <li><strong>Sismica</strong>: zone di Brescia e Mantova in classe 3, alcuni Comuni richiedono certificazioni aggiuntive</li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su casa mobile in Lombardia" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>
