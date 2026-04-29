@@ -9,8 +9,18 @@ function isActive(href: string) {
 
 <header class="sticky top-0 z-40 backdrop-blur bg-paper/90 border-b" style="border-color:var(--color-linen-200)">
   <nav class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between gap-6">
-    <a href="/" class="no-underline flex items-baseline gap-1 font-semibold text-xl" style="font-family:var(--font-display);color:var(--color-forest-700)">
-      <span>CaseMobili</span><span style="color:var(--color-linen-500)">Usate</span>
+    <a href="/" class="no-underline flex items-center gap-2.5" aria-label="CaseMobiliUsate.com — Home">
+      <span class="inline-flex items-center justify-center rounded-sm" style="width:38px;height:38px;background-color:var(--color-forest-800)">
+        <svg width="38" height="38" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+          <path d="M16 24 L32 14 L48 24" stroke="#D4B365" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M44 35 C44 27, 38 22, 32 22 C24 22, 19 28, 19 36 C19 44, 24 50, 32 50 C38 50, 44 45, 44 37" stroke="#D4B365" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <line x1="14" y1="56" x2="50" y2="56" stroke="#D4B365" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+        </svg>
+      </span>
+      <span class="hidden sm:flex flex-col leading-none">
+        <span class="font-semibold text-lg" style="font-family:var(--font-display);color:var(--color-forest-800);letter-spacing:-0.01em">CaseMobiliUsate</span>
+        <span class="text-xs uppercase tracking-widest mt-0.5" style="color:var(--color-brass-600);font-family:var(--font-sans)">.com</span>
+      </span>
     </a>
 
     <ul class="hidden lg:flex items-center gap-1 text-sm">

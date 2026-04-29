@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 64" fill="none">
+  <!-- Mark -->
+  <rect x="0" y="0" width="64" height="64" rx="4" fill="#1F2A1B"/>
+  <path d="M16 24 L32 14 L48 24" stroke="#D4B365" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M44 35 C44 27, 38 22, 32 22 C24 22, 19 28, 19 36 C19 44, 24 50, 32 50 C38 50, 44 45, 44 37" stroke="#D4B365" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <line x1="14" y1="56" x2="50" y2="56" stroke="#D4B365" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Wordmark -->
+  <text x="80" y="36" font-family="Cormorant Garamond, Lora, Georgia, serif" font-weight="600" font-size="22" fill="#2B3A24">CaseMobili</text>
+  <text x="80" y="56" font-family="Inter, sans-serif" font-weight="500" font-size="13" letter-spacing="2" fill="#9A7A3E">USATE.COM</text>
+</svg>

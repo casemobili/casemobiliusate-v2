@@ -1,0 +1,154 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/prezzi/quanto-costa-casa-mobile-usata';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Quanto costa davvero una casa mobile usata: la guida completa 2026';
+const description = 'Tutti i prezzi reali del mercato 2026 delle case mobili usate, fascia per fascia, con esempi concreti tratti dagli annunci attuali. Cosa pagano davvero gli italiani.';
+
+const faq = [
+  { q: 'Posso comprare una casa mobile usata sotto 4.000 €?', a: 'Sì, ma serve cautela. La fascia 3.000–4.000 € è popolata da modelli pre-2008 da ritirare a carico tuo, spesso con infiltrazioni o impianti da rifare. Ha senso solo se hai competenze tecniche o budget per i lavori (1.500–4.000 € extra tipici). Da privato puro, evita: meglio salire a 6.000–8.000 € per una casa mobile abitabile.' },
+  { q: 'Quanto vale una casa mobile usata di 5 anni?', a: 'In media il <strong>50-55%</strong> del prezzo del modello nuovo equivalente, in buone condizioni e con accessori standard (veranda piccola, aria condizionata). Quindi una casa mobile che oggi nuova costa 35.000 €, di 5 anni in buone condizioni vale 17.500–19.000 €. Esempio reale: Atlas Excelsior 2021, 8×4 m, veranda, A/C, in campeggio Veneto: 18.500 €.' },
+  { q: 'Le case mobili usate sopra i 30.000 € hanno senso?', a: 'Sì, in tre casi: 1) modelli premium (Crippa Concept Cosmopolitan, Willerby alta gamma, Atlas Debonair) recenti 2022–2024 con dotazioni piene; 2) case mobili pari-al-nuovo dei distributori che le hanno avute in stock e devono smaltirle; 3) case mobili in campeggi premium dove il prezzo include la "buona piazzola" (vista mare, prima fila). Sotto i 30.000 € hai infinite alternative; sopra, paghi qualcosa di specifico, capisci sempre cosa.' },
+  { q: 'Il prezzo varia molto tra Nord e Sud Italia?', a: 'Sì, del 10-15%. Veneto, Friuli, Toscana, Emilia-Romagna sono i mercati più maturi: prezzi più alti ma anche più offerte e più qualità. Sicilia, Calabria, Puglia: prezzi più bassi, ma offerte limitate. Sardegna è caso a parte: prezzi alti per via del trasporto via mare. Se sei flessibile sulla zona, può convenirti spostarti per acquistare e poi trasportare.' },
+  { q: 'Le case mobili usate ex-noleggio sono buone?', a: 'Spesso sì, ma con cautela. Le ex-noleggio dei campeggi sono <strong>molto utilizzate</strong> (15-20 settimane/anno in alta stagione contro le 4-6 di una casa mobile privata) ma anche <strong>regolarmente manutenute</strong> dal personale del campeggio. Il bilancio dipende dal campeggio: chi cura bene la struttura le rivende a buon valore (es. Garda, Cavallino), chi non le cura le svende a 4-5.000 € e sono lotterie. Chiedi sempre lo storico manutenzione scritto.' },
+  { q: 'Cos\'è il "chiavi in mano" che leggo negli annunci?', a: 'Significa case in case: spesso è "<strong>pronta da prendere in piazzola</strong>" (cioè: arrivi, paghi, è già montata e funzionante, ma il trasporto è a parte). A volte è "<strong>consegnata e installata</strong>" (rara, di solito da dealer professionali). Quasi mai include il subentro piazzola o la veranda da rimontare. Chiedi sempre per iscritto cosa è incluso prima di firmare.' },
+  { q: 'Posso vedere lo storico prezzi di un modello specifico?', a: 'Sì, in modo informale. Il gruppo Facebook "Casa Mobili Italia" ha post di compravendita degli ultimi 3-4 anni: cercando il nome del modello (Atlas Excelsior, Willerby Westmorland, IRM Super Mercure) trovi 20-50 esempi di prezzi reali con foto. Più la nostra <a href="/prezzi/listino-argus-modelli">tabella argus</a>.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Prezzi', url: '/prezzi' },
+      { name: 'Quanto costa', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Prezzi & Valutazione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Numeri concreti, non range vaghi. Ho aggregato gli annunci dei principali marketplace europei e incrociato con la mia esperienza diretta di posa: ecco cosa pagano realmente gli italiani nel 2026, con esempi che puoi verificare oggi pomeriggio.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>12 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">La fascia più rappresentativa nel 2026 è <strong>10.000–20.000 €</strong> per modelli 2018–2022 in buone condizioni. Sotto i 5.000 € esistono ma sono campi minati. Sopra i 30.000 € paghi specificità (premium, pari-al-nuovo, posizione). Il <strong>trasporto non è quasi mai incluso</strong>: aggiungi 1.000–4.000 €. "Chiavi in mano" significa quasi sempre "pronta in piazzola", non "consegnata".</p>
+        </Tldr>
+
+        <h2>Le 5 fasce di prezzo, con esempi concreti</h2>
+
+        <h3>Entry (3.000–6.000 €): solo se sai cosa fai</h3>
+        <p>Esempio reale dalla settimana scorsa: <em>"Casa mobile Adria 2006, 7×3 m, da ritirare a Bibione, motore A/C non funziona, 4.200 €"</em>. Significa: 4.200 € la casa, 1.500 € il trasporto a casa tua, 800 € il motore A/C nuovo, 500 € la ritinteggiatura interna. Totale: 7.000 €. Per un modello del 2006 che vivrà altri 5 anni con cura. Conviene? Solo se ti piace mettere mano e hai 200 ore libere.</p>
+
+        <h3>Standard bassa (6.000–10.000 €): la prima vacanza in famiglia</h3>
+        <p>Esempio: <em>"Burstner Marina 2014, 8×4 m, in campeggio Caorle, veranda, A/C, mobili inclusi, 8.500 €, subentro piazzola incluso 1.800 €/anno"</em>. Casa mobile abitabile da subito, 12 anni di vita ma in buone condizioni perché in campeggio curato. Per una famiglia che vuole iniziare l'esperienza senza spendere troppo, è il punto di ingresso più ragionevole. Aggiungi 200-500 €/anno di manutenzione preventiva e tieni 1.500 € di "riserva guasti" per gli anni futuri.</p>
+
+        <h3>Standard alta (10.000–20.000 €): il sweet spot</h3>
+        <p>Esempio: <em>"O'Hara 1064 del 2020, 10,6×4 m, 3 camere, 2 bagni, veranda chiusa 24 m², in campeggio Cavallino, 17.000 €"</em>. È la fascia più liquida del mercato: ci sono sempre 200-300 annunci attivi. Marca consolidata, anno recente, dimensione famiglia, in campeggio già pronto. La casa mobile che la maggior parte degli italiani compra come prima esperienza concreta dopo aver provato in vacanza. Vita utile residua: 10-15 anni se mantenuta.</p>
+
+        <h3>Premium (20.000–35.000 €): qualità senza nuovo</h3>
+        <p>Esempio: <em>"Crippa Concept Cosmopolitan 2023, 10×4 m, 3 camere, finiture in legno massello, A/C inverter, isolamento maggiorato classe A, in campeggio Lago di Garda, 28.500 €"</em>. Marca italiana premium, casa mobile ancora in piena vita, costruita meglio della media (telaio rinforzato, isolamento serio). Ha senso se: tieni la casa mobile per 15+ anni, vivi alcuni mesi all'anno dentro, vuoi un ambiente che non sembra "da camping". Lo stesso modello nuovo costerebbe 42-45.000 €.</p>
+
+        <h3>Pari al nuovo (35.000–55.000 €): caso particolare</h3>
+        <p>Esempio: <em>"Willerby Lyndhurst 2025, 11×4 m, mai abitata, in stock distributore Veneto, 38.000 €"</em>. Sono case mobili nuove o quasi che il distributore deve smaltire (cambio modello, fine serie, ordini cancellati). Il risparmio rispetto al nuovo è del 15-20%, ma stai comprando praticamente nuovo. Ha senso se non vuoi aspettare 6 mesi per la consegna del nuovo, o se trovi il modello esatto che cercavi.</p>
+
+        <h2>Il trucco delle 7 voci: come ricostruire il prezzo "vero"</h2>
+        <p>Il prezzo dichiarato negli annunci è quasi sempre incompleto. Per capire il prezzo finale che ti uscirà dal portafoglio, somma queste 7 voci:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Voce</th>
+              <th>Importo tipico</th>
+              <th>Quando si aggiunge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Prezzo casa mobile</td><td>variabile</td><td>sempre</td></tr>
+            <tr><td>Trasporto</td><td>1.000–4.000 €</td><td>se la sposti</td></tr>
+            <tr><td>Smontaggio veranda/casetta</td><td>500–1.500 €</td><td>se accessori restano</td></tr>
+            <tr><td>Rimontaggio in nuova piazzola</td><td>800–2.000 €</td><td>se accessori restano</td></tr>
+            <tr><td>Subentro piazzola (fee passaggio)</td><td>500–2.000 €</td><td>se resta in campeggio</td></tr>
+            <tr><td>Allacciamenti utenze</td><td>400–1.200 €</td><td>se cambia piazzola</td></tr>
+            <tr><td>Riserva manutenzione 1° anno</td><td>500–2.000 €</td><td>sempre prudente</td></tr>
+          </tbody>
+        </table>
+
+        <p>In pratica: il prezzo dichiarato + <strong>20-30%</strong> = il prezzo onesto.</p>
+
+        <h2>I 4 errori più costosi che vedo ogni anno</h2>
+
+        <h3>1. Comprare a distanza senza vedere</h3>
+        <p>"Andrea, ho preso una Atlas Excelsior 2018 a 9.000 € da un privato in Calabria, le foto sembravano ok". Vado a vederla per il cliente: il telaio è ossidato, il pavimento marcio in 3 punti, l'A/C non funziona. Costo riparazioni: 4.500 € più trasporto. Affare evaporato.</p>
+        <p><strong>Regola</strong>: vai sempre a vedere di persona, o paga 200-400 € a un tecnico locale per un'ispezione preliminare con foto e relazione scritta.</p>
+
+        <h3>2. Non chiedere lo storico manutenzione</h3>
+        <p>"Casa mobile in campeggio da 10 anni, condizioni perfette". Bene. <strong>Ma com'è stata mantenuta?</strong> Quando è stato sigillato il tetto l'ultima volta? Sono mai state revisionate le bombole? L'impianto elettrico è stato controllato dopo il 2018? Senza un foglio scritto firmato dal venditore o dal campeggio, sono parole. Se c'è un foglio: vale 500-1.000 € in più di valore.</p>
+
+        <h3>3. Sottovalutare il costo trasporto</h3>
+        <p>Casa mobile da 9×4 m da Calabria a Lombardia: 3.500–4.500 € (trasporto eccezionale, scorta tecnica obbligatoria). Sommato al prezzo casa, l'occasione del Sud spesso non è più tale. <strong>Calcola sempre prima il trasporto</strong> con un preventivo concreto da una ditta specializzata.</p>
+
+        <h3>4. Ignorare la conformità EN 1647</h3>
+        <p>EN 1647 è la norma europea che regola la costruzione delle case mobili (sicurezza strutturale, antincendio, impianti). Le case mobili pre-2003 spesso non sono certificate, e le post-2003 dovrebbero esserlo (chiedi targhetta + libretto). <strong>Senza certificazione, alcuni campeggi non te la accettano in piazzola</strong>. Verifica prima di comprare.</p>
+
+        <h2>Cosa fare la settimana prima dell'acquisto</h2>
+        <ol>
+          <li><strong>Lunedì</strong>: ricerca su 3 portali (casamobileusata.com, occasionecasemobili.it, Subito.it) con filtri identici, anota 10-15 annunci nella stessa fascia. Capisci il "vero prezzo medio" per quel tipo.</li>
+          <li><strong>Martedì-mercoledì</strong>: contatta 3-4 venditori, chiedi tutto via WhatsApp/email (per avere documentazione scritta), identifica i 2 più convincenti.</li>
+          <li><strong>Giovedì</strong>: visita di persona quei 2. Porta una <a href="/strumenti">checklist 30 punti</a>. Sii minuzioso.</li>
+          <li><strong>Venerdì</strong>: confronta a freddo, chiedi un preventivo trasporto a una ditta specializzata.</li>
+          <li><strong>Weekend</strong>: decisione + trattativa formale via email, mai promesse al telefono.</li>
+        </ol>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su quanto costa una casa mobile usata" />
+
+        <hr />
+
+        <p class="text-sm" style="color:var(--color-ink-500)">
+          I dati di prezzo riportati sono aggregati dai principali marketplace italiani ed europei alla data di pubblicazione, incrociati con osservazioni dirette di mercato. Il singolo caso può discostarsi per ragioni specifiche (urgenza venditore, condizione particolare, accessori non standard): usa sempre le fasce come riferimento, non come verità assoluta.
+        </p>
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/prezzi" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Prezzi & Valutazione →</a>
+          </div>
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:white">
+            <div class="eyebrow mb-2">Strumento</div>
+            <a href="/strumenti#calc-prezzi" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Calcolatore prezzo personalizzato →</a>
+            <p class="text-sm mt-2 m-0" style="color:var(--color-ink-700)">Inserisci i dati della casa che ti interessa, ti torna la fascia di prezzo realistica.</p>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle
+    title={title}
+    description={description}
+    datePublished="2026-04-29"
+    dateModified="2026-04-29"
+    url={fullUrl}
+  />
+</BaseLayout>

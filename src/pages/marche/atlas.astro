@@ -1,0 +1,141 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/marche/atlas';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Atlas case mobili usate: storia, modelli iconici e prezzi 2026';
+const description = 'Atlas è una delle marche più diffuse in Italia. Storia del produttore inglese, modelli più richiesti nell\'usato (Excelsior, Debonair, Image), prezzi tipici 2026 e checkpoint tecnici.';
+
+const faq = [
+  { q: 'Atlas è una marca affidabile?', a: 'Sì, è una delle marche di riferimento del settore. Atlas Holiday Homes nasce nel 1971 nel Yorkshire, costruisce static caravans (case mobili) ed è ancora oggi una delle prime tre del mercato UK. Telai robusti, gamma ampia, ricambi disponibili anche in Italia tramite distributori. Le sue case mobili durano 20-25 anni ben mantenute.' },
+  { q: 'Quali sono i modelli Atlas più diffusi nell\'usato in Italia?', a: 'I 3 più frequenti negli annunci italiani: <strong>Atlas Excelsior</strong> (8×4 m, 2 camere, modello standard di lunga produzione), <strong>Atlas Debonair</strong> (10×4 m, 3 camere, fascia alta), <strong>Atlas Image</strong> (8×4 m, design più recente, post-2018). Più sporadici: Atlas Sherwood, Atlas Status. Il prezzo varia tra 7.000 e 28.000 € a seconda di anno, dimensione e accessori.' },
+  { q: 'Quanto costa un Atlas Excelsior 2018 usato?', a: 'In Italia nel 2026, fascia tipica: <strong>14.000–17.000 €</strong> per un Excelsior 2018 in buone condizioni con accessori standard (veranda piccola, A/C, mobili inclusi), in campeggio italiano. Si scende a 11.000–13.000 € se la casa è da spostare e da rimettere a posto in alcuni dettagli. Si sale a 18.000–20.000 € per Excelsior con doppi vetri, isolamento maggiorato, in posizione campeggio premium.' },
+  { q: 'Cosa controllare prima di comprare una Atlas usata?', a: 'I 5 punti specifici per Atlas: <strong>1) lamiere esterne</strong> in alluminio (tipiche Atlas): controllare ammaccature e ossidazione, sostituzione costosa; <strong>2) sigillatura tetto</strong>: Atlas usa pannelli sandwich con giunzioni siliconate, ogni 5-7 anni vanno rifatte (300-600 €); <strong>3) pavimento bagno</strong>: punto debole storico delle Atlas pre-2015, controllare cedimenti e umidità; <strong>4) infissi originali Atlas</strong>: se ancora quelli di fabbrica, ottimi; se sostituiti con generici, attenzione alle infiltrazioni; <strong>5) targhetta CE + EN 1647</strong>: deve esserci sul telaio, conferma conformità.' },
+  { q: 'Atlas si trova nuova in Italia?', a: 'Sì, ci sono distributori italiani autorizzati (principalmente in Veneto, Lombardia, Toscana). Una Atlas nuova oggi parte da circa 32.000 € (modello entry, 8×4 m) e arriva a 65.000 € (premium 11×4 m con dotazioni piene). Con tempi di consegna 4-8 mesi. La maggior parte degli italiani però la compra usata: il rapporto qualità/prezzo è molto migliore.' },
+  { q: 'I ricambi Atlas si trovano in Italia?', a: 'I ricambi consumabili (filtri, gomme infissi, lampadine, parti elettriche) sì, in 2-4 giorni dai distributori italiani. I pezzi di carrozzeria specifici (lamiere esterne, infissi originali) si ordinano direttamente al magazzino UK con tempi 2-4 settimane. Per i modelli pre-2010 alcuni ricambi non sono più in produzione: in quel caso si lavora su pezzi compatibili o restaurati.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Marche', url: '/marche' },
+      { name: 'Atlas', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Marche & Modelli · Scheda</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Atlas Holiday Homes è una delle 3 marche più diffuse in Italia, soprattutto nei campeggi del Nord-Est e della Toscana. Storia di mezzo secolo nel settore static caravans, telai robusti, ricambi disponibili. Ecco i modelli che troverai, i prezzi reali nel 2026 e cosa controllare prima di comprare.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>9 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Marca <strong>affidabile</strong>, ricambi disponibili in Italia, vita utile 20-25 anni se mantenuta. Modelli più richiesti usato: <strong>Excelsior</strong> (standard), <strong>Debonair</strong> (premium), <strong>Image</strong> (design recente). Range prezzo usato: <strong>7.000–28.000 €</strong> a seconda di anno e dimensione. Punti deboli: lamiere alluminio sensibili a urti, pavimenti bagno pre-2015.</p>
+        </Tldr>
+
+        <h2>Storia e posizionamento</h2>
+        <p>Atlas Holiday Homes nasce nel <strong>1971 a Hull (Yorkshire, UK)</strong>. È una delle 4 grandi del settore static caravans britannico, insieme a Willerby, ABI e Carnaby. Negli anni '90 entra nel mercato europeo con esportazioni in Francia, Spagna e Italia, dove diventa una presenza fissa nei campeggi del Nord-Adriatico (Cavallino, Caorle, Bibione, Lignano).</p>
+        <p>Posizionamento: <strong>fascia media-alta</strong>, qualità sopra la media a prezzi sostenibili. Non è premium come Crippa Concept o Willerby Lodge, ma è solido, ben costruito, pensato per durare. Il modello Atlas tipico è la "casa mobile generica perfetta": niente di particolarmente sopra la riga, tutto fatto bene.</p>
+
+        <h2>I modelli più diffusi nell'usato italiano</h2>
+
+        <h3>Atlas Excelsior — il classico universale</h3>
+        <ul>
+          <li><strong>Dimensione</strong>: 8×4 m (variante 7,5×3,5 m sui modelli più vecchi)</li>
+          <li><strong>Camere</strong>: 2 (1 matrimoniale + 1 per 2 letti singoli)</li>
+          <li><strong>Anni di produzione</strong>: dal 2003 al 2024 (14 generazioni)</li>
+          <li><strong>Fascia prezzo usato 2026</strong>: 8.000 € (Excelsior 2008 da rimettere) → 19.000 € (Excelsior 2022 in buone condizioni)</li>
+          <li><strong>Per chi</strong>: famiglia 4 persone in vacanza, primo acquisto, uso stagionale</li>
+        </ul>
+
+        <h3>Atlas Debonair — la casa mobile da 3 camere</h3>
+        <ul>
+          <li><strong>Dimensione</strong>: 10×4 m (oversize)</li>
+          <li><strong>Camere</strong>: 3 (1 matrimoniale + 2 doppie)</li>
+          <li><strong>Anni di produzione</strong>: dal 2010 al 2024</li>
+          <li><strong>Fascia prezzo usato 2026</strong>: 14.000 € (Debonair 2012) → 28.000 € (Debonair 2023)</li>
+          <li><strong>Per chi</strong>: famiglia 6 persone, 2 generazioni, uso intensivo</li>
+          <li><strong>Attenzione</strong>: oltre 2,55 m di larghezza richiede trasporto eccezionale (1.500–2.500 € extra)</li>
+        </ul>
+
+        <h3>Atlas Image — il design recente</h3>
+        <ul>
+          <li><strong>Dimensione</strong>: 8×4 m</li>
+          <li><strong>Camere</strong>: 2</li>
+          <li><strong>Anni di produzione</strong>: dal 2018 a oggi</li>
+          <li><strong>Fascia prezzo usato 2026</strong>: 17.000 € (Image 2018) → 26.000 € (Image 2024 quasi nuova)</li>
+          <li><strong>Per chi</strong>: chi cerca finiture moderne e isolamento più efficace dei modelli pre-2018</li>
+          <li><strong>Plus</strong>: doppi vetri di serie, isolamento maggiorato, layout più aperto</li>
+        </ul>
+
+        <h2>I 5 punti tecnici da controllare prima di comprare</h2>
+
+        <h3>1. Lamiere esterne in alluminio</h3>
+        <p>Atlas usa lamiere in alluminio anodizzato (più resistenti delle classiche zincate ma più sensibili agli urti). Cammina intorno alla casa mobile e cerca: ammaccature da grandine, ossidazione bianca (sale + umidità), graffi profondi che hanno raggiunto la fibra. Sostituzione di una lamiera è 600-1.200 € e richiede officina specializzata.</p>
+
+        <h3>2. Sigillatura tetto</h3>
+        <p>Atlas costruisce con pannelli sandwich + giunzioni siliconate. Le siliconate vanno rifatte ogni 5-7 anni (300-600 €). Sintomi di sigillatura andata: macchie marroni nei pannelli del soffitto interno, gocciolamenti durante temporali forti. Verifica salendo sul tetto (con permesso del venditore) o ispezionando il soffitto interno con torcia.</p>
+
+        <h3>3. Pavimento bagno (vulnerabilità nota Atlas pre-2015)</h3>
+        <p>I bagni Atlas pre-2015 hanno pavimenti in compensato truciolare laminato che sotto umidità prolungata cedono in 8-12 anni. Test: cammina con peso normale sul pavimento del bagno, ascolta scricchiolii, controlla se il piatto doccia "si muove". Se sì, rifacimento bagno = 1.500–3.000 €. Sui modelli post-2015 il problema è risolto con pavimento in PVC marino.</p>
+
+        <h3>4. Infissi originali vs sostituiti</h3>
+        <p>Gli infissi Atlas originali (marchio "AtlasLite" sui pre-2015, "AtlasGlass" sui post-2018) sono di buon livello, perfettamente integrati nella struttura. Se vedi infissi generici di sostituzione, controlla con cura la sigillatura intorno al telaio: spesso le sostituzioni fai-da-te creano infiltrazioni a 3-5 anni di distanza.</p>
+
+        <h3>5. Targhetta CE + conformità EN 1647</h3>
+        <p>Sotto il telaio (lato anteriore) deve esserci una targhetta metallica con: numero serie, anno costruzione, marchio CE, conformità EN 1647. Senza questa targhetta, alcuni campeggi non accettano la casa mobile in piazzola. Per le Atlas pre-2003 la targhetta potrebbe mancare: in quel caso, prima di comprare, verifica con il campeggio dove la metterai.</p>
+
+        <h2>Dove cercare un'Atlas usata in Italia</h2>
+        <ul>
+          <li><strong>Campeggi Nord-Adriatico</strong> (Cavallino, Jesolo, Caorle, Bibione, Lignano): la concentrazione più alta, almeno 30-40 annunci attivi sempre</li>
+          <li><strong>Marketplace</strong>: casamobileusata.com, occasionecasemobili.it, Subito.it (sezione caravan/camper)</li>
+          <li><strong>Gruppo Facebook "Casa Mobili Italia"</strong>: 5-15 annunci Atlas/settimana, con foto e contatto diretto privato</li>
+          <li><strong>Distributori italiani</strong>: per usato pari-al-nuovo o ex-stock, cerca "Atlas Italia" + città Veneto/Lombardia/Toscana</li>
+        </ul>
+
+        <FbCommunityWidget variant="card" title="Hai una domanda specifica su un modello Atlas? Chiedi nel gruppo" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su Atlas case mobili" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/marche" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Marche & Modelli →</a>
+          </div>
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:white">
+            <div class="eyebrow mb-2">Strumento</div>
+            <a href="/strumenti#calc-prezzi" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Calcolatore prezzo Atlas →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle
+    title={title}
+    description={description}
+    datePublished="2026-04-29"
+    dateModified="2026-04-29"
+    url={fullUrl}
+  />
+</BaseLayout>

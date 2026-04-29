@@ -1,0 +1,235 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+import CalcolatorePrezzi from '~/components/CalcolatorePrezzi.astro';
+
+const url = '/prezzi';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Quanto costa una casa mobile usata nel 2026: prezzi reali, fasce, calcolatore';
+const description = 'Tutti i prezzi reali delle case mobili usate nel 2026 in Italia. Fasce per anno, marca, dimensione e condizioni. Calcolatore prezzi interattivo + listino argus per modello.';
+
+const toc = [
+  { id: 'fascia-prezzo', label: 'Le fasce di prezzo reali nel 2026' },
+  { id: 'cosa-determina', label: 'Cosa determina davvero il prezzo' },
+  { id: 'calcolatore', label: 'Calcolatore prezzo personalizzato' },
+  { id: 'argus', label: 'Listino argus per modello e anno' },
+  { id: 'spese-extra', label: 'Le spese extra che il venditore non sempre dichiara' },
+  { id: 'trattare', label: 'Come trattare il prezzo (e di quanto)' },
+  { id: 'conviene', label: 'Quando conviene davvero comprare usato' },
+  { id: 'faq', label: 'Domande frequenti sui prezzi' },
+];
+
+const faq = [
+  { q: 'Qual è il prezzo medio di una casa mobile usata in Italia nel 2026?', a: 'La <strong>fascia più rappresentativa</strong> è 10.000–20.000 €, per case mobili 2018–2022 di marche standard (IRM, O\'Hara, Atlas, Burstner) in buone condizioni, dimensione 8×4 m, in campeggio italiano. Sotto i 10.000 € trovi modelli più datati o da rimettere a posto. Sopra i 25.000 € entri nei premium (Crippa Concept, Willerby high-end) o nei pari-al-nuovo recentissimi.' },
+  { q: 'Posso davvero trovare case mobili usate sotto i 5.000 €?', a: 'Sì, esistono. Sono in genere casi specifici: modelli pre-2010 datati, da ritirare a carico tuo, qualche infiltrazione o impianto da rivedere, struttura ancora sana. Conviene se sei attrezzato a fare lavori (1.500–4.000 € extra di ristrutturazione tipica) o se vuoi un veicolo di servizio. Da privato puro, evita.' },
+  { q: 'Quanto vale una casa mobile usata di 10 anni rispetto a una nuova?', a: 'Una casa mobile di 10 anni in buone condizioni vale circa il <strong>40-50%</strong> del prezzo del modello nuovo equivalente. Il deprezzamento è ripido nei primi 3-4 anni (perde 20-30% nel primo anno), poi rallenta sensibilmente. Dopo 15 anni il valore si stabilizza intorno al 30% del nuovo, quasi senza più perdita finché la struttura tiene.' },
+  { q: 'I prezzi includono il trasporto?', a: 'Quasi mai. Il <strong>"chiavi in mano"</strong> di solito significa "pronta da prendere in piazzola", non "consegnata a casa tua". Il trasporto è un servizio a parte: 1.000–4.000 € per percorsi medi italiani, con punte fino a 6.000 € per Sud-Isole o trasporti eccezionali (case oltre 2.55 m di larghezza). Quando ti danno un preventivo "chiavi in mano", chiedi sempre per iscritto cosa è incluso.' },
+  { q: 'Conviene di più una casa mobile usata in campeggio o senza piazzola?', a: 'Dipende dall\'uso. <strong>In campeggio</strong>: prezzo casa mobile più basso (è incentivato a venderla per rinnovare), ma paghi piazzola annuale (2.000–6.000 € a seconda della zona). <strong>Senza piazzola</strong>: prezzo casa mobile più alto perché paghi anche la "libertà" di posizionarla dove vuoi, ma poi devi trovare e pagare la piazzola da solo. Per uso vacanza in campeggio specifico, l\'opzione "in campeggio" è quasi sempre più economica nel quinquennio.' },
+  { q: 'Posso pagare a rate una casa mobile usata?', a: 'Sì, ma le opzioni sono limitate. La maggior parte dei dealer offre finanziamenti a 36-60 mesi (TAEG tipico 8-12%, più alto di un mutuo perché la casa mobile non è garanzia ipotecaria). Alcuni privati accettano pagamenti dilazionati con assegni post-datati o cambiali, ma è rischioso per entrambi: meglio bonifico unico a saldo. Il mutuo tradizionale non si fa: la banca non lo concede sul bene mobile. Vedi <a href="/prezzi/mutuo-finanziamento-casa-mobile">la guida finanziamento</a>.' },
+  { q: 'Le case mobili usate hanno l\'IVA?', a: 'Dipende dal venditore. Da <strong>privato a privato</strong>: niente IVA, atto privato di compravendita (registrazione facoltativa). Da <strong>dealer professionale</strong>: IVA al 22% inclusa nel prezzo esposto (verifica sempre la fattura). Da <strong>campeggio</strong>: se ha P.IVA agricola/turistica, vendita con IVA al 22% in fattura.' },
+  { q: 'Cosa rischio comprando casa mobile usata troppo cheap?', a: 'I rischi tipici di una "occasione troppo bella": <strong>infiltrazioni nascoste</strong> (riparare il tetto: 2.000–5.000 €), <strong>impianti elettrici fuori norma</strong> (rifacimento completo: 1.500–3.000 €), <strong>struttura compromessa</strong> (telaio ossidato, pavimento marcio: spesso più costoso buttarla via che ripararla), <strong>documenti incompleti</strong> (manca il libretto, manca la storia manutenzione, non è certificata EN 1647). La regola: se è 30%+ sotto la fascia di mercato, qualcosa non torna. Chiedi sempre un\'ispezione tecnica prima di firmare.' },
+];
+
+const correlati = [
+  { href: '/prezzi/quanto-costa-casa-mobile-usata', category: 'Prezzi', title: 'Quanto costa davvero una casa mobile usata: la guida completa 2026', excerpt: 'Tutti i prezzi reali del mercato 2026, fascia per fascia, con esempi concreti tratti dagli annunci attuali.', readTime: '12 min' },
+  { href: '/prezzi/listino-argus-modelli', category: 'Prezzi', title: 'Listino argus case mobili usate per modello e anno', excerpt: 'Quanto vale davvero la tua Atlas Excelsior 2018 o la tua Willerby Westmorland 2015: tabelle di riferimento.', readTime: '10 min' },
+  { href: '/prezzi/casa-mobile-usata-sotto-5000', category: 'Prezzi', title: 'Casa mobile usata sotto i 5.000 €: dove cercare e cosa controllare', excerpt: 'Esistono, ma sono campi minati. La guida tecnica per riconoscere quando vale davvero la pena.', readTime: '8 min' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Prezzi & Valutazione', url: '/prezzi' }]} />
+
+    <header class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Prezzi & Valutazione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Numeri reali, non range vaghi: cosa pagano davvero gli italiani nel 2026 per una casa mobile usata, fascia per fascia. Cosa fa salire il prezzo, cosa lo abbatte, e come capire se quello che ti chiedono è giusto. Più un calcolatore interattivo per la tua situazione specifica.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>15 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-20">
+          <div class="eyebrow mb-3">Indice</div>
+          <ul class="space-y-2 text-sm" style="list-style:none;padding:0">
+            {toc.map((t) => (
+              <li><a href={`#${t.id}`} class="no-underline hover:underline" style="color:var(--color-ink-700)">{t.label}</a></li>
+            ))}
+          </ul>
+          <div class="mt-8">
+            <FbCommunityWidget variant="sidebar" />
+          </div>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-9 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0"><strong>Tutto quello che devi sapere in 5 righe</strong></p>
+          <ol class="my-2">
+            <li>La fascia più rappresentativa nel 2026 è <strong>10.000–20.000 €</strong> (modelli 2018–2022 in buone condizioni)</li>
+            <li>Sotto i 5.000 € esistono, ma servono <strong>competenze tecniche</strong> per non comprare un problema</li>
+            <li>Sopra i 25.000 € entri nei premium o nei recentissimi pari-al-nuovo</li>
+            <li>Il <strong>trasporto</strong> non è quasi mai incluso: aggiungi 1.000–4.000 €</li>
+            <li>"<strong>Chiavi in mano</strong>" significa quasi sempre "pronta da prendere in piazzola", non consegnata</li>
+          </ol>
+        </Tldr>
+
+        <h2 id="fascia-prezzo">Le fasce di prezzo reali nel 2026</h2>
+        <p>Ho aggregato le quotazioni dai principali marketplace europei (casamobileusata.com, occasionecasemobili.it, Subito.it sezione caravan/camper, autoline24.it) più le mie osservazioni dirette di mercato negli ultimi 12 mesi. Risultato: il mercato italiano delle case mobili usate si distribuisce in 5 fasce abbastanza nette.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Fascia</th>
+              <th>Prezzo</th>
+              <th>Tipologia tipica</th>
+              <th>Per chi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Entry</strong></td>
+              <td>3.000–6.000 €</td>
+              <td>Pre-2010, da ritirare, possibili lavori</td>
+              <td>Chi sa fare lavori, uso secondario</td>
+            </tr>
+            <tr>
+              <td><strong>Standard bassa</strong></td>
+              <td>6.000–10.000 €</td>
+              <td>2010–2015, condizioni medie, in campeggio</td>
+              <td>Vacanza famiglia, primo acquisto</td>
+            </tr>
+            <tr>
+              <td><strong>Standard alta</strong></td>
+              <td>10.000–20.000 €</td>
+              <td>2018–2022, buone condizioni, accessori inclusi</td>
+              <td>La fascia più frequente, miglior rapporto</td>
+            </tr>
+            <tr>
+              <td><strong>Premium</strong></td>
+              <td>20.000–35.000 €</td>
+              <td>2022–2024, marche alta gamma, dotazioni piene</td>
+              <td>Chi cerca qualità senza nuovo</td>
+            </tr>
+            <tr>
+              <td><strong>Pari al nuovo</strong></td>
+              <td>35.000–55.000 €</td>
+              <td>2024–2025 quasi mai usate</td>
+              <td>Caso particolare: offre marginale risparmio</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>La <strong>fascia 10.000–20.000 €</strong> è la più liquida del mercato: ci sono mediamente 200-300 annunci attivi in qualunque momento sui principali portali. È anche la più equilibrata: marca decente, anno ragionevole, casa abitabile da subito.</p>
+
+        <h2 id="cosa-determina">Cosa determina davvero il prezzo</h2>
+        <p>I sette fattori che muovono il prezzo, in ordine di peso:</p>
+
+        <h3>1. Anno di costruzione (peso ~30%)</h3>
+        <p>Una casa mobile perde valore ripido nei primi 3-4 anni, poi rallenta. Tabella di deprezzamento media (mantenendo tutto il resto costante):</p>
+        <ul>
+          <li><strong>1 anno</strong>: -20–25% sul nuovo</li>
+          <li><strong>3 anni</strong>: -35%</li>
+          <li><strong>5 anni</strong>: -45%</li>
+          <li><strong>10 anni</strong>: -55–60%</li>
+          <li><strong>15 anni</strong>: -65–70% (poi si stabilizza)</li>
+          <li><strong>20+ anni</strong>: -75%, dipende dallo stato</li>
+        </ul>
+
+        <h3>2. Marca (peso ~20%)</h3>
+        <p>A parità d'anno, la marca pesa molto. Un Atlas o un Willerby in buone condizioni può valere il 20-30% più di un'anonima asiatica della stessa data. Le marche storiche italiane (Shelbox, anche se chiusa, Crippa Concept) tengono molto bene il valore. Vedi <a href="/marche">la guida marche per il dettaglio</a>.</p>
+
+        <h3>3. Dimensione (peso ~15%)</h3>
+        <p>Le grandi (9×4 m, 10×4 m) costano di più ma sono anche più costose da trasportare. Le 8×4 m sono il "sweet spot": grandi abbastanza per famiglia, ancora gestibili sul trasporto.</p>
+
+        <h3>4. Condizioni (peso ~15%)</h3>
+        <p>"Buone condizioni" è dove si gioca metà del valore percepito. Punti critici da verificare di persona: tetto, infiltrazioni, impianto elettrico, riscaldamento, infissi.</p>
+
+        <h3>5. Accessori (peso ~10%)</h3>
+        <p>Veranda (+8-12%), aria condizionata (+5-7%), casetta accessoria (+4-6%), arredo completo (+3-5%), targa (+2-4%). Sommati possono fare il 25-30% di differenza tra "spoglia" e "full".</p>
+
+        <h3>6. Posizione geografica (peso ~5%)</h3>
+        <p>Una stessa casa mobile in Veneto o Toscana costa di più che in Sicilia o Calabria, perché il mercato dell'open air è più maturo al Nord. Si tratta del 5-10% di differenza.</p>
+
+        <h3>7. Urgenza del venditore (peso ~5%)</h3>
+        <p>"Devo svuotare la piazzola", "Sto cambiando paese", "Mio padre è anziano e non viene più qui". Quando il venditore ha urgenza, il prezzo scende del 10-20% rispetto al "giusto". Vedi <a href="/prezzi/come-trattare-prezzo-casa-mobile-usata">la guida sulla trattativa</a>.</p>
+
+        <h2 id="calcolatore">Calcolatore prezzo personalizzato</h2>
+        <p>Inserisci i dati della casa mobile che ti interessa: ti restituisco una <strong>fascia di prezzo realistica</strong> basata sui benchmark di mercato 2026.</p>
+
+        <CalcolatorePrezzi />
+
+        <h2 id="argus">Listino argus per modello e anno</h2>
+        <p>Il termine "argus" è preso a prestito dal mercato auto francese: è il listino di riferimento per l'usato. Per le case mobili in Italia non esiste un listino ufficiale come per le auto, ma ho costruito una tabella di riferimento incrociando i dati di mercato. Vedi <a href="/prezzi/listino-argus-modelli">il listino argus completo</a> con i prezzi per i modelli più diffusi (Atlas Excelsior, Willerby Westmorland, IRM Super Mercure, O'Hara 1064, Burstner Marina).</p>
+
+        <h2 id="spese-extra">Le spese extra che il venditore non sempre dichiara</h2>
+        <p>Le tre spese che il prezzo scritto non include quasi mai:</p>
+        <ul>
+          <li><strong>Trasporto</strong>: 1.000–4.000 € (più nei trasporti eccezionali oltre 2,55 m). <a href="/trasporto">Guida trasporto</a>.</li>
+          <li><strong>Smontaggio e rimontaggio accessori</strong>: 500–1.500 € se la casa è in piazzola con veranda, casetta, terrazzo da smontare.</li>
+          <li><strong>Subentro piazzola</strong> (se la lasci in campeggio): 500–2.000 € di "fee di passaggio" + canone annuale.</li>
+        </ul>
+        <p>Calcolando il prezzo finale onesto, aggiungi sempre <strong>+10-20%</strong> al prezzo dichiarato.</p>
+
+        <h2 id="trattare">Come trattare il prezzo (e di quanto)</h2>
+        <p>Tre regole pratiche dalla mia esperienza diretta in cantiere:</p>
+        <ol>
+          <li><strong>Mai trattare al telefono</strong>. Vai sul posto, fai 50 domande, individua almeno 3-4 punti tecnici discutibili. Solo allora apri la trattativa.</li>
+          <li><strong>Calo realistico</strong>: 10-15% dal prezzo richiesto è ragionevole se trovi qualcosa di concreto. 20-25% solo se il venditore ha urgenza palese e tu sei pronto a chiudere.</li>
+          <li><strong>Non offendere mai</strong>. Un'offerta troppo bassa chiude la trattativa. Spiega tecnicamente perché offri quella cifra (l'isolamento del tetto da rifare costa tot, gli infissi vecchi tot, ecc.).</li>
+        </ol>
+
+        <h2 id="conviene">Quando conviene davvero comprare usato</h2>
+        <p>L'usato conviene se:</p>
+        <ul>
+          <li>Vuoi <strong>iniziare la vacanza in casa mobile da subito</strong>: il nuovo richiede 4-8 mesi di attesa, l'usato è disponibile in giorni</li>
+          <li>Hai un <strong>budget sotto 25.000 €</strong>: nel nuovo non trovi quasi nulla a quei prezzi</li>
+          <li>Vuoi <strong>posizionarla in un campeggio specifico</strong>: spesso il campeggio stesso vende l'usato che ha appena dismesso, già pronto, già installato, già allacciato</li>
+          <li>Ti interessa una <strong>marca storica</strong> (es. Shelbox) che oggi non è più in produzione</li>
+        </ul>
+
+        <p>Non conviene se:</p>
+        <ul>
+          <li>Vuoi <strong>10+ anni di vita davanti</strong> senza pensieri (al di sotto dei 25-30k il rischio infiltrazioni decennali sale)</li>
+          <li>Cerchi <strong>massima efficienza energetica</strong> (le case mobili pre-2018 hanno isolamenti molto più scarsi)</li>
+          <li>Vuoi una <strong>garanzia commerciale lunga</strong> (sull'usato la garanzia legale è 12 mesi se prendi da privato, 24 mesi se da dealer professionale; sul nuovo è 24 mesi minimo + spesso garanzie aggiuntive)</li>
+        </ul>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti sui prezzi" />
+      </div>
+    </div>
+
+    <section class="mt-24">
+      <div class="flex items-end justify-between mb-8 flex-wrap gap-4">
+        <h2 style="margin-top:0">Approfondimenti del cluster Prezzi</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {correlati.map((a) => <ArticleCard {...a} />)}
+      </div>
+    </section>
+  </article>
+
+  <SchemaArticle
+    title={title}
+    description={description}
+    datePublished="2026-04-29"
+    dateModified="2026-04-29"
+    url={fullUrl}
+  />
+</BaseLayout>

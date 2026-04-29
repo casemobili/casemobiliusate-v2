@@ -1,0 +1,156 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+
+const url = '/marche';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Marche di case mobili: la guida 2026 a chi le costruisce e quale scegliere usato';
+const description = 'Le 9 marche di case mobili più diffuse in Italia confrontate: Atlas, Willerby, IRM, O\'Hara, Burstner, Crippa Concept, Adria, Sun Roller, Shelbox. Storia, qualità, prezzi usato.';
+
+const marche = [
+  { nome: 'Atlas', origine: 'UK', forza: 'Standard di mercato, ricambi sempre disponibili', usato: '7.000–28.000 €', stato: 'In produzione', link: '/marche/atlas' },
+  { nome: 'Willerby', origine: 'UK', forza: 'Costruzione robusta, gamma ampia, premium possibile', usato: '8.000–35.000 €', stato: 'In produzione', link: '/marche/willerby' },
+  { nome: 'IRM', origine: 'Francia', forza: 'Isolamento, all-season, qualità francese', usato: '6.500–25.000 €', stato: 'In produzione', link: '/marche/irm' },
+  { nome: 'O\'Hara', origine: 'Francia', forza: 'Allestimento ricco, gamma media-alta', usato: '7.500–30.000 €', stato: 'In produzione', link: '/marche/ohara' },
+  { nome: 'Burstner', origine: 'Germania', forza: 'Tradizione tedesca, robusta', usato: '5.500–22.000 €', stato: 'In produzione', link: '/marche/burstner' },
+  { nome: 'Crippa Concept', origine: 'Italia', forza: 'Premium italiano, design, isolamento serio', usato: '15.000–40.000 €', stato: 'In produzione', link: '/marche/crippa-concept' },
+  { nome: 'Adria', origine: 'Slovenia', forza: 'Compatte, leggere, prezzo aggressivo', usato: '4.500–18.000 €', stato: 'In produzione', link: '/marche/adria' },
+  { nome: 'Sun Roller', origine: 'Italia', forza: 'Discreta, presenza italiana storica', usato: '4.000–15.000 €', stato: 'In produzione', link: '/marche/sun-roller' },
+  { nome: 'Shelbox', origine: 'Italia', forza: 'Italiana storica, qualità sopra media, ricambi rari', usato: '4.500–14.000 €', stato: 'Chiusa nel 2014', link: '/marche/shelbox' },
+];
+
+const faq = [
+  { q: 'Qual è la marca di case mobili più affidabile per l\'usato?', a: 'Per <strong>affidabilità nel tempo</strong>: <strong>Atlas, Willerby e IRM</strong>. Sono le 3 con il miglior bilancio di longevità struttura, disponibilità ricambi, valore di rivendita. Atlas e Willerby sono inglesi storiche con telai robusti; IRM è francese specializzata sull\'isolamento. Per <strong>premium</strong> aggiungi Crippa Concept (italiana, fascia alta).' },
+  { q: 'Le marche italiane sono migliori delle straniere?', a: 'No, c\'è di tutto. Crippa Concept è qualitativamente al top assoluto (premium), Sun Roller è discreta nella media, Shelbox era ottima ma è chiusa dal 2014. Le inglesi (Atlas, Willerby) e le francesi (IRM, O\'Hara) hanno tradizione più lunga e producono in volumi maggiori, quindi spesso costo/qualità è migliore. Compra per <strong>specifico modello e condizioni</strong>, non per nazionalità.' },
+  { q: 'Vale la pena comprare una Shelbox usata anche se l\'azienda ha chiuso?', a: 'Sì, ma con consapevolezza. Le Shelbox costruite tra 2005 e 2014 sono <strong>ottime case mobili</strong>, isolamento serio, finiture italiane sopra la media. Il problema sono i <strong>ricambi specifici</strong> (interni, infissi proprietari): vanno ordinati artigianalmente quando si rompono, costano di più. Se trovi una Shelbox in buone condizioni a buon prezzo, è ancora un ottimo acquisto, considerando un budget extra di 500-1.000 € per eventuali ricambi non standard.' },
+  { q: 'Quale marca scegliere per stare in casa mobile tutto l\'anno?', a: 'Per uso continuativo serve <strong>isolamento maggiorato</strong>. Le 3 marche da preferire: <strong>IRM</strong> (specializzata sul tema, gamma "all-season"), <strong>Crippa Concept</strong> (classe energetica A su modelli premium recenti), <strong>Willerby Lodge</strong> (gamma static UK pensata per uso permanente). Le altre marche standard funzionano se la casa mobile è ben esposta, in zona non troppo fredda, e aggiungi tu coibentazione esterna (3.000–5.000 €).' },
+  { q: 'Quale marca evitare nell\'usato?', a: 'Niente da "evitare assolutamente", ma 3 categorie da maneggiare con cautela: <strong>1) marche generiche pre-2008</strong> (telai non standardizzati, isolamento scarso); <strong>2) marche cinesi/asiatiche</strong> apparse e scomparse rapidamente (ricambi introvabili); <strong>3) modelli "discount" delle marche storiche</strong> degli anni di crisi 2010–2013 (costruzione semplificata per fascia di prezzo, oggi tendono a invecchiare male). In dubbio, chiedi prima nel <a href="https://www.facebook.com/groups/casemobili/" target="_blank" rel="noopener">gruppo Facebook</a> esperienze sul modello specifico.' },
+  { q: 'Le marche storiche italiane (Shelbox, Sun Roller) si trovano ancora?', a: 'Sì, sul mercato dell\'usato sono ancora ben presenti. Shelbox produsse fino al 2014, ci sono ancora 1.500-2.000 unità in giro per l\'Italia. Sun Roller produce ancora, gamma più piccola e distribuita. Sono buone scelte per chi vuole "italianità" senza budget premium.' },
+];
+
+const correlati = [
+  { href: '/marche/atlas', category: 'Marche', title: 'Atlas: la guida tecnica e ai modelli usati più richiesti', excerpt: 'Storia, modelli iconici, prezzi tipici nell\'usato 2026, cosa controllare prima di comprare un\'Atlas.', readTime: '9 min' },
+  { href: '/marche/willerby', category: 'Marche', title: 'Willerby: l\'inglese che invecchia bene', excerpt: 'Tradizione UK, modelli più diffusi in Italia, prezzi usato e checkpoint tecnici.', readTime: '8 min' },
+  { href: '/marche/irm', category: 'Marche', title: 'IRM: la francese dell\'isolamento serio', excerpt: 'Perché è la prima scelta per uso annuale. Modelli, fasce prezzo, dove trovarla in Italia.', readTime: '8 min' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Marche & Modelli', url: '/marche' }]} />
+
+    <header class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Marche & Modelli</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Atlas, Willerby, IRM, O'Hara, Burstner, Crippa Concept, Adria, Sun Roller, Shelbox: nove nomi che coprono l'80% delle case mobili usate in giro per l'Italia. Le ho tutte montate, smontate, manutenute o ispezionate per clienti. Ecco cosa cambia davvero, marca per marca.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>14 min di lettura</span>
+      </div>
+    </header>
+
+    <Tldr>
+      <p class="m-0">
+        Per qualità/prezzo nell'usato: <strong>Atlas, Willerby, IRM</strong>. Per premium: <strong>Crippa Concept</strong>. Per uso annuale: <strong>IRM</strong> o <strong>Willerby Lodge</strong>. Per budget basso: <strong>Adria</strong> o <strong>Sun Roller</strong>. Per "italianità" storica: <strong>Shelbox</strong> (chiusa, ricambi rari). Sotto il dettaglio per ognuna.
+      </p>
+    </Tldr>
+
+    <section class="mt-12">
+      <h2>Tabella di confronto</h2>
+      <div class="overflow-x-auto rounded-sm border my-6" style="border-color:var(--color-linen-200)">
+        <table class="min-w-full">
+          <thead>
+            <tr>
+              <th>Marca</th>
+              <th>Origine</th>
+              <th>Punto di forza</th>
+              <th>Range usato</th>
+              <th>Stato</th>
+            </tr>
+          </thead>
+          <tbody>
+            {marche.map((m) => (
+              <tr>
+                <td><a href={m.link} class="font-medium no-underline hover:underline" style="color:var(--color-forest-700)">{m.nome}</a></td>
+                <td>{m.origine}</td>
+                <td>{m.forza}</td>
+                <td>{m.usato}</td>
+                <td>{m.stato}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="prose-article" style="margin:0 auto">
+      <h2>Le 4 differenze tecniche che contano davvero</h2>
+
+      <h3>1. Telaio e struttura portante</h3>
+      <p>Il <strong>telaio</strong> è quello che decide quanti anni vivrà la casa mobile. Atlas e Willerby usano telai in acciaio zincato pesante, ben verniciato, che durano 25-30 anni se mantenuti. IRM e O'Hara hanno telai simili. Le marche economiche (alcune Adria, generiche cinesi pre-2010) usano profili più sottili: vita utile 12-18 anni, dopo iniziano a ossidarsi.</p>
+      <p>Verifica sempre <strong>sotto il telaio</strong> prima di comprare: se vedi ruggine diffusa o ammaccature, scarta.</p>
+
+      <h3>2. Isolamento e classe energetica</h3>
+      <p>L'isolamento è quello che rende abitabile la casa mobile in inverno. Standard generico: pareti 60-80 mm, tetto 80-100 mm. Marche serie sull'isolamento (IRM gamma all-season, Willerby Lodge, Crippa Concept premium): pareti 100-140 mm, tetto 140-180 mm, doppi vetri, taglio termico sugli infissi.</p>
+      <p>Differenza concreta: in una IRM all-season a 0°C esterni puoi mantenere 20°C interni con un piccolo termostufa; in una standard servono 2-3 unità riscaldanti accese tutto il giorno.</p>
+
+      <h3>3. Finiture interne</h3>
+      <p>Atlas e Willerby usano legni laminati di buon livello, mobili modulari. Crippa Concept usa legni veri (faggio, rovere) e tessuti di livello ospitalità. IRM e O'Hara sono nella media. Sun Roller, Adria e Shelbox erano sul livello standard.</p>
+      <p>Il dettaglio che conta sull'usato: dopo 8-10 anni i mobili "veri" si possono sistemare/restaurare; quelli laminati spesso vanno cambiati interamente perché si scollano.</p>
+
+      <h3>4. Ricambi e service</h3>
+      <p>Atlas e Willerby hanno reti distributive italiane consolidate: trovi ricambi in 2-3 giorni. IRM e O'Hara hanno service in Francia ma rete italiana ridotta: ricambi in 5-10 giorni. Crippa Concept ha service diretto eccellente. Burstner via rete tedesca. Shelbox ha solo officine indipendenti che lavorano sui ricambi originali residui o su pezzi compatibili.</p>
+
+      <h2>Quale marca per quale uso</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Per...</th>
+            <th>Marca consigliata</th>
+            <th>Modello tipico</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Vacanza famiglia, 4 persone, mare</td><td>Atlas, O'Hara</td><td>Atlas Excelsior, O'Hara 1064</td></tr>
+          <tr><td>Vacanza coppia, 2 persone, ovunque</td><td>Adria, Burstner</td><td>Adria Aviva, Burstner Marina</td></tr>
+          <tr><td>Uso annuale, residenza</td><td>IRM, Willerby Lodge</td><td>IRM Mercure all-season, Willerby Lyndhurst</td></tr>
+          <tr><td>Premium, 15+ anni di vita</td><td>Crippa Concept</td><td>Cosmopolitan, Madagascar</td></tr>
+          <tr><td>Budget basso, prima esperienza</td><td>Sun Roller, Adria</td><td>Sun Roller Sunshine, Adria Aviva</td></tr>
+          <tr><td>"Italianità" storica</td><td>Shelbox (usato)</td><td>Shelbox Family, Vacanze 8</td></tr>
+        </tbody>
+      </table>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sulle marche di case mobili" />
+    </div>
+
+    <section class="mt-24">
+      <div class="flex items-end justify-between mb-8 flex-wrap gap-4">
+        <h2 style="margin-top:0">Schede dedicate alle marche</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {correlati.map((a) => <ArticleCard {...a} />)}
+      </div>
+    </section>
+  </article>
+
+  <SchemaArticle
+    title={title}
+    description={description}
+    datePublished="2026-04-29"
+    dateModified="2026-04-29"
+    url={fullUrl}
+  />
+</BaseLayout>

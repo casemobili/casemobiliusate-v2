@@ -1,4 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
-  <rect width="32" height="32" rx="6" fill="#2C5530"/>
-  <text x="16" y="22" text-anchor="middle" font-family="Lora, Georgia, serif" font-weight="700" font-size="18" fill="#C8956D">C</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="6" fill="#1F2A1B"/>
+  <!-- Tetto stilizzato (casa) -->
+  <path d="M16 24 L32 14 L48 24" stroke="#D4B365" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- "C" stilizzata grande -->
+  <path d="M44 35 C44 27, 38 22, 32 22 C24 22, 19 28, 19 36 C19 44, 24 50, 32 50 C38 50, 44 45, 44 37" stroke="#D4B365" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Linea base / piazzola -->
+  <line x1="14" y1="56" x2="50" y2="56" stroke="#D4B365" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
 </svg>
