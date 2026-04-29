@@ -1,0 +1,141 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/dove-mettere';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Dove mettere una casa mobile in Italia: la guida completa 2026';
+const description = 'Tutto sui posti dove puoi installare una casa mobile in Italia: campeggi aperti tutto l\'anno, terreno privato, terreno agricolo, agriturismi. Cosa è permesso, cosa no, dove conviene.';
+
+const toc = [
+  { id: 'campeggio', label: 'In campeggio (la via maestra)' },
+  { id: 'terreno-privato', label: 'Su terreno privato' },
+  { id: 'terreno-agricolo', label: 'Su terreno agricolo' },
+  { id: 'agriturismo', label: 'In agriturismo' },
+  { id: 'lago-mare-montagna', label: 'Lago, mare, montagna: dove conviene' },
+  { id: 'tutto-anno', label: 'Campeggi aperti tutto l\'anno (i 200 in Italia)' },
+  { id: 'faq', label: 'Domande frequenti' },
+];
+
+const faq = [
+  { q: 'Dove è davvero legale mettere una casa mobile in Italia?', a: 'In ordine di chiarezza giuridica: <strong>1) Campeggi e villaggi turistici</strong> aperti — il Decreto Casa esenta da titolo edilizio, è la via maestra; <strong>2) Terreno privato edificabile</strong> con permesso di costruire se installazione permanente; <strong>3) Terreno agricolo</strong> solo per uso temporaneo o per IAP con esigenze produttive (no abitazione stabile); <strong>4) Agriturismi</strong> con autorizzazioni specifiche del Comune. Casi grigi: terreni vincolati, zone sismiche, aree protette.' },
+  { q: 'Quanti campeggi italiani sono aperti tutto l\'anno?', a: 'Circa <strong>200 strutture</strong> in tutta Italia, concentrate in Lago di Garda (~30), Toscana costa (~25), Liguria (~15), Sardegna (~20), Veneto litorale (~25), Sicilia costa (~15), Lazio costa (~10), e altre zone minori. Sono i contesti dove la residenza in casa mobile è più facile da ottenere e l\'uso annuale è praticabile.' },
+  { q: 'Quanto costa una piazzola in campeggio aperto tutto l\'anno?', a: 'Range tipico annuale 2026: <strong>2.000–6.000 €</strong>. Veneto litorale e Garda: 3.500-6.000 €. Toscana e Liguria: 3.000-5.000 €. Sardegna: 2.500-4.500 €. Sicilia e Sud: 2.000-3.500 €. Sono prezzi per piazzola con servizi base inclusi (acqua, luce, raccolta rifiuti); le utenze a consumo sono spesso a parte. La location specifica del campeggio (vicino mare, vista privilegiata, prima fila) può raddoppiare il prezzo.' },
+  { q: 'Su terreno privato edificabile posso davvero metterla?', a: 'Sì, con permesso di costruire se l\'installazione è permanente. La giurisprudenza è chiara: conta l\'<strong>uso reale</strong>, non i materiali. Casa mobile abitata stabilmente = nuova costruzione, soggetta a permesso edilizio. Se il terreno è edificabile, il permesso è ottenibile (con iter da geometra/architetto, costo 2.000-5.000 € + oneri urbanistici). Se il terreno NON è edificabile (agricolo, zona vincolata), il permesso è quasi mai concesso.' },
+  { q: 'Su terreno agricolo cosa rischio?', a: 'Se la usi come abitazione stabile rischi <strong>rimozione/demolizione</strong>, multa amministrativa 1.000-20.000 €, denuncia penale per abuso edilizio nei casi gravi. Vedi <a href="/normativa/casa-mobile-terreno-agricolo">la guida dedicata terreno agricolo</a>. Eccezione: imprenditore agricolo professionale (IAP) con esigenze produttive documentate.' },
+  { q: 'Conviene comprare casa mobile + piazzola insieme?', a: 'Spesso sì. Comprando da privato in campeggio: <strong>1)</strong> la casa mobile è già installata (no trasporto = -1.500–4.000 €); <strong>2)</strong> il subentro piazzola è gestito dal campeggio (assicurati di formalizzarlo); <strong>3)</strong> conosci già le condizioni reali della casa nella sua piazzola. Comprando senza piazzola: paghi prezzo casa più basso ma poi devi trovare e prenotare piazzola. Per uso ricreativo standard, l\'opzione "in campeggio" è quasi sempre più conveniente nel quinquennio.' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Dove Mettere & Campeggi', url: '/dove-mettere' }]} />
+
+    <header class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Dove Mettere & Campeggi</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Dove la legge ti permette di metterla, dove ti consiglio io di tenerla, e dove non vale la pena nemmeno provare. Numeri reali sui costi piazzola 2026, mappa ragionata dei 200 campeggi aperti tutto l'anno e i casi grigi (agricolo, vincolato, zone sismiche).
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>12 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-20">
+          <div class="eyebrow mb-3">Indice</div>
+          <ul class="space-y-2 text-sm" style="list-style:none;padding:0">
+            {toc.map((t) => (
+              <li><a href={`#${t.id}`} class="no-underline hover:underline" style="color:var(--color-ink-700)">{t.label}</a></li>
+            ))}
+          </ul>
+          <div class="mt-8">
+            <FbCommunityWidget variant="sidebar" />
+          </div>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-9 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">In <strong>campeggio o villaggio turistico</strong>: nessun permesso, è la via maestra (Decreto Casa). Su <strong>terreno privato edificabile</strong>: permesso di costruire se permanente. Su <strong>terreno agricolo</strong>: solo uso temporaneo, mai abitazione stabile. <strong>~200 campeggi italiani</strong> aperti tutto l'anno (Garda, Toscana, Liguria, Sardegna, Veneto litorale i cluster principali). Costo piazzola annuale: <strong>2.000–6.000 €</strong>.</p>
+        </Tldr>
+
+        <h2 id="campeggio">In campeggio (la via maestra)</h2>
+        <p>Il <strong>campeggio</strong> è dove il 90% delle case mobili italiane vive. Per ottime ragioni:</p>
+        <ul>
+          <li><strong>Nessun permesso edilizio</strong> richiesto (Decreto Casa)</li>
+          <li><strong>Servizi base già pronti</strong>: acqua, luce, scarichi, raccolta rifiuti, sicurezza</li>
+          <li><strong>Comunità</strong>: vicini casa mobile, vita sociale, eventi del campeggio</li>
+          <li><strong>Manutenzione condivisa</strong>: il campeggio si occupa di strade interne, illuminazione, pulizia aree comuni</li>
+          <li><strong>Residenza ottenibile</strong> se aperto tutto l'anno (vedi <a href="/vivere/residenza-casa-mobile">guida residenza</a>)</li>
+        </ul>
+        <p>Costi tipici 2026 (annuali, piazzola standard):</p>
+        <ul>
+          <li>Veneto litorale (Cavallino, Bibione, Lignano): <strong>3.500-6.000 €</strong></li>
+          <li>Lago di Garda: <strong>3.000-5.500 €</strong></li>
+          <li>Toscana costa: <strong>3.000-5.000 €</strong></li>
+          <li>Liguria: <strong>3.500-5.500 €</strong></li>
+          <li>Sardegna: <strong>2.500-4.500 €</strong></li>
+          <li>Sicilia: <strong>2.000-3.500 €</strong></li>
+          <li>Sud Italia interno: <strong>1.800-3.000 €</strong></li>
+        </ul>
+        <p>I prezzi includono spesso servizi base; <strong>utenze a consumo a parte</strong>. Posizioni "premium" (vicino mare, vista privilegiata, prima fila) possono raddoppiare.</p>
+
+        <h2 id="terreno-privato">Su terreno privato</h2>
+        <p>Su un terreno tuo puoi installare una casa mobile, ma con distinzioni importanti.</p>
+
+        <h3>Terreno edificabile</h3>
+        <p>È la via "alta": permesso di costruire ottenibile (con iter di geometra/architetto, 2.000-5.000 € di parcella + oneri urbanistici). Costi totali: 5.000-10.000 € di iter + tempo 6-12 mesi. Vantaggio: casa mobile come "tua casa" senza vincoli campeggio.</p>
+
+        <h3>Terreno con uso solo temporaneo</h3>
+        <p>Se la usi <strong>occasionalmente</strong> (weekend, vacanze brevi) e mantieni le ruote funzionanti, gli allacciamenti smontabili e l'uso temporaneo, in alcuni Comuni può essere considerata bene mobile e non richiedere permesso. <strong>Caso grigio</strong>: la giurisprudenza è severa, basta una segnalazione di vicino e il Comune può contestare. Nel dubbio, perdi tu.</p>
+
+        <h2 id="terreno-agricolo">Su terreno agricolo</h2>
+        <p>Caso più rischioso. Il terreno agricolo ha <strong>destinazione produttiva</strong>, non residenziale. Casa mobile abitata stabilmente = abuso edilizio. Eccezione: imprenditore agricolo professionale (IAP) con esigenze produttive documentate (ricovero attrezzi, ricovero stagionale per raccolta).</p>
+        <p><strong>Cosa rischi</strong>: rimozione, multa 1.000-20.000 €, denuncia penale nei casi gravi. <strong>Vedi <a href="/normativa/casa-mobile-terreno-agricolo">la guida dedicata terreno agricolo</a></strong> per il dettaglio.</p>
+
+        <h2 id="agriturismo">In agriturismo</h2>
+        <p>Caso particolare: alcuni agriturismi hanno autorizzazioni specifiche per ospitare case mobili nelle loro proprietà come "alloggio integrativo" alle camere tradizionali. Funziona come campeggio ma con scala più piccola. Vantaggi: contesto rurale, comunità ridotta, prezzi spesso più accessibili. Limiti: meno servizi (no piscina, no ristorante interno standard), apertura spesso stagionale.</p>
+
+        <h2 id="lago-mare-montagna">Lago, mare, montagna: dove conviene</h2>
+
+        <h3>Mare</h3>
+        <p>La concentrazione storica delle case mobili italiane. Veneto litorale, Toscana costa, Liguria, Sardegna, Sicilia. Pro: stagione lunga (aprile-ottobre attivi), comfort termico estate. Contro: erosione marina (salinità accelera ossidazione), affollamento alta stagione.</p>
+
+        <h3>Lago</h3>
+        <p>Garda è il caso d'eccellenza italiano: campeggi premium, aperti spesso tutto l'anno, qualità sopra la media. Anche Como, Maggiore, Iseo hanno opzioni. Pro: stagione estesa (marzo-novembre), microclima mite anche in inverno (Garda), bellezza paesaggio. Contro: prezzi piazzola sopra la media nazionale.</p>
+
+        <h3>Montagna</h3>
+        <p>Meno comune ma cresce: campeggi alpini con case mobili da uso estivo (giugno-settembre) e qualche struttura aperta anche per stagione sci (dicembre-marzo). Pro: aria sana, fresco estate. Contro: case mobili devono avere isolamento maggiorato per inverno, neve sul tetto richiede strutture rinforzate.</p>
+
+        <h2 id="tutto-anno">Campeggi aperti tutto l'anno (i 200 in Italia)</h2>
+        <p>Sono <strong>il contesto migliore</strong> per chi vuole vivere in casa mobile in modo continuativo o per stagioni lunghe (8+ mesi). Stiamo costruendo la directory geografica completa: nelle prossime settimane sarà disponibile a <strong>/dove-mettere/campeggi-aperti-tutto-anno</strong> con filtri per regione, prezzi piazzola, servizi.</p>
+        <p>Per ora, le concentrazioni principali:</p>
+        <ul>
+          <li><strong>Lago di Garda</strong> (~30 strutture): Sirmione, Padenghe, Manerba, Lazise, Bardolino, Peschiera</li>
+          <li><strong>Toscana costa</strong> (~25): Marina di Bibbona, Marina di Castagneto, Vada, Cecina, Marina di Massa</li>
+          <li><strong>Veneto litorale</strong> (~25): Cavallino-Treporti, Caorle, Bibione, Lignano (parte friulana)</li>
+          <li><strong>Sardegna</strong> (~20): Cala Gonone, San Teodoro, Pula, Stintino</li>
+          <li><strong>Liguria</strong> (~15): Sestri Levante, Sanremo, Albenga, Noli</li>
+          <li><strong>Sicilia</strong> (~15): Mondello, Cefalù, Marina di Ragusa, Pozzallo</li>
+        </ul>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su dove mettere una casa mobile" />
+      </div>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

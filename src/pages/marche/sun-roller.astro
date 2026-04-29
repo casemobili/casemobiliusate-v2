@@ -1,0 +1,88 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/marche/sun-roller';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Sun Roller case mobili usate: l\'italiana discreta a prezzi accessibili (2026)';
+const description = 'Sun Roller è la marca italiana storica di fascia media-bassa. Buon rapporto qualità/prezzo nell\'usato, modelli più diffusi, checkpoint tecnici e prezzi 2026.';
+
+const faq = [
+  { q: 'Sun Roller è una marca affidabile?', a: 'Sì, è marca <strong>italiana storica</strong> presente nel mercato dagli anni \'90. Posizionamento: <strong>fascia media-bassa</strong>, prezzi accessibili, costruzione standard. Non gioca sull\'eccellenza come Crippa Concept né sulla tradizione UK come Atlas/Willerby, ma offre case mobili decenti per chi cerca rapporto qualità/prezzo. Adatta a primo acquisto, vacanza famiglia, budget contenuto.' },
+  { q: 'Quanto costa una Sun Roller usata?', a: 'Range tipico nel 2026: <strong>4.500–14.000 €</strong>. Modello base 2010-2014: 4.500-7.000 €. Modello standard 2017-2020: 7.000-11.000 €. Modello recente 2022-2024: 11.000-14.000 €. È tra le marche più accessibili nel mercato dell\'usato italiano.' },
+  { q: 'Quali modelli Sun Roller si trovano in Italia?', a: 'I 2 modelli più frequenti: <strong>Sun Roller Sunshine</strong> (8×4 m, 2 camere, modello standard più diffuso), <strong>Sun Roller Sunny</strong> (7×3,5 m, formato compatto). La gamma è meno articolata di Atlas o IRM: questo è anche un vantaggio per la trasparenza prezzi.' },
+  { q: 'Sun Roller è adatta per uso annuale?', a: 'Solo con riserve. La gamma standard ha isolamento medio (60-80 mm pareti), dimensionato per uso vacanza estiva e primaverile. Per uso annuale invernale serve aggiungere coibentazione (1.500-3.000 € extra) o riscaldamento più potente. Se cerchi all-season: meglio salire su IRM all-season o Willerby Lodge usato.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Marche', url: '/marche' },
+      { name: 'Sun Roller', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Marche & Modelli · Scheda</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Sun Roller è la marca italiana di fascia accessibile: case mobili decenti, prezzi onesti, rete distributiva italiana. Non eccelle in nessun ambito specifico ma offre solidità nella media. Adatta a chi cerca casa mobile pratica senza budget premium.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>5 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Marca <strong>italiana</strong> storica, fascia media-bassa. Range prezzo usato 2026: <strong>4.500–14.000 €</strong>. Modelli più frequenti: <strong>Sunshine</strong>, <strong>Sunny</strong>. Plus: prezzi accessibili, distribuzione italiana, gamma semplice. Limiti: isolamento standard, meno adatta a uso invernale intensivo.</p>
+        </Tldr>
+
+        <h2>Posizionamento e gamma</h2>
+        <p>Sun Roller occupa la fascia che mancava: <strong>case mobili decenti a prezzi italiani accessibili</strong>. È un'opzione realistica per chi vuole iniziare l'esperienza casa mobile senza budget impegnativo, o per chi cerca seconda casa di vacanza con tetto di spesa.</p>
+        <p>I modelli sono pochi e chiari: <strong>Sunshine</strong> standard 8×4 m, <strong>Sunny</strong> compatto 7×3,5 m. Niente premium, niente all-season specialistico, niente formati maxi. La promessa è "casa mobile italiana decente al giusto prezzo".</p>
+
+        <h2>I 3 checkpoint tecnici per Sun Roller</h2>
+        <ol>
+          <li><strong>Lamiere esterne</strong>: Sun Roller usa lamiere zincate standard. Controlla ammaccature e ossidazione, soprattutto sui modelli pre-2015. Sostituzione lamiera: 500-1.000 € a pezzo</li>
+          <li><strong>Targhetta CE + EN 1647</strong>: come per tutte le marche, deve esserci sul telaio. I Sun Roller pre-2005 a volte ne sono privi: in quel caso alcuni campeggi non accettano la casa</li>
+          <li><strong>Isolamento</strong>: bussa pareti per verificare. Sun Roller standard 60-80 mm (sufficiente per stagione mite), versioni Comfort arrivano a 90 mm</li>
+        </ol>
+
+        <h2>Per chi è la scelta giusta</h2>
+        <ul>
+          <li><strong>Budget aggressivo</strong>, prima esperienza casa mobile</li>
+          <li>Uso primavera-autunno (no inverno intensivo)</li>
+          <li>Famiglia 3-4 persone, vacanza in campeggio italiano</li>
+          <li>Vuoi marca italiana ma senza budget Crippa Concept</li>
+        </ul>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su Sun Roller case mobili" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/marche" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Marche & Modelli →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

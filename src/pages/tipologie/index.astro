@@ -1,0 +1,104 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import ComparatoreTipologie from '~/components/ComparatoreTipologie.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+
+const url = '/tipologie';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile, roulotte, prefabbricata, tiny house: guida 2026 al confronto';
+const description = 'Le 7 tipologie abitative alternative confrontate: casa mobile, roulotte, prefabbricata, bungalow, tiny house, container, yurta. Pro, contro, costi, normativa, per chi è adatta.';
+
+const faq = [
+  { q: 'Casa mobile o roulotte: qual è la differenza?', a: 'La <strong>casa mobile</strong> è una struttura abitativa più grande (20-40 m²), con telaio fisso e ruote per trasporto eccezionale; non si traina con auto, va trasportata su rimorchio professionale. La <strong>roulotte</strong> è più piccola (8-14 m²), trainabile con auto+patente B+E, omologata come veicolo. La casa mobile è "casa che si sposta raramente", la roulotte è "veicolo abitativo che si sposta spesso". Per vacanza lunga o residenza: casa mobile. Per itineranti: roulotte.' },
+  { q: 'Casa mobile o prefabbricata: quale conviene?', a: 'Dipende dall\'uso. La <strong>prefabbricata</strong> (in legno, cemento o muratura industriale) è una <strong>casa</strong> a tutti gli effetti: fissa, con permesso di costruire, durata 40+ anni, utility hub completo, valore immobiliare reale. La <strong>casa mobile</strong> è più economica (10.000-50.000 € contro 60.000-200.000 €), più rapida da installare (giorni vs mesi), spostabile, ma non genera valore immobiliare e ha vita utile 20-25 anni. Conviene casa mobile per vacanza, prefabbricata per prima/seconda casa stabile.' },
+  { q: 'Tiny house o casa mobile: cosa scegliere?', a: 'Tiny house ha <strong>filosofia diversa</strong>: minimalismo estremo, spesso 15-30 m², autosufficienza energetica (pannelli solari, recupero acqua), spesso autocostruita o semi-custom. <strong>Casa mobile</strong> è prodotto industriale standardizzato, dimensioni più ampie, prezzi più chiari (mercato dell\'usato maturo). Costi: tiny house 25.000-90.000 €, casa mobile 6.000-50.000 €. Tiny house ha senso per chi cerca autenticità della scelta minimale; casa mobile per chi cerca soluzione abitativa flessibile a costi controllati.' },
+  { q: 'Container house è una buona alternativa?', a: 'Funziona, ma è una scelta di nicchia. <strong>Container house</strong> (case ottenute da container marittimi modificati) costa 25.000-80.000 € a seconda di dimensione e finiture. Pro: estetica industrial moderna, struttura fortissima, lunga vita (40+ anni). Contro: isolamento da fare ex novo (i container sono metallici, scaldano d\'estate e freddi d\'inverno), permessi spesso simili a una casa permanente, peso elevato (richiede fondazioni). Adatta a chi cerca prima casa low-cost con personalizzazione, NON a chi vuole flessibilità casa mobile.' },
+  { q: 'Bungalow in campeggio è uguale a casa mobile?', a: 'No, sono diversi. Il <strong>bungalow in campeggio</strong> è una struttura fissa in legno (a volte muratura), tipicamente 20-30 m², costruita sulla piazzola e non spostabile. Si compra "diritto d\'uso" della struttura, ma il manufatto resta del campeggio. Vantaggio: prezzi più bassi della casa mobile (5.000-25.000 € per diritto d\'uso 5-10 anni). Limiti: nessuna proprietà reale, non spostabile, vincolato al campeggio specifico.' },
+];
+
+const correlati = [
+  { href: '/tipologie/casa-mobile-vs-roulotte', category: 'Tipologie', title: 'Casa mobile vs roulotte: quale scegliere davvero', excerpt: 'Le differenze tecniche, normative, di costo e di uso. Tabella comparativa e decision matrix.', readTime: '7 min' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Confronti & Tipologie', url: '/tipologie' }]} />
+
+    <header class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Confronti & Tipologie</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Casa mobile, roulotte, prefabbricata, bungalow, tiny house, container, yurta: 7 modi diversi di abitare "fuori dalla casa standard". Ognuno con vantaggi, limiti, normativa e prezzi diversi. Ecco quale fa davvero per te, in tabella e in decisione pratica.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>10 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Per <strong>vacanza in campeggio</strong>: casa mobile. Per <strong>itineranti</strong>: roulotte/camper. Per <strong>prima/seconda casa stabile</strong>: prefabbricata. Per <strong>filosofia minimalista</strong>: tiny house. Per <strong>diritto d'uso a basso costo</strong>: bungalow campeggio. Decisione finale dipende da uso reale + budget + orizzonte temporale + se vuoi proprietà o godimento.</p>
+      </Tldr>
+
+      <ComparatoreTipologie />
+
+      <h2>Cosa pesa nella decisione</h2>
+
+      <h3>1. Il TUO uso reale (non quello che immagini)</h3>
+      <p>Domandati onestamente: quante settimane all'anno la userai davvero? Vacanza estiva? Weekend lunghi? Stagione lunga 6 mesi? Tutto l'anno? La risposta cambia drammaticamente la tipologia giusta. Per &lt;6 settimane/anno la roulotte basta. Per 6-15 settimane casa mobile in campeggio. Per 6+ mesi all'anno casa mobile all-season o prefabbricata.</p>
+
+      <h3>2. Il budget totale (non solo l'acquisto)</h3>
+      <p>Il prezzo di acquisto è solo una parte. Devi aggiungere: spazio dove tenerla (piazzola campeggio, terreno privato), utenze, manutenzione annuale, eventuali permessi. Una <strong>roulotte da 5.000 € + parcheggio gratuito</strong> in 5 anni costa molto meno di <strong>una casa mobile da 15.000 € + piazzola 4.000 €/anno</strong>. Ma offre meno comfort.</p>
+
+      <h3>3. La normativa applicabile alla tua zona</h3>
+      <p>Una tiny house autocostruita su terreno tuo edificabile in Toscana è una storia. La stessa tiny house su agricolo in Veneto è un'altra. <strong>Verifica con il tuo Comune prima di comprare</strong>: dove la metterai e che permessi servono.</p>
+
+      <h3>4. L'orizzonte temporale</h3>
+      <p>Se la pensi per 3-5 anni: scegli soluzione flessibile, rivendibile (casa mobile, roulotte). Se per 10+ anni: investimento in qualità si ripaga (casa mobile premium, prefabbricata). Se per 20-30 anni: prefabbricata o muratura.</p>
+
+      <h2>I 7 scenari più comuni</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Tipologia</th>
+            <th>Range budget</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Vacanza famiglia 4 settimane/anno mare</td><td>Casa mobile in campeggio</td><td>10.000-20.000 €</td></tr>
+          <tr><td>Itineranti, 1-2 mesi/anno</td><td>Roulotte o camper</td><td>5.000-30.000 €</td></tr>
+          <tr><td>Vivere annuale economico</td><td>Casa mobile all-season + piazzola</td><td>20.000-35.000 € + canone</td></tr>
+          <tr><td>Seconda casa stabile in campagna</td><td>Prefabbricata in legno</td><td>60.000-120.000 €</td></tr>
+          <tr><td>Filosofia minimal off-grid</td><td>Tiny house autocostruita</td><td>25.000-60.000 €</td></tr>
+          <tr><td>Casa low-cost personale</td><td>Container house</td><td>30.000-80.000 €</td></tr>
+          <tr><td>Diritto uso campeggio 5 anni</td><td>Bungalow campeggio</td><td>8.000-20.000 €</td></tr>
+        </tbody>
+      </table>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sui confronti tipologici" />
+    </div>
+
+    <section class="mt-24">
+      <h2>Approfondimenti del cluster</h2>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl">
+        {correlati.map((a) => <ArticleCard {...a} />)}
+      </div>
+    </section>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

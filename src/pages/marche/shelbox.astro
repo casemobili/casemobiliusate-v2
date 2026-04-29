@@ -1,0 +1,103 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/marche/shelbox';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Shelbox case mobili usate: l\'italiana storica chiusa nel 2014 (guida 2026)';
+const description = 'Shelbox è la marca italiana storica del settore, chiusa nel 2014 ma con migliaia di esemplari ancora in giro. Storia, modelli iconici, prezzi usato 2026, ricambi e affidabilità.';
+
+const faq = [
+  { q: 'Vale ancora la pena comprare una Shelbox usata?', a: 'Sì, con consapevolezza. <strong>Shelbox</strong> ha prodotto fino al 2014 case mobili italiane di qualità sopra la media: telai robusti, isolamento decente, finiture italiane curate. Le Shelbox 2005-2014 sono ancora valide come acquisto. Limite specifico: <strong>ricambi rari</strong> (l\'azienda è chiusa), bisogna girare con officine specializzate o pezzi compatibili. Considerare 500-1.500 € di buffer extra per eventuali sostituzioni nei prossimi anni.' },
+  { q: 'Dove si trovano le Shelbox usate?', a: 'In tutto il Nord Italia ma soprattutto Veneto, Lombardia, Toscana. Si stima che ci siano ancora <strong>1.500-2.000 Shelbox</strong> attive nei campeggi italiani. Sono spesso in piazzole stabili da 10-15 anni, vendute quando i proprietari vogliono cambiare. Range prezzo usato 2026: 4.500–14.000 €.' },
+  { q: 'Quanto costa una Shelbox 2010-2012 usata?', a: 'Fascia tipica 2026: <strong>5.500–9.000 €</strong> per modelli 2010-2012 in buone condizioni. Si scende a 4.000–5.500 € per modelli con qualche lavoro da fare. Le Shelbox dei buoni anni (2008-2014) tengono il valore meglio della media perché c\'è ancora richiesta di "italianità storica" e qualità di costruzione.' },
+  { q: 'Posso trovare ricambi originali Shelbox?', a: 'Solo parzialmente. Esistono <strong>officine specializzate</strong> in Veneto e Lombardia che hanno magazzini residui di pezzi originali Shelbox (chiedi nel gruppo Facebook Casa Mobili Italia o ai distributori storici). Per pezzi non più disponibili: si lavora su <strong>ricambi compatibili</strong> di altre marche italiane o si fa restauro artigianale (mobili, finiture). Costo medio sostituzione: 30-50% in più rispetto a una marca con ricambi correnti.' },
+  { q: 'Le Shelbox erano davvero migliori della media?', a: 'Mediamente sì, soprattutto i modelli post-2008. Caratteristiche tipiche: <strong>telai pesanti</strong> (acciaio 6 mm contro 4-5 mm di alcuni concorrenti), <strong>finiture italiane curate</strong> (legni veri, non solo laminati), <strong>isolamento sopra la media</strong> (80-100 mm pareti contro 60-80 standard). Negli anni della crisi 2010-2013 hanno semplificato per stare in mercato, e questo ha contribuito alla chiusura.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Marche', url: '/marche' },
+      { name: 'Shelbox', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Marche & Modelli · Scheda</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Shelbox è una storia italiana: marca produttrice di case mobili dagli anni '90 fino al 2014, quando ha chiuso. Lascia in eredità migliaia di unità ancora attive nei campeggi italiani, costruite mediamente meglio della concorrenza estera dell'epoca. Vale ancora la pena comprarne una, con qualche cautela.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>6 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Marca <strong>italiana storica</strong>, chiusa nel 2014. Qualità sopra media (telai robusti, finiture italiane), <strong>1.500-2.000 unità ancora attive</strong> in campeggi italiani. Range prezzo usato 2026: <strong>4.500–14.000 €</strong>. Vale ancora la pena comprare. Caveat: <strong>ricambi rari</strong>, considerare buffer 500-1.500 € per sostituzioni future. Modelli più diffusi: <strong>Family</strong>, <strong>Vacanze 8</strong>.</p>
+        </Tldr>
+
+        <h2>La storia</h2>
+        <p>Shelbox nasce in Veneto negli <strong>anni '90</strong> come produttore di prefabbricati industriali, ed entra nel settore case mobili nei primi 2000. Negli anni d'oro (2005-2010) è una delle 3 marche italiane di riferimento, con costruzione che gioca su <strong>"qualità italiana"</strong>: telai pesanti, finiture in legno vero, isolamento sopra la media settoriale.</p>
+        <p>La crisi 2010-2013 colpisce duramente. Le tre marche italiane (Shelbox, Sun Roller, Crippa Concept) reagiscono diversamente: Crippa Concept sale di gamma e si specializza, Sun Roller scende di prezzo, Shelbox prova entrambe le strade e si trova schiacciata. <strong>Chiude nel 2014</strong>.</p>
+        <p>Lascia in eredità migliaia di esemplari distribuiti soprattutto nel <strong>Nord Italia</strong>: Veneto litorale, Garda, Lombardia, Toscana costa.</p>
+
+        <h2>I modelli più diffusi</h2>
+
+        <h3>Shelbox Family</h3>
+        <p>8×4 m, 2-3 camere, modello standard più frequente. Layout classico italiano (zona giorno aperta, camere in fondo, bagno centrale). Anni 2005-2014. Range prezzo usato 2026: <strong>5.000–11.000 €</strong>.</p>
+
+        <h3>Shelbox Vacanze 8</h3>
+        <p>8×3,5 m, 2 camere, formato leggermente più compatto. Anni 2007-2013. Range prezzo usato 2026: <strong>4.500–9.000 €</strong>.</p>
+
+        <h3>Modelli premium e custom</h3>
+        <p>Negli anni d'oro Shelbox produceva anche modelli premium con finiture su misura (legni speciali, accessori extra). Sono i più rari nell'usato (200-300 unità in giro) e i più richiesti dai collezionisti del settore. Range prezzo usato: <strong>10.000–14.000 €</strong>.</p>
+
+        <h2>I 4 checkpoint specifici per Shelbox</h2>
+        <ol>
+          <li><strong>Telaio</strong>: ottima qualità di base, ma sui modelli 2005-2007 alcuni hanno verniciatura datata che lascia ossidazione. Verifica con cura zona timone e attacchi piazzola.</li>
+          <li><strong>Mobili interni</strong>: i Shelbox originali hanno mobili in legno "vero" (faggio, pino marino) con incastri standard. Possono essere restaurati in 2-3 giorni di lavoro per 800-1.500 €. Se vedi mobili laminati o sostituiti, sono stati cambiati: verifica perché.</li>
+          <li><strong>Infissi</strong>: Shelbox ha usato sia infissi propri (fino 2010) che infissi di terze parti (post 2010). I propri sono ottimi ma rari trovare ricambi; i secondi sono compatibili con marche correnti. Verifica originalità.</li>
+          <li><strong>Documenti</strong>: per Shelbox è cruciale avere il <strong>libretto manutenzione</strong> e tutta la storia precedente. Senza questi documenti, una Shelbox vale 1.000-2.000 € meno (la storia è il suo valore aggiunto).</li>
+        </ol>
+
+        <h2>Vale ancora la pena? Le 3 condizioni</h2>
+        <p>Sì, conviene comprare Shelbox usata se:</p>
+        <ol>
+          <li><strong>Buono stato</strong> verificato con ispezione tecnica</li>
+          <li><strong>Documentazione completa</strong> (libretto + storia manutenzione)</li>
+          <li><strong>Budget extra 500-1.500 €</strong> riservato per eventuali ricambi/restauri nei prossimi 5-10 anni</li>
+        </ol>
+        <p>Se manca anche solo una di queste condizioni, meglio orientarsi su una marca con ricambi correnti (Atlas, Willerby, IRM).</p>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su Shelbox case mobili" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/marche" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Marche & Modelli →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

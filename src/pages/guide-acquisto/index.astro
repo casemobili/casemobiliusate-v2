@@ -1,0 +1,178 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+
+const url = '/guide-acquisto';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Comprare una casa mobile usata: la guida completa all\'acquisto sicuro (2026)';
+const description = 'L\'iter dell\'acquisto sicuro di una casa mobile usata: ispezione, contratto, pagamento, documenti, garanzie. Le 10 truffe più comuni e come riconoscerle in tempo.';
+
+const toc = [
+  { id: 'iter', label: 'L\'iter dell\'acquisto in 7 step' },
+  { id: 'ispezione', label: 'L\'ispezione: la checklist 30 punti' },
+  { id: 'contratto', label: 'Contratto di vendita: cosa ci deve essere' },
+  { id: 'documenti', label: 'I documenti che il venditore deve consegnare' },
+  { id: 'pagamento', label: 'Pagamento sicuro' },
+  { id: 'garanzia', label: 'Garanzia legale e commerciale' },
+  { id: 'truffe', label: 'Le 10 truffe ricorrenti' },
+  { id: 'faq', label: 'Domande frequenti' },
+];
+
+const faq = [
+  { q: 'Posso comprare casa mobile usata da privato senza notaio?', a: 'Sì. La casa mobile è un <strong>bene mobile</strong>, non un immobile: la compravendita avviene per atto privato (carta + firme), senza obbligo di notaio. Documento standard: <strong>contratto di vendita</strong> bilaterale con dati delle parti, descrizione tecnica della casa mobile (numero serie, anno, modello, marca), prezzo, modalità pagamento, dichiarazioni di conformità. Per validità legale, registralo all\'Agenzia delle Entrate (200 € circa) — non obbligatorio ma consigliato per acquisti sopra 5.000 €.' },
+  { q: 'Quali documenti deve consegnarmi il venditore?', a: 'Pacchetto standard: <strong>1)</strong> certificato CE + conformità EN 1647 originale; <strong>2)</strong> libretto manutenzione (se esistente); <strong>3)</strong> certificato pagamento bollo se la casa mobile è targata; <strong>4)</strong> ultime ricevute pagamento piazzola (se in campeggio); <strong>5)</strong> ricevuta ultima revisione caldaia/gas (se gas attivo); <strong>6)</strong> contratto di vendita originale del precedente passaggio (se esistente). Se mancano: chiedi al campeggio o richiedi al produttore se la casa è recente.' },
+  { q: 'Conviene pagare in contanti?', a: 'No, mai. Il <strong>contante è tracciato male</strong> e ti espone a 3 rischi: 1) pagare e non ricevere; 2) limiti antiriciclaggio (sopra 5.000 € sei in zona dichiarazione obbligatoria); 3) nessuna prova di pagamento per eventuali contenziosi. Strumento corretto: <strong>bonifico bancario</strong> con causale dettagliata ("Acquisto casa mobile [marca] [modello] anno [X], serie [Y], da [venditore] a [acquirente] per [prezzo]"). 30% al pre-contratto, 70% alla consegna firmata.' },
+  { q: 'Cosa succede se scopro un difetto dopo l\'acquisto?', a: 'Dipende da chi hai comprato. Da <strong>privato</strong>: garanzia legale 12 mesi su difetti non dichiarati e non rilevabili al momento dell\'acquisto (vizi occulti). Da <strong>dealer professionista</strong>: garanzia legale 24 mesi su tutti i difetti di conformità. Per attivare la garanzia: <strong>contestazione scritta</strong> al venditore entro 8 giorni dalla scoperta del difetto, raccomandata o PEC. Se il venditore non risponde: ricorso al giudice di pace (tipicamente cause sotto 5.000 €) o avvocato.' },
+  { q: 'Esiste un "ricessione di acquisto" come per i contratti online?', a: 'No, non per la casa mobile usata. Il diritto di recesso 14 giorni vale per acquisti online o fuori dal punto vendita, ma <strong>non per beni mobili usati acquistati di persona</strong> dopo ispezione. Significa: una volta firmato il contratto e versato pagamento, sei impegnato. Per questo l\'<strong>ispezione preventiva</strong> e il contratto di vendita ben fatto sono fondamentali.' },
+  { q: 'Posso recuperare i soldi se la casa mobile è stata venduta come "non danneggiata" e invece lo era?', a: 'Sì, in due strade. <strong>1)</strong> Garanzia legale (12-24 mesi a seconda venditore): contestazione scritta + richiesta riparazione/sostituzione/rimborso; <strong>2)</strong> Azione di nullità contratto per <strong>dolo</strong> (truffa) se dimostri che il venditore conosceva il difetto e lo ha nascosto: ricorso a giudice civile, può richiedere 1-3 anni. Importante: avere prove (foto pre-acquisto della casa, contratto con dichiarazione "in buone condizioni", testimoni).' },
+];
+
+const correlati = [
+  { href: '/guide-acquisto/10-truffe-piu-comuni', category: 'Guide Acquisto', title: 'Le 10 truffe più comuni nel mercato delle case mobili usate', excerpt: 'I 10 schemi ricorrenti che vedo ogni anno e come riconoscerli prima di firmare. Casi reali, dettagli concreti.', readTime: '8 min' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Guide all\'Acquisto', url: '/guide-acquisto' }]} />
+
+    <header class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Guide all'Acquisto</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        L'acquisto di una casa mobile usata è un'operazione semplice se sai cosa fare. Ed è una giungla se non lo sai. Ecco l'iter passo-passo, i documenti che devi avere prima di firmare, le 10 truffe ricorrenti, e cosa succede se sbagli.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>13 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-20">
+          <div class="eyebrow mb-3">Indice</div>
+          <ul class="space-y-2 text-sm" style="list-style:none;padding:0">
+            {toc.map((t) => (
+              <li><a href={`#${t.id}`} class="no-underline hover:underline" style="color:var(--color-ink-700)">{t.label}</a></li>
+            ))}
+          </ul>
+          <div class="mt-8">
+            <FbCommunityWidget variant="sidebar" />
+          </div>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-9 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">L'acquisto si fa per <strong>atto privato</strong> (no notaio). Documenti chiave: certificato CE+EN 1647, libretto manutenzione, ricevute piazzola. Pagamento: <strong>solo bonifico</strong>, mai contanti, 30% pre-contratto + 70% consegna. Garanzia legale: 12 mesi da privato, 24 mesi da dealer. Ispezione preventiva imprescindibile (checklist 30 punti).</p>
+        </Tldr>
+
+        <h2 id="iter">L'iter dell'acquisto in 7 step</h2>
+        <ol>
+          <li><strong>Ricerca su 3 marketplace</strong> (casamobileusata.com, occasionecasemobili.it, Subito.it sezione caravan/camper). Anota 10-15 annunci nella tua fascia. Capisci il "vero prezzo medio".</li>
+          <li><strong>Pre-contatto su 3-4 venditori</strong> via email/WhatsApp (per documentazione scritta). Chiedi: anno esatto, dimensioni reali (non da brochure), accessori inclusi, motivo vendita, accessibilità per visione.</li>
+          <li><strong>Visione di persona</strong> sulle 2 più convincenti. Porta una <a href="/strumenti">checklist 30 punti</a>. Sii minuzioso. Foto/video di tutto.</li>
+          <li><strong>Pre-contratto</strong> con caparra confirmatoria (10-20% del prezzo) per fermare la casa mobile mentre fai verifiche finali. Pre-contratto deve essere scritto, datato, con descrizione casa mobile.</li>
+          <li><strong>Verifiche finali</strong>: documenti (CE+EN1647), eventuale ispezione tecnica con tecnico abilitato (200-400 € investiti, ti possono salvare migliaia).</li>
+          <li><strong>Contratto definitivo</strong>: firmato in duplice copia, descrizione tecnica precisa, dichiarazioni venditore (assenza vizi, conformità, ecc.), saldo via bonifico.</li>
+          <li><strong>Consegna</strong>: ritira di persona o organizza trasporto, controlla TUTTO prima di firmare bolla, conserva tutti i documenti.</li>
+        </ol>
+
+        <h2 id="ispezione">L'ispezione: la checklist 30 punti</h2>
+        <p>Sto preparando una <strong>checklist PDF scaricabile</strong> con tutti i 30 punti tecnici da verificare prima dell'acquisto. Sarà disponibile a breve via newsletter. Per ora i punti chiave da non saltare:</p>
+
+        <h3>Esterno</h3>
+        <ul>
+          <li>Tetto: sigillature giunzioni, macchie acqua, foglie nei canali</li>
+          <li>Lamiere/pannelli esterni: ammaccature, ossidazione, graffi profondi</li>
+          <li>Telaio: ossidazione (soprattutto zona timone), verniciatura, deformazioni</li>
+          <li>Ruote: pneumatici (anno produzione, secchezza), mozzi, freni</li>
+          <li>Allacciamenti: rubinetti acqua, prese elettriche, scarico fognatura</li>
+        </ul>
+
+        <h3>Interno</h3>
+        <ul>
+          <li>Pavimento: cammina ovunque, ascolta scricchiolii, controlla cedimenti soprattutto in bagno e cucina</li>
+          <li>Pareti: bussa con nocche su parti diverse (suono "vuoto" indica umidità)</li>
+          <li>Soffitto: macchie, gocciolamenti, fessurazioni</li>
+          <li>Infissi: aperture/chiusure fluide, vetri integri, sigillature</li>
+          <li>Mobili: integri, fissaggi, cassetti che scorrono</li>
+        </ul>
+
+        <h3>Impianti</h3>
+        <ul>
+          <li>Elettrico: prese funzionanti, quadro generale, salvavita, illuminazione tutta</li>
+          <li>Idraulico: rubinetti, scarichi, pressione acqua, scaldabagno</li>
+          <li>Gas (se presente): bombole, cucina, scaldabagno, ultima revisione</li>
+          <li>Riscaldamento: tutti i radiatori scaldano, caldaia funzionante, ultima revisione</li>
+          <li>A/C: accendi, controlla freddo/caldo, rumore compressore</li>
+        </ul>
+
+        <h2 id="contratto">Contratto di vendita: cosa ci deve essere</h2>
+        <p>Elementi obbligatori per un contratto di vendita casa mobile usata valido:</p>
+        <ol>
+          <li><strong>Dati delle parti</strong>: nome, cognome, codice fiscale, indirizzo di residenza di venditore e acquirente</li>
+          <li><strong>Descrizione tecnica casa mobile</strong>: marca, modello, numero serie (lo trovi sulla targhetta CE), anno costruzione, dimensioni, eventuali accessori inclusi</li>
+          <li><strong>Prezzo concordato</strong>: in cifre e in lettere, valuta euro</li>
+          <li><strong>Modalità pagamento</strong>: bonifico bancario su IBAN [X], 30% al pre-contratto, 70% alla consegna firmata (o altre modalità concordate)</li>
+          <li><strong>Data e luogo consegna</strong></li>
+          <li><strong>Dichiarazioni del venditore</strong>: assenza di vincoli (la casa mobile non è sotto sequestro né pignorata), conformità a EN 1647, eventuali vizi noti</li>
+          <li><strong>Documenti consegnati</strong>: elenco di tutto ciò che il venditore consegna con la casa mobile</li>
+          <li><strong>Foro competente</strong>: in caso di controversia (tipicamente città di residenza dell'acquirente)</li>
+          <li><strong>Firma di entrambe le parti</strong>, in duplice copia originale</li>
+        </ol>
+
+        <h2 id="documenti">I documenti che il venditore deve consegnare</h2>
+        <ul>
+          <li><strong>Certificato CE + conformità EN 1647</strong>: documento più importante, attesta che la casa mobile è costruita secondo norme europee</li>
+          <li><strong>Libretto manutenzione</strong>: se esistente, vale 500-2.000 € sul prezzo</li>
+          <li><strong>Certificato bollo + targa</strong> (se targata)</li>
+          <li><strong>Ricevute pagamento piazzola</strong> ultime stagioni (se in campeggio)</li>
+          <li><strong>Ricevute revisione caldaia/gas</strong> (obbligatoria per legge ogni anno se gas attivo)</li>
+          <li><strong>Contratto di vendita precedente</strong> (se la casa è stata già venduta in passato, per tracciare la storia)</li>
+        </ul>
+
+        <h2 id="pagamento">Pagamento sicuro</h2>
+        <p>Solo <strong>bonifico bancario</strong>, mai contanti, mai assegni circolari (rischiosi su importi alti), mai cripto. Dividi in 2 tranche:</p>
+        <ul>
+          <li><strong>30%</strong> al pre-contratto (caparra confirmatoria) — ferma la casa mobile per te</li>
+          <li><strong>70%</strong> alla consegna firmata, dopo aver controllato che la casa mobile è quella concordata e i documenti sono completi</li>
+        </ul>
+        <p>Causale bonifico: <strong>"Acquisto casa mobile [marca] [modello] anno [X], serie [Y]"</strong>. È prova legale dell'operazione.</p>
+
+        <h2 id="garanzia">Garanzia legale e commerciale</h2>
+        <p>La <strong>garanzia legale</strong> è automatica:</p>
+        <ul>
+          <li>Da <strong>privato</strong>: 12 mesi su <em>vizi occulti</em> (difetti che il venditore conosceva o doveva conoscere e che non potevi rilevare al momento dell'acquisto)</li>
+          <li>Da <strong>dealer professionista</strong>: 24 mesi su <em>difetti di conformità</em> (la casa non corrisponde a quanto promesso)</li>
+        </ul>
+        <p>La <strong>garanzia commerciale</strong> è opzionale, offerta volontariamente da alcuni dealer (1-3 anni aggiuntivi a determinate condizioni). Vale solo se è scritta nel contratto.</p>
+
+        <h2 id="truffe">Le 10 truffe ricorrenti</h2>
+        <p>Pubblicato il dettaglio delle 10 truffe più comuni con casi reali in: <strong><a href="/guide-acquisto/10-truffe-piu-comuni">Le 10 truffe più comuni nel mercato delle case mobili usate</a></strong>. Sintesi: foto false (di altra casa), occultamento difetti strutturali, doppio venditore, sparizione dopo caparra, prezzi "troppo bassi" (sempre indicatori), documenti falsificati, "casa in regalo" da pagare solo trasporto (truffa Western Union classica).</p>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti sull'acquisto sicuro" />
+      </div>
+    </div>
+
+    <section class="mt-24">
+      <h2>Approfondimenti</h2>
+      <div class="grid md:grid-cols-2 gap-6 max-w-5xl">
+        {correlati.map((a) => <ArticleCard {...a} />)}
+      </div>
+    </section>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>
