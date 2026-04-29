@@ -1,0 +1,129 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/vivere/arredamento-salvaspazio';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Arredare una casa mobile: idee e soluzioni salvaspazio (guida 2026)';
+const description = 'Come arredare una casa mobile usata: 32 m² ben sfruttati, mobili a doppia funzione, verticalità, IKEA hack, errori da evitare. Idee pratiche con costi reali.';
+
+const faq = [
+  { q: 'Posso usare mobili IKEA standard in una casa mobile?', a: 'Sì, è la soluzione più diffusa. <strong>IKEA</strong> ha la gamma giusta per casa mobile: dimensioni compatte, modularità, prezzi onesti. Linee particolarmente adatte: <strong>IVAR</strong> (scaffali modulari salvaspazio), <strong>BESTÅ</strong> (mobili living componibili), <strong>BRIMNES</strong> (letti contenitore), <strong>HEMNES</strong> (cassettiere). Limiti: alcuni mobili IKEA sono molto pesanti (effetto sui fissaggi al pavimento durante trasporto), preferisci modelli leggeri o con doppia funzione.' },
+  { q: 'Quanto costa arredare una casa mobile da zero?', a: 'Range 2026 per casa mobile 8×4 m completa: <strong>1.500-3.500 €</strong> con IKEA standard (livello base, funzionale), <strong>3.500-7.000 €</strong> con mobili di qualità intermedia (Mondo Convenienza, Maisons du Monde, mix), <strong>7.000-15.000 €</strong> con design e finiture premium. Aggiungere lampade, tessuti, decorazioni: 500-1.500 € extra.' },
+  { q: 'Quali sono i 3 mobili indispensabili?', a: 'In ordine di priorità: <strong>1) divano-letto matrimoniale</strong> (zona giorno + camera ospiti, 600-1.500 €); <strong>2) tavolo pieghevole</strong> a parete o estensibile (zona pranzo che si apre solo quando serve, 200-600 €); <strong>3) cassettiera alta IVAR/HEMNES</strong> (stoccaggio verticale, 200-500 €). Con questi 3 sopravvivi. Il resto si aggiunge gradualmente.' },
+  { q: 'Come isolare visivamente le zone in 32 m²?', a: '4 trucchi che funzionano: <strong>1) tappeti</strong> diversi per zona giorno e zona pranzo (delimita visivamente senza pareti); <strong>2) tendaggi a binario</strong> per dividere camera da zona giorno se serve privacy ospiti; <strong>3) librerie aperte</strong> come divisori parziali (entra luce, divide spazio); <strong>4) colori parete diversi</strong> tra zone (zona pranzo più calda, zona living più neutra).' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Vivere', url: '/vivere' },
+      { name: 'Arredamento', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Vivere in Casa Mobile</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        32 m² ben sfruttati possono sembrare 50. Ecco le 5 regole pratiche di arredamento salvaspazio per casa mobile, gli IKEA hack che funzionano davvero, i 3 mobili indispensabili e gli errori che fanno perdere metri preziosi.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>7 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0"><strong>5 regole salvaspazio</strong>: doppia funzione, verticale prima di orizzontale, no mobili in eccesso, specchi grandi, veranda come stanza in più. <strong>3 mobili indispensabili</strong>: divano-letto, tavolo pieghevole, cassettiera alta. Budget arredamento da zero: <strong>1.500-3.500 €</strong> IKEA, <strong>3.500-7.000 €</strong> qualità media, <strong>7.000-15.000 €</strong> premium.</p>
+        </Tldr>
+
+        <h2>Le 5 regole salvaspazio</h2>
+
+        <h3>1. Doppia funzione</h3>
+        <p>Ogni mobile deve fare almeno 2 cose. Esempi:</p>
+        <ul>
+          <li><strong>Divano-letto</strong>: zona giorno + camera ospiti</li>
+          <li><strong>Tavolo a ribalta a parete</strong>: zona pranzo che sparisce quando non serve</li>
+          <li><strong>Letto contenitore</strong>: dormire + stoccaggio (cambio stagione, valigie)</li>
+          <li><strong>Sgabelli con vano</strong>: seduta + contenitore (scarpe, riviste)</li>
+          <li><strong>Pouf-letto</strong>: relax + posto letto extra</li>
+        </ul>
+
+        <h3>2. Verticale prima di orizzontale</h3>
+        <p>Casa mobile ha 32 m² in pianta ma 2,30-2,50 m di altezza interna. Sfrutta il muro:</p>
+        <ul>
+          <li>Scaffali fino al soffitto (IKEA IVAR è perfetto)</li>
+          <li>Mensole sopra i letti (libri, sveglie, lampade)</li>
+          <li>Ganci dietro le porte (asciugamani, asciugacapelli, accappatoi)</li>
+          <li>Pensili sopra cucina (anche se la cucina ne ha già)</li>
+          <li>Appendiabiti a parete invece di armadio (occupa metà spazio)</li>
+        </ul>
+
+        <h3>3. No mobili in eccesso</h3>
+        <p>Ogni mobile in più riduce sensazione di spazio del 5-10%. Privilegia <strong>aree libere</strong>: una stanza con 2 mobili e tappeto sembra più grande di una stanza con 5 mobili e niente tappeto. Regola pratica: <strong>massimo 5 mobili "grandi"</strong> per zona giorno, <strong>2-3</strong> per camera.</p>
+
+        <h3>4. Specchi grandi</h3>
+        <p>Uno specchio di 1×0,5 m sopra il divano "raddoppia" visivamente lo spazio. Effetto noto in interior design, vale anche per casa mobile. Costo: 50-150 € da IKEA. Investimento di luce/spazio percepito che si ripaga subito.</p>
+
+        <h3>5. Veranda esterna come stanza in più</h3>
+        <p>In stagione mite (aprile-ottobre) la veranda diventa il vero "salotto", liberando l'interno. Investi nell'arredamento veranda con stessa cura dell'interno: divani outdoor, tavolo, illuminazione. Una veranda 12-20 m² ben arredata vale come avere casa di 50 m² invece di 32 m².</p>
+
+        <h2>I 3 mobili indispensabili</h2>
+
+        <h3>Divano-letto matrimoniale</h3>
+        <p>Zona giorno + posto letto ospiti. <strong>IKEA FRIHETEN</strong> (450-650 €) è il modello più adatto: chiusa è 8 cm più stretta di un divano standard, aperta diventa matrimoniale 140×200. Modelli premium: Made.com (800-1.500 €), Maisons du Monde (700-1.200 €).</p>
+
+        <h3>Tavolo pieghevole/estensibile</h3>
+        <p>Zona pranzo che si apre solo quando serve. <strong>IKEA NORDEN</strong> a ribalta (200-300 €): chiuso è una mensola sottile, aperto diventa tavolo per 4-6 persone. <strong>IKEA EKEDALEN</strong> estensibile (300-500 €): da tavolino a tavolo da 6.</p>
+
+        <h3>Cassettiera alta o scaffalatura modulare</h3>
+        <p>Stoccaggio verticale. <strong>IKEA IVAR</strong> (250-450 € per parete intera): sistema modulare in legno, regolabile, robusto. Si carica con cesti, scatole, libri, vestiti piegati. Più capacità di un armadio classico nel 60% dello spazio.</p>
+
+        <h2>Gli IKEA hack che funzionano</h2>
+        <ul>
+          <li><strong>BESTÅ + cassettiere</strong> componibili a parete: trasforma il "vuoto" sopra il divano in storage utile</li>
+          <li><strong>SVALNÄS</strong> sistema scaffali modulari su misura per nicchie irregolari (tipiche delle case mobili)</li>
+          <li><strong>SKÅDIS</strong> pannello forato cucina: porta-utensili verticali invece di cassetti</li>
+          <li><strong>VARIERA</strong> ripiani a U: doppio livello dentro armadi/pensili (spazio raddoppiato)</li>
+          <li><strong>KALLAX</strong> + tavolo: scaffale 4×2 con tavolo sopra = ufficio + storage in 1×0,5 m</li>
+        </ul>
+
+        <h2>Gli errori da evitare</h2>
+        <ol>
+          <li><strong>Mobili troppo grandi</strong>: divano 3 posti che riempie tutta una parete = niente spazio circolazione</li>
+          <li><strong>Tappeti troppo piccoli</strong>: un tappeto 100×150 in una zona giorno fa sembrare la zona ancora più piccola; meglio 160×230 o niente</li>
+          <li><strong>Troppi colori</strong>: 5+ colori in 32 m² fanno sembrare la casa "caotica". Massimo 3 colori principali + 2 accenti</li>
+          <li><strong>Niente illuminazione di scena</strong>: solo luce di sfondo (plafoniera) appiattisce. Aggiungi 3-4 punti luce diversi (lampada terra, lampada da tavolo, abat-jour camera)</li>
+          <li><strong>Mobili pesanti senza fissaggio</strong>: in trasporto possono cadere. Ogni mobile alto 1,5 m+ va fissato a parete con staffa</li>
+        </ol>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti sull'arredamento salvaspazio" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/vivere" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Vivere in Casa Mobile →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

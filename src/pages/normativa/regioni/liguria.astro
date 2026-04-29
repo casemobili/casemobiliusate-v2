@@ -1,0 +1,104 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/normativa/regioni/liguria';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile in Liguria: normativa, costa stretta e zone (2026)';
+const description = 'Casa mobile in Liguria 2026: normativa, vincolo paesaggistico costa, zone (Sestri Levante, Sanremo, Albenga), prassi locali e specificità del territorio stretto.';
+
+const faq = [
+  { q: 'La Liguria ha vincoli paesaggistici stringenti?', a: 'Sì, molto. La <strong>costa ligure</strong> è quasi tutta vincolata paesaggisticamente per via della morfologia (costa stretta, montagna che cade in mare, paesi a picco). I campeggi esistenti hanno autorizzazioni storiche, ma <strong>nuove installazioni fuori campeggio sono praticamente impossibili</strong>. La Riviera di Levante (5 Terre, Portofino) ha vincoli ancora più stringenti.' },
+  { q: 'Dove sono i campeggi in Liguria?', a: 'Concentrazione: <strong>Riviera di Ponente</strong> (Albenga, Sanremo, Imperia, Diano Marina, Finale Ligure), <strong>Riviera di Levante</strong> (Sestri Levante, Lavagna, Levanto, Bonassola). 5 Terre: nessun campeggio per vincoli paesaggistici. Totale ~20 strutture importanti.' },
+  { q: 'Quanto costa una piazzola in Liguria?', a: 'Range 2026: <strong>3.500–5.500 €/anno</strong>. Tra le più alte d\'Italia per la scarsità di spazio costiero. Riviera Ponente medio: 3.500-4.800 €. Riviera Levante (più premium): 4.000-5.500 €. Posizioni "vista mare" possono arrivare a 6.000-7.500 €.' },
+  { q: 'La Liguria è adatta per uso annuale?', a: 'Sì, e ha un vantaggio chiave: <strong>microclima mite</strong>, anche in inverno temperature medie 5-8°C più alte del Nord Italia. Alcuni campeggi liguri sono <strong>aperti tutto l\'anno</strong> (Sanremo, Diano, alcuni Sestri Levante), prassi residenza ottenibile con tempi medi.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Normativa', url: '/normativa' },
+      { name: 'Regioni', url: '/normativa#normative-regionali' },
+      { name: 'Liguria', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Normativa · Regione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Liguria: la regione con la costa più stretta d'Italia, vincoli paesaggistici fortissimi, ma microclima mite che la rende adatta all'uso annuale. Ecco le 2 zone principali (Riviera di Ponente, Riviera di Levante), prezzi piazzola e specificità del territorio.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>6 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Liguria: vincoli paesaggistici fortissimi, costa stretta. Zone d'eccellenza: <strong>Riviera di Ponente</strong> (Albenga, Sanremo, Diano), <strong>Riviera di Levante</strong> (Sestri Levante, Lavagna). 5 Terre: nessun campeggio. ~20 strutture importanti. Costi piazzola: <strong>3.500–5.500 €/anno</strong> (alti per scarsità). Vantaggio: <strong>microclima mite</strong>, alcuni campeggi 12 mesi.</p>
+      </Tldr>
+
+      <h2>Le 2 zone principali</h2>
+
+      <h3>Riviera di Ponente (da Genova a Ventimiglia)</h3>
+      <p>Più strutture, prezzi medio-alti, infrastruttura migliore. Caratteristiche:</p>
+      <ul>
+        <li>~12 campeggi importanti</li>
+        <li>Comuni principali: Albenga, Diano Marina, Sanremo, Imperia, Finale Ligure</li>
+        <li>Costi piazzola: 3.500-4.800 €/anno</li>
+        <li>Microclima mite (Sanremo è una delle località più miti d'Italia)</li>
+        <li>Stagione: 9-12 mesi a seconda del campeggio</li>
+      </ul>
+
+      <h3>Riviera di Levante (da Genova a La Spezia)</h3>
+      <p>Più scenografica, premium, ma con limiti urbanistici importanti. Caratteristiche:</p>
+      <ul>
+        <li>~8 campeggi importanti</li>
+        <li>Comuni principali: Sestri Levante, Lavagna, Levanto, Bonassola</li>
+        <li>Costi piazzola: 4.000-5.500 €/anno</li>
+        <li>5 Terre: <strong>nessun campeggio</strong> (vincoli paesaggistici totali)</li>
+        <li>Stagione: aprile-ottobre standard, alcuni 12 mesi</li>
+      </ul>
+
+      <h2>Vincoli paesaggistici</h2>
+      <p>La Liguria ha vincoli particolarmente stringenti per la sua geografia:</p>
+      <ul>
+        <li><strong>Costa stretta</strong>: la fascia costiera è ridotta (decine di metri in alcuni punti), ogni metro è prezioso e regolato</li>
+        <li><strong>Vincoli paesaggistici</strong>: gran parte della costa è sotto tutela (Codice dei Beni Culturali D.Lgs. 42/2004)</li>
+        <li><strong>5 Terre</strong>: Parco Nazionale + Patrimonio UNESCO, vincoli totali</li>
+        <li><strong>Portofino</strong>: Parco Naturale Regionale, vincoli stringenti</li>
+        <li><strong>Aree Natura 2000</strong>: numerose lungo la costa</li>
+      </ul>
+      <p>Per casa mobile <strong>in campeggio autorizzato</strong>: nessun problema. <strong>Fuori campeggio</strong>: praticamente impossibile per la totalità della costa.</p>
+
+      <h2>Il microclima ligure: vantaggio per uso annuale</h2>
+      <p>La Riviera ligure ha temperature invernali medie 5-8°C più alte del Nord Italia interno (effetto montagne che proteggono dal vento freddo del nord + Mar Ligure mite). Conseguenza: <strong>uso annuale praticabile anche con casa mobile standard</strong> (isolamento 60-80 mm), riscaldamento sufficiente con stufa elettrica/pellet senza bollette astronomiche.</p>
+      <p>Sanremo, Imperia, Diano Marina sono località storicamente abitate da residenti stagionali tutto l'anno. Casa mobile è opzione realistica per pensionati o lavoratori in remote.</p>
+
+      <h2>Le prassi residenza</h2>
+      <p>Le prassi residenza variano per Comune:</p>
+      <ul>
+        <li><strong>Sanremo, Diano Marina, Imperia</strong>: prassi consolidate (lunga tradizione open-air)</li>
+        <li><strong>Sestri Levante, Lavagna</strong>: prassi rodate</li>
+        <li><strong>Comuni minori interni</strong>: dipende dal singolo, può essere più complesso</li>
+      </ul>
+      <p>Tempi medi: 60-90 giorni.</p>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su casa mobile in Liguria" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

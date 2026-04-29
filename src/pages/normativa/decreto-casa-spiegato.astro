@@ -1,0 +1,94 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/normativa/decreto-casa-spiegato';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Il Decreto Casa spiegato: cosa cambia per le case mobili (guida 2026)';
+const description = 'Il Decreto Casa 2024 e Salva Casa 2024-2026: cosa è cambiato davvero per le case mobili in strutture ricettive open-air. Cosa è esentato, cosa no, conseguenze pratiche.';
+
+const faq = [
+  { q: 'Cos\'è il "Decreto Casa"?', a: 'Sotto il nome <strong>"Decreto Casa"</strong> circolano in realtà due provvedimenti distinti: il <strong>D.L. 69/2024 ("Salva Casa")</strong> e disposizioni precedenti specifiche su strutture turistico-ricettive. Insieme hanno introdotto l\'esenzione dal titolo abilitativo edilizio per le case mobili installate in <strong>strutture turistico-ricettive all\'aperto</strong> (campeggi, villaggi turistici, resort).' },
+  { q: 'Quali case mobili sono esentate dal permesso?', a: 'Solo quelle <strong>installate dentro</strong> strutture turistico-ricettive all\'aperto autorizzate. Significa: campeggi, villaggi vacanze, resort open-air, agriturismi con autorizzazione specifica. <strong>Non sono esentate</strong>: case mobili su terreno privato (richiedono permesso di costruire se permanenti), su terreno agricolo (vietate per uso abitativo stabile), in zone vincolate paesaggistiche.' },
+  { q: 'Il Decreto Casa cambia qualcosa sulla residenza?', a: 'No, la residenza segue regole separate (Anagrafe del Comune). Il Decreto Casa ha solo eliminato un livello di adempimenti edilizi nelle strutture ricettive. La residenza in casa mobile resta governata dalle prassi locali del Comune dove si chiede.' },
+  { q: 'Cosa cambia per chi ha già una casa mobile in campeggio?', a: 'In pratica nulla, si tratta di una semplificazione "a monte" per il campeggio (il gestore del campeggio non deve fare iter edilizi specifici per ogni casa mobile installata). Per il proprietario singolo non cambia niente nelle prassi quotidiane. Continui a pagare la piazzola al campeggio, mantieni la casa, ottieni la residenza con prassi standard.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Normativa', url: '/normativa' },
+      { name: 'Decreto Casa', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Normativa & Permessi</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Il "Decreto Casa" è la sintesi giornalistica di un cambiamento normativo importante: dal 2024, le case mobili installate in strutture turistico-ricettive autorizzate non richiedono più titoli abilitativi edilizi specifici. Ecco esattamente cosa significa, cosa cambia in pratica e cosa NO.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>6 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">"Decreto Casa" + Decreto Salva Casa hanno <strong>esentato</strong> le case mobili in strutture ricettive open-air dal titolo abilitativo edilizio. Significa: <strong>in campeggio</strong> nessun permesso. <strong>Su terreno privato</strong>: regole standard non cambiate (permesso di costruire se permanente). <strong>Residenza</strong>: regole non toccate dal decreto, segue prassi Anagrafe del Comune.</p>
+      </Tldr>
+
+      <h2>Il quadro normativo prima del 2024</h2>
+      <p>Prima del 2024, l'installazione di case mobili in campeggio era <strong>area grigia</strong>: alcuni Comuni le considerano "manufatti edilizi" e richiedevano CILA o SCIA al campeggio per l'installazione di ogni singola casa mobile. Altri Comuni le consideravano "beni mobili" inclusi nell'autorizzazione globale del campeggio. Risultato: prassi diverse, contenziosi, sentenze del Consiglio di Stato che oscillavano.</p>
+
+      <h2>Cosa hanno introdotto i decreti</h2>
+      <p>Il <strong>D.L. 69/2024 (Salva Casa)</strong> e disposizioni collegate hanno consolidato il principio: le case mobili installate in <strong>strutture turistico-ricettive all'aperto autorizzate</strong> non sono soggette a titoli abilitativi edilizi specifici. Cosa significa in pratica:</p>
+      <ul>
+        <li>Il <strong>campeggio</strong> ha già la sua autorizzazione globale; le case mobili installate al suo interno sono "incluse" in quell'autorizzazione</li>
+        <li>Il <strong>singolo proprietario</strong> di casa mobile in campeggio non deve fare alcun iter edilizio</li>
+        <li>Le <strong>case mobili esistenti pre-2024</strong> sono regolarizzate automaticamente</li>
+      </ul>
+
+      <h2>Cosa NON è cambiato</h2>
+      <p>Importante chiarezza: il decreto NON ha cambiato:</p>
+      <ul>
+        <li><strong>Casa mobile su terreno privato</strong>: continua a richiedere permesso di costruire se installazione permanente. Conta l'<em>uso reale</em>, non i materiali (sentenze Consiglio di Stato confermano)</li>
+        <li><strong>Casa mobile su terreno agricolo</strong>: rimane vietata come abitazione stabile. Eccezione IAP per uso strumentale</li>
+        <li><strong>Zone vincolate paesaggistiche</strong>: vincoli rimangono. Casa mobile in zona vincolata richiede autorizzazione paesaggistica preventiva</li>
+        <li><strong>Residenza</strong>: regole non toccate. Si dichiara all'Anagrafe del Comune come prima</li>
+        <li><strong>Trasporto e omologazione</strong>: regole del Codice della Strada non modificate</li>
+      </ul>
+
+      <h2>Le sentenze chiave 2024-2026</h2>
+      <p>Sentenze importanti che hanno consolidato l'interpretazione del decreto:</p>
+      <ul>
+        <li><strong>CdS 2024 n. 7102</strong>: il Decreto Casa esenta SOLO le strutture ricettive open-air, non i terreni privati né tantomeno gli agricoli</li>
+        <li><strong>Cassazione penale 2024 n. 12874</strong>: abitare stabilmente in casa mobile su agricolo configura abuso edilizio penalmente rilevante (decreto non cambia questo)</li>
+        <li><strong>TAR Veneto 2025 n. 287</strong>: imprenditore agricolo professionale può installare casa mobile come ricovero strumentale, decreto non cambia eccezione</li>
+      </ul>
+
+      <h2>Cosa fare se hai dubbi</h2>
+      <ol>
+        <li><strong>Casa mobile in campeggio</strong>: nessuna preoccupazione, sei coperto dal decreto</li>
+        <li><strong>Casa mobile su terreno privato</strong>: parla con tecnico abilitato del tuo Comune prima di acquistare/installare</li>
+        <li><strong>Casa mobile su agricolo</strong>: fortemente sconsigliato come abitazione stabile, vedi <a href="/normativa/casa-mobile-terreno-agricolo">guida dedicata</a></li>
+        <li><strong>Casa mobile in zona vincolata</strong>: autorizzazione paesaggistica preventiva, iter lungo</li>
+      </ol>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sul Decreto Casa" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

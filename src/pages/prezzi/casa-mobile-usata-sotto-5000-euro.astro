@@ -1,0 +1,119 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/prezzi/casa-mobile-usata-sotto-5000-euro';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile usata sotto i 5.000 euro: dove cercare e cosa controllare (2026)';
+const description = 'Casa mobile usata sotto i 5.000 €: esistono, ma sono campi minati. Dove cercare, cosa controllare, quanto budget extra mettere via per i lavori, le 4 categorie tipiche.';
+
+const faq = [
+  { q: 'Si trova davvero una casa mobile usata sotto i 5.000 €?', a: 'Sì, ma in 4 scenari ben specifici: <strong>1)</strong> case mobili pre-2008 da ritirare a tuo carico (no trasporto incluso); <strong>2)</strong> case mobili in stato "da rimettere" (lavori 1.500-4.000 € tipici); <strong>3)</strong> ex-noleggio campeggio fine vita (10+ stagioni intensive di uso); <strong>4)</strong> casa mobile in regalo o quasi (proprietario vuole liberare piazzola, urgenza vendita). Sotto i 4.000 € le proposte serie sono rare.' },
+  { q: 'Conviene comprare una casa mobile sotto i 5.000 €?', a: 'Solo in 3 casi: <strong>1)</strong> sai fare lavori (telaio, idraulico, elettrico) o hai un tecnico fidato a tariffa onesta; <strong>2)</strong> è uso secondario o ricreativo (no residenza, no uso intensivo); <strong>3)</strong> hai budget extra di 1.500-4.000 € per lavori prevedibili. <strong>NO se</strong>: è la prima esperienza casa mobile (rischio scoraggiamento), uso intensivo previsto, budget tirato senza riserva.' },
+  { q: 'Cosa controllare prima di comprare una casa mobile cheap?', a: 'I 4 punti che fanno la differenza: <strong>1)</strong> telaio (no ossidazione grave, no deformazioni); <strong>2)</strong> tetto e infiltrazioni (controlla TUTTI i pannelli interni con torcia); <strong>3)</strong> pavimento (cammina ovunque, soprattutto bagno e cucina); <strong>4)</strong> impianto elettrico (deve essere a norma o predisposto a riadattamento). Se uno di questi 4 è compromesso oltre il riparabile, walk away.' },
+  { q: 'Quali rischi corro?', a: 'Rischi tipici: <strong>1)</strong> prendere una casa che vale 1.500 € invece di 4.500 (overpaying su problemi nascosti); <strong>2)</strong> spendere più in lavori che il prezzo iniziale (telaio compromesso = 5.000-8.000 € di rifacimento, peggio che ricomprare); <strong>3)</strong> casa non certificata EN 1647 che il campeggio rifiuta; <strong>4)</strong> documenti incompleti = problemi alla rivendita futura. Mitigazione: ispezione tecnica preventiva (200-400 €) e verifica documenti completa.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Prezzi', url: '/prezzi' },
+      { name: 'Sotto 5.000 €', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Prezzi & Valutazione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Esistono, sì. Ma sono campi minati. Le 4 categorie tipiche della fascia sotto i 5.000 €, dove cercarle, cosa controllare con cura e quale budget extra mettere via per i lavori prevedibili. Per chi sa fare lavori o ha tecnico fidato.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>7 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Esistono, soprattutto in 4 categorie: pre-2008 da ritirare, "da rimettere", ex-noleggio fine vita, regalo/quasi. <strong>Conviene SOLO</strong> se: sai fare lavori, hai budget extra 1.500-4.000 €, uso non intensivo. Verifica imprescindibile: <strong>telaio, tetto, pavimento, impianto elettrico</strong>. Ispezione tecnica preventiva 200-400 € sono ben spesi.</p>
+        </Tldr>
+
+        <h2>Le 4 categorie sotto i 5.000 €</h2>
+
+        <h3>1. Pre-2008 da ritirare</h3>
+        <p>Casa mobile costruita prima del 2008 (Atlas, Burstner, Adria storiche, marche oggi scomparse), in piazzola da 15-20 anni, da prendere "tale e quale". Prezzo tipico: <strong>3.000-5.000 €</strong> + trasporto a tuo carico (1.500-4.000 €). Vantaggio: prezzo basso. Limiti: isolamento minimo, impianti datati, marca spesso senza ricambi correnti.</p>
+        <p>Adatta a: prima esperienza ricreativa, uso 4-6 settimane/anno, vacanza famiglia con budget aggressivo.</p>
+
+        <h3>2. Casa mobile "da rimettere"</h3>
+        <p>Casa mobile 2010-2015, prezzo basso perché ha 1-2 problemi specifici: bagno da rifare, cucina da sostituire, qualche infiltrazione tetto. Prezzo tipico: <strong>3.500-5.000 €</strong> + lavori 1.500-4.000 € = totale 5.000-9.000 € per casa abitabile.</p>
+        <p>Adatta a: chi sa fare lavori (50-100 ore di tempo) o chi ha tecnico fidato a tariffa onesta. Bilancio: stesso costo finale di una casa "in buone condizioni" già pronta, ma soddisfazione di "rifarla a tuo gusto".</p>
+
+        <h3>3. Ex-noleggio fine vita</h3>
+        <p>Case mobili che hanno fatto 10-15 stagioni di noleggio in campeggio (~150-200 settimane di uso totale). Manutenzione regolare ma usura forte: mobili scrostati, pavimento consumato, infissi da revisionare. Prezzo tipico: <strong>3.500-4.800 €</strong> + lavori cosmetici 1.500-2.500 € + pulizia approfondita.</p>
+        <p>Adatta a: budget basso, uso ricreativo non esigente, chi non guarda le finiture estetiche.</p>
+
+        <h3>4. Casa mobile in regalo o quasi</h3>
+        <p>Proprietario deve liberare la piazzola con urgenza (cambio paese, problemi familiari, eredità non gestita). Casa mobile può essere ceduta a 1.000-3.000 €, anche se vale di più. Caso raro ma esistente. Prezzo tipico: <strong>1.000-3.000 €</strong> + trasporto + qualche lavoro.</p>
+        <p>Dove cercare: <strong>gruppo Facebook "Casa Mobili Italia"</strong>, contatti diretti con campeggi storici (chiedi al direttore se conoscono "casi di urgenza"), bacheche fisiche dei campeggi. Su marketplace standard queste opportunità durano 1-3 giorni.</p>
+
+        <h2>Dove cercare</h2>
+        <ul>
+          <li><strong>Gruppo Facebook "Casa Mobili Italia"</strong>: la fonte numero 1. Annunci "urgenza vendita" frequenti, contatto diretto privato</li>
+          <li><strong>Subito.it sezione caravan/camper</strong>: filtra "fino 5.000 €", trovi sempre 50-80 annunci attivi (di cui 20-30 seri)</li>
+          <li><strong>Direzioni campeggi storici</strong>: chiedi al direttore di campeggi del Garda/Cavallino/Toscana se conoscono "case mobili da liberare velocemente"</li>
+          <li><strong>Aste fallimentari</strong>: qualche tribunale italiano vende case mobili pignorate o in fallimento, prezzi spesso sotto mercato. Ricerca su asteonlinegiudiziarie.it</li>
+        </ul>
+
+        <h2>I 4 controlli imprescindibili</h2>
+
+        <h3>1. Telaio</h3>
+        <p>Cammina sotto la casa mobile (con torcia). Cerca: ossidazione diffusa (vernice scrostata + ruggine attiva), deformazioni del telaio (incrocia con livella o filo a piombo), zone di saldatura crepate. Una casa mobile con telaio compromesso vale 0: lo riparare costa più di ricomprarla.</p>
+
+        <h3>2. Tetto e infiltrazioni</h3>
+        <p>All'interno, controlla TUTTI i pannelli del soffitto con torcia. Macchie marroni, gocce in formazione, pannelli "che suonano vuoti". All'esterno, sigillature delle giunzioni del tetto (spesso silicone scaduto). Rifacimento tetto: 2.000-5.000 €.</p>
+
+        <h3>3. Pavimento</h3>
+        <p>Cammina con peso normale ovunque. Punti critici: bagno (cedimenti = 1.500-3.000 € rifacimento), cucina (sotto frigo e lavandino), corridoio. Suono "schiocco" o "sponge" indica umidità interna pavimento.</p>
+
+        <h3>4. Impianto elettrico</h3>
+        <p>Quadro generale: deve avere salvavita differenziale (le case pre-2010 a volte non lo hanno). Prese tutte funzionanti. Se l'impianto è completamente datato, rifacimento a norma 1.500-3.000 €.</p>
+
+        <h2>Il budget realistico complessivo</h2>
+        <p>Per casa mobile sotto 5.000 €, calcola sempre il <strong>costo totale</strong>:</p>
+        <ul>
+          <li>Prezzo casa: 3.000-5.000 €</li>
+          <li>Trasporto: 1.500-3.500 € (se da spostare)</li>
+          <li>Lavori prevedibili: 1.500-4.000 €</li>
+          <li>Riserva imprevisti: 500-1.500 €</li>
+        </ul>
+        <p><strong>Totale: 6.500-14.000 €</strong> per avere casa mobile abitabile e funzionante. Se non hai questo budget complessivo, sali a una casa "in buone condizioni" già pronta.</p>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su casa mobile sotto 5.000 €" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/prezzi" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Prezzi & Valutazione →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

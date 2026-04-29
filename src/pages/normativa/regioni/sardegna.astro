@@ -1,0 +1,110 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/normativa/regioni/sardegna';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile in Sardegna: normativa, costa e traghetto (guida 2026)';
+const description = 'Casa mobile in Sardegna 2026: regime regionale, zone (Cala Gonone, San Teodoro, Pula, Stintino), costo traghetto trasporto, prassi residenza e vincoli marini.';
+
+const faq = [
+  { q: 'La Sardegna ha normativa speciale per case mobili?', a: 'La Sardegna è <strong>Regione a Statuto Speciale</strong>: ha competenza esclusiva su urbanistica e turismo. Le regole effettive per case mobili sono simili al continente, ma con prassi locali e <strong>vincoli marini</strong> più stringenti. La fascia costiera (300 m da battigia) è quasi sempre vincolata: nuove installazioni fuori campeggio sono molto restrittive.' },
+  { q: 'Quanto costa portare una casa mobile in Sardegna?', a: 'Trasporto continentale + traghetto: <strong>3.500–6.500 €</strong> totali. Esempio Veneto-Olbia: 4.000-5.000 € (2.500-3.500 € continentale + 1.500-2.500 € traghetto). Genova-Porto Torres più conveniente per Nord Sardegna. Civitavecchia-Olbia per Sardegna Nord-Est. Per trasporti eccezionali (oltre 2,55 m di larghezza) il traghetto può rifiutare il carico se nave non attrezzata: verifica prima.' },
+  { q: 'Dove sono i campeggi in Sardegna?', a: 'Concentrazione principale: <strong>costa nord-est</strong> (San Teodoro, Cala Gonone, Orosei), <strong>costa sud</strong> (Pula, Chia, Villasimius), <strong>costa nord-ovest</strong> (Stintino, Castelsardo, Alghero). Più sporadici interno o sud-est. Totale ~25-30 strutture importanti.' },
+  { q: 'Quanto costa una piazzola in Sardegna?', a: 'Range 2026: <strong>2.500–4.500 €/anno</strong>. Costa nord-est (San Teodoro premium): 3.500-5.000 €. Cala Gonone e Orosei: 3.000-4.500 €. Costa sud: 2.500-4.000 €. Stintino: 3.000-4.500 €. Sotto la media nazionale per stagione 8 mesi (aprile-novembre standard).' },
+  { q: 'Posso ottenere la residenza in Sardegna?', a: 'Sì, in Comuni costieri principali (San Teodoro, Cala Gonone, Pula) le prassi sono consolidate. Vantaggio specifico: clima mite, alcuni campeggi aperti tutto l\'anno (raro ma esiste, Pula e Cala Gonone hanno strutture open year-round). Tempi: 60-120 giorni medi.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Normativa', url: '/normativa' },
+      { name: 'Regioni', url: '/normativa#normative-regionali' },
+      { name: 'Sardegna', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Normativa · Regione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Sardegna come la Sicilia: Regione a Statuto Speciale, regole simili al continente ma vincoli marini specifici e fattore traghetto da considerare nei costi. Ecco le 4 zone principali, prezzi piazzola, prassi residenza, costi reali traghetto.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>6 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Sardegna: regime speciale, vincoli marini stringenti, fattore traghetto. Zone d'eccellenza: <strong>costa nord-est</strong> (San Teodoro, Cala Gonone), <strong>costa sud</strong> (Pula, Chia), <strong>costa nord-ovest</strong> (Stintino). 25-30 strutture importanti. Costi piazzola: <strong>2.500–5.000 €/anno</strong>. Trasporto + traghetto: <strong>3.500-6.500 €</strong>.</p>
+      </Tldr>
+
+      <h2>Le 3 zone principali</h2>
+
+      <h3>Costa nord-est (San Teodoro, Cala Gonone, Orosei)</h3>
+      <p>La concentrazione più alta dei campeggi sardi. Caratteristiche:</p>
+      <ul>
+        <li>~12 campeggi importanti</li>
+        <li>Costi piazzola: 3.000-5.000 €/anno (San Teodoro premium)</li>
+        <li>Stagione: aprile-novembre standard</li>
+        <li>Spiagge tropicali tra le più famose d'Italia (Cala Brandinchi, Spiaggia La Cinta)</li>
+        <li>Clima mite, alcuni campeggi aperti tutto l'anno</li>
+      </ul>
+
+      <h3>Costa sud (Pula, Chia, Villasimius, Costa Rei)</h3>
+      <p>Caratteristiche:</p>
+      <ul>
+        <li>~10 campeggi importanti</li>
+        <li>Costi piazzola: 2.500-4.000 €/anno</li>
+        <li>Stagione: aprile-ottobre</li>
+        <li>Spiagge ampie, ambiente meno affollato del nord-est</li>
+        <li>Vicinanza Cagliari per servizi/aeroporto</li>
+      </ul>
+
+      <h3>Costa nord-ovest (Stintino, Castelsardo, Alghero)</h3>
+      <p>Caratteristiche:</p>
+      <ul>
+        <li>~8 campeggi importanti</li>
+        <li>Costi piazzola: 3.000-4.500 €/anno</li>
+        <li>Stagione: aprile-ottobre</li>
+        <li>Stintino: La Pelosa (una delle spiagge più famose)</li>
+        <li>Alghero: aeroporto + città storica</li>
+      </ul>
+
+      <h2>Il fattore traghetto nel trasporto</h2>
+      <p>La Sardegna è un'isola: ogni casa mobile portata dal continente richiede traghetto. Costi 2026:</p>
+      <ul>
+        <li><strong>Genova-Porto Torres</strong>: 1.200-1.800 € (camion + casa mobile)</li>
+        <li><strong>Genova-Olbia</strong>: 1.300-1.900 €</li>
+        <li><strong>Civitavecchia-Olbia</strong>: 1.000-1.500 €</li>
+        <li><strong>Civitavecchia-Cagliari</strong>: 1.200-1.800 €</li>
+        <li><strong>Livorno-Olbia</strong>: 1.000-1.500 €</li>
+      </ul>
+      <p>Per <strong>trasporto eccezionale</strong> (oltre 2,55 m larghezza), aggiungi 30-50% e verifica prima che la nave specifica accetta il carico. Alcune navi piccole non accettano larghezze oltre 3 m: la ditta trasportatore conosce le navi giuste.</p>
+
+      <h2>Vincoli specifici</h2>
+      <ul>
+        <li><strong>Fascia costiera 300 m da battigia</strong>: vincoli paesaggistici nazionali + regionali. Casa mobile in zona vincolata fuori campeggio: praticamente impossibile</li>
+        <li><strong>Aree Natura 2000</strong>: numerose in Sardegna (Asinara, Maddalena, Sulcis-Iglesiente, ecc.). Permessi quasi mai concessi</li>
+        <li><strong>Riserve marine</strong> (Capo Carbonara, Tavolara, Asinara): vincoli specifici sulla movimentazione</li>
+        <li><strong>Zone vulcaniche/sismiche</strong>: assenti (Sardegna ha sismicità molto bassa, vantaggio rispetto a continente)</li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su casa mobile in Sardegna" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

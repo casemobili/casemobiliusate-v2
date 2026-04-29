@@ -1,0 +1,136 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/prezzi/listino-argus-modelli';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Listino argus case mobili usate per modello e anno (2026)';
+const description = 'Listino prezzi indicativi per i 10 modelli più diffusi in Italia (Atlas Excelsior, Willerby Westmorland, IRM Super Mercure, O\'Hara 1064, Burstner Marina), per anno di costruzione.';
+
+const faq = [
+  { q: 'Cos\'è il "listino argus" per le case mobili?', a: 'È un listino prezzi indicativo per modello e anno, simile al listino "argus" usato in Francia per le auto usate. Per le case mobili in Italia non esiste un listino ufficiale, ma noi abbiamo costruito una <strong>tabella di riferimento</strong> incrociando dati da casamobileusata.com, occasionecasemobili.it, Subito.it sezione caravan/camper, più benchmarks da contatti diretti con dealer specializzati. La tabella va presa come <strong>riferimento orientativo</strong>, non come prezzo fisso.' },
+  { q: 'Perché modelli diversi della stessa marca hanno prezzi diversi?', a: 'Una marca ha tipicamente <strong>3-4 gamme</strong>: entry, standard, premium. Atlas: Vacation (entry) → Excelsior (standard) → Image (recente) → Debonair (premium). Willerby: Vacation (entry) → Westmorland (standard) → Lyndhurst (premium) → Lodge (uso annuale). IRM: gamma standard vs all-season. Differenze prezzo nuovo: 30-50% tra entry e premium. Differenze usato: simili ma più compresse.' },
+  { q: 'Come uso questa tabella per trattare il prezzo?', a: 'Tre passi: <strong>1)</strong> trovi il modello e anno della casa mobile che ti interessa nella tabella; <strong>2)</strong> partendo dal valore mediano della fascia, aggiusti per condizioni (+/- 15-25%), accessori (+5-15%), location (+/- 10%); <strong>3)</strong> confronti con il prezzo richiesto: se è entro il 10% del tuo valore stimato è ragionevole, oltre 15% serve trattare. La tabella ti dà la "verità di mercato" indipendente dal venditore singolo.' },
+  { q: 'I prezzi sono validi anche per il sud Italia?', a: 'Generalmente sì, ma considera 5-10% in meno per zone con domanda più bassa (Sicilia continente lontano, Calabria, Puglia interna). I prezzi sono <strong>medi nazionali</strong> calibrati su Nord-Centro Italia (dove è il 75% del mercato). Sardegna fa caso a sé per via del traghetto.' },
+];
+
+const tabella = [
+  { modello: 'Atlas Excelsior', dim: '8×4 m', anno: '2010-2014', fascia: '7.500–11.000 €' },
+  { modello: 'Atlas Excelsior', dim: '8×4 m', anno: '2015-2019', fascia: '12.000–17.000 €' },
+  { modello: 'Atlas Excelsior', dim: '8×4 m', anno: '2020-2024', fascia: '15.500–22.000 €' },
+  { modello: 'Atlas Debonair', dim: '10×4 m', anno: '2014-2018', fascia: '15.000–22.000 €' },
+  { modello: 'Atlas Debonair', dim: '10×4 m', anno: '2019-2024', fascia: '20.000–28.000 €' },
+  { modello: 'Willerby Westmorland', dim: '8×4 m', anno: '2012-2017', fascia: '10.000–15.000 €' },
+  { modello: 'Willerby Westmorland', dim: '8×4 m', anno: '2018-2024', fascia: '14.000–22.000 €' },
+  { modello: 'Willerby Lyndhurst', dim: '10×4 m', anno: '2015-2024', fascia: '20.000–32.000 €' },
+  { modello: 'Willerby Lodge (gamma all-season)', dim: 'varie', anno: '2018-2024', fascia: '24.000–38.000 €' },
+  { modello: 'IRM Super Mercure', dim: '8×3,7 m', anno: '2010-2014', fascia: '7.000–10.000 €' },
+  { modello: 'IRM Super Mercure', dim: '8×3,7 m', anno: '2015-2019', fascia: '10.000–14.000 €' },
+  { modello: 'IRM Super Mercure', dim: '8×3,7 m', anno: '2020-2024', fascia: '13.000–18.000 €' },
+  { modello: 'IRM all-season', dim: 'varie', anno: '2018-2024', fascia: '15.000–25.000 €' },
+  { modello: "O'Hara 1064", dim: '10,6×4 m', anno: '2014-2018', fascia: '14.000–20.000 €' },
+  { modello: "O'Hara 1064", dim: '10,6×4 m', anno: '2019-2024', fascia: '18.000–30.000 €' },
+  { modello: "O'Hara 834", dim: '8,3×4 m', anno: '2015-2024', fascia: '9.000–18.000 €' },
+  { modello: 'Burstner Marina', dim: '8×4 m', anno: '2012-2024', fascia: '5.500–17.000 €' },
+  { modello: 'Crippa Concept Cosmopolitan', dim: '10×4 m', anno: '2018-2024', fascia: '22.000–40.000 €' },
+  { modello: 'Crippa Concept Madagascar', dim: '8×4 m', anno: '2018-2024', fascia: '18.000–32.000 €' },
+  { modello: 'Adria Aviva', dim: '7,5×3,5 m', anno: '2012-2024', fascia: '4.500–14.000 €' },
+  { modello: 'Sun Roller Sunshine', dim: '8×4 m', anno: '2010-2024', fascia: '4.500–14.000 €' },
+  { modello: 'Shelbox Family', dim: '8×4 m', anno: '2005-2014', fascia: '5.000–11.000 €' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Prezzi', url: '/prezzi' },
+      { name: 'Listino argus', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Prezzi & Valutazione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Quanto vale davvero la tua Atlas Excelsior 2018, la Willerby Westmorland 2015, l'IRM Super Mercure 2020? Ecco il listino di riferimento per i 10 modelli più diffusi in Italia, con range per fascia d'anno e indicazioni su come usare i numeri in trattativa.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>9 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Tabella prezzi per <strong>10 modelli</strong> più diffusi in Italia × 3 fasce di anno. Range per casa mobile in <strong>buone condizioni</strong>, accessori standard (veranda, A/C, mobili inclusi). Per condizioni eccezionali +15-25%, per condizioni mediocri -15-25%. Per zone Sud Italia -5-10%. Tabella <strong>orientativa</strong>, non listino ufficiale.</p>
+      </Tldr>
+
+      <h2>La tabella di riferimento</h2>
+      <div class="overflow-x-auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Modello</th>
+              <th>Dimensione</th>
+              <th>Anno</th>
+              <th>Range prezzo 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tabella.map((row) => (
+              <tr>
+                <td>{row.modello}</td>
+                <td>{row.dim}</td>
+                <td>{row.anno}</td>
+                <td><strong>{row.fascia}</strong></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Come usare questi numeri in trattativa</h2>
+      <ol>
+        <li><strong>Trova il tuo modello</strong> nella tabella, scegli la fascia anno corretta (verifica targhetta sul telaio)</li>
+        <li><strong>Parti dal valore mediano</strong> della fascia (es. Atlas Excelsior 2018 → fascia 12.000-17.000 → mediana 14.500 €)</li>
+        <li><strong>Aggiusta per condizioni</strong>: ottimali +15-25%, mediocri -15-25%, da rivedere -25-40%</li>
+        <li><strong>Aggiungi accessori non standard</strong>: veranda chiusa premium +1.500-3.000 €, climatizzazione inverter +800-1.500 €, casetta accessoria +500-1.500 €</li>
+        <li><strong>Considera la location</strong>: piazzola premium (vista mare, Garda) +5-15%, zone Sud Italia -5-10%</li>
+        <li><strong>Confronta con il prezzo richiesto</strong>: entro 10% del tuo valore = ragionevole, 10-20% sopra = trattare, 20%+ sopra = walk away o sotto-trattare</li>
+      </ol>
+
+      <h2>Tre esempi pratici</h2>
+
+      <h3>Esempio 1: Willerby Westmorland 2017 in Lago di Garda</h3>
+      <p>Tabella: 10.000-15.000 €. Mediana: 12.500 €. Aggiusti: condizioni buone (+0%), veranda chiusa standard (+2.000), Garda premium (+5%) = <strong>~15.000 €</strong>. Se il venditore chiede 16.500 €, sei nel range alto: trattabile a 15.000-15.500 €.</p>
+
+      <h3>Esempio 2: IRM Super Mercure 2014 in Sicilia</h3>
+      <p>Tabella: 7.000-10.000 €. Mediana: 8.500 €. Aggiusti: condizioni mediocre (-15%), Sicilia (-7%), no accessori = <strong>~6.700 €</strong>. Se il venditore chiede 9.000 €, è 35% sopra: walk away o offerta secca a 7.000 €.</p>
+
+      <h3>Esempio 3: O'Hara 1064 del 2022, Cavallino-Treporti</h3>
+      <p>Tabella: 18.000-30.000 €. Mediana: 24.000 €. Aggiusti: condizioni ottimali (+20%), veranda premium (+2.500), Cavallino premium (+8%), 2 bagni del 1064 standard = <strong>~31.500 €</strong>. Se il venditore chiede 32.000 €, è in linea: trattabile a 30.500-31.000 €.</p>
+
+      <h2>Limiti e avvertenze sulla tabella</h2>
+      <ul>
+        <li>I dati sono <strong>aggregati medi</strong>, il singolo caso può discostarsi del 15-20%</li>
+        <li>I prezzi <strong>fluttuano stagionalmente</strong>: alta stagione richiesta (marzo-luglio) = +5-10%, bassa stagione (ottobre-gennaio) = -5-10%</li>
+        <li>La tabella è <strong>per casa mobile in piazzola</strong>: se la casa è da prendere "fuori piazzola" e da trasportare, sottrai 1.000-3.000 € (la piazzola pronta vale tanto)</li>
+        <li>Per modelli rari o premium (Crippa Concept top, Willerby Lodge alta gamma) la fascia può andare oltre il range tabellare</li>
+        <li>I prezzi sono <strong>aggiornati a aprile 2026</strong>: rivediamo la tabella ogni 6 mesi (dimezza la velocità di obsolescenza tipica)</li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sul listino prezzi" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

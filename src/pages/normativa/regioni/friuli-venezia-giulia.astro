@@ -1,0 +1,110 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/normativa/regioni/friuli-venezia-giulia';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile in Friuli-Venezia Giulia: normativa e zone (2026)';
+const description = 'Casa mobile in Friuli-Venezia Giulia 2026: regime regionale (statuto speciale), Lignano Sabbiadoro come capitale open-air, prassi residenza e zone alpine.';
+
+const faq = [
+  { q: 'Il Friuli-Venezia Giulia ha statuto speciale?', a: 'Sì, è <strong>Regione a Statuto Speciale</strong> con competenza esclusiva su urbanistica e turismo. Le regole effettive per case mobili sono comparabili al continente, ma con prassi locali sviluppate per via della tradizione open-air (Lignano Sabbiadoro è uno dei poli storici italiani).' },
+  { q: 'Lignano Sabbiadoro è davvero la "capitale" del Friuli per case mobili?', a: 'Sì, è la concentrazione più alta della regione. <strong>~15 campeggi importanti</strong> nel Comune di Lignano e dintorni (Lignano Pineta, Lignano Riviera, Lignano Sabbiadoro). Tradizione open-air ininterrotta dagli anni \'60. Prassi residenza consolidate. Costi piazzola: 3.500-5.500 €/anno.' },
+  { q: 'Esistono campeggi anche in zona alpina del Friuli?', a: 'Sì, ma pochi e stagionali. Le aree montane (Tarvisio, Sappada, Forni di Sopra) hanno 5-7 campeggi piccoli, prevalentemente estivi (giugno-settembre). Alcune strutture aprono anche per stagione sci (dicembre-marzo) ma con poche piazzole permanenti per case mobili. Adatte a uso vacanza estiva o sportivo, non a residenza stabile.' },
+  { q: 'Quanto costa una piazzola in Friuli?', a: 'Range 2026: <strong>2.500–5.500 €/anno</strong>. Lignano premium: 4.500-5.500 €. Lignano standard: 3.500-4.500 €. Grado e Trieste: 3.000-4.000 €. Aree montane: 2.000-3.000 € (stagionale). Aree interne: 2.000-3.000 €.' },
+  { q: 'È facile ottenere la residenza in Friuli?', a: 'Sì in Lignano e Comuni costieri (Marano Lagunare, Grado), prassi consolidate per la tradizione open-air. Tempi medi: 30-60 giorni (simili al Veneto). Comuni piccoli interni o montani: prassi meno rodate, tempi 60-120 giorni.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Normativa', url: '/normativa' },
+      { name: 'Regioni', url: '/normativa#normative-regionali' },
+      { name: 'Friuli-Venezia Giulia', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Normativa · Regione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Il Friuli-Venezia Giulia è Regione a Statuto Speciale con competenza autonoma su urbanistica e turismo. Lignano Sabbiadoro è uno dei poli storici dell'open-air italiano, prassi residenza rodate. Ecco le zone principali, prezzi piazzola e specificità.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>5 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Friuli-Venezia Giulia: <strong>Regione Statuto Speciale</strong>. Capitale open-air: <strong>Lignano Sabbiadoro</strong> (15 campeggi). Altre zone: <strong>Grado, Trieste, costa</strong>. Aree montane (Tarvisio, Sappada): pochi campeggi stagionali. Costi piazzola: <strong>2.500–5.500 €/anno</strong>. Prassi residenza consolidate sui Comuni costieri.</p>
+      </Tldr>
+
+      <h2>Le 3 zone principali</h2>
+
+      <h3>Lignano Sabbiadoro</h3>
+      <p>La concentrazione più alta della regione, polo open-air storico. Caratteristiche:</p>
+      <ul>
+        <li>~15 campeggi importanti tra Lignano Sabbiadoro, Lignano Pineta e Lignano Riviera</li>
+        <li>Costi piazzola: 3.500-5.500 €/anno</li>
+        <li>Tradizione open-air ininterrotta dagli anni '60</li>
+        <li>Spiaggia sabbiosa lunga, infrastruttura turistica completa</li>
+        <li>Stagione 7-9 mesi, alcuni 12 (per residenti stabili)</li>
+        <li>Prassi residenza consolidate</li>
+      </ul>
+
+      <h3>Costa friulana (Grado, Marano Lagunare, Trieste)</h3>
+      <p>Caratteristiche:</p>
+      <ul>
+        <li>~8 campeggi importanti</li>
+        <li>Costi piazzola: 3.000-4.500 €/anno</li>
+        <li>Stagione: aprile-ottobre standard</li>
+        <li>Atmosfera mitteleuropea (Grado), turisti internazionali</li>
+        <li>Trieste: campeggi più rari, ambiente urbano vicino</li>
+      </ul>
+
+      <h3>Aree montane (Tarvisio, Sappada, Forni di Sopra)</h3>
+      <p>Caratteristiche:</p>
+      <ul>
+        <li>~5-7 campeggi piccoli</li>
+        <li>Costi piazzola: 2.000-3.000 €/anno (stagionale)</li>
+        <li>Stagione: giugno-settembre + alcuni dicembre-marzo per sci</li>
+        <li>Adatte a vacanza estiva o sportiva, non a residenza stabile</li>
+        <li>Casa mobile deve avere isolamento maggiorato per inverno</li>
+      </ul>
+
+      <h2>Specificità friulane</h2>
+      <ul>
+        <li><strong>Statuto Speciale</strong>: la Regione ha competenza autonoma in urbanistica e turismo. Le regole effettive sono simili al continente, ma le prassi locali sono spesso più snelle</li>
+        <li><strong>Lignano è un caso modello</strong>: tradizione open-air consolidata, residenti stabili da decenni, Comune collaborativo</li>
+        <li><strong>Vicinanza confine</strong>: Tarvisio è al confine con Austria e Slovenia, alcuni residenti tedeschi/austriaci con casa mobile in Friuli</li>
+        <li><strong>Aree alpine</strong>: vincoli paesaggistici parchi naturali (Dolomiti Friulane, Prealpi Giulie) limitano nuove installazioni fuori campeggio</li>
+        <li><strong>Isolamento richiesto</strong>: in zona alpina (anche solo Tarvisio, 750 m s.l.m.) inverno duro, serve casa mobile all-season</li>
+      </ul>
+
+      <h2>Le prassi residenza</h2>
+      <p>Tipiche per Lignano Sabbiadoro:</p>
+      <ol>
+        <li>Dichiarazione residenza all'Anagrafe del Comune</li>
+        <li>Verifica dimora del vigile entro 45 giorni</li>
+        <li>Tempi medi: 30-60 giorni (simili al Veneto)</li>
+      </ol>
+      <p>Comuni costieri minori (Grado, Marano): prassi simili. Comuni interni o montani: tempi più lunghi (60-120 giorni), può servire insistere.</p>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su casa mobile in Friuli-Venezia Giulia" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>
