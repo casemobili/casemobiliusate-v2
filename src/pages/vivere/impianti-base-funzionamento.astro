@@ -1,0 +1,156 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/vivere/impianti-base-funzionamento';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Impianti casa mobile: come funzionano davvero (guida 2026)';
+const description = 'Impianti casa mobile 2026: elettrico 220V/12V, idraulico, gas GPL/metano, scarichi, riscaldamento. Schemi base, problemi comuni, costi.';
+
+const faq = [
+  { q: 'L\'impianto elettrico è 220V come una casa o 12V come un camper?', a: '<strong>Casa mobile in campeggio</strong>: prevalentemente 220V come casa (allaccio rete tramite contatore campeggio). Alcune case mobili hanno anche un secondario 12V per luci principali (utile per autonomia parziale, ma raro nell\'uso stanziale). <strong>Camper o roulotte</strong>: 12V principale + adattatore 220V quando in campeggio. La differenza è importante perché gli elettrodomestici da casa mobile sono 220V standard (frigorifero, lavatrice), quelli da camper sono 12V/gas.' },
+  { q: 'Quanti kW di potenza posso usare in casa mobile?', a: 'Tipicamente <strong>3 kW</strong> (uguali a contatore casa standard 220V monofase) ma molti campeggi limitano a <strong>2 kW</strong> per piazzola per ridurre costi infrastruttura. Implica: <strong>NON</strong> uso simultaneo di forno + lavatrice + condizionatore + scaldabagno (sommi 6-8 kW = scatto contatore). Strategia: usa elettrodomestici "in serie" non in parallelo. Verifica con direttore campeggio i kW della tua piazzola PRIMA di firmare.' },
+  { q: 'Gas GPL o gas metano?', a: 'Dipende dal campeggio. <strong>GPL in bombole</strong> (15-20 kg): più diffuso nei campeggi, autonomia gestita dal proprietario casa mobile. Costo bombola: 60-90 € ogni 2-4 mesi (uso stagionale leggero). <strong>Metano da rete</strong>: solo nei campeggi premium con tubazioni, contatore individuale. Costo: 150-300 €/anno secondo consumo. Vantaggi metano: comodità (no cambio bombola), costo unitario inferiore. Vantaggio GPL: indipendenza, possibile in qualsiasi campeggio.' },
+  { q: 'Come funziona lo smaltimento reflui?', a: 'In campeggio: <strong>collegamento diretto alla rete fognaria</strong> del campeggio. Casa mobile ha tubo di scarico fisso (PVC 50-100 mm) che si collega a pozzetto piazzola. Niente serbatoio "grigio/nero" come camper. Su privato senza rete: <strong>fossa Imhoff</strong> dedicata + sub-irrigazione autorizzata ARPA (costo 2.500-6.000 € impianto). Senza autorizzazione fossa: abusivismo + inquinamento ambientale.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Vivere', url: '/vivere' },
+      { name: 'Impianti base', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Vivere · Impianti</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        La casa mobile non è camper né casa: gli impianti sono ibridi. Conoscerli evita errori comuni e spese inutili. Ecco come funzionano elettrico, idraulico, gas e scarichi — con i problemi più frequenti per ognuno.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>9 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Impianti casa mobile: <strong>elettrico 220V</strong> come casa (limite 2-3 kW), <strong>gas GPL bombole</strong> o <strong>metano da rete</strong> in campeggi premium, <strong>idraulico standard</strong> con allaccio acqua potabile, <strong>scarichi</strong> diretti a fognatura campeggio. Su terreno privato serve fossa Imhoff autorizzata. Conoscere i limiti = evitare scatti contatore, malfunzionamenti gas, sanzioni ambientali.</p>
+      </Tldr>
+
+      <h2>Impianto elettrico (220V monofase)</h2>
+
+      <h3>Come è fatto</h3>
+      <p>La casa mobile riceve corrente da una <strong>presa industriale CEE</strong> (16A o 32A) collegata al contatore della piazzola. Cavo di alimentazione tipico: 3×2,5 mm² o 3×4 mm² (a seconda della potenza disponibile). Quadro elettrico interno con: interruttore generale, salvavita differenziale 30 mA (obbligatorio), magnetotermici per circuiti separati (luci, prese, scaldabagno).</p>
+
+      <h3>Limiti di potenza</h3>
+      <ul>
+        <li><strong>2 kW</strong>: limite frequente nei campeggi medi (riducono per non sovraccaricare la rete del campeggio in alta stagione). Non puoi usare contemporaneamente: forno + lavatrice + condizionatore</li>
+        <li><strong>3 kW</strong>: standard "tipo casa", presente in campeggi premium. Permette uso normale tipo casa con attenzione</li>
+        <li><strong>4-6 kW</strong>: solo in alcune piazzole premium estese, costo extra</li>
+      </ul>
+
+      <h3>Problemi comuni</h3>
+      <ul>
+        <li><strong>Scatti frequenti del salvavita</strong>: causa più comune scaldabagno difettoso. Stacca scaldabagno e prova → se scatti spariscono, sostituisci scaldabagno</li>
+        <li><strong>Tensione bassa la sera</strong>: alta stagione = molti consumatori = caduta tensione fino a 200V (anziché 220V). Frigorifero soffre, condizionatore inefficiente. Soluzione: stabilizzatore tensione (60-150 €) o accordo con direttore campeggio</li>
+        <li><strong>Cavi esterni usurati</strong>: il cavo dalla presa CEE alla casa mobile si deteriora dopo 5-8 anni (sole, vento, calpestamento). Sostituisci proattivamente</li>
+      </ul>
+
+      <h2>Impianto idraulico</h2>
+
+      <h3>Acqua potabile in entrata</h3>
+      <p>Allaccio diretto alla rete idrica del campeggio tramite tubo flessibile alimentare (1/2" o 3/4"). Pressione standard: 2-4 bar. Casa mobile ha tubazioni interne in <strong>PEX</strong> (polietilene reticolato) o <strong>multistrato</strong>, materiali plastici resistenti a corrosione e inverno (con scaricamento totale).</p>
+
+      <h3>Scaldabagno e acqua calda</h3>
+      <p>Tipicamente <strong>scaldabagno elettrico</strong> 30-80 litri (autonomia 2-3 docce). Tempo riscaldamento da freddo: 60-90 min. In casa mobile premium: <strong>scaldabagno a gas istantaneo</strong> (acqua calda illimitata). In casa mobile recente: <strong>caldaia combinata</strong> per riscaldamento + acqua calda.</p>
+
+      <h3>Scarichi</h3>
+      <p>Tubo unico in <strong>PVC 50-100 mm</strong> raccoglie acque grigie (lavandini, doccia) e nere (WC). Si collega a pozzetto piazzola del campeggio. Pendenza minima 1-2%. Presenza di sifoni in ogni scarico per evitare risalita odori.</p>
+
+      <h3>Problemi comuni</h3>
+      <ul>
+        <li><strong>Scarico lento o intasato</strong>: capelli, residui sapone. Trattamento mensile bicarbonato + aceto preventivo</li>
+        <li><strong>Odore fognatura</strong>: sifone secco (se non usato a lungo) o danneggiato. Verifica e ripristina acqua nel sifone</li>
+        <li><strong>Tubo gelato in inverno</strong>: causa più comune di danni gravi. Prevenzione: svuotamento totale + valvole drenaggio aperte</li>
+        <li><strong>Pressione bassa</strong>: alta stagione, molti utilizzatori. Soluzione: pompa autoclave casa mobile (200-400 € + installazione)</li>
+      </ul>
+
+      <h2>Impianto gas (GPL o metano)</h2>
+
+      <h3>GPL in bombole</h3>
+      <p>Standard nei campeggi medi. Bombola 15-20 kg posta esternamente in cassetta gas dedicata (mai dentro la casa per sicurezza). Tubi di alimentazione conformi UNI EN 1949 (gas mobile), regolatore di pressione integrato, valvola di sicurezza.</p>
+      <ul>
+        <li>Costo bombola 15 kg: 30-45 €</li>
+        <li>Bombola 20 kg: 40-55 €</li>
+        <li>Autonomia uso stagionale leggero (cucina + scaldabagno): 2-4 mesi</li>
+        <li>Autonomia uso intensivo (anche riscaldamento): 1-2 settimane</li>
+      </ul>
+
+      <h3>Metano da rete</h3>
+      <p>Solo campeggi premium con infrastruttura tubazioni dedicata. Allaccio simile a casa: contatore individuale, fattura mensile/bimestrale del campeggio.</p>
+      <ul>
+        <li>Costo annuale uso stagionale: 150-300 €</li>
+        <li>Costo annuale uso continuativo: 400-800 €</li>
+        <li>Vantaggi: nessun cambio bombola, costo unitario inferiore</li>
+      </ul>
+
+      <h3>Problemi comuni</h3>
+      <ul>
+        <li><strong>Fiamma debole/discontinua</strong>: fine bombola GPL o regolatore difettoso (15-30 € sostituzione)</li>
+        <li><strong>Odore gas</strong>: emergenza! Chiudi rubinetto principale, ventila, NON accendere luci/fiamme, chiama gestore campeggio. Se persiste, vigili del fuoco (115)</li>
+        <li><strong>Verifica gas biennale</strong>: obbligo DM 37/2008. Tecnico abilitato, 60-100 €. Multa 1.000-3.000 € se omessa</li>
+      </ul>
+
+      <h2>Riscaldamento</h2>
+
+      <h3>Tipologie disponibili</h3>
+      <ul>
+        <li><strong>Convettori elettrici</strong>: economici (50-150 € l\'uno) ma costosi in uso (1-2 kW). Adatti a casa mobile mediterraneo, NON a uso annuale alpino</li>
+        <li><strong>Stufa a gas (GPL/metano)</strong>: efficienza alta, autonomia. 200-600 € installata</li>
+        <li><strong>Stufa a legna/pellet</strong>: solo casa mobile predisposta con canna fumaria certificata. 800-2.000 €. Autorizzazione campeggio necessaria</li>
+        <li><strong>Caldaia combinata gas</strong>: standard casa mobile premium, riscaldamento + acqua calda. 1.500-3.500 € installata</li>
+        <li><strong>Pompa di calore aria-aria</strong>: il condizionatore può fare anche riscaldamento (modalità inverter). Efficienza ottima fino a 0°C esterno, scarsa sotto -5°C</li>
+      </ul>
+
+      <h2>Aria condizionata e ventilazione</h2>
+      <p>Tipicamente split inverter da 9.000-12.000 BTU. Installazione interno+esterno con tubazione gas refrigerante. Costo: 600-1.500 € + installazione 200-400 €. Manutenzione: pulizia filtri ogni 30-45 giorni di uso, ricarica gas ogni 5-7 anni (60-100 €). Il condizionatore inverter è anche pompa di calore (riscaldamento).</p>
+
+      <h2>Sicurezza e obblighi normativi</h2>
+      <ul>
+        <li><strong>Salvavita differenziale 30 mA</strong>: obbligatorio nel quadro elettrico</li>
+        <li><strong>Impianto a regola d\'arte (DM 37/2008)</strong>: dichiarazione di conformità per impianti elettrico, gas, idraulico</li>
+        <li><strong>Verifica gas biennale</strong>: obbligo legge, tecnico abilitato</li>
+        <li><strong>Estintore</strong>: consigliato (anche se non sempre obbligatorio), polvere ABC 6 kg, 30-50 €</li>
+        <li><strong>Rilevatore fumo</strong>: consigliato ma non obbligatorio per casa mobile (lo è per casa). 15-40 €</li>
+        <li><strong>Rilevatore CO (monossido di carbonio)</strong>: consigliato per case mobili con stufe a gas/legna. 30-60 €</li>
+      </ul>
+
+      <h2>Quando chiamare il tecnico</h2>
+      <ul>
+        <li>Modifiche all\'impianto elettrico (nuovi punti luce, prese)</li>
+        <li>Sostituzione caldaia/scaldabagno gas</li>
+        <li>Verifica gas biennale obbligatoria</li>
+        <li>Installazione condizionatore</li>
+        <li>Installazione stufa a legna/pellet (canna fumaria certificata)</li>
+        <li>Sospetto perdita gas o malfunzionamento elettrico</li>
+        <li>Casa mobile vecchia (15+ anni) → revisione completa impianti utile</li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su impianti casa mobile" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

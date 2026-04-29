@@ -1,0 +1,217 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/guide-acquisto/sopralluogo-checklist';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Sopralluogo casa mobile usata: checklist completa (guida 2026)';
+const description = 'Sopralluogo casa mobile usata 2026: 40 punti da controllare, foto da scattare, segnali di allarme, domande al venditore. Strumenti utili e tempi.';
+
+const faq = [
+  { q: 'Quanto tempo dura un sopralluogo serio?', a: '<strong>1.5-2.5 ore</strong> per un sopralluogo accurato. Una visita di 30 minuti = sopralluogo "turistico" che lascia scoperti i problemi seri (umidità, struttura, impianti). Nelle 2 ore: 30 minuti esterno (tetto, sotto-pianale, sigilli, infissi), 60 minuti interno (impianti, soffitti, pavimenti, mobili, bagno), 30 minuti documenti + intervista venditore. Vai con orario fisso, non a fine giornata (luce naturale necessaria per ispezione tetto).' },
+  { q: 'Quali strumenti devo portare?', a: 'Strumenti essenziali (totale 30-50 €): <strong>1)</strong> torcia LED potente (almeno 500 lumen), per ispezione sotto-pianale e angoli scuri; <strong>2)</strong> umidometro economico (15-30 € su Amazon) per misurare umidità pareti e pavimenti; <strong>3)</strong> metro flessibile 5m + livella; <strong>4)</strong> smartphone con app livella + macchina fotografica; <strong>5)</strong> blocco e penna per checklist; <strong>6)</strong> guanti da lavoro per controlli sotto la casa. Opzionali: termocamera economica per individuare ponti termici (80-200 €), boroscopio per tubazioni interne (40-80 €).' },
+  { q: 'Quando dovrei rinunciare all\'acquisto durante il sopralluogo?', a: '5 segnali di "no go" assoluti: <strong>1)</strong> macchie umidità diffuse pareti o soffitto (rischio struttura compromessa); <strong>2)</strong> pavimento che cede sotto i piedi (telaio degradato); <strong>3)</strong> odore intenso muffa o ammoniaca (problemi nascosti gravi); <strong>4)</strong> impianto elettrico visibilmente fai-da-te (cavi volanti, prese aggiunte male); <strong>5)</strong> mancanza totale di documentazione (libretto, atto acquisto venditore, certificazioni). Anche solo uno di questi giustifica rinuncia o sconto del 30-50%.' },
+  { q: 'Devo portare un esperto con me?', a: 'Non sempre necessario per casa mobile sotto 15.000 €, ma raccomandato per: <strong>1)</strong> primo acquisto in assoluto (non hai esperienza); <strong>2)</strong> casa mobile sopra 25.000 €; <strong>3)</strong> casa mobile vecchia (15+ anni); <strong>4)</strong> dubbi specifici su impianti, struttura. Costo perito tecnico: <strong>200-500 €</strong> per sopralluogo + relazione. Vale la pena: scopre problemi che tu non vedi, può abbattere prezzo del 10-30%, ti tutela legalmente. Per case mobili sotto 10.000 €: il costo perito può essere sproporzionato, sopralluogo accurato fai-da-te basta.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Guide acquisto', url: '/guide-acquisto' },
+      { name: 'Sopralluogo checklist', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Guide acquisto · Sopralluogo</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Il sopralluogo è il momento in cui decidi se 18.000 € spesi torneranno in 5 anni di vacanze felici o in 5.000 € di interventi imprevisti. Una checklist da 40 punti, 2 ore di tempo, strumenti per 50 € totali. Il modo migliore per non rimpiangere l\'acquisto.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>11 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Sopralluogo casa mobile usata = <strong>40 punti</strong>, <strong>2 ore</strong>, <strong>strumenti per 30-50 €</strong>. Aree critiche: <strong>tetto, sigilli, struttura sotto, impianti, umidità</strong>. Foto sistematica di tutto. <strong>5 segnali di no go</strong> = rinuncia o sconto 30-50%. Per acquisti &gt;25k €: vale la pena perito (200-500 €). Sotto 15k €: sopralluogo fai-da-te accurato basta.</p>
+      </Tldr>
+
+      <h2>Prima del sopralluogo: preparazione</h2>
+      <ul>
+        <li><strong>Orario</strong>: mattino o primo pomeriggio (ore 9-15) per luce naturale forte. Mai sera o tempo coperto pesante (problemi nascosti)</li>
+        <li><strong>Stagione</strong>: dopo pioggia recente meglio (vedi se ci sono infiltrazioni "fresche"). Inverno meglio di estate (caldo cela problemi gas, freddo evidenzia difetti isolamento)</li>
+        <li><strong>Strumenti</strong>: torcia LED 500+ lumen, umidometro 15-30 €, metro 5 m + livella, smartphone, blocco+penna, guanti</li>
+        <li><strong>Documenti da chiedere prima</strong>: foto d\'epoca, libretto manutenzione, atto acquisto venditore, fatture interventi recenti, eventuale certificato CE</li>
+        <li><strong>Tempo</strong>: blocca minimo 2 ore con il venditore. Se ti dice "30 minuti basta", sospetta</li>
+      </ul>
+
+      <h2>Esterno (30 minuti)</h2>
+
+      <h3>Tetto (10 min)</h3>
+      <p>Sali sul tetto solo se sicuro (chiedi scaletta, no se piove). Se non puoi salire, ispeziona da terra con torcia + foto zoom smartphone.</p>
+      <ul>
+        <li>☐ Sigilli camini, antenne, lucernari: integri o crepati?</li>
+        <li>☐ Lamiera o membrana copertura: ammaccature, ruggine, deformazioni?</li>
+        <li>☐ Grondaie: pulite o piene di foglie? (foglie indicano manutenzione trascurata)</li>
+        <li>☐ Lucernari: tenuta perfetta? Apri uno e controlla guarnizione</li>
+        <li>☐ Eventuali toppe/riparazioni "fai-da-te" visibili: campanello d\'allarme</li>
+      </ul>
+
+      <h3>Pareti esterne (10 min)</h3>
+      <ul>
+        <li>☐ Pannelli laterali: integri, no rigonfiamenti (segnale infiltrazione interna)</li>
+        <li>☐ Sigilli porte e finestre: continui, no crepe</li>
+        <li>☐ Vernici e finiture: scolorimento normale o decadenza grave?</li>
+        <li>☐ Punti di giunzione tra pannelli: sigilli buoni</li>
+        <li>☐ Numero di serie/telaio visibile e leggibile (verifica corrisponde ai documenti)</li>
+      </ul>
+
+      <h3>Sotto-pianale e telaio (10 min)</h3>
+      <p>Critica. Spesso ignorato dal compratore non esperto.</p>
+      <ul>
+        <li>☐ Telaio metallico: ruggine? Quanto estesa? (ruggine localizzata = ok, ruggine diffusa = telaio compromesso)</li>
+        <li>☐ Pianale (lamiera sotto): integro, no fori, no deformazioni</li>
+        <li>☐ Tubazioni gas, acqua, elettrico esterne: in ordine, ben fissate, no sollevamenti</li>
+        <li>☐ Ruote (se presenti): pneumatici scaduti? Cerchi integri?</li>
+        <li>☐ Plinti o appoggi di sostegno: stabili, no cedimenti</li>
+      </ul>
+
+      <h2>Interno (60 minuti)</h2>
+
+      <h3>Impressione generale (5 min)</h3>
+      <ul>
+        <li>☐ Odore: muffa, ammoniaca, gas → no go assoluto</li>
+        <li>☐ Luminosità: tutte le luci accese funzionano</li>
+        <li>☐ Ordine generale: casa abitata e curata o trascurata?</li>
+      </ul>
+
+      <h3>Pavimenti (10 min)</h3>
+      <ul>
+        <li>☐ Cammina lentamente in tutti gli ambienti: cedimenti, scricchiolii anomali, zone "molli"?</li>
+        <li>☐ Punti vicino bagno, cucina, porta ingresso (zone più sollecitate)</li>
+        <li>☐ Tipologia pavimento: PVC linoleum (basso costo, durata limitata) o laminato/parquet (qualità superiore)</li>
+        <li>☐ Misuratore umidità sui punti critici (vicino sanitari): &lt;15% ok, 15-25% attenzione, &gt;25% problema serio</li>
+      </ul>
+
+      <h3>Soffitti e pareti (15 min)</h3>
+      <ul>
+        <li>☐ Macchie umidità sui soffitti: NEMMENO una piccola dovrebbe esserci. Una macchia = infiltrazione attiva = problema strutturale</li>
+        <li>☐ Crepe nei muri: sottili (cosmetici) o larghe (strutturali)?</li>
+        <li>☐ Misuratore umidità sulle pareti: pareti esterne sopra 18% = problema</li>
+        <li>☐ Angoli stanze: muffa nera (più facile a vedere)? Soprattutto bagno e cucina</li>
+        <li>☐ Apri tutti gli armadi a muro e controlla retro pareti (zone "nascoste")</li>
+      </ul>
+
+      <h3>Bagno (10 min)</h3>
+      <p>Punto critico. Concentrazione di acqua + umidità.</p>
+      <ul>
+        <li>☐ WC funzionante (tira acqua, controlla riempimento serbatoio)</li>
+        <li>☐ Doccia: apri acqua calda+fredda, controlla pressione, scarico</li>
+        <li>☐ Lavandino: scarico fluido, no perdite sotto sifone</li>
+        <li>☐ Pareti doccia: sigilli intatti? Muffe negli angoli?</li>
+        <li>☐ Soffitto bagno: macchie umidità (qui ne troverai con probabilità)</li>
+        <li>☐ Ventilazione meccanica: funziona? (se assente, accertati che ci sia almeno finestra)</li>
+        <li>☐ Caldaia/scaldabagno: anno installazione (chiedi), funzionamento</li>
+      </ul>
+
+      <h3>Cucina (5 min)</h3>
+      <ul>
+        <li>☐ Frigorifero: si accende, fa freddo, no ghiaccio eccessivo</li>
+        <li>☐ Piano cottura: tutti i fuochi accendono</li>
+        <li>☐ Cappa aspirante: aspira (mette mano sotto)?</li>
+        <li>☐ Lavandino: scarico fluido, no perdite</li>
+        <li>☐ Pensili: stabili, ante allineate</li>
+      </ul>
+
+      <h3>Camere e soggiorno (10 min)</h3>
+      <ul>
+        <li>☐ Letti: doghe stabili, materassi accettabili o da sostituire</li>
+        <li>☐ Armadi: ante allineate, ripiani stabili</li>
+        <li>☐ Tavolo+sedie soggiorno: stabili</li>
+        <li>☐ Tutti i divani aperti (se trasformabili in letto): meccanismo funziona</li>
+        <li>☐ Tende: presenti o da sostituire</li>
+      </ul>
+
+      <h3>Impianti (5 min)</h3>
+      <ul>
+        <li>☐ Quadro elettrico: salvavita 30 mA presente, magnetotermici tutti integri</li>
+        <li>☐ Prese: prova 5-6 prese a caso con caricabatterie smartphone (funzionano?)</li>
+        <li>☐ Bombola gas o allaccio metano: posizionato correttamente, no sospetti perdite</li>
+        <li>☐ Aria condizionata: si accende, fa freddo (in estate) o caldo (in inverno)</li>
+      </ul>
+
+      <h2>Documenti e intervista venditore (30 minuti)</h2>
+
+      <h3>Documenti da vedere</h3>
+      <ul>
+        <li>☐ Carta identità + codice fiscale venditore</li>
+        <li>☐ Atto di acquisto originale del venditore (catena di proprietà)</li>
+        <li>☐ Libretto manutenzione casa mobile</li>
+        <li>☐ Eventuale certificato CE (per case mobili dopo 1996)</li>
+        <li>☐ Verifica gas più recente (deve essere &lt;2 anni)</li>
+        <li>☐ Fatture interventi rilevanti recenti (tetto, impianti, mobili)</li>
+        <li>☐ Eventuale dichiarazione conformità impianti</li>
+      </ul>
+
+      <h3>Domande chiave al venditore</h3>
+      <ol>
+        <li>"Da quanti anni la possiede?" (più di 10 = fedele, &lt;3 = sospetta, perché vuole vendere?)</li>
+        <li>"Perché vende?" (motivazione genuina vs evasiva)</li>
+        <li>"Quanti mesi all\'anno la usa?" (uso intensivo o sporadico)</li>
+        <li>"Ha mai avuto infiltrazioni?" (risposta sincera = punto a favore)</li>
+        <li>"Quali interventi ha fatto negli ultimi 5 anni?"</li>
+        <li>"Ha la verifica gas in regola?"</li>
+        <li>"Il subentro piazzola con il direttore campeggio è già concordato?"</li>
+        <li>"Il prezzo include o esclude accessori esterni? (dehor, BBQ, mobili da giardino)"</li>
+        <li>"Esistono pendenze con campeggio (piazzola arretrata) o terzi?"</li>
+        <li>"Posso parlare con il direttore del campeggio prima di firmare?" (un venditore serio dice di sì)</li>
+      </ol>
+
+      <h2>Foto da scattare (sempre)</h2>
+      <p>Foto sistematica = prova in caso di problemi futuri. Scatta:</p>
+      <ul>
+        <li>Esterno: 4 lati + tetto + sotto-pianale (8-10 foto)</li>
+        <li>Numero di serie/telaio (zoom)</li>
+        <li>Ogni stanza dall\'angolo: pavimento + pareti + soffitto (4-5 foto per stanza)</li>
+        <li>Quadro elettrico aperto</li>
+        <li>Bombola gas e allacci</li>
+        <li>Caldaia/scaldabagno e relativa targhetta</li>
+        <li>Eventuali macchie, danni, problemi notati (anche se pensi siano piccoli)</li>
+      </ul>
+
+      <h2>I 5 segnali di no go assoluto</h2>
+      <ol>
+        <li><strong>Macchie umidità diffuse</strong>: pareti, soffitti, pavimenti. Anche piccole sono spia di problemi seri</li>
+        <li><strong>Pavimento che cede</strong>: telaio o sottofondo degradati, intervento di ricostruzione 5-15.000 €</li>
+        <li><strong>Odore intenso muffa o ammoniaca</strong>: problema strutturale grave nascosto</li>
+        <li><strong>Impianto elettrico visibilmente fai-da-te</strong>: cavi volanti, prese aggiunte male, salvavita assente</li>
+        <li><strong>Mancanza totale documentazione</strong>: nessun libretto, nessun atto venditore, nessuna fattura → casa mobile probabilmente di provenienza dubbia</li>
+      </ol>
+
+      <h2>Dopo il sopralluogo</h2>
+      <ul>
+        <li>Casa "tutto ok": procedi a fase contratto. Vedi <a href="/guide-acquisto/contratto-compravendita-modello">la guida contratto</a></li>
+        <li>Casa "qualche problema minore": negozia sconto 5-15% per coprire interventi necessari</li>
+        <li>Casa "problemi importanti ma sanabili": negozia sconto 20-40% e fatti fare preventivi specifici prima di firmare</li>
+        <li>Casa "no go": rinuncia. Non lasciarti convincere da venditore aggressivo. La prossima casa mobile esiste sempre</li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sul sopralluogo casa mobile" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

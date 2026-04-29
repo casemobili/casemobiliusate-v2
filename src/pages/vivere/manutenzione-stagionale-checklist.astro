@@ -1,0 +1,148 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/vivere/manutenzione-stagionale-checklist';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Manutenzione stagionale casa mobile: checklist 4 stagioni (2026)';
+const description = 'Manutenzione casa mobile 2026: checklist primavera, estate, autunno, inverno. Tetto, sigilli, impianti, gas, ruote. Tempi, costi e errori da evitare.';
+
+const faq = [
+  { q: 'Quanto costa la manutenzione annuale di una casa mobile?', a: 'Stima realistica 2026: <strong>400-800 €/anno</strong> per casa mobile usata in buone condizioni. Voci principali: <strong>1)</strong> ispezione tetto + sigilli (100-200 € biennale); <strong>2)</strong> revisione impianti (100-150 € annuale); <strong>3)</strong> manutenzione condizionatore (60-100 €); <strong>4)</strong> verifica gas (60-100 € biennale obbligatoria); <strong>5)</strong> piccoli interventi (sostituzione guarnizioni, lampadine, batterie). Casa mobile vecchia (15+ anni): aggiungi 200-500 €/anno per usura accelerata.' },
+  { q: 'Posso fare manutenzione da solo o serve un tecnico?', a: 'Mix. Da solo: pulizia tetto, controllo sigilli visivi, sostituzione filtri condizionatore, controllo guarnizioni infissi, pulizia esterna. Tecnico obbligatorio: <strong>verifica gas biennale</strong> (DM 37/2008, multa 1.000-3.000 € se omessa), <strong>impianti elettrici</strong> per modifiche (ma controllo ok da soli), <strong>sostituzione caldaia/scaldabagno</strong>, <strong>antincendio</strong> se in zona soggetta. Per casa mobile in campeggio molti gestori offrono pacchetti manutenzione 250-450 €/anno (inclusivo verifiche obbligatorie).' },
+  { q: 'Quando è il momento giusto per chiudere casa mobile per inverno?', a: 'Tipicamente <strong>fine ottobre/inizio novembre</strong> nelle zone con stagione standard (Veneto, Toscana, costa romagnola). Operazioni essenziali: <strong>1)</strong> svuotamento totale impianto idraulico (rischio gelo); <strong>2)</strong> chiusura gas; <strong>3)</strong> pulizia frigorifero + porta socchiusa per evitare muffe; <strong>4)</strong> protezione esterna con telo o copertura specifica; <strong>5)</strong> controllo finale infiltrazioni e umidità. Per zone alpine o continentali rigide: chiusura ottobre. Per zone mediterranee miti (Sicilia, Sardegna sud, Calabria): non sempre necessaria chiusura totale.' },
+  { q: 'L\'umidità è il problema più grave?', a: 'Sì, in assoluto. <strong>L\'umidità</strong> è la prima causa di danni gravi alla casa mobile (muffe, marciume strutturale, cortocircuiti, salute degli inquilini). Cause: <strong>1)</strong> infiltrazioni dal tetto o sigilli; <strong>2)</strong> condensa interna in inverno (no ventilazione + riscaldamento intermittente); <strong>3)</strong> mancanza di deumidificatori in zone umide (costa adriatica, padana). Soluzione preventiva: <strong>1)</strong> ispezione tetto annuale; <strong>2)</strong> ricambio aria ogni giorno anche in inverno; <strong>3)</strong> deumidificatore elettrico in inverno per casa abitata; <strong>4)</strong> sale antiumido in casa chiusa da ottobre a marzo.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Vivere', url: '/vivere' },
+      { name: 'Manutenzione stagionale', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Vivere · Manutenzione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        La casa mobile invecchia bene se la curi, male se la trascuri. 4 controlli stagionali fanno la differenza tra una casa che dura 25 anni e una che ne fa 12. Checklist completa con tempi, costi e errori comuni.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>11 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Manutenzione casa mobile = <strong>4 controlli stagionali</strong> + <strong>2 obblighi normativi</strong> (verifica gas biennale, controllo impianti). Costo annuale: <strong>400-800 €</strong> (più 200-500 € se casa &gt;15 anni). Voce critica: <strong>umidità e infiltrazioni</strong> (primo killer di casa mobile). Tempi: 4-8 ore/anno fai-da-te + 1-2 visite tecnico.</p>
+      </Tldr>
+
+      <h2>Primavera: riapertura (marzo-aprile)</h2>
+      <p>Operazioni alla riapertura dopo chiusura invernale:</p>
+
+      <ul>
+        <li><strong>Apertura ventilazione</strong>: spalanca finestre 2-3 ore per ricambio aria totale</li>
+        <li><strong>Controllo umidità interna</strong>: ricerca tracce di condensa, muffe, odori. Se presenti, deumidificatore elettrico per 24-48 ore</li>
+        <li><strong>Ispezione visiva tetto</strong>: sali sul tetto (se accessibile in sicurezza) e controlla: sigilli camini, antenne, lucernari. Cerca crepe nei sigilli, foglie accumulate, danni invernali</li>
+        <li><strong>Apertura impianto idraulico</strong>: ricarica acqua, apri rubinetti, controlla perdite</li>
+        <li><strong>Apertura gas</strong>: riapri rubinetti, controlla guarnizioni con spray apposito (10 €), verifica fiamma stufa/scaldabagno</li>
+        <li><strong>Controllo elettrico base</strong>: prove luci, prese, frigorifero. Se trovi problemi → tecnico</li>
+        <li><strong>Pulizia interna</strong>: aspirazione, lavaggio pavimenti, pulizia frigo riaperto, controllo derattizzazione</li>
+        <li><strong>Pulizia esterna</strong>: lavaggio pareti esterne (acqua + sapone neutro, no detergenti aggressivi), pulizia plinto, controllo grondaie</li>
+      </ul>
+
+      <p><strong>Tempo</strong>: 4-6 ore. <strong>Costo</strong>: 0-50 € (materiali pulizia).</p>
+
+      <h2>Estate: manutenzione attiva (giugno-agosto)</h2>
+      <p>Casa abitata stagione alta. Controlli da fare almeno una volta:</p>
+
+      <ul>
+        <li><strong>Pulizia filtri condizionatore</strong>: ogni 30-45 giorni di uso. Filtri intasati = consumo extra 20-40% + aria insalubre</li>
+        <li><strong>Controllo guarnizioni infissi</strong>: cerca punti di entrata aria (test con candela: la fiamma trema su perdite)</li>
+        <li><strong>Verifica scarichi</strong>: lavandini, doccia, WC. Trattamento mensile con bicarbonato + aceto se odori</li>
+        <li><strong>Controllo zanzariere</strong>: integre, ben aderenti, no fori. Sostituzione se rotte (8-25 € per finestra)</li>
+        <li><strong>Pulizia barbecue/dehor</strong>: dopo ogni uso intensivo</li>
+        <li><strong>Trattamento legno dehor</strong>: una volta l\'anno (giugno) con olio specifico (15-30 €)</li>
+      </ul>
+
+      <p><strong>Tempo</strong>: 2-3 ore distribuite. <strong>Costo</strong>: 30-80 €.</p>
+
+      <h2>Autunno: preparazione chiusura (settembre-ottobre)</h2>
+      <p>Operazioni intermedie + preparazione inverno se chiudi la casa:</p>
+
+      <ul>
+        <li><strong>Ispezione tetto approfondita</strong>: secondo controllo dell\'anno. Cerca usure dopo l\'estate (sole, vento, polvere). Sigilli da rinnovare ogni 5-7 anni con prodotti specifici (poliuretano o silicone neutro 8-25 €/cartuccia)</li>
+        <li><strong>Pulizia grondaie</strong>: foglie autunnali ostruiscono. Ostruzione = ristagno = umidità sottotetto</li>
+        <li><strong>Verifica gas obbligatoria biennale</strong> (se scaduta): chiama tecnico abilitato. Costo 60-100 €. Rilascio attestato di conformità</li>
+        <li><strong>Manutenzione caldaia/scaldabagno</strong>: pulizia, controllo combustione (se a metano/GPL). Tecnico abilitato 80-150 €</li>
+        <li><strong>Verifica condizionatore</strong>: pulizia profonda fine stagione, controllo gas refrigerante</li>
+        <li><strong>Inventario consumabili</strong>: sostituzione guarnizioni usurate, lampadine, candele antizanzare</li>
+      </ul>
+
+      <p><strong>Tempo</strong>: 4-5 ore + visite tecnico. <strong>Costo</strong>: 200-400 € (incluse verifiche obbligatorie).</p>
+
+      <h2>Inverno: chiusura totale (novembre-febbraio)</h2>
+      <p>Solo se la casa NON è abitata in inverno. Per casa abitata tutto-anno: vedi <a href="/vivere/vivere-tutto-anno-isolamento">guida vivere tutto-anno</a>.</p>
+
+      <ul>
+        <li><strong>Svuotamento totale impianto idraulico</strong>: rischio gelo distrugge tubi e caldaia. Apri tutti i rubinetti, svuota boiler, scarica WC, lascia rubinetti aperti</li>
+        <li><strong>Antigelo nei sifoni</strong>: aggiungi sale grosso o liquido antigelo nei sifoni di lavandini, doccia, WC per evitare congelamento e cattivi odori</li>
+        <li><strong>Chiusura gas</strong>: rubinetto principale chiuso, valvola contatore se possibile</li>
+        <li><strong>Frigorifero</strong>: vuotato, scongelato, pulito, porta socchiusa con straccio per non sigillare e creare muffe</li>
+        <li><strong>Cibo</strong>: tutti i prodotti deperibili rimossi. Anche scatolame e farine attirano roditori</li>
+        <li><strong>Derattizzazione preventiva</strong>: trappole o repellenti naturali (lavanda, menta) negli angoli</li>
+        <li><strong>Tessili</strong>: lenzuola, cuscini, asciugamani in sacchi sigillati con antiumido (sale grosso, gel di silice)</li>
+        <li><strong>Sale antiumido</strong>: 2-3 contenitori grandi negli ambienti chiusi (ridurre umidità ambiente)</li>
+        <li><strong>Telo protettivo esterno</strong>: telone specifico per casa mobile (200-450 €) o copertura permanente. Soprattutto in zone con neve, grandine, sole intenso</li>
+        <li><strong>Controllo finale infiltrazioni</strong>: ultima ispezione tetto e sigilli prima di chiudere</li>
+      </ul>
+
+      <p><strong>Tempo</strong>: 6-8 ore. <strong>Costo</strong>: 50-200 € (antigelo, sale antiumido, eventuale telone).</p>
+
+      <h2>Operazioni biennali e quinquennali</h2>
+
+      <h3>Ogni 2 anni</h3>
+      <ul>
+        <li><strong>Verifica gas obbligatoria</strong> (DM 37/2008): tecnico abilitato, attestato di conformità. 60-100 €</li>
+        <li><strong>Sigillatura tetto e camini</strong>: rinnovo sigilli con poliuretano o silicone neutro</li>
+        <li><strong>Trattamento legno dehor profondo</strong>: rifinitura olio o smalto</li>
+      </ul>
+
+      <h3>Ogni 5 anni</h3>
+      <ul>
+        <li><strong>Sostituzione guarnizioni infissi</strong>: tutte le porte e finestre. 50-150 € totale</li>
+        <li><strong>Sostituzione doccia e accessori bagno</strong>: usura naturale</li>
+        <li><strong>Verifica strutturale telaio e ruote</strong>: corrosione, integrità. Ispezione tecnico specializzato 100-200 €</li>
+        <li><strong>Riverniciatura esterna</strong>: pareti e tetto se sbiaditi (200-500 € fai-da-te materiale)</li>
+        <li><strong>Sostituzione tetto se necessario</strong>: ogni 15-20 anni (intervento maggiore 2.000-5.000 €)</li>
+      </ul>
+
+      <h2>Errori comuni da evitare</h2>
+      <ul>
+        <li><strong>Trascurare le infiltrazioni piccole</strong>: una macchia di umidità apparentemente piccola può nascondere danni strutturali estesi. Chiama tecnico se non sei sicuro</li>
+        <li><strong>Non chiudere il gas in inverno</strong>: causa frequente di incidenti gas. Sempre chiudere</li>
+        <li><strong>Lasciare cibo in casa chiusa</strong>: roditori fanno danni gravi (cavi rosicchiati, stoffa bucata, escrementi)</li>
+        <li><strong>Ignorare la verifica gas biennale</strong>: multa 1.000-3.000 € + responsabilità penale in caso di incidenti</li>
+        <li><strong>Lavare tetto con prodotti aggressivi</strong>: candeggine, acidi distruggono i sigilli. Solo acqua + sapone neutro</li>
+        <li><strong>Non ventilare in inverno casa abitata</strong>: condensa = muffe = problemi salute</li>
+        <li><strong>Casa mobile vecchia gestita con manutenzione "casa estiva"</strong>: dopo 15 anni serve approccio più strutturale</li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su manutenzione casa mobile" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>
