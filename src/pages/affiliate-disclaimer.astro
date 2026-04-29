@@ -1,0 +1,70 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+
+const title = 'Affiliate Disclaimer — CaseMobiliUsate.com';
+const description = 'Trasparenza completa sulle nostre fonti di guadagno: link affiliati, sponsorizzazioni, mediazioni. Cosa è e cosa non è dichiarato sul sito.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-3xl mx-auto px-4 md:px-6 py-8 prose-article">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Affiliate disclaimer', url: '/affiliate-disclaimer' }]} />
+
+    <div class="eyebrow mb-3">Affiliate Disclaimer</div>
+    <h1>Da dove arrivano i nostri ricavi</h1>
+    <p class="text-sm" style="color:var(--color-ink-500)">Ultimo aggiornamento: 29 aprile 2026</p>
+
+    <p class="text-lg mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+      CaseMobiliUsate.com è un progetto editoriale che fornisce contenuti gratuiti. La trasparenza su come ci sosteniamo economicamente è parte della nostra credibilità. Ecco l'elenco completo delle fonti di ricavo e le regole che ci siamo dati.
+    </p>
+
+    <h2>Le 4 fonti di ricavo (tutte dichiarate)</h2>
+
+    <h3>1. Link affiliati verso piattaforme verificate</h3>
+    <p>Alcuni link sul sito portano a piattaforme partner (marketplace di annunci, comparatori prezzi, servizi di trasporto). Se clicchi e fai un acquisto, riceviamo una piccola commissione <strong>senza costi aggiuntivi per te</strong>.</p>
+    <p><strong>Cosa segnaliamo</strong>: ogni link affiliato è dichiarato in modo esplicito. Quando un articolo contiene link affiliati, lo scriviamo inline (non sotto in piccolo).</p>
+    <p><strong>Quali piattaforme</strong>: le selezioniamo per <em>utilità reale al lettore</em>, non per commissione. Una piattaforma con commissione alta ma utenti scontenti non finisce nei nostri link. Una piattaforma senza commissione ma davvero utile, sì (la linkiamo lo stesso, senza affiliazione).</p>
+
+    <h3>2. Sponsorizzazioni di dealer recensiti</h3>
+    <p>Alcuni dealer di case mobili sono partner di CMU Edizioni. Quando un dealer è sponsor, lo dichiariamo apertamente nei contenuti che lo riguardano (badge "sponsor" visibile + nota in fondo).</p>
+    <p><strong>Regola permanente</strong>: la sponsorizzazione <strong>non condiziona la recensione</strong>. Una recensione su un dealer sponsor può uscire negativa se la nostra valutazione tecnica lo richiede. Se questo accade, comunichiamo allo sponsor che il contratto è terminato e procediamo. Niente "review-washing".</p>
+
+    <h3>3. Consulenze tecniche dirette</h3>
+    <p>Andrea Bressan (autore curatore del sito) offre consulenze tecniche private a clienti che vogliono ispezione di una casa mobile prima dell'acquisto. Tariffa: 200-400 € per ispezione completa con relazione scritta. Questa attività è separata dal sito ma rappresenta una parte importante del sostegno economico.</p>
+    <p><strong>Come funziona la separazione</strong>: i clienti delle consulenze non hanno trattamento di favore nei contenuti pubblici. Le linee guida del sito sono le stesse per tutti.</p>
+
+    <h3>4. Mediazione su servizi specifici (raro)</h3>
+    <p>In casi specifici (organizzazione di trasporto eccezionale per un cliente, contatto con uno specifico campeggio per residenza) possiamo ricevere una piccola percentuale di mediazione. Quando questo avviene, è dichiarato al cliente in modo esplicito.</p>
+
+    <h2>Cosa NON facciamo</h2>
+    <ul>
+      <li><strong>Non vendiamo case mobili</strong>: non siamo dealer, marketplace, intermediari su singole vendite</li>
+      <li><strong>Non riceviamo commissioni occulte</strong> da campeggi, dealer, fornitori per indirizzare clienti senza dichiararlo</li>
+      <li><strong>Non pubblichiamo articoli sponsorizzati travestiti da editoriali</strong>. Se è sponsor è dichiarato</li>
+      <li><strong>Non vendiamo i tuoi dati</strong> (vedi <a href="/privacy">privacy policy</a>)</li>
+      <li><strong>Non profiliamo</strong> gli utenti per pubblicità: niente cookie pubblicitari, niente Google Ads, niente Facebook Pixel</li>
+    </ul>
+
+    <h2>Come riconoscere ogni tipo di contenuto</h2>
+    <ul>
+      <li><strong>Articolo editoriale standard</strong>: nessun badge, contenuto giornalistico-tecnico libero</li>
+      <li><strong>Contenuto con link affiliati</strong>: dichiarazione "questo articolo contiene link affiliati" all'inizio + indicazione inline al singolo link</li>
+      <li><strong>Contenuto sponsorizzato</strong>: badge "sponsor" o "in collaborazione con" visibile in cima + nota in fondo</li>
+      <li><strong>Recensione di un dealer/prodotto</strong>: indicazione esplicita di eventuale relazione commerciale (sponsor, partner, ecc.)</li>
+    </ul>
+
+    <h2>Conformità normativa</h2>
+    <p>Questa pagina è scritta secondo le linee guida di:</p>
+    <ul>
+      <li><strong>FTC</strong> (Federal Trade Commission) per le disclosure affiliati</li>
+      <li><strong>AGCM</strong> (Autorità Garante della Concorrenza e del Mercato italiana) per la pubblicità trasparente</li>
+      <li><strong>GDPR</strong> per la gestione dei dati personali</li>
+    </ul>
+
+    <h2>Domande?</h2>
+    <p>Se vedi un contenuto del sito che non ti sembra trasparente come dovrebbe, scrivici a <strong>info @ casemobiliusate.com</strong>. Lo verifichiamo entro 48 ore e correggiamo se serve.</p>
+
+    <hr />
+    <p class="text-sm" style="color:var(--color-ink-500)">La trasparenza non è un disclaimer cosmetico. È il modo con cui ci facciamo guadagnare la fiducia dei lettori, anno dopo anno. Se troviamo un modo migliore di essere trasparenti, lo aggiorniamo qui.</p>
+  </div>
+</BaseLayout>

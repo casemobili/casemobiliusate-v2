@@ -1,0 +1,117 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/normativa/regioni/toscana';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Casa mobile in Toscana: normativa, vincoli paesaggistici e zone (2026)';
+const description = 'Casa mobile in Toscana 2026: normativa regionale, vincoli paesaggistici, zone (Marina di Bibbona, Cecina, Castagneto), residenza e cosa NON puoi fare nelle aree protette.';
+
+const faq = [
+  { q: 'La Toscana ha vincoli paesaggistici più severi di altre regioni?', a: 'Sì, sensibilmente. La Toscana ha <strong>tradizione fortissima di tutela paesaggio</strong> (legge regionale 65/2014 + Piano Paesaggistico Regionale). Significa: in <strong>zone vincolate</strong> (la maggior parte della costa, Chianti, Val d\'Orcia, Maremma) le nuove installazioni sono molto restrittive. In campeggi esistenti già autorizzati: nessun problema (Decreto Casa). Su terreno privato in zona vincolata: praticamente impossibile.' },
+  { q: 'Dove conviene metterla in Toscana?', a: 'Le 3 zone principali: <strong>1) Costa centro-nord</strong> (Marina di Bibbona, Marina di Castagneto, Cecina, Vada): la maggior concentrazione campeggi toscani; <strong>2) Versilia</strong> (Forte dei Marmi, Marina di Pietrasanta, Marina di Massa): più premium, costi superiori; <strong>3) Maremma</strong> (Castiglione della Pescaia, Punta Ala): meno strutture ma ambiente naturale unico.' },
+  { q: 'Quanto costa una piazzola in Toscana?', a: 'Range 2026: <strong>3.000–5.500 €</strong>/anno per piazzola standard. Versilia premium: 4.500–6.500 €. Maremma: 3.500–5.000 €. Costa nord (Bibbona, Cecina): 3.000–4.500 €. Aree interne con campeggio rurale: 2.000–3.000 €.' },
+  { q: 'Posso prendere la residenza in casa mobile in Toscana?', a: 'Sì, ma le prassi sono meno omogenee del Veneto. <strong>Marina di Bibbona, Cecina, Marina di Castagneto</strong> hanno prassi consolidate. Comuni più piccoli o interni possono fare difficoltà. <strong>Forte dei Marmi e Versilia premium</strong>: può essere più complesso (la qualità urbanistica è alta, prassi più rigide).' },
+  { q: 'Cosa NON posso fare in Toscana?', a: '3 cose specifiche: <strong>1)</strong> installare casa mobile in <strong>zone Natura 2000</strong> o parchi regionali (Maremma, Migliarino-San Rossore-Massaciuccoli, ecc.) anche con tutti i permessi standard; <strong>2)</strong> mettere casa mobile permanente in <strong>aree con vincolo paesaggistico</strong> della costa senza autorizzazione paesaggistica preventiva; <strong>3)</strong> casa mobile su <strong>terreno agricolo</strong> con uso abitativo stabile (Toscana applica con rigore: sentenze numerose TAR Toscana negli ultimi anni).' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Normativa', url: '/normativa' },
+      { name: 'Regioni', url: '/normativa#normative-regionali' },
+      { name: 'Toscana', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Normativa · Regione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        La Toscana ha una grande tradizione di tutela del paesaggio: i vincoli sono più severi che in molte altre regioni. In campeggio nessun problema (Decreto Casa). Fuori campeggio: serve attenzione, soprattutto se sei in zone costiere o di pregio paesaggistico.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>7 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Toscana ha <strong>vincoli paesaggistici severi</strong> (LR 65/2014 + Piano Paesaggistico Regionale). In <strong>campeggio</strong>: nessun problema. <strong>Fuori campeggio</strong> in zone vincolate (gran parte costa + interno di pregio): praticamente impossibile. Zone d'eccellenza: <strong>Marina di Bibbona, Cecina, Marina di Castagneto, Versilia, Maremma</strong>. Costi piazzola: <strong>2.000–6.500 €/anno</strong>.</p>
+        </Tldr>
+
+        <h2>Il quadro normativo toscano</h2>
+        <p>La Toscana ha la <strong>tradizione regionale di tutela del paesaggio più strutturata d'Italia</strong>. Strumenti chiave:</p>
+        <ul>
+          <li><strong>LR 65/2014</strong> — legge urbanistica regionale</li>
+          <li><strong>Piano Paesaggistico Regionale (PPR)</strong> — vincola le aree di pregio</li>
+          <li><strong>Aree protette</strong>: Parco Naturale della Maremma, Parco Migliarino-San Rossore-Massaciuccoli, ecc.</li>
+        </ul>
+        <p>Per casa mobile <strong>in campeggio autorizzato</strong>: nessuna difficoltà (il campeggio ha già le autorizzazioni). Per casa mobile <strong>fuori campeggio</strong> in zone vincolate: serve <em>autorizzazione paesaggistica</em> preventiva (lunga, non sempre concessa).</p>
+
+        <h2>Le 3 zone principali</h2>
+
+        <h3>1. Costa centro-nord (Marina di Bibbona, Cecina, Castagneto)</h3>
+        <p>Concentrazione più alta di campeggi toscani. Caratteristiche:</p>
+        <ul>
+          <li>~25 campeggi importanti tra Cecina e Piombino</li>
+          <li>Stagione lunga (aprile-ottobre), alcuni 12 mesi</li>
+          <li>Costi piazzola: 3.000–4.500 €/anno (Bibbona/Cecina), 3.500–5.000 € (Castagneto)</li>
+          <li>Spiagge sabbiose lunghe, infrastruttura turistica completa</li>
+        </ul>
+
+        <h3>2. Versilia (Forte dei Marmi, Marina di Pietrasanta, Marina di Massa)</h3>
+        <p>Fascia premium. Caratteristiche:</p>
+        <ul>
+          <li>Numero ridotto di campeggi (la Versilia premia hotel e dimore di lusso, meno campeggi)</li>
+          <li>Costi piazzola: 4.500–6.500 €/anno</li>
+          <li>Posizioni privilegiate: vista mare, vicinanza a centri eleganti</li>
+          <li>Stagione: prevalentemente aprile-ottobre</li>
+        </ul>
+
+        <h3>3. Maremma (Castiglione della Pescaia, Punta Ala, Marina di Grosseto)</h3>
+        <p>Ambiente naturale, tradizione open-air più "rustica". Caratteristiche:</p>
+        <ul>
+          <li>Numero medio di campeggi (~15 strutture importanti)</li>
+          <li>Costi piazzola: 3.500–5.000 €/anno</li>
+          <li>Vicinanza a parchi (Maremma, Uccellina) e zone naturali</li>
+          <li>Stagione: aprile-ottobre standard</li>
+        </ul>
+
+        <h2>Casi grigi specifici Toscana</h2>
+        <ul>
+          <li><strong>Casa mobile in zona vincolata costiera</strong>: il Piano Paesaggistico tutela quasi tutta la fascia costiera (300 m da battigia minimo). Nuove installazioni fuori campeggio = autorizzazione paesaggistica preventiva, raramente concessa</li>
+          <li><strong>Aree Natura 2000 e parchi regionali</strong>: permessi praticamente impossibili (Maremma, San Rossore, Migliarino)</li>
+          <li><strong>Casa mobile su terreno agricolo</strong>: la Toscana applica con rigore le regole nazionali. TAR Toscana ha emesso sentenze numerose contro abitazioni stabili in agricolo. Eccezione IAP molto restrittiva</li>
+          <li><strong>Chianti e zone collinari di pregio</strong>: vincoli paesaggistici fortissimi, qualunque manufatto richiede iter pesante</li>
+        </ul>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su casa mobile in Toscana" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/normativa" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Normativa & Permessi →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

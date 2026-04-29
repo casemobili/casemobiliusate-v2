@@ -1,0 +1,49 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const title = 'Contatti — CaseMobiliUsate.com';
+const description = 'Come contattarci: domande tecniche, segnalazioni, proposte di collaborazione, consulenze tecniche dirette in cantiere.';
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="max-w-3xl mx-auto px-4 md:px-6 py-8 prose-article">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Contatti', url: '/contatti' }]} />
+
+    <div class="eyebrow mb-3">Contatti</div>
+    <h1>Come contattarci</h1>
+
+    <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+      Tre strade, a seconda di cosa ti serve. Risposta tipica: 24-48 ore feriali.
+    </p>
+
+    <h2>Per domande tecniche, segnalazioni, dubbi</h2>
+    <p>
+      <strong>info @ casemobiliusate.com</strong>
+    </p>
+    <p>Adatta a: chiarimenti su un articolo, segnalazioni di errori, suggerimenti di temi da approfondire, dubbi su un caso specifico (la risposta di solito è "consulta tecnico abilitato del Comune", ma proviamo sempre a dare un orientamento).</p>
+
+    <h2>Per consulenze tecniche dirette in cantiere</h2>
+    <p>
+      Se stai per acquistare una casa mobile usata e vuoi che venga a vederla con te prima della firma, scrivimi a <strong>info @ casemobiliusate.com</strong> con oggetto "<em>consulenza tecnica</em>".
+    </p>
+    <p>Lavoro nel <strong>nord-est e in Toscana</strong> di persona; per il resto d'Italia faccio valutazioni a distanza su foto e documenti. Tariffa orientativa: 200-400 € per ispezione completa con relazione scritta. La <strong>prima mezz'ora di valutazione</strong> via email è gratuita per orientarti se vale la pena andare avanti.</p>
+
+    <h2>Per collaborazioni editoriali</h2>
+    <p>
+      Sei un proprietario di casa mobile e vuoi raccontare la tua esperienza? Un avvocato esperto di normativa che vuole aggiungere una voce? Un dealer affidabile che vuole essere recensito (la recensione è indipendente, può uscire negativa)? Scrivimi a <strong>info @ casemobiliusate.com</strong> con oggetto "<em>collaborazione</em>".
+    </p>
+
+    <h2>Per la community</h2>
+    <p>Se la tua domanda è di interesse generale, prima di scrivere a me valuta di postarla nel <a href="https://www.facebook.com/groups/casemobili/" target="_blank" rel="noopener">gruppo Facebook Casa Mobili Italia</a>: migliaia di proprietari rispondono in tempi rapidi, e la discussione resta utile a chi avrà la stessa domanda dopo di te.</p>
+
+    <FbCommunityWidget variant="card" />
+
+    <h2>Privacy e gestione dei tuoi dati</h2>
+    <p>Le email che ricevo non vengono condivise con terzi né usate per finalità diverse dalla risposta al tuo messaggio. Vedi la <a href="/privacy">privacy policy completa</a>.</p>
+
+    <hr />
+    <p class="text-sm" style="color:var(--color-ink-500)">CaseMobiliUsate.com è una pubblicazione di CMU Edizioni. Sito tecnico indipendente. Per le specifiche editoriali e l'autorialità, vedi la <a href="/chi-siamo">pagina chi siamo</a>.</p>
+  </div>
+</BaseLayout>
