@@ -1,0 +1,175 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+
+const url = '/vivere';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Vivere in casa mobile: residenza, isolamento, arredamento, vita quotidiana';
+const description = 'Tutto sul vivere in casa mobile in Italia: si può tutto l\'anno? Come si ottiene la residenza? Come si isola e si riscalda? La guida tecnica e pratica aggiornata 2026.';
+
+const toc = [
+  { id: 'tutto-anno', label: 'Si può vivere tutto l\'anno?' },
+  { id: 'residenza', label: 'La residenza in casa mobile' },
+  { id: 'isolamento', label: 'Isolamento e comfort termico' },
+  { id: 'riscaldamento', label: 'Sistemi di riscaldamento' },
+  { id: 'arredamento', label: 'Arredamento: salvaspazio reale' },
+  { id: 'manutenzione', label: 'Manutenzione: il calendario stagionale' },
+  { id: 'storie', label: 'Storie di chi vive in casa mobile' },
+  { id: 'faq', label: 'Domande frequenti' },
+];
+
+const faq = [
+  { q: 'Si può davvero vivere tutto l\'anno in casa mobile in Italia?', a: 'Sì, ed è più diffuso di quanto si pensi. Le condizioni: <strong>1)</strong> casa mobile in <strong>campeggio aperto tutto l\'anno</strong> (sono circa 200 in Italia, prevalentemente Lago di Garda, Toscana, Liguria, Sardegna); <strong>2)</strong> casa mobile con <strong>isolamento adeguato</strong> (pareti 100+ mm, doppi vetri, riscaldamento centrale); <strong>3)</strong> <strong>residenza ottenibile</strong> in molte di queste situazioni, con iter dedicato. Vedi <a href="/vivere/residenza-casa-mobile">la guida residenza</a>.' },
+  { q: 'Quale casa mobile per uso continuativo?', a: 'Le 3 marche più adatte: <strong>IRM gamma all-season</strong> (specializzata, isolamento maggiorato di serie); <strong>Willerby Lodge</strong> (gamma "static" pensata per uso permanente UK); <strong>Crippa Concept</strong> (premium italiano, classe energetica A possibile). Le marche standard funzionano se aggiungi tu coibentazione esterna (3.000-5.000 € extra) e doppi vetri se non li ha. Sotto i 100 mm di isolamento pareti, in inverno consumi 3 volte di più con metà del comfort.' },
+  { q: 'Quanto costa vivere in casa mobile in un anno?', a: 'Spese tipiche per uso annuale in campeggio Nord Italia: <strong>piazzola 2.000–6.000 €</strong> (varia con zona e qualità campeggio), <strong>utenze 600-1.200 €</strong> (gas/elettricità/acqua + tassa rifiuti), <strong>manutenzione preventiva 300-600 €</strong> (sigillature, controllo impianti, ingrassaggio mozzi), <strong>assicurazione casa mobile 150-400 €</strong>. Totale 3.050-8.200 €/anno. Costa meno di affittare in continuativo lo stesso campeggio in alta stagione (5-6.000 € per 2 settimane di alta stagione).' },
+  { q: 'Posso ricevere posta e bollette alla casa mobile?', a: 'Sì, in 3 modi. <strong>1)</strong> Domicilio stabile presso campeggio con servizio posta (alcuni campeggi grandi hanno casetta postale o portineria che accetta corrispondenza); <strong>2)</strong> <strong>Residenza ufficiale</strong> trasferita lì (vedi <a href="/vivere/residenza-casa-mobile">guida residenza</a>); <strong>3)</strong> Casella postale dedicata presso ufficio postale del Comune. La via 2 è la più completa: ottieni anche tessera sanitaria, voto, accesso a servizi pubblici dal Comune del campeggio.' },
+  { q: 'Quanto è freddo l\'inverno dentro una casa mobile?', a: 'Dipende drammaticamente dall\'isolamento. Una <strong>casa mobile standard</strong> (isolamento 60-80 mm) in inverno con esterni a 0°C: dentro 12-15°C senza riscaldamento, 18-20°C con riscaldamento standard a 2.500-3.500 W. Una <strong>casa mobile all-season</strong> (isolamento 100-130 mm + doppi vetri): 14-17°C senza riscaldamento, 20-22°C con 800-1.200 W. Differenza in bolletta annuale: 800-1.500 €/anno.' },
+  { q: 'Posso vivere in casa mobile con bambini piccoli?', a: 'Sì, e non è raro. Le considerazioni specifiche: <strong>1)</strong> spazio interno (8×4 = 32 m² vivibili: pari a un monolocale, va bene per famiglia 3-4 persone); <strong>2)</strong> isolamento acustico inferiore a casa muratura (camere accanto al living, sentirai i bambini); <strong>3)</strong> sicurezza scale e zone aperte (spesso le case mobili hanno gradini esterni e veranda con balaustra bassa); <strong>4)</strong> in campeggio ci sono spesso aree gioco/spazio esterno generoso (vantaggio per bambini). Le famiglie che vivono stabilmente in casa mobile in Italia sono migliaia, soprattutto nel Nord-Adriatico e Toscana.' },
+  { q: 'Cosa fare se il riscaldamento non basta?', a: 'Le 4 mosse in ordine di costo crescente: <strong>1)</strong> sigillare gli infissi (kit 50-150 €); <strong>2)</strong> aggiungere stufe ausiliarie (elettrica radiante 80-200 €, pellet 600-1.500 €); <strong>3)</strong> rivestimento isolante interno parete (cartongesso + lana minerale, 800-2.500 € per casa mobile 8×4); <strong>4)</strong> coibentazione esterna integrale (la più efficace, 3.000-5.000 € per 8×4 m, riduce consumi 30-40%). La 4 si ripaga in 5-6 anni di consumo ridotto.' },
+];
+
+const correlati = [
+  { href: '/vivere/residenza-casa-mobile', category: 'Vivere', title: 'Residenza in casa mobile: come ottenerla davvero (guida 2026)', excerpt: 'L\'iter al Comune, i 3 scenari principali, i tempi reali, la documentazione necessaria.', readTime: '8 min' },
+  { href: '/vivere/vivere-tutto-anno-isolamento', category: 'Vivere', title: 'Vivere tutto l\'anno: isolamento, riscaldamento, comfort invernale', excerpt: 'Cosa serve davvero per non patire il freddo, le marche giuste, i lavori utili e quanto costano.', readTime: '9 min' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Vivere in Casa Mobile', url: '/vivere' }]} />
+
+    <header class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Vivere in Casa Mobile</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Vivere in casa mobile in Italia non è più una eccezione: sono migliaia le persone che lo fanno tutto l'anno, e altre decine di migliaia che la usano per stagioni lunghe. Ecco le condizioni concrete, le marche adatte, l'iter residenza, i numeri reali del costo annuale.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>14 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-20">
+          <div class="eyebrow mb-3">Indice</div>
+          <ul class="space-y-2 text-sm" style="list-style:none;padding:0">
+            {toc.map((t) => (
+              <li><a href={`#${t.id}`} class="no-underline hover:underline" style="color:var(--color-ink-700)">{t.label}</a></li>
+            ))}
+          </ul>
+          <div class="mt-8">
+            <FbCommunityWidget variant="sidebar" />
+          </div>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-9 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Vivere tutto l'anno in casa mobile in Italia <strong>è possibile e legittimo</strong>: serve campeggio aperto 12 mesi, casa mobile con isolamento adeguato (preferibile gamma all-season), residenza al Comune del campeggio. Costo annuale tipico: <strong>3.000–8.000 €</strong> tutto incluso (piazzola + utenze + manutenzione + assicurazione). Marche più adatte: <strong>IRM all-season, Willerby Lodge, Crippa Concept</strong>.</p>
+        </Tldr>
+
+        <h2 id="tutto-anno">Si può vivere tutto l'anno?</h2>
+        <p>Sì, in concreto. In Italia ci sono <strong>migliaia di persone</strong> che vivono stabilmente in casa mobile, in 3 contesti principali:</p>
+        <ul>
+          <li><strong>Campeggi aperti tutto l'anno</strong> (circa 200 in Italia): la stragrande maggioranza dei residenti stabili è qui. Lago di Garda, Toscana costa, Liguria, Sardegna costa nord, Veneto litorale</li>
+          <li><strong>Villaggi turistici/resort open-air</strong>: meno frequenti come "casa stabile" ma alcuni accettano residenti</li>
+          <li><strong>Terreni privati con permessi specifici</strong>: caso meno frequente, richiede iter più complesso (vedi <a href="/normativa">pillar normativa</a>)</li>
+        </ul>
+        <p>Le 3 condizioni che rendono fattibile l'uso annuale:</p>
+        <ol>
+          <li><strong>Casa mobile adeguata</strong>: isolamento ≥100 mm, doppi vetri, riscaldamento centrale</li>
+          <li><strong>Campeggio aperto 12 mesi</strong> (chiedi sempre prima)</li>
+          <li><strong>Aspetti amministrativi</strong>: residenza al Comune, contratto annuale o pluriennale di piazzola, utenze intestate</li>
+        </ol>
+
+        <h2 id="residenza">La residenza in casa mobile</h2>
+        <p>La <strong>residenza è il fatto di vivere abitualmente in un luogo</strong>. Si dichiara all'Ufficio Anagrafe del Comune. Per ottenerla in casa mobile servono 3 elementi:</p>
+        <ol>
+          <li><strong>Indirizzo verificabile</strong>: la casa mobile deve avere un indirizzo che il Comune può raggiungere e ispezionare. Tipicamente: "Via [del campeggio], piazzola n. [X]"</li>
+          <li><strong>Verifica di dimora abituale</strong>: la Polizia Municipale o vigile fa visita per verificare che ci abiti davvero</li>
+          <li><strong>Diritto a stare lì</strong>: contratto di piazzola con il campeggio o proprietà del terreno</li>
+        </ol>
+        <p>Funziona meglio in: <strong>campeggi aperti tutto l'anno con direzione collaborativa</strong> (alcuni hanno residenti stabili da decenni, sanno come gestire l'iter). Vedi <a href="/vivere/residenza-casa-mobile">la guida residenza</a> per tutti i dettagli pratici.</p>
+
+        <h2 id="isolamento">Isolamento e comfort termico</h2>
+        <p>L'isolamento è quello che separa "vivibile in inverno" da "freddo perpetuo". Tabella di riferimento:</p>
+
+        <table>
+          <thead>
+            <tr><th>Tipo casa mobile</th><th>Pareti</th><th>Tetto</th><th>Comfort inverno (0°C est.)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard generica</td><td>60-80 mm</td><td>80-100 mm</td><td>Difficile, riscaldamento h24 a 2.500-3.500 W</td></tr>
+            <tr><td>Marche storiche fascia media</td><td>80-100 mm</td><td>100-130 mm</td><td>Accettabile con riscaldamento normale</td></tr>
+            <tr><td>All-season (IRM, Willerby Lodge)</td><td>100-130 mm</td><td>140-160 mm</td><td>Ottimo, comfort con 800-1.200 W</td></tr>
+            <tr><td>Premium (Crippa Concept classe A)</td><td>130-150 mm</td><td>160-180 mm</td><td>Eccellente, comfort minimo consumo</td></tr>
+          </tbody>
+        </table>
+
+        <p>Se hai una casa mobile standard e vuoi viverci tutto l'anno, le 3 mosse efficaci:</p>
+        <ol>
+          <li><strong>Doppi vetri</strong> se mancano (1.500-3.500 € per casa 8×4 m)</li>
+          <li><strong>Sigillatura infissi</strong> + guarnizioni nuove (300-600 €)</li>
+          <li><strong>Coibentazione esterna integrale</strong> (la più efficace, 3.000-5.000 €)</li>
+        </ol>
+
+        <h2 id="riscaldamento">Sistemi di riscaldamento</h2>
+        <p>Le 4 opzioni più usate in Italia:</p>
+        <ul>
+          <li><strong>Stufa elettrica radiante</strong>: economica all'acquisto (80-200 €), costosa in bolletta (600-1.200 €/inverno). Buona come supporto, no come unica</li>
+          <li><strong>Riscaldamento centrale a gas (GPL bombola o gas città se disponibile)</strong>: costo impianto 1.500-3.000 €, esercizio 600-1.200 €/inverno. Standard nelle case mobili all-season</li>
+          <li><strong>Pompa di calore split aria-aria</strong>: 1.500-3.500 € impianto, esercizio 400-800 €/inverno (la più efficiente). Buona se hai isolamento ≥100 mm</li>
+          <li><strong>Stufa pellet</strong>: 800-2.000 € impianto, esercizio 500-900 €/inverno. Calore "casa", richiede sacchi pellet (consumo tipico 800-1.200 kg/inverno)</li>
+        </ul>
+
+        <h2 id="arredamento">Arredamento: salvaspazio reale</h2>
+        <p>32 m² di una casa mobile 8×4 sono pari a un monolocale di città. Le 5 regole pratiche per non vivere stretti:</p>
+        <ol>
+          <li><strong>Doppia funzione</strong>: divani che diventano letti, tavoli pieghevoli, sgabelli con vano interno</li>
+          <li><strong>Verticale prima di orizzontale</strong>: scaffali fino al soffitto, ganci nelle porte, mensole sopra i letti</li>
+          <li><strong>No mobili in eccesso</strong>: ogni mobile in più riduce sensazione di spazio del 5-10%. Privilegia le aree libere</li>
+          <li><strong>Specchi grandi</strong>: amplificano lo spazio percepito (un grande specchio nel soggiorno = "raddoppia" la stanza visivamente)</li>
+          <li><strong>Veranda esterna come stanza in più</strong>: in stagione mite (aprile-ottobre) la veranda diventa il vero "salotto", liberando l'interno</li>
+        </ol>
+
+        <h2 id="manutenzione">Manutenzione: il calendario stagionale</h2>
+        <p>Le 4 finestre di manutenzione che ti tengono la casa mobile in salute:</p>
+        <ul>
+          <li><strong>Primavera (marzo-aprile)</strong>: pulizia tetto da foglie/aghi, controllo sigillature, ingrassaggio mozzi se la casa si è mossa, controllo grondaie</li>
+          <li><strong>Inizio estate (giugno)</strong>: revisione climatizzatore, pulizia filtri aria, controllo guarnizioni infissi</li>
+          <li><strong>Inizio autunno (settembre-ottobre)</strong>: revisione caldaia (se gas: obbligatoria per legge), controllo sigillature tetto in vista pioggia, scarico serbatoio acqua se non userai per stagione fredda</li>
+          <li><strong>Inverno (dicembre)</strong>: protezione antigelo per tubature esterne se la casa è in zona con gelate, controllo isolamento dettagli (porte, infissi)</li>
+        </ul>
+        <p>Costo annuale tipico manutenzione preventiva: <strong>300-600 €</strong> se fai tu, <strong>800-1.500 €</strong> se affidi a tecnico.</p>
+
+        <h2 id="storie">Storie di chi vive in casa mobile</h2>
+        <p>Pubblicheremo nelle prossime settimane <strong>10 case study reali</strong> di famiglie e singoli che vivono in casa mobile in Italia: Lago di Garda, Toscana, Sardegna, Liguria, Nord-Adriatico. Storie autentiche, numeri concreti, errori e soluzioni. Iscriviti alla newsletter per ricevere i case study quando saranno pubblicati.</p>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su vivere in casa mobile" />
+      </div>
+    </div>
+
+    <section class="mt-24">
+      <div class="flex items-end justify-between mb-8 flex-wrap gap-4">
+        <h2 style="margin-top:0">Approfondimenti del cluster Vivere</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {correlati.map((a) => <ArticleCard {...a} />)}
+      </div>
+    </section>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

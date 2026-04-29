@@ -1,0 +1,191 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+
+const url = '/trasporto';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Trasporto casa mobile in Italia: costi reali 2026, permessi, ditte recensite';
+const description = 'Tutto sul trasporto di una casa mobile usata in Italia: costi 2026 per distanza, quando serve trasporto eccezionale, permessi, scorte, le ditte specializzate da contattare.';
+
+const toc = [
+  { id: 'costi', label: 'Costi reali per distanza nel 2026' },
+  { id: 'eccezionale', label: 'Quando scatta il trasporto eccezionale' },
+  { id: 'permessi', label: 'Permessi e scorte: come funzionano davvero' },
+  { id: 'preparazione', label: 'Cosa fare prima del trasporto' },
+  { id: 'ditte', label: 'Ditte specializzate (cosa cercare)' },
+  { id: 'errori', label: 'Gli errori che rovinano il trasporto' },
+  { id: 'faq', label: 'Domande frequenti' },
+];
+
+const faq = [
+  { q: 'Quanto costa trasportare una casa mobile in Italia nel 2026?', a: 'Range tipici: <strong>1.000–1.500 €</strong> per percorsi corti regionali (entro 200 km) con casa mobile sotto i 2,55 m di larghezza; <strong>1.500–2.500 €</strong> per percorsi medi (200-600 km); <strong>2.500–4.500 €</strong> per percorsi lunghi (600+ km) o trasporto eccezionale. La Sicilia/Sardegna richiede traghetto e si aggiungono 800-1.500 € extra. Sono stime: ogni preventivo dipende da percorso specifico, accessibilità del campeggio di partenza/arrivo, peso e larghezza.' },
+  { q: 'Quando una casa mobile è "trasporto eccezionale"?', a: 'Quando supera uno di questi limiti del Codice della Strada italiano: <strong>larghezza 2,55 m</strong>, <strong>altezza 4,00 m</strong>, <strong>lunghezza 16,5 m</strong>, <strong>peso 44 t totali</strong>. La maggior parte delle case mobili 8×4 m e oltre supera la larghezza (ufficialmente sono 4 m esatti, ma con la veranda annessa o il telaio con sbalzi spesso vanno oltre i 2,55 m utili). Il trasporto eccezionale costa 30-50% in più del trasporto standard.' },
+  { q: 'Servono permessi specifici per il trasporto?', a: 'Per trasporto standard: nessun permesso particolare oltre alla normale autorizzazione del trasportatore. Per <strong>trasporto eccezionale</strong>: serve <strong>autorizzazione di polizia</strong> sul percorso, eventualmente <strong>scorta tecnica</strong> (1-2 vetture davanti e dietro), <strong>orari ristretti</strong> (spesso solo notte o weekend per evitare traffico). I permessi li ottiene la ditta trasportatore: tu non devi fare nulla, ma costano e si vedono in fattura.' },
+  { q: 'Posso trasportare la casa mobile da solo?', a: 'Tecnicamente sì, in due casi specifici: <strong>(1)</strong> casa mobile <strong>targata e omologata</strong> come rimorchio, con tua patente B+E o C+E e veicolo trainante adeguato; <strong>(2)</strong> casa mobile entro i limiti standard, con un mezzo abilitato. In pratica però: il 90% delle case mobili in Italia non è targata né omologata per traino su strada, e richiede trasporto su rimorchio professionale. Il fai-da-te è sconsigliato perché: il telaio non sempre regge il traino, le luci/freni richiesti sono complessi, una casa mobile danneggiata in trasporto vale 30-50% meno. Affidati a un trasportatore.' },
+  { q: 'Quando devo prenotare il trasporto?', a: '<strong>4-8 settimane prima</strong> della data desiderata, soprattutto da maggio a settembre (alta stagione, le ditte specializzate sono piene). Se la casa mobile è in campeggio, devi anche concordare con la direzione del campeggio: lo spostamento di una casa mobile in alta stagione è quasi sempre vietato per non disturbare gli ospiti. Si preferisce ottobre-aprile.' },
+  { q: 'Cosa succede se la casa mobile arriva danneggiata?', a: 'Il trasportatore professionale è obbligatoriamente assicurato per danni in trasporto. Procedura: <strong>1)</strong> all\'arrivo verifica la casa mobile prima di firmare la bolla di consegna; <strong>2)</strong> qualsiasi danno (anche piccolo: ammaccatura, graffio, infisso scheggiato) va annotato sulla bolla con foto; <strong>3)</strong> entro 8 giorni invii reclamo formale al trasportatore. L\'assicurazione copre tipicamente fino a 50.000 € per veicolo. Se firmi la bolla "senza riserve" e poi scopri danni, la copertura decade.' },
+  { q: 'Esiste un servizio "porta a porta" davvero chiavi in mano?', a: 'Sì, ma costa di più. Le ditte specializzate offrono pacchetti completi che includono: smontaggio veranda/casetta in piazzola di partenza, trasporto (con scorta se eccezionale), permessi, rimontaggio in piazzola di arrivo, allacciamento utenze base. Costo tipico: <strong>3.500–6.000 €</strong> per percorsi medi, contro i 1.500–2.500 € del solo trasporto. Conviene se non vuoi gestire 3-4 fornitori diversi e i tempi che ne conseguono.' },
+];
+
+const correlati = [
+  { href: '/trasporto/costi-reali-2026', category: 'Trasporto', title: 'Costi trasporto casa mobile 2026: tabella per distanza e scenario', excerpt: 'I prezzi reali in tabella, percorso per percorso, con esempi concreti dai miei clienti delle ultime 12 settimane.', readTime: '7 min' },
+  { href: '/trasporto/eccezionale-permessi-scorte', category: 'Trasporto', title: 'Trasporto eccezionale: quando scatta, permessi, scorte, costi extra', excerpt: 'I limiti del Codice della Strada, l\'iter burocratico, le scorte tecniche, le finestre orarie consentite.', readTime: '8 min' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Trasporto & Installazione', url: '/trasporto' }]} />
+
+    <header class="max-w-3xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Trasporto & Installazione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Il trasporto è la voce nascosta che il venditore non sempre dichiara. Eppure può essere il 15-25% del costo totale di una casa mobile usata. Numeri reali, regole del Codice della Strada, ditte affidabili e cosa fare prima, durante e dopo il trasporto.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>13 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <aside class="lg:col-span-3 hidden lg:block">
+        <div class="sticky top-20">
+          <div class="eyebrow mb-3">Indice</div>
+          <ul class="space-y-2 text-sm" style="list-style:none;padding:0">
+            {toc.map((t) => (
+              <li><a href={`#${t.id}`} class="no-underline hover:underline" style="color:var(--color-ink-700)">{t.label}</a></li>
+            ))}
+          </ul>
+          <div class="mt-8">
+            <FbCommunityWidget variant="sidebar" />
+          </div>
+        </div>
+      </aside>
+
+      <div class="lg:col-span-9 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0"><strong>I 5 numeri chiave</strong></p>
+          <ol class="my-2">
+            <li>Range tipico nazionale: <strong>1.500–4.500 €</strong> a seconda di distanza e larghezza</li>
+            <li>Sopra i <strong>2,55 m</strong> di larghezza scatta il trasporto eccezionale (+30-50%)</li>
+            <li><strong>4-8 settimane</strong> di anticipo per prenotazione in alta stagione</li>
+            <li>Sicilia/Sardegna: <strong>+800-1.500 €</strong> per traghetto</li>
+            <li>"Chiavi in mano" porta-a-porta: <strong>3.500–6.000 €</strong> tutto incluso (smontaggio + trasporto + rimontaggio)</li>
+          </ol>
+        </Tldr>
+
+        <h2 id="costi">Costi reali per distanza nel 2026</h2>
+        <p>Tabella aggregata da preventivi reali raccolti tra gennaio e aprile 2026 da 8 ditte specializzate operanti in Italia, per case mobili 8×4 m peso 4-5 t (formato standard più diffuso):</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Distanza</th>
+              <th>Standard (≤2,55 m)</th>
+              <th>Eccezionale (&gt;2,55 m)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Fino 100 km</td><td>900–1.300 €</td><td>1.400–2.000 €</td></tr>
+            <tr><td>100-300 km</td><td>1.300–1.800 €</td><td>2.000–2.800 €</td></tr>
+            <tr><td>300-600 km</td><td>1.800–2.500 €</td><td>2.800–3.800 €</td></tr>
+            <tr><td>600-1.000 km</td><td>2.500–3.500 €</td><td>3.800–5.500 €</td></tr>
+            <tr><td>Sicilia/Sardegna (+ traghetto)</td><td>3.500–5.500 €</td><td>5.500–7.500 €</td></tr>
+          </tbody>
+        </table>
+
+        <p>Ai prezzi sopra possono aggiungersi: <strong>scorta tecnica</strong> per trasporto eccezionale (300-800 €), <strong>permesso ZTL</strong> per ingresso in centri storici (50-150 €), <strong>weekend o notte</strong> a richiesta (+15-25%), <strong>ascensore mobile/gru</strong> se la casa va sollevata su rilievi (500-1.500 €).</p>
+
+        <h2 id="eccezionale">Quando scatta il trasporto eccezionale</h2>
+        <p>I limiti del <strong>Codice della Strada</strong> art. 10 e seguenti:</p>
+        <ul>
+          <li><strong>Larghezza</strong> > 2,55 m</li>
+          <li><strong>Altezza</strong> > 4,00 m</li>
+          <li><strong>Lunghezza</strong> > 16,5 m (autoarticolato + casa)</li>
+          <li><strong>Peso</strong> > 44 t complessive (casa + camion + rimorchio)</li>
+        </ul>
+        <p>La grande maggioranza delle case mobili 8×4, 9×4 e 10×4 m supera il limite di larghezza. Quando supera, scatta una catena di adempimenti che fa lievitare il costo:</p>
+        <ol>
+          <li>Autorizzazione al trasporto eccezionale (rilasciata da Polizia Provinciale o ANAS)</li>
+          <li>Scorta tecnica (1 vettura davanti, 1 dietro, lampeggianti)</li>
+          <li>Percorso autorizzato specifico (non sempre il più corto)</li>
+          <li>Orari restritti (spesso notte, fuori ore di punta)</li>
+          <li>Cartelli "carico eccezionale" su camion e scorte</li>
+        </ol>
+
+        <h2 id="permessi">Permessi e scorte: come funzionano davvero</h2>
+        <p>I permessi li ottiene la <strong>ditta trasportatore</strong>: tu non devi muoverti. Il flusso:</p>
+        <ol>
+          <li>La ditta valuta il percorso e contatta gli enti competenti (Provincia, ANAS, Comuni attraversati)</li>
+          <li>Ottiene autorizzazioni specifiche: tipicamente 7-15 giorni di iter</li>
+          <li>Pianifica la scorta tecnica (è obbligatoria per trasporti oltre 3,5 m di larghezza)</li>
+          <li>Esegue il trasporto in finestra orario approvata</li>
+        </ol>
+        <p>Tu, in cambio: <strong>fornisci dati casa mobile</strong> (peso, dimensioni esatte, placca CE+EN1647), <strong>autorizzi accesso</strong> in piazzola di partenza/arrivo, <strong>paghi la fattura</strong> che include tutti i permessi.</p>
+
+        <h2 id="preparazione">Cosa fare prima del trasporto</h2>
+        <p>La <strong>checklist 7 punti</strong> per il giorno prima:</p>
+        <ol>
+          <li><strong>Svuota i serbatoi</strong> (acqua, gas, eventualmente pellet o gasolio): ridurre peso e rischi</li>
+          <li><strong>Smontaggio veranda</strong> e accessori esterni: vanno trasportati separatamente o disassemblati</li>
+          <li><strong>Fissaggio mobili interni</strong>: nastro, cinghie, zeppe sotto i mobili pesanti</li>
+          <li><strong>Sigillatura porte/finestre</strong> con nastro all'esterno per evitare oscillazioni durante curve</li>
+          <li><strong>Foto integrale</strong> di tutta la casa mobile (esterno + interno + dettagli) per riferimento in caso di danni</li>
+          <li><strong>Controllo telaio e ruote</strong>: ingrassaggio mozzi se la casa è ferma da anni, controllo pneumatici (le ruote casa mobile in piazzola si seccano e possono cedere durante il movimento)</li>
+          <li><strong>Allacciamenti scollegati</strong>: acqua, luce, gas tutti staccati e tappati</li>
+        </ol>
+        <p>Costo tipico di questa preparazione se la fai fare al trasportatore: <strong>500-1.000 €</strong> aggiuntivi. Se lo fai tu: gratis ma sono 4-6 ore di lavoro.</p>
+
+        <h2 id="ditte">Ditte specializzate: cosa cercare</h2>
+        <p>I criteri per scegliere una ditta affidabile:</p>
+        <ul>
+          <li><strong>Specializzazione case mobili</strong>: non un trasportatore generico. Le case mobili hanno caratteristiche specifiche (telaio in acciaio, baricentro alto, fragilità) che richiedono esperienza</li>
+          <li><strong>Iscrizione albo trasporti</strong> + autorizzazione trasporto eccezionale (chiedere copia)</li>
+          <li><strong>Assicurazione su valore reale</strong>: la copertura standard è sui 50.000 €, se la casa vale di più chiedi extension</li>
+          <li><strong>Esperienza percorsi simili</strong>: chi viene da quella zona di solito sa quali strade evitare, quali ZTL chiedere</li>
+          <li><strong>Recensioni verificabili</strong>: gruppo Facebook Casa Mobili Italia ha thread regolari di esperienze con ditte specifiche</li>
+        </ul>
+        <p>Pubblicheremo nelle prossime settimane una <strong>directory delle ditte recensite</strong> per regione: la troverai linkata da questa pagina.</p>
+
+        <h2 id="errori">Gli errori che rovinano il trasporto</h2>
+
+        <h3>1. Sottovalutare la dimensione reale</h3>
+        <p>"La mia casa è 4×8 m, sotto i 2,55 m di larghezza ci sta"... no, 4 m sono 4 m utili interni, ma la struttura esterna spesso è 4,2-4,4 m. <strong>Misura sempre il punto più largo</strong> dello scafo esterno (compresi i sottopancia se ci sono). 5 cm di differenza ti fanno passare da trasporto standard a eccezionale.</p>
+
+        <h3>2. Prendere il preventivo solo da una ditta</h3>
+        <p>Stesso percorso, stessa casa, 3 preventivi possono variare del 30-40%. Chiedi sempre <strong>3 preventivi</strong> in scritto, su carta intestata. Confronta non solo il prezzo ma cosa è incluso (permessi? scorta? assicurazione?).</p>
+
+        <h3>3. Non firmare la bolla con riserva</h3>
+        <p>Quando la casa mobile arriva, controlla TUTTO prima di firmare la bolla di consegna. Ammaccature, graffi, infiltrazioni nuove, infissi scheggiati. Se trovi qualcosa, firma "con riserva" indicando il dettaglio + foto. Se firmi senza riserva e poi scopri danni, l'assicurazione decade.</p>
+
+        <h3>4. Non fissare gli interni</h3>
+        <p>I mobili che oscillano durante curve possono danneggiare le pareti interne, i tubi gas, gli scarichi. Il rifacimento di interni post-trasporto può costare 1.000-3.000 €.</p>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti sul trasporto casa mobile" />
+      </div>
+    </div>
+
+    <section class="mt-24">
+      <div class="flex items-end justify-between mb-8 flex-wrap gap-4">
+        <h2 style="margin-top:0">Approfondimenti del cluster Trasporto</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {correlati.map((a) => <ArticleCard {...a} />)}
+      </div>
+    </section>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

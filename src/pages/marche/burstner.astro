@@ -1,0 +1,93 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/marche/burstner';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Burstner case mobili usate: la tradizione tedesca a prezzi onesti (2026)';
+const description = 'Burstner è la marca tedesca storica del settore. Costruzione robusta, affidabilità, gamma media. Modelli iconici (Marina, Kosmos), prezzi usato 2026 e checkpoint tecnici.';
+
+const faq = [
+  { q: 'Burstner è ancora una buona marca?', a: 'Sì, ma con qualche caveat. Burstner è una marca <strong>tedesca storica</strong> (dal 1958), oggi parte del gruppo Erwin Hymer. Costruzione robusta tipica tedesca, prezzi nuovi competitivi rispetto a Atlas e Willerby. Sull\'usato è meno presente in Italia che le inglesi (storicamente più diffuse), ma quando trovi un Burstner ben mantenuto è un buon acquisto. Limiti: rete distributiva italiana ridotta, ricambi via Germania (3-4 settimane).' },
+  { q: 'Quali modelli Burstner si trovano usati in Italia?', a: 'I 2 più frequenti: <strong>Burstner Marina</strong> (8×4 m, 2 camere, modello standard più diffuso), <strong>Burstner Kosmos</strong> (10×4 m, 3 camere, formato famiglia). Più sporadici: Burstner Premio, Burstner Avalon. Range prezzo usato 2026: 5.500–22.000 €.' },
+  { q: 'Quanto costa una Burstner Marina usata?', a: 'In Italia nel 2026, fascia tipica: <strong>9.000–13.000 €</strong> per Marina 2017–2020 in buone condizioni con accessori standard, in campeggio italiano. Si scende a 6.500–8.500 € per modelli pre-2015 da rivedere; si sale a 14.000–17.000 € per Marina 2022-2024 quasi nuovi. È un\'opzione interessante in fascia media: 10-15% meno di un Atlas Excelsior comparabile, qualità simile o superiore.' },
+  { q: 'Cosa controllare prima di comprare una Burstner usata?', a: 'I 4 punti specifici Burstner: <strong>1)</strong> targhetta tedesca CE + EN 1647 (cerca su lato anteriore telaio, dicitura tedesca tipica); <strong>2)</strong> infissi originali (Burstner usa marchi tedeschi di qualità tipo Schüco o Roto: se ancora i fabbrica è ottimo); <strong>3)</strong> isolamento (verifica spessore parete: i Burstner standard hanno 70-80 mm, i Premio arrivavano a 100 mm); <strong>4)</strong> impianto elettrico tedesco (norme tedesche, prese a 16A invece dei 10A italiani standard: verifica compatibilità con la tua piazzola).' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Marche', url: '/marche' },
+      { name: 'Burstner', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Marche & Modelli · Scheda</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Burstner è la marca tedesca storica del settore (dal 1958), oggi parte del gruppo Erwin Hymer. Posizionamento: costruzione robusta, prezzi onesti, fascia media. Meno presente di Atlas e Willerby sul mercato italiano dell'usato, ma quando la trovi ben mantenuta è un buon acquisto.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>6 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Marca <strong>tedesca</strong> storica, costruzione robusta. Modelli usato più frequenti: <strong>Marina</strong> (standard), <strong>Kosmos</strong> (3 camere). Range prezzo usato 2026: <strong>5.500–22.000 €</strong>. Plus: rapporto qualità/prezzo, costruzione tedesca. Limiti: rete italiana ridotta, ricambi dalla Germania (3-4 settimane).</p>
+        </Tldr>
+
+        <h2>Storia e posizionamento</h2>
+        <p>Burstner nasce in <strong>Germania nel 1958</strong> come produttore di caravan, e dagli anni '90 entra nel mercato static caravans (case mobili). Nel 2008 entra nel <strong>gruppo Erwin Hymer</strong>, uno dei più grandi player europei del veicolo abitativo (Hymer, Niesmann, Carado…). Posizionamento: <strong>fascia media</strong>, simile a Atlas come prezzo ma con costruzione tipicamente tedesca (telai pesanti, isolamento medio-buono, finiture robuste).</p>
+        <p>In Italia Burstner è <strong>meno diffusa</strong> di Atlas e Willerby (le inglesi hanno avuto distribuzione storica più capillare nei campeggi italiani), ma c'è una nicchia consolidata soprattutto nel Garda e Toscana.</p>
+
+        <h2>I modelli</h2>
+
+        <h3>Burstner Marina — il classico</h3>
+        <p>8×4 m, 2 camere, layout classico tedesco (zona living centrale, camere alle estremità). In produzione (con varianti) dal 2008. Range prezzo usato 2026: <strong>5.500–17.000 €</strong>.</p>
+
+        <h3>Burstner Kosmos — formato famiglia</h3>
+        <p>10×4 m, 3 camere. Trasporto eccezionale obbligatorio. Range prezzo usato 2026: <strong>11.000–22.000 €</strong>.</p>
+
+        <h2>I 4 checkpoint tecnici prima di comprare</h2>
+        <ol>
+          <li><strong>Targhetta tedesca</strong>: cerca conformità EN 1647 + marchio CE sul telaio, lato anteriore. La dicitura tedesca tipica conferma origine fabbrica</li>
+          <li><strong>Infissi originali</strong>: Burstner usa marchi tedeschi di qualità (Schüco, Roto). Se ancora di fabbrica è valore aggiunto. Sostituzioni con generici creano spesso problemi di sigillatura dopo 3-5 anni</li>
+          <li><strong>Spessore isolamento</strong>: verifica con prove pratica (bussa parete, controlla certificato fabbrica). I Burstner standard hanno pareti 70-80 mm; i Premio arrivavano a 100 mm</li>
+          <li><strong>Impianto elettrico</strong>: i Burstner originali tedeschi hanno prese a 16A (norma tedesca) invece dei 10A italiani. Per compatibilità con piazzola standard italiana potrebbe servire adattamento (200-400 €)</li>
+        </ol>
+
+        <h2>Vantaggi e limiti rispetto alla concorrenza</h2>
+        <p><strong>Vantaggi</strong>: costruzione tedesca solida (telaio pesante, lamiere spesse), rapporto qualità/prezzo competitivo (10-15% meno di un Atlas comparabile), affidabilità tipica della scuola tedesca.</p>
+        <p><strong>Limiti</strong>: rete distributiva italiana ridotta (concentrata in Veneto, Trentino, Lombardia), ricambi da ordinare in Germania (3-4 settimane), meno scelta di accessori locali, prassi piazzole italiane non sempre allineate con specifiche tedesche (allacciamenti elettrici).</p>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su Burstner case mobili" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/marche" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Marche & Modelli →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

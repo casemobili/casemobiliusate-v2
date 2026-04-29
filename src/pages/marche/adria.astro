@@ -1,0 +1,104 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/marche/adria';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Adria case mobili usate: la slovena compatta a prezzi aggressivi (2026)';
+const description = 'Adria è la marca slovena del settore: case mobili compatte, leggere, prezzi competitivi. Modelli iconici (Aviva, Action), prezzi usato 2026 e checkpoint tecnici.';
+
+const faq = [
+  { q: 'Adria è una marca affidabile?', a: 'Sì, ma posizionata diversamente da Atlas/Willerby/IRM. <strong>Adria</strong> è slovena (dal 1965), una delle 5 più grandi del mercato camper europeo. Nel settore case mobili gioca su <strong>compattezza, peso ridotto, prezzi aggressivi</strong>. Le sue case mobili sono mediamente più piccole e più leggere delle inglesi/francesi, con costruzione decente per il prezzo. Adatta per chi cerca la prima esperienza, budget contenuto, casa mobile non per uso intensivo invernale.' },
+  { q: 'Quali modelli Adria si trovano usati in Italia?', a: 'I 2 più frequenti: <strong>Adria Aviva</strong> (7,5×3,5 m, 2 camere, formato compatto), <strong>Adria Action</strong> (8×3 m, 1-2 camere, ancora più piccola). Range prezzo usato 2026: 4.500–18.000 €. Adria è meno presente in Italia rispetto alle inglesi, concentrata soprattutto in Slovenia/Austria/Trentino e nelle zone con tradizione tedesca/austriaca.' },
+  { q: 'Quanto costa una Adria Aviva usata?', a: 'In Italia nel 2026, fascia tipica: <strong>7.500–11.500 €</strong> per Aviva 2018-2020 in buone condizioni con accessori standard. Si scende a 5.000–7.000 € per modelli pre-2015. Si sale a 13.000–18.000 € per Aviva 2022-2024 quasi nuovi. È un\'opzione economica solida: meno costosa di Burstner e Atlas a parità di anno, dimensioni più contenute (vantaggio per trasporto e piazzole piccole).' },
+  { q: 'Adria è meno isolata delle inglesi?', a: 'Mediamente sì, ma dipende dal modello. La gamma standard Adria ha pareti 60-70 mm (sotto la media settoriale). Per uso vacanza estiva e primaverile va benissimo. Per uso invernale serve coibentazione aggiuntiva (1.500-3.000 € per casa 8×3 m) o riscaldamento più potente. Adria ha però una <strong>gamma "Premium"</strong> più rara con isolamento maggiorato (pareti 80-90 mm), che si avvicina allo standard inglese.' },
+  { q: 'Vale la pena per uso annuale?', a: '<strong>Solo con riserve</strong>. Le Adria standard non sono ottimizzate per uso continuativo invernale (isolamento sotto media, dimensioni ridotte). Se hai budget limitato e vuoi vivere in casa mobile tutto l\'anno, meglio: o salire sull\'usato a un IRM all-season (12.000-18.000 €), o coibentare l\'Adria (3.000-5.000 € extra), o limitare l\'uso a 8-9 mesi (chiusa novembre-febbraio).' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Marche', url: '/marche' },
+      { name: 'Adria', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Marche & Modelli · Scheda</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Adria è la marca slovena storica del settore: case mobili compatte, leggere, prezzi aggressivi. Punto di forza: rapporto qualità/prezzo nella fascia bassa-media. Limiti: meno isolata delle inglesi, dimensioni mediamente più piccole, rete distributiva italiana ridotta.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>6 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="grid lg:grid-cols-12 gap-12 mt-12">
+      <div class="lg:col-span-8 prose-article" style="margin:0">
+        <Tldr>
+          <p class="m-0">Marca <strong>slovena</strong> (dal 1965), specializzata in compatti e leggeri. Modelli usato più frequenti: <strong>Aviva</strong> (compatto 7,5×3,5), <strong>Action</strong> (ultra-compatto 8×3). Range prezzo usato 2026: <strong>4.500–18.000 €</strong>. Plus: prezzi aggressivi, dimensioni compatte (più facile trasporto e piazzole piccole). Limiti: isolamento sotto media settoriale, meno adatta a uso annuale invernale.</p>
+        </Tldr>
+
+        <h2>Storia e posizionamento</h2>
+        <p>Adria nasce in <strong>Slovenia (Novo Mesto) nel 1965</strong> ed è oggi una delle 5 più grandi del mercato camper europeo, con una gamma case mobili più piccola ma consolidata. Posizionamento: <strong>fascia bassa-media</strong>, con focus su compattezza, peso ridotto, prezzi competitivi.</p>
+        <p>Le case mobili Adria sono <strong>mediamente più piccole</strong> della concorrenza inglese (8×3 m vs 8×4 m standard) e più leggere (3-3,5 t vs 4-5 t). Questo le rende interessanti per chi: ha piazzola di piccole dimensioni, deve trasportare in piazzole con accessi stretti, vuole il rapporto qualità/prezzo migliore della fascia entry.</p>
+
+        <h2>I modelli</h2>
+
+        <h3>Adria Aviva — il compatto standard</h3>
+        <p>7,5×3,5 m, 2 camere, layout classico. È il modello Adria più diffuso in Italia. Ridotto come dimensioni rispetto a Atlas/IRM standard, ma vivibile per famiglia 4 persone. Prezzo usato 2026: <strong>5.500–14.000 €</strong>.</p>
+
+        <h3>Adria Action — l'ultra-compatto</h3>
+        <p>8×3 m, 1-2 camere, formato ancora più piccolo. Adatto per coppia o famiglia 3 persone. Vantaggio decisivo: rientra ampiamente nei limiti di trasporto standard (no eccezionale), molto leggero. Prezzo usato 2026: <strong>4.500–12.000 €</strong>.</p>
+
+        <h2>I 3 checkpoint specifici Adria</h2>
+        <ol>
+          <li><strong>Versione "Premium" o "Comfort"</strong>: la gamma Adria ha versioni standard e premium, con differenze importanti su isolamento (60-70 mm vs 80-90 mm) e finiture. Verifica targhetta: il valore può cambiare del 20-30% tra le due versioni</li>
+          <li><strong>Telaio leggero</strong>: Adria usa telai in acciaio meno pesanti (3,5-4 mm contro 5-6 mm di Willerby). Punti critici: zona timone, attacchi piazzola. Controlla con cura ossidazione e ammaccature</li>
+          <li><strong>Infissi</strong>: Adria usa infissi propri o partner sloveni/austriaci. Ricambi specifici sono meno facili in Italia: se infissi originali in buone condizioni, ottimo; se sostituiti con generici, controlla sigillatura</li>
+        </ol>
+
+        <h2>Quando ha senso scegliere Adria</h2>
+        <ul>
+          <li><strong>Budget aggressivo</strong>: cerca casa mobile sotto i 10.000 €, prima esperienza</li>
+          <li><strong>Piazzola piccola o accesso difficile</strong>: dimensioni compatte sono un vantaggio</li>
+          <li><strong>Trasporto frequente</strong>: la leggerezza riduce costi trasporto eccezionale</li>
+          <li><strong>Uso vacanza primavera-autunno</strong> (non invernale intensivo)</li>
+        </ul>
+
+        <h2>Quando NON è la scelta giusta</h2>
+        <ul>
+          <li><strong>Uso annuale</strong> con inverni veri (cerca IRM all-season o Willerby Lodge)</li>
+          <li><strong>Famiglia 5+ persone</strong>: dimensioni Adria stringono</li>
+          <li><strong>Vuoi tenerla 15+ anni</strong>: l'usura su Adria post-12 anni è più rapida che su Willerby/Atlas</li>
+        </ul>
+
+        <FbCommunityWidget variant="card" />
+
+        <FaqAccordion items={faq} title="Domande frequenti su Adria case mobili" />
+      </div>
+
+      <aside class="lg:col-span-4 hidden lg:block">
+        <div class="sticky top-20 space-y-6">
+          <div class="rounded-sm border p-5" style="border-color:var(--color-linen-200);background-color:var(--color-linen-50)">
+            <div class="eyebrow mb-2">Pillar di riferimento</div>
+            <a href="/marche" class="block font-semibold no-underline hover:underline" style="color:var(--color-forest-800)">Marche & Modelli →</a>
+          </div>
+          <FbCommunityWidget variant="sidebar" />
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>
