@@ -1,14 +1,16 @@
-# Decap CMS — configurazione per CaseMobiliUsate.com
+# Decap CMS — configurazione produzione
 # Documentazione: https://decapcms.org/docs/
 
-# === Backend ===
-# MODALITÀ DI TEST LOCALE — niente login richiesto, niente GitHub.
-# Tutto resta in memoria del browser per provare l'editor (NON salva su disco).
-# Quando andiamo online, switcho a "git-gateway" + Netlify Identity.
+# === Backend: GitHub OAuth via Cloudflare Pages Functions ===
+# base_url omesso volutamente: Decap usa window.location.origin
+# (così funziona sia su pages.dev preview che su www.casemobiliusate.com)
 backend:
-  name: test-repo
+  name: github
+  repo: casemobili/casemobiliusate-v2
+  branch: main
+  auth_endpoint: api/auth
 
-# Locale fix per editor
+# Locale italiano per editor
 locale: it
 
 # Cartelle media
@@ -48,12 +50,12 @@ collections:
           - { label: 'Dove Mettere & Campeggi', value: 'dove-mettere' }
           - { label: 'Confronti & Tipologie', value: 'tipologie' }
           - { label: "Guide all'Acquisto", value: 'guide-acquisto' }
-      - { name: 'focusKeyword', label: 'Focus keyword SEO', widget: 'string', hint: 'La query principale per cui vuoi posizionarti. Verrà controllata dal SEO Score.' }
+      - { name: 'focusKeyword', label: 'Focus keyword SEO', widget: 'string', hint: 'La query principale per cui vuoi posizionarti.' }
       - { name: 'keywordsSecondarie', label: 'Keyword secondarie (sinonimi, varianti)', widget: 'list', required: false, default: [] }
       - { name: 'metaDescription', label: 'Meta description (Google snippet)', widget: 'text', hint: 'Tra 120 e 160 caratteri. Deve contenere la focus keyword e promettere un beneficio concreto.' }
       - { name: 'coverImage', label: 'Immagine di copertina', widget: 'image', required: false, hint: 'JPG ottimizzata, almeno 1280×720, sotto i 400 KB.' }
       - { name: 'coverImageAlt', label: 'Alt text immagine', widget: 'string', required: false, hint: '10-125 caratteri descrittivi.' }
-      - { name: 'coverImageCredit', label: 'Crediti immagine (autore + fonte)', widget: 'string', required: false, hint: 'Es. "Foto: Mario Rossi su Pexels"' }
+      - { name: 'coverImageCredit', label: 'Crediti immagine (autore + fonte)', widget: 'string', required: false }
       - { name: 'dataPubblicazione', label: 'Data pubblicazione', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
       - { name: 'dataAggiornamento', label: 'Data ultimo aggiornamento', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false }
       - { name: 'autore', label: 'Autore', widget: 'select', default: 'andrea-bressan', options: ['andrea-bressan'] }
@@ -69,7 +71,7 @@ collections:
           - { name: 'risposta', label: 'Risposta (HTML supportato)', widget: 'text' }
       - { name: 'articoliCorrelati', label: 'Articoli correlati (slug, max 3)', widget: 'list', required: false, default: [] }
       - { name: 'noindex', label: 'Nascondi a Google (noindex)', widget: 'boolean', default: false }
-      - { name: 'body', label: "Contenuto articolo", widget: 'markdown', hint: 'Markdown. Almeno 1.500 parole per articoli pillar, 800+ per cluster. Usa H2 per sezioni principali.' }
+      - { name: 'body', label: "Contenuto articolo", widget: 'markdown', hint: 'Markdown. Almeno 1.500 parole per articoli pillar, 800+ per cluster.' }
 
   # ─── Pillar (hub) ────────────────────────────────────────────────────
   - name: 'pillar'
