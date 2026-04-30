@@ -1,0 +1,87 @@
+---
+interface Props {
+  pillarSlug: string;
+}
+
+const { pillarSlug } = Astro.props;
+
+const heroes: Record<string, { gradient: string; icon: string; iconColor: string; pattern?: string }> = {
+  normativa: {
+    gradient: 'linear-gradient(135deg, #2d5a3d 0%, #4a7c59 50%, #c89b3c 100%)',
+    iconColor: '#FAF7F0',
+    icon: 'M30 20 L60 20 L60 30 L70 30 L70 70 L20 70 L20 30 L30 30 Z M40 40 L60 40 M40 50 L60 50 M40 60 L55 60',
+  },
+  prezzi: {
+    gradient: 'linear-gradient(135deg, #c89b3c 0%, #d4b365 50%, #e8d8b0 100%)',
+    iconColor: '#2d4f2d',
+    icon: 'M45 15 L45 75 M30 30 C30 22 38 20 45 20 C52 20 60 22 60 30 C60 38 30 38 30 50 C30 58 38 60 45 60 C52 60 60 58 60 50',
+  },
+  marche: {
+    gradient: 'linear-gradient(135deg, #2d5a3d 0%, #1a4029 100%)',
+    iconColor: '#d4b365',
+    icon: 'M45 15 L52 35 L72 38 L57 52 L62 72 L45 62 L28 72 L33 52 L18 38 L38 35 Z',
+  },
+  trasporto: {
+    gradient: 'linear-gradient(135deg, #c89b3c 0%, #b8821e 100%)',
+    iconColor: '#FAF7F0',
+    icon: 'M15 55 L15 35 L40 35 L40 55 M40 45 L60 45 L75 55 L75 60 L15 60 L15 55 M25 60 C25 65 30 65 30 60 M55 60 C55 65 60 65 60 60',
+  },
+  vivere: {
+    gradient: 'linear-gradient(135deg, #4a7c59 0%, #2d5a3d 100%)',
+    iconColor: '#e8d8b0',
+    icon: 'M20 50 L45 25 L70 50 L70 70 L20 70 Z M40 70 L40 55 L50 55 L50 70',
+  },
+  'dove-mettere': {
+    gradient: 'linear-gradient(135deg, #2d5a3d 0%, #c89b3c 100%)',
+    iconColor: '#FAF7F0',
+    icon: 'M45 15 C32 15 22 25 22 38 C22 55 45 75 45 75 C45 75 68 55 68 38 C68 25 58 15 45 15 Z M45 30 C49 30 53 34 53 38 C53 42 49 46 45 46 C41 46 37 42 37 38 C37 34 41 30 45 30 Z',
+  },
+  tipologie: {
+    gradient: 'linear-gradient(135deg, #4a7c59 0%, #d4b365 100%)',
+    iconColor: '#FAF7F0',
+    icon: 'M15 30 L35 30 L35 60 L15 60 Z M55 30 L75 30 L75 60 L55 60 Z M40 35 L50 35 M40 45 L50 45 M40 55 L50 55',
+  },
+  'guide-acquisto': {
+    gradient: 'linear-gradient(135deg, #c89b3c 0%, #d4b365 100%)',
+    iconColor: '#2d4f2d',
+    icon: 'M30 20 L60 20 L60 70 L30 70 Z M35 35 L55 35 M35 45 L55 45 M35 55 L50 55 M55 60 L65 50 L75 60',
+  },
+  'mappa-campeggi': {
+    gradient: 'linear-gradient(135deg, #2d5a3d 0%, #4a7c59 50%, #d4b365 100%)',
+    iconColor: '#FAF7F0',
+    icon: 'M45 15 C32 15 22 25 22 38 C22 55 45 75 45 75 C45 75 68 55 68 38 C68 25 58 15 45 15 Z M45 30 C49 30 53 34 53 38 C53 42 49 46 45 46 C41 46 37 42 37 38 C37 34 41 30 45 30 Z',
+  },
+  default: {
+    gradient: 'linear-gradient(135deg, #2d5a3d 0%, #c89b3c 100%)',
+    iconColor: '#FAF7F0',
+    icon: 'M45 15 L52 35 L72 38 L57 52 L62 72 L45 62 L28 72 L33 52 L18 38 L38 35 Z',
+  },
+};
+
+const hero = heroes[pillarSlug] ?? heroes.default;
+---
+
+<div class="hidden md:block w-full overflow-hidden" style="height: 180px; background: var(--color-paper); margin-bottom: 0;">
+  <div class="max-w-7xl mx-auto h-full relative" style="background: {hero.gradient};">
+    <svg viewBox="0 0 800 180" preserveAspectRatio="xMidYMid slice" class="w-full h-full" style={`background:${hero.gradient}`}>
+      <defs>
+        <pattern id={`grid-${pillarSlug}`} width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="800" height="180" fill={`url(#grid-${pillarSlug})`}/>
+      <g transform="translate(640, 30)" opacity="0.85">
+        <circle cx="45" cy="45" r="55" fill="rgba(255,255,255,0.08)"/>
+        <path d={hero.icon} fill="none" stroke={hero.iconColor} stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <g transform="translate(0, 90)">
+        <circle cx="100" cy="40" r="3" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="200" cy="60" r="2" fill="rgba(255,255,255,0.25)"/>
+        <circle cx="280" cy="30" r="2.5" fill="rgba(255,255,255,0.3)"/>
+        <circle cx="380" cy="50" r="2" fill="rgba(255,255,255,0.2)"/>
+        <circle cx="450" cy="35" r="3" fill="rgba(255,255,255,0.25)"/>
+        <circle cx="540" cy="55" r="2" fill="rgba(255,255,255,0.2)"/>
+      </g>
+    </svg>
+  </div>
+</div>

@@ -1,5 +1,91 @@
+# robots.txt — CaseMobiliUsate.com
+# Sito informativo open per indicizzazione + AI citations
+
+# === Default: tutti i bot ammessi ===
 User-agent: *
 Allow: /
 Disallow: /draft/
+Disallow: /admin/
+Disallow: /grazie
 
+# === AI / LLM crawlers — esplicitamente ammessi (per citations + grounding) ===
+# Vogliamo essere citati da ChatGPT, Claude, Perplexity, Bing Copilot, Gemini, You.com, ecc.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# === Crawlers che vogliamo escludere (scrapers commerciali aggressivi) ===
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# === Sitemaps ===
 Sitemap: https://www.casemobiliusate.com/sitemap-index.xml

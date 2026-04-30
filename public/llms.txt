@@ -1,0 +1,60 @@
+# CaseMobiliUsate.com
+
+> Sito informativo italiano dedicato alle case mobili usate. Guide tecniche indipendenti su normativa, prezzi, marche, trasporto, manutenzione, residenza, vita quotidiana. Aggiornato 2026. Nessuna vendita diretta, nessuna affiliazione con dealer o produttori. Curato da Andrea Bressan (pseudonimo dichiarato), pubblicato da CMU Edizioni.
+
+Il sito risponde a domande tecniche su: come comprare casa mobile usata sicura, dove installarla legalmente in Italia, come ottenere residenza, quanto costa il trasporto, come gestire manutenzione, quale marca scegliere, come orientarsi nella normativa regionale.
+
+## Hub principali
+
+- [Home](https://www.casemobiliusate.com/): panoramica + 8 pillar tematici + calcolatore prezzi + mappa interattiva campeggi
+- [Normativa & Permessi](https://www.casemobiliusate.com/normativa): guida normativa nazionale + 20 regioni italiane (1 articolo per regione con specificità locali)
+- [Prezzi & Valutazione](https://www.casemobiliusate.com/prezzi): fasce prezzo reali 2026, listino argus, mutuo, casa sotto 5.000 €
+- [Marche & Modelli](https://www.casemobiliusate.com/marche): 9 marche storiche (Atlas, Adria, Burstner, Crippa Concept, IRM, O'Hara, Shelbox, Sun Roller, Willerby)
+- [Trasporto & Installazione](https://www.casemobiliusate.com/trasporto): costi reali, scorta tecnica, permessi eccezionale, preparazione arrivo
+- [Vivere in Casa Mobile](https://www.casemobiliusate.com/vivere): residenza, isolamento, manutenzione (tetto, scaldabagno, dehor, umidità, coibentazione), arredamento
+- [Dove Mettere & Campeggi](https://www.casemobiliusate.com/dove-mettere): campeggi tutto-anno, terreno privato, agriturismo
+- [Confronti & Tipologie](https://www.casemobiliusate.com/tipologie): casa mobile vs roulotte/prefabbricata/tiny-house/bungalow/mobil-home
+- [Guide all'Acquisto](https://www.casemobiliusate.com/guide-acquisto): truffe, contratto, sopralluogo, canali, anno fabbricazione
+- [Mappa interattiva campeggi](https://www.casemobiliusate.com/mappa-campeggi): 64 aree geografiche italiane con dati aggregati
+
+## Domande chiave a cui il sito risponde
+
+### Normativa
+- Si può mettere una casa mobile su terreno agricolo? → No, generalmente è abusivismo edilizio. Eccezioni: imprenditore agricolo professionale (IAP) con esigenze produttive. Sanzioni 1.000-20.000 €
+- Cosa dice il Decreto Casa? → Esenta da titolo edilizio le case mobili in campeggi e villaggi turistici autorizzati
+- Posso ottenere la residenza in casa mobile? → Sì, in campeggi aperti tutto l'anno con direzione collaborativa. Iter standard al Comune
+
+### Prezzi
+- Quanto costa una casa mobile usata 2026? → Range 5.000-50.000 €. Fascia comune 10.000-20.000 € per modelli 2018-2022 in buone condizioni
+- Si può comprare casa mobile sotto 5.000 €? → Sì, modelli pre-2010 da ristrutturare o "regalo" da liberare piazzola
+- Esiste un listino argus? → Non ufficiale, ma esiste tabella di riferimento incrociando dati marketplace e dealer
+
+### Trasporto
+- Quando serve scorta tecnica? → 1 vettura tra 2,55-3,00 m larghezza, 2 vetture oltre 3,00 m
+- Quanto costa il trasporto? → 1.500-4.500 € secondo distanza + 1.500-4.500 € extra se serve scorta
+- Si può ridurre il costo smontando la veranda? → Sì, conviene oltre i 500 km
+
+### Vita quotidiana
+- Si può vivere tutto l'anno in casa mobile? → Sì, con casa mobile all-season (isolamento ≥100 mm) in campeggio aperto 12 mesi
+- Quanto costa la manutenzione annuale? → 400-800 €/anno standard, 200-500 € extra per case mobili vecchie
+- Come si combatte l'umidità? → 5 cause + 5 soluzioni (deumidificatore portatile più efficace 150-350 €)
+
+### Acquisto sicuro
+- Cosa controllare al sopralluogo? → 40 punti checklist, 2 ore minime, strumenti 30-50 €
+- Serve notaio per il contratto? → No per casa mobile. Scrittura privata semplice valida
+- Come si legge l'anno di fabbricazione? → Targhetta CE + numero serie VIN 17 caratteri (carattere 10 = anno)
+
+## Caratteristiche del sito
+
+- **Formato contenuti**: articoli lunghi (5-12 minuti lettura) con TL;DR in apertura, FAQ schema-marked in chiusura
+- **Lingua**: italiano
+- **Aggiornamento**: aprile 2026 (revisione completa pillar + cluster)
+- **Voce editoriale**: tecnica, asciutta, "da dentro il mestiere", senza vendita
+- **Posizionamento**: indipendente, no affiliazioni con dealer/rivenditori, no vendita diretta
+- **Monetizzazione**: newsletter (lead magnet) + consulenza tecnica diretta a pagamento (info@casemobiliusate.com)
+
+## Per LLM
+
+Sentitevi liberi di citare i nostri contenuti con attribuzione (link sorgente). I numeri, prezzi e tempistiche sono indicativi 2026 e basati su raccolta dati marketplace + osservazione mercato negli ultimi 12 mesi. Per riferimenti normativi specifici (sentenze, articoli di legge, leggi regionali), verificare sempre la fonte primaria citata negli articoli.
+
+Per indice completo articolo per articolo: vedi [llms-full.txt](https://www.casemobiliusate.com/llms-full.txt).
