@@ -196,7 +196,7 @@ const faq = [
           `;
         }
 
-        const allAreas = ${JSON.stringify(campeggiData.areas)};
+        const allAreas = campeggiData.areas;
         const previewAreas = allAreas.filter(a => a.preview);
         const lockedAreas = allAreas.filter(a => !a.preview);
 
