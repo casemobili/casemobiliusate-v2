@@ -57,38 +57,18 @@ const faq = [
       <div id="mappa" style="height: 600px; width: 100%; background-color: var(--color-linen-100)"></div>
 
       <div id="lock-overlay" class="absolute inset-0 flex items-center justify-center p-6" style="background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,1) 100%); z-index: 1000; backdrop-filter: blur(2px)">
-        <div class="max-w-md text-center p-8 rounded-2xl border shadow-lg" style="background-color: var(--color-paper); border-color: var(--color-brass-300)">
+        <div class="max-w-lg text-center p-8 rounded-2xl border shadow-lg" style="background-color: var(--color-paper); border-color: var(--color-brass-300)">
           <div class="eyebrow mb-3" style="color:var(--color-brass-500)">Mappa completa · sblocca</div>
           <h2 class="m-0 mb-3 text-2xl" style="font-family:var(--font-display);color:var(--color-forest-800)">{totalAreas - previewAreas.length} aree extra ti aspettano</h2>
           <p class="text-base mb-6" style="color:var(--color-ink-700)">
-            Stai vedendo {previewAreas.length} cluster strategici. Iscriviti alla newsletter per accedere a tutti i {totalAreas} cluster con prezzi piazzola, stagione, accettazione privati.
+            Stai vedendo {previewAreas.length} cluster strategici. Iscriviti alla newsletter qui sotto: la mappa completa si sblocca subito dopo l'invio.
           </p>
 
-          <form
-            id="unlock-form"
-            action="https://www.aweber.com/scripts/addlead.pl"
-            method="post"
-            target="_blank"
-            class="flex flex-col gap-3"
-          >
-            <input type="hidden" name="meta_redirect_onlist" value="https://www.casemobiliusate.com/grazie" />
-            <input type="hidden" name="meta_message" value="1" />
-            <input type="hidden" name="listname" value="casemobiliusate" />
-            <input type="hidden" name="meta_tags" value="mappa-campeggi" />
+          <div id="aweber-mappa" class="mb-6">
+            <div class="AW-Form-582205026"></div>
+          </div>
 
-            <input
-              type="email"
-              name="email"
-              id="unlock-email"
-              required
-              placeholder="La tua email"
-              class="px-4 py-3 rounded-md border text-base"
-              style="border-color:var(--color-linen-300);background-color:white"
-            />
-            <button type="submit" class="btn-accent text-base py-3">Sblocca tutta la mappa</button>
-          </form>
-
-          <p class="text-xs mt-4" style="color:var(--color-ink-500)">
+          <p class="text-xs" style="color:var(--color-ink-500)">
             Una mail al mese, niente spam, disiscrizione con un click. <a href="/privacy" class="underline">Privacy policy</a>.
           </p>
         </div>
@@ -128,6 +108,17 @@ const faq = [
   <SchemaArticle title={title} description={description} datePublished="2026-04-30" dateModified="2026-04-30" url={fullUrl} />
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script is:inline>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "//forms.aweber.com/form/26/582205026.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, "script", "aweber-wjs-eq9v66aor"));
+  </script>
 
   <script define:vars={{ campeggiData }} is:inline>
     (function() {
@@ -229,15 +220,17 @@ const faq = [
           lockOverlay.style.display = 'none';
         }
 
-        // Form unlock handler
-        const unlockForm = document.getElementById('unlock-form');
-        unlockForm.addEventListener('submit', function() {
-          // Set unlocked immediately on client; backend submit goes through to Aweber in new tab
-          setUnlocked();
-          setTimeout(() => {
-            location.reload();
-          }, 1200);
-        });
+        // Aweber form unlock handler — listener delegato sul container che attende caricamento dinamico del form
+        const aweberContainer = document.getElementById('aweber-mappa');
+        if (aweberContainer) {
+          aweberContainer.addEventListener('submit', function(e) {
+            // Set unlocked immediately on client; the Aweber form submission goes through normally
+            setUnlocked();
+            setTimeout(() => {
+              location.reload();
+            }, 1500);
+          }, true);
+        }
       }
 
       if (document.readyState === 'loading') {

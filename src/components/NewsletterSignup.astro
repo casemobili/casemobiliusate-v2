@@ -2,7 +2,7 @@
 interface Props {
   title?: string;
   subtitle?: string;
-  variant?: 'inline' | 'centered';
+  variant?: 'inline' | 'centered' | 'sidebar';
 }
 
 const {
@@ -13,36 +13,29 @@ const {
 ---
 
 <section class:list={[
-  'rounded-2xl p-8 md:p-10 my-12 border',
+  'rounded-2xl my-12 border',
+  variant === 'sidebar' ? 'p-5' : 'p-8 md:p-10',
   variant === 'centered' ? 'text-center' : '',
 ]} style="background-color:var(--color-linen-50);border-color:var(--color-linen-200)">
   <h3 style="margin-top:0">{title}</h3>
   <p class="text-base mt-2 mb-6" style="color:var(--color-ink-700)">{subtitle}</p>
 
-  <form
-    action="https://www.aweber.com/scripts/addlead.pl"
-    method="post"
-    class:list={[
-      'flex flex-col sm:flex-row gap-3 max-w-xl',
-      variant === 'centered' ? 'mx-auto' : '',
-    ]}
-  >
-    <input type="hidden" name="meta_redirect_onlist" value="https://www.casemobiliusate.com/grazie" />
-    <input type="hidden" name="meta_message" value="1" />
-    <label class="sr-only" for="newsletter-email">Email</label>
-    <input
-      type="email"
-      name="email"
-      id="newsletter-email"
-      required
-      placeholder="La tua email"
-      class="flex-1 px-4 py-3 rounded-md border"
-      style="border-color:var(--color-linen-300);background-color:white"
-    />
-    <button type="submit" class="btn-accent">Iscriviti gratis</button>
-  </form>
+  <div class:list={['max-w-xl', variant === 'centered' ? 'mx-auto' : '']}>
+    <div class="AW-Form-582205026"></div>
+  </div>
 
   <p class="text-xs mt-4" style="color:var(--color-ink-500)">
     Iscrivendoti accetti la nostra <a href="/privacy" class="underline">privacy policy</a>. Disiscrizione con un click in fondo a ogni email.
   </p>
 </section>
+
+<script is:inline>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//forms.aweber.com/form/26/582205026.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, "script", "aweber-wjs-eq9v66aor"));
+</script>
