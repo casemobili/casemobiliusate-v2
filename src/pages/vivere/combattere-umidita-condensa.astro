@@ -5,6 +5,7 @@ import SchemaArticle from '~/components/SchemaArticle.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import LeadMagnet from '~/components/LeadMagnet.astro';
 
 const url = '/vivere/combattere-umidita-condensa';
 const fullUrl = `https://www.casemobiliusate.com${url}`;
@@ -81,7 +82,7 @@ const faq = [
       <p>L\'investimento più efficace per la maggior parte dei casi. Modelli da 10-20 litri/giorno per casa mobile media. Posiziona nel locale più umido (tipicamente bagno o lato nord). Funziona quando umidità relativa &gt;60%.</p>
       <ul>
         <li><strong>Costo</strong>: 150-350 € secondo capacità (10-20 L/giorno)</li>
-        <li><strong>Marche raccomandate</strong>: De\'Longhi Tasciugo, Comfee\', Olimpia Splendid</li>
+        <li><strong>Cosa cercare</strong>: marche europee mainstream con capacità 10-20 L/giorno, classe energetica A, funzione "modalità notte" silenziosa</li>
         <li><strong>Costo elettricità</strong>: 0,15-0,30 €/giorno uso intermittente</li>
         <li><strong>Manutenzione</strong>: svuotare serbatoio quotidiano in inverno, pulire filtro mensile</li>
         <li><strong>ROI</strong>: previene danni 1.500-5.000 €</li>
@@ -156,6 +157,14 @@ const faq = [
         <li><strong>Ignorare odore stantio</strong>: è il primo segnale di muffa nascente</li>
         <li><strong>Spegnere riscaldamento di notte per "risparmiare"</strong>: lo "risparmio" si paga in interventi anti-umidità</li>
       </ul>
+
+      <LeadMagnet
+        title="Hai problemi di umidità persistente? Diagnosi remota gratuita"
+        subtitle="Scrivi a info@casemobiliusate.com con foto di pareti/soffitti/angoli problematici e descrizione (quando appare, quanta umidità, intervento già provati). Ti rispondiamo entro 48h con diagnosi probabile e priorità intervento."
+        ctaLabel="Richiedi diagnosi umidità"
+        emailSubject="Diagnosi umidità casa mobile"
+        emailBody={`Salve,\n\nti scrivo per ricevere una diagnosi remota per problema umidità in casa mobile.\n\nDati casa mobile:\n- Marca/anno: __\n- Dimensioni: __ × __ m\n- Zona geografica: __\n- Uso: [vacanza / stagione lunga / residenza stabile]\n\nProblema umidità:\n- Da quanto tempo: __\n- Dove: [pareti / soffitto / pavimento / mobili]\n- Quando appare di più: [inverno / estate / sempre]\n- Interventi già provati: __\n\nAllego foto: [Sì - le includo nel reply / No - le mando dopo]\n\nGrazie.`}
+      />
 
       <h2>Quando intervenire chiamando tecnico</h2>
       <ul>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  ctaLabel?: string;
+  emailSubject?: string;
+  emailBody?: string;
+  variant?: 'card' | 'inline';
+}
+
+const {
+  title = 'Vuoi una consulenza personalizzata?',
+  subtitle = 'Scrivi a info@casemobiliusate.com per ricevere una valutazione tecnica gratuita sul tuo caso specifico (ricerca, acquisto, manutenzione, residenza).',
+  ctaLabel = 'Scrivi a info@casemobiliusate.com',
+  emailSubject = 'Richiesta consulenza casa mobile',
+  emailBody = 'Salve,\n\nti scrivo da casemobiliusate.com perché vorrei ricevere una consulenza tecnica su:\n\n[Descrivi qui la tua esigenza: ricerca casa mobile, valutazione acquisto, manutenzione, residenza, altro]\n\nContesto: [zona geografica, budget approssimativo, uso previsto].\n\nGrazie.',
+  variant = 'card',
+} = Astro.props;
+
+const mailto = `mailto:info@casemobiliusate.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+---
+
+<aside class:list={[
+  'my-8 rounded-2xl border',
+  variant === 'card' ? 'p-6 md:p-8' : 'p-5',
+]} style="background-color:var(--color-linen-50);border-color:var(--color-brass-300)">
+  <div class="eyebrow mb-2" style="color:var(--color-brass-500)">Lead magnet · Consulenza</div>
+  <h3 class="m-0 text-xl md:text-2xl" style="font-family:var(--font-display);color:var(--color-forest-800)">{title}</h3>
+  <p class="text-base mt-3 mb-5 leading-relaxed" style="color:var(--color-ink-700)">{subtitle}</p>
+  <a href={mailto} class="inline-flex items-center gap-2 px-5 py-3 rounded-md font-semibold no-underline" style="background-color:var(--color-forest-700);color:var(--color-paper)">
+    {ctaLabel}
+    <span aria-hidden="true">→</span>
+  </a>
+  <p class="text-xs mt-4" style="color:var(--color-ink-500)">
+    Risposta entro 48 ore lavorative. Servizio gratuito per orientamento generale; per analisi tecniche approfondite la consulenza può essere a pagamento (preventivo trasparente).
+  </p>
+</aside>

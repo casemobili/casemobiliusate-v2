@@ -5,6 +5,7 @@ import SchemaArticle from '~/components/SchemaArticle.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import LeadMagnet from '~/components/LeadMagnet.astro';
 
 const url = '/vivere/scaldabagno-sostituzione';
 const fullUrl = `https://www.casemobiliusate.com${url}`;
@@ -14,7 +15,7 @@ const description = 'Sostituzione scaldabagno casa mobile 2026: tipologie (elett
 const faq = [
   { q: 'Quando devo sostituire lo scaldabagno?', a: '5 segnali: <strong>1)</strong> acqua calda insufficiente o intermittente (resistenza guasta); <strong>2)</strong> gocciolamento dal corpo (corrosione interna serbatoio); <strong>3)</strong> rumori anomali (calcare accumulato); <strong>4)</strong> tempo riscaldamento raddoppiato rispetto alle origini; <strong>5)</strong> consumi elettrici o gas raddoppiati. Vita utile media: <strong>scaldabagno elettrico 8-12 anni</strong>, <strong>a gas 10-15 anni</strong>, <strong>istantaneo a gas 12-18 anni</strong>. Sopra questi anni, riparazioni successive non valgono il costo del nuovo.' },
   { q: 'Posso sostituire scaldabagno da solo o serve tecnico?', a: 'Dipende. <strong>Scaldabagno elettrico</strong>: in linea di principio sì se sei pratico, ma DM 37/2008 richiede dichiarazione di conformità per modifiche all\'impianto elettrico. Costi tecnico 80-150 € installazione. <strong>Scaldabagno a gas</strong>: SEMPRE tecnico abilitato gas (DM 37/2008), serve dichiarazione di conformità + verifica gas (multa 1.000-3.000 € se omessa). <strong>Scaldabagno istantaneo a gas</strong>: stesso obbligo tecnico abilitato.' },
-  { q: 'Quanto costa il nuovo scaldabagno?', a: 'Range 2026: <strong>scaldabagno elettrico 30-80 litri</strong>: 150-400 € (Ariston, Bosch, Whirlpool); <strong>scaldabagno gas accumulo 50-80 litri</strong>: 350-700 € (Vaillant, Beretta); <strong>scaldabagno istantaneo a gas</strong>: 250-600 € (Beretta, Ariston, Junkers). Aggiungere 80-200 € per kit installazione (raccordi, valvole, supporti). Totale fornitura+installazione: <strong>200-1.200 €</strong> secondo modello.' },
+  { q: 'Quanto costa il nuovo scaldabagno?', a: 'Range 2026: <strong>scaldabagno elettrico 30-80 litri</strong>: 150-400 € (marche europee mainstream); <strong>scaldabagno gas accumulo 50-80 litri</strong>: 350-700 € (marche premium europee); <strong>scaldabagno istantaneo a gas</strong>: 250-600 €. Aggiungere 80-200 € per kit installazione (raccordi, valvole, supporti). Totale fornitura+installazione: <strong>200-1.200 €</strong> secondo modello.' },
   { q: 'Elettrico o gas: cosa scegliere?', a: 'Dipende dal contesto. <strong>Elettrico ad accumulo</strong>: pro = installazione semplice, no fumi/canna fumaria, sicurezza. Contro = costi esercizio elevati (consumi 1.500-2.500 W per 60-90 min/uso), tempi riscaldamento lunghi. Adatto a uso vacanza intermittente. <strong>A gas</strong>: pro = costi esercizio inferiori, tempi riscaldamento ridotti. Contro = obbligo verifica gas, canna fumaria, manutenzione tecnica. Adatto a uso continuativo (residenza, stagione lunga). <strong>Istantaneo a gas</strong>: acqua calda illimitata, no serbatoio = no spazio occupato, ma flusso limitato (non basta per 2 docce simultanee).' },
 ];
 ---
@@ -52,7 +53,7 @@ const faq = [
       <h3>Scaldabagno elettrico ad accumulo</h3>
       <p>La soluzione più diffusa in casa mobile usata. Serbatoio coibentato (30-80 litri) con resistenza elettrica + termostato.</p>
       <ul>
-        <li><strong>Costo fornitura</strong>: 150-400 € (Ariston, Bosch, Whirlpool, Atlantic)</li>
+        <li><strong>Costo fornitura</strong>: 150-400 € (marche europee mainstream)</li>
         <li><strong>Costo installazione</strong>: 80-150 € (allaccio elettrico + idraulico)</li>
         <li><strong>Tempo riscaldamento</strong> da freddo: 60-90 min</li>
         <li><strong>Autonomia</strong>: 30 litri = 1 doccia + 1 cucina, 50-80 litri = 2-3 docce + cucina</li>
@@ -64,7 +65,7 @@ const faq = [
       <h3>Scaldabagno a gas ad accumulo</h3>
       <p>Più efficiente energeticamente, soprattutto per uso continuativo. Serbatoio + bruciatore gas + canna fumaria.</p>
       <ul>
-        <li><strong>Costo fornitura</strong>: 350-700 € (Vaillant, Beretta, Ariston Pro Plus)</li>
+        <li><strong>Costo fornitura</strong>: 350-700 € (marche premium europee)</li>
         <li><strong>Costo installazione</strong>: 200-400 € (allaccio gas + canna fumaria + idraulico)</li>
         <li><strong>Tempo riscaldamento</strong>: 30-50 min</li>
         <li><strong>Autonomia</strong>: 50-80 litri standard</li>
@@ -76,7 +77,7 @@ const faq = [
       <h3>Scaldabagno istantaneo a gas</h3>
       <p>L\'opzione più moderna. Riscalda acqua "al passaggio" senza serbatoio.</p>
       <ul>
-        <li><strong>Costo fornitura</strong>: 250-600 € (Beretta Idrabagno, Ariston Next, Junkers)</li>
+        <li><strong>Costo fornitura</strong>: 250-600 € (marche specializzate)</li>
         <li><strong>Costo installazione</strong>: 200-400 €</li>
         <li><strong>Vantaggio chiave</strong>: acqua calda illimitata, no spazio serbatoio</li>
         <li><strong>Limite</strong>: portata 8-15 litri/min (basta per 1 doccia, NON per 2 docce simultanee)</li>
@@ -87,7 +88,7 @@ const faq = [
       <h3>Scaldabagno a pompa di calore</h3>
       <p>Tecnologia recente, efficiente ma costosa upfront. Estrae calore dall\'aria.</p>
       <ul>
-        <li><strong>Costo fornitura</strong>: 800-1.500 € (Ariston Nuos, Daikin)</li>
+        <li><strong>Costo fornitura</strong>: 800-1.500 € (modelli premium)</li>
         <li><strong>Costo installazione</strong>: 250-500 €</li>
         <li><strong>Costo esercizio</strong>: 60-150 €/anno (3-4 volte meno di elettrico standard)</li>
         <li><strong>Limite</strong>: dimensioni grandi, richiede locale ventilato</li>
@@ -118,7 +119,7 @@ const faq = [
 
       <h3>3. Acquisto e installazione</h3>
       <ul>
-        <li><strong>Dove comprare</strong>: ferramenta locale (prezzi più alti, consulenza), online (Brico, Leroy Merlin, Amazon - prezzi inferiori), tecnico installatore (chiedi quotazione completa fornitura+installazione)</li>
+        <li><strong>Dove comprare</strong>: ferramenta locale (prezzi più alti, consulenza), grandi distributori bricolage o e-commerce generalisti (prezzi inferiori), tecnico installatore (chiedi quotazione completa fornitura+installazione)</li>
         <li><strong>Tempi installazione</strong>: 2-4 ore per elettrico standard, 4-8 ore per gas (canna fumaria + verifica)</li>
         <li><strong>Documenti</strong>: fattura + dichiarazione di conformità per gas (obbligo DM 37/2008)</li>
       </ul>
@@ -143,6 +144,14 @@ const faq = [
       </ul>
 
       <p>Su 12 anni di vita utile, una pompa di calore risparmia 5.400 € rispetto a elettrico standard, ammortizzando largamente il costo upfront superiore (1.300 € differenza).</p>
+
+      <LeadMagnet
+        title="Vuoi un consiglio sul modello giusto per la tua casa mobile?"
+        subtitle="Scrivi a info@casemobiliusate.com con: dimensione casa mobile, numero utenti, tipo di uso (vacanza/continuativo), gas disponibile in piazzola. Ti consigliamo il modello più adatto e ti diciamo se conviene tecnico o fai-da-te."
+        ctaLabel="Richiedi consiglio scaldabagno"
+        emailSubject="Consiglio scelta scaldabagno casa mobile"
+        emailBody={`Salve,\n\nti scrivo per ricevere un consiglio sulla scelta del nuovo scaldabagno per la mia casa mobile.\n\nDati casa mobile:\n- Dimensione: __ × __ m\n- Numero persone abituali: __\n- Uso: [vacanza occasionale / stagione lunga / residenza stabile]\n- Gas disponibile in piazzola: [GPL bombole / metano da rete / nessuno]\n\nScaldabagno attuale (se presente):\n- Tipologia: [elettrico / gas accumulo / istantaneo gas]\n- Età: __ anni\n- Problema: __\n\nGrazie.`}
+      />
 
       <FbCommunityWidget variant="card" />
 

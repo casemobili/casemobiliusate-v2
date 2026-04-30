@@ -1,0 +1,247 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import LeadMagnet from '~/components/LeadMagnet.astro';
+
+const url = '/trasporto/scorta-tecnica-costi-km';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Scorta tecnica trasporto casa mobile: costi al km e simulatore (2026)';
+const description = 'Scorta tecnica trasporto casa mobile 2026: oltre i 3 m di larghezza serve scorta. Simulatore costo al km, requisiti, permessi, finestre orarie e calcolo totale.';
+
+const faq = [
+  { q: 'Quando scatta l\'obbligo di scorta tecnica?', a: 'In Italia (Codice della Strada art. 10 + Direttiva Min. Infrastrutture): scorta tecnica <strong>1 vettura</strong> per larghezza compresa <strong>tra 2,55 e 3,00 metri</strong>; scorta tecnica <strong>2 vetture</strong> (1 davanti, 1 dietro) per larghezza <strong>oltre 3,00 metri</strong> o lunghezza oltre 25 m. Per altezze oltre 4,50 m anche scorta dedicata "altezza". Per peso oltre 56 t serve anche perizia statica ponti. La maggior parte delle case mobili 8x4, 9x4, 10x4 supera i 3 m con telai e veranda inclusa: scorta 2 vetture obbligatoria.' },
+  { q: 'Quanto costa la scorta tecnica al km?', a: 'Range 2026: <strong>scorta singola</strong> 1,80-2,80 €/km + 250-450 € forfait base; <strong>scorta doppia</strong> 3,20-4,80 €/km + 400-700 € forfait base. Esempio: trasporto 400 km con scorta doppia = 400 × 4 € + 550 € = <strong>2.150 €</strong> di sola scorta (oltre il costo trasporto base 1.800-2.500 €). Totale tipico trasporto + scorta per 400 km: <strong>4.000-5.500 €</strong>.' },
+  { q: 'Posso evitare la scorta riducendo la larghezza?', a: 'In alcuni casi sì. Smontaggio veranda, accessori esterni, scaletta/dehor può ridurre la larghezza utile sotto i 3,00 m (a volte sotto i 2,55 m). Costo smontaggio + rimontaggio: 600-1.500 €. Risparmio potenziale: 2.000-4.000 € in costi scorta. Conviene quando trasporto &gt;200 km. Verifica con ditta trasporti in fase preventivo.' },
+  { q: 'Quali sono le finestre orarie per trasporto eccezionale con scorta?', a: 'Tipicamente <strong>orari notturni</strong> (22:00-06:00) per trasporti su autostrada/superstrada, <strong>fuori ore di punta</strong> (10:00-15:00 + sabato/festivi) per strade ordinarie. Vietato in: <strong>1)</strong> giorni di particolare traffico (esodi estivi, festivi); <strong>2)</strong> condizioni meteo avverse (vento &gt;50 km/h, pioggia intensa, neve); <strong>3)</strong> alcuni Comuni con divieti specifici (centri storici, ZTL). Le finestre orarie possono raddoppiare durata percorso vs trasporto standard.' },
+];
+
+const simulazioni = [
+  { distanza: 100, scortaSingolaPerKm: 2.30, scortaDoppiaPerKm: 4.00, forfaitSingola: 350, forfaitDoppia: 550, trasportoBase: 1100, fascia: 'Corto regionale' },
+  { distanza: 200, scortaSingolaPerKm: 2.30, scortaDoppiaPerKm: 4.00, forfaitSingola: 350, forfaitDoppia: 550, trasportoBase: 1500, fascia: 'Regionale' },
+  { distanza: 400, scortaSingolaPerKm: 2.30, scortaDoppiaPerKm: 4.00, forfaitSingola: 350, forfaitDoppia: 550, trasportoBase: 2200, fascia: 'Inter-regionale' },
+  { distanza: 600, scortaSingolaPerKm: 2.30, scortaDoppiaPerKm: 4.00, forfaitSingola: 400, forfaitDoppia: 600, trasportoBase: 2800, fascia: 'Lungo' },
+  { distanza: 1000, scortaSingolaPerKm: 2.30, scortaDoppiaPerKm: 4.00, forfaitSingola: 450, forfaitDoppia: 700, trasportoBase: 3500, fascia: 'Cross-Italia' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Trasporto', url: '/trasporto' },
+      { name: 'Scorta tecnica costi km', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Trasporto · Scorta tecnica</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Quando la larghezza supera i 3 metri, alla casa mobile in trasporto serve scorta tecnica obbligatoria: 2 vetture lampeggianti che precedono e seguono il convoglio. Costo aggiuntivo significativo (1.500-4.500 € secondo distanza), ma evitabile in alcuni casi smontando accessori. Ecco il simulatore costi al km.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 30 aprile 2026</span>
+        <span>·</span>
+        <span>10 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Scorta tecnica obbligatoria: <strong>1 vettura</strong> tra 2,55-3,00 m larghezza, <strong>2 vetture</strong> oltre 3,00 m. Costo scorta al km: <strong>2,30 €/km singola, 4,00 €/km doppia</strong> + forfait 350-700 €. Per casa mobile media (8x4 m con veranda, larghezza 3,2-3,5 m) trasporto 400 km: <strong>4.000-5.500 €</strong> totali. Smontare veranda può ridurre sotto 3,00 m e risparmiare 2.000-4.000 €.</p>
+      </Tldr>
+
+      <h2>Quando scatta la scorta</h2>
+      <p>I limiti normativi (Codice della Strada art. 10 + Direttiva Min. Infrastrutture e Trasporti):</p>
+
+      <table>
+        <thead>
+          <tr><th>Caratteristica casa mobile</th><th>Tipologia scorta</th><th>Costo aggiuntivo tipico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Larghezza ≤ 2,55 m</td><td>Nessuna scorta (trasporto standard)</td><td>0 €</td></tr>
+          <tr><td>Larghezza 2,55 - 3,00 m</td><td>Scorta singola (1 vettura davanti)</td><td>800-1.500 €</td></tr>
+          <tr><td>Larghezza > 3,00 m</td><td>Scorta doppia (1 davanti + 1 dietro)</td><td>1.500-4.500 €</td></tr>
+          <tr><td>Lunghezza > 25 m (autoarticolato)</td><td>Scorta doppia + autorizzazione speciale</td><td>2.000-5.000 €</td></tr>
+          <tr><td>Altezza > 4,50 m</td><td>Scorta dedicata "altezza" (verifica cavi aerei)</td><td>+500-1.500 €</td></tr>
+          <tr><td>Peso > 56 t complessive</td><td>Scorta doppia + perizia statica ponti</td><td>+800-2.000 €</td></tr>
+        </tbody>
+      </table>
+
+      <p>Per la casa mobile media italiana (8x4 m con veranda + dehor): larghezza utile telaio + accessori = 3,20-3,50 m. <strong>Scorta doppia obbligatoria</strong>.</p>
+
+      <h2>Simulatore costo al km</h2>
+      <p>Tabella aggregata da preventivi raccolti tra gennaio-aprile 2026 da diverse ditte specializzate operanti in Italia. Prezzi indicativi per casa mobile media 8x4 m peso 4-5 t:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Distanza</th>
+            <th>Trasporto base</th>
+            <th>+ Scorta singola</th>
+            <th>+ Scorta doppia</th>
+            <th>Totale con scorta doppia</th>
+          </tr>
+        </thead>
+        <tbody>
+          {simulazioni.map((s) => {
+            const scortaSingola = s.distanza * s.scortaSingolaPerKm + s.forfaitSingola;
+            const scortaDoppia = s.distanza * s.scortaDoppiaPerKm + s.forfaitDoppia;
+            const totaleConDoppia = s.trasportoBase + scortaDoppia;
+            return (
+              <tr>
+                <td><strong>{s.distanza} km</strong> <br/><span style="color:var(--color-ink-500);font-size:0.85em">({s.fascia})</span></td>
+                <td>{s.trasportoBase.toLocaleString('it-IT')} €</td>
+                <td>{Math.round(scortaSingola).toLocaleString('it-IT')} €</td>
+                <td>{Math.round(scortaDoppia).toLocaleString('it-IT')} €</td>
+                <td><strong>{Math.round(totaleConDoppia).toLocaleString('it-IT')} €</strong></td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+
+      <p><strong>Formula scorta singola</strong>: distanza × 2,30 €/km + 350-450 € forfait</p>
+      <p><strong>Formula scorta doppia</strong>: distanza × 4,00 €/km + 550-700 € forfait</p>
+
+      <p>Note: <strong>1)</strong> Forfait copre giornata di lavoro vetture scorta + carburante + autostrada; <strong>2)</strong> Sopra 600 km può servire pernottamento equipaggi (200-400 € extra/notte); <strong>3)</strong> Sicilia/Sardegna richiedono traghetto separato (800-1.500 € extra).</p>
+
+      <h2>Composizione scorta tecnica</h2>
+
+      <h3>Scorta singola (larghezza 2,55-3,00 m)</h3>
+      <p>1 vettura "apri-pista" davanti al convoglio:</p>
+      <ul>
+        <li>Auto/SUV con lampeggianti gialli intermittenti</li>
+        <li>Cartellonistica "trasporto eccezionale" frontale e posteriore</li>
+        <li>Conducente con qualifica scorta tecnica (corso specifico)</li>
+        <li>Radio comunicazione con ditta trasporti</li>
+        <li>Funzione: segnalare presenza convoglio, gestire incroci, allertare polizia se necessario</li>
+      </ul>
+
+      <h3>Scorta doppia (larghezza > 3,00 m)</h3>
+      <p>2 vetture: 1 davanti "apri-pista" + 1 dietro "chiudi-pista":</p>
+      <ul>
+        <li>Stessa configurazione delle scorta singola, raddoppiata</li>
+        <li>La vettura dietro impedisce sorpassi pericolosi durante manovre del convoglio</li>
+        <li>Coordina cambi corsia in autostrada (obbligo: corsia centrale o destra in alcuni casi)</li>
+        <li>Gestisce situazioni di emergenza posteriore (es. veicoli che si avvicinano troppo)</li>
+      </ul>
+
+      <h2>Permessi e iter burocratico</h2>
+
+      <p>L\'iter è gestito interamente dalla ditta trasportatore. Cosa succede dietro le quinte:</p>
+
+      <ol>
+        <li><strong>Valutazione percorso</strong>: la ditta studia tracciato dal punto di partenza al campeggio di destinazione. Identifica strade percorribili, ZTL, ponti con limiti peso, gallerie con limiti altezza</li>
+        <li><strong>Richiesta autorizzazione</strong>: alla Polizia Provinciale (per percorsi entro provincia) o ANAS (per autostrade/strade nazionali). Iter 7-15 giorni</li>
+        <li><strong>Autorizzazione comunale</strong>: per Comuni attraversati con ZTL o limiti specifici. Iter 5-10 giorni per Comune</li>
+        <li><strong>Coordinamento scorta</strong>: ditta scorta tecnica viene allertata su data e percorso confermati</li>
+        <li><strong>Verifica meteo 48h prima</strong>: se vento &gt;50 km/h o pioggia intensa, trasporto rinviato</li>
+        <li><strong>Esecuzione</strong>: convoglio si forma alla partenza, scorta in posizione, partenza in finestra orario approvata</li>
+      </ol>
+
+      <p><strong>Tempi totali iter pre-trasporto</strong>: 3-6 settimane di anticipo necessari (in alta stagione anche 8 settimane).</p>
+
+      <h2>Strategie per ridurre costo scorta</h2>
+
+      <h3>1. Smontaggio veranda e accessori</h3>
+      <p>Misura più efficace. Una casa mobile 8x4 m ha telaio nominale 4,02 m (sotto i limiti standard). Veranda in legno aggiunge 60-80 cm. Smontaggio veranda + dehor + scaletta riduce larghezza utile spesso sotto i 3,00 m, talvolta sotto i 2,55 m.</p>
+      <ul>
+        <li>Costo smontaggio: 400-800 € (mezza giornata + 1 operaio)</li>
+        <li>Costo rimontaggio in piazzola arrivo: 400-800 €</li>
+        <li>Risparmio scorta: 1.500-4.000 € secondo distanza</li>
+        <li><strong>ROI</strong>: positivo per percorsi &gt;200 km</li>
+      </ul>
+
+      <h3>2. Scelta della stagione</h3>
+      <p>Bassa stagione (novembre-marzo): ditte trasporti hanno meno volume, più disponibilità a negoziare. Sconto tipico 10-20% sul preventivo. Anche scorte tecniche più disponibili.</p>
+
+      <h3>3. Ottimizzazione percorso</h3>
+      <p>Alcune ditte offrono "viaggi multipli" con altre case mobili dello stesso percorso. Se ti adatti a finestra di 1-3 settimane, la ditta può abbinare il tuo trasporto ad altri = ripartizione costi scorta su più clienti.</p>
+
+      <h3>4. Trasporto fuori orari di punta</h3>
+      <p>Notte (22-06) ha tariffe scorta inferiori del 10-15% rispetto a giorno (meno traffico = scorta lavora meno).</p>
+
+      <h2>Esempi concreti di calcolo totale</h2>
+
+      <h3>Esempio 1 — Trasferimento Veneto → Toscana (350 km)</h3>
+      <p>Casa mobile 8x4 m con veranda larga 3,30 m (scorta doppia obbligatoria):</p>
+      <ul>
+        <li>Trasporto base: 1.900 €</li>
+        <li>Scorta doppia: 350 × 4 € + 550 € = 1.950 €</li>
+        <li>Permessi e autorizzazioni: 250 €</li>
+        <li><strong>Totale: 4.100 €</strong></li>
+      </ul>
+
+      <p>Se smonti veranda (riduci larghezza a 2,80 m, scorta singola):</p>
+      <ul>
+        <li>Trasporto base: 1.900 €</li>
+        <li>Scorta singola: 350 × 2,30 € + 400 € = 1.205 €</li>
+        <li>Smontaggio + rimontaggio veranda: 1.000 €</li>
+        <li>Permessi: 250 €</li>
+        <li><strong>Totale: 4.355 €</strong></li>
+      </ul>
+
+      <p>In questo caso: la differenza è minima (4.100 vs 4.355). Lo smontaggio non conviene a 350 km. Conviene oltre i 500 km.</p>
+
+      <h3>Esempio 2 — Trasferimento Lombardia → Sicilia (1.450 km + traghetto)</h3>
+      <p>Casa mobile 9x4 m larghezza 3,40 m (scorta doppia obbligatoria):</p>
+      <ul>
+        <li>Trasporto base: 3.500 €</li>
+        <li>Scorta doppia: 1.450 × 4 € + 700 € = 6.500 €</li>
+        <li>Traghetto Civitavecchia-Palermo o Genova-Palermo (mezzo eccezionale): 1.500 €</li>
+        <li>Permessi multipli (Lombardia-Lazio-Sicilia + Comuni attraversati): 500 €</li>
+        <li>Pernottamento equipaggi (2 notti): 600 €</li>
+        <li><strong>Totale: 12.600 €</strong></li>
+      </ul>
+
+      <p>Smontando veranda + accessori (riduci a 2,75 m, scorta singola):</p>
+      <ul>
+        <li>Trasporto base: 3.500 €</li>
+        <li>Scorta singola: 1.450 × 2,30 € + 450 € = 3.785 €</li>
+        <li>Smontaggio + rimontaggio: 1.500 € (più complesso per distanza)</li>
+        <li>Traghetto: 1.500 €</li>
+        <li>Permessi: 500 €</li>
+        <li>Pernottamento: 600 €</li>
+        <li><strong>Totale: 11.385 €</strong></li>
+      </ul>
+
+      <p>Risparmio: 1.215 €. Lo smontaggio inizia a convenire significativamente.</p>
+
+      <LeadMagnet
+        title="Trasporto previsto > 300 km? Verifichiamo se conviene smontare veranda"
+        subtitle="Scrivi a info@casemobiliusate.com con: dimensioni casa mobile (lunghezza × larghezza), partenza, destinazione, eventuale veranda/dehor. Ti diamo un preventivo orientativo gratuito (trasporto + scorta + smontaggio) e ti diciamo se conviene."
+        ctaLabel="Richiedi preventivo orientativo"
+        emailSubject="Preventivo trasporto casa mobile (con/senza scorta)"
+        emailBody={`Salve,\n\nti scrivo per ricevere un preventivo orientativo trasporto casa mobile.\n\nDati casa mobile:\n- Lunghezza × larghezza: __ × __ m\n- Marca/modello: __\n- Anno: __\n- Veranda/dehor presente: sì/no, dimensioni __\n- Peso totale stimato: __ kg\n\nPercorso:\n- Partenza (campeggio/comune): __\n- Destinazione (campeggio/comune): __\n- Distanza approssimativa: __ km\n\nVorrei sapere:\n1. Costo trasporto + scorta tecnica\n2. Se conviene smontare veranda per ridurre larghezza\n3. Tempistica realistica\n\nGrazie.`}
+      />
+
+      <h2>Errori comuni</h2>
+      <ul>
+        <li><strong>Sottovalutare la larghezza reale</strong>: la dimensione "8x4 m" è interna, esterna spesso aggiunge 20-30 cm. Verandina e accessori altri 50-80 cm. Sempre misura punto più largo</li>
+        <li><strong>Prendere preventivo "senza scorta"</strong> per casa che la richiede: sorpresa di +2.000-4.000 € all\'ultimo minuto</li>
+        <li><strong>Non chiedere se preventivo include permessi</strong>: alcune ditte quotano "trasporto secco" e aggiungono permessi (300-600 €) dopo</li>
+        <li><strong>Programmare in alta stagione (luglio-agosto)</strong>: ditte e scorte sovraccariche, prezzi +20-30%, tempi raddoppiati</li>
+        <li><strong>Scegliere ditta low-cost senza assicurazione</strong>: in caso danni in trasporto perdi tutto. Verifica copertura assicurativa &gt;50.000 €</li>
+      </ul>
+
+      <h2>Vedi anche</h2>
+      <ul>
+        <li><a href="/trasporto/eccezionale-permessi-scorte">Trasporto eccezionale: permessi e scorte (panoramica)</a></li>
+        <li><a href="/trasporto/costi-reali-2026">Costi reali trasporto 2026: tabella per distanza</a></li>
+        <li><a href="/trasporto/preparazione-arrivo">Preparazione arrivo casa mobile in piazzola</a></li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su scorta tecnica e costi al km" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-30" dateModified="2026-04-30" url={fullUrl} />
+</BaseLayout>

@@ -5,6 +5,7 @@ import SchemaArticle from '~/components/SchemaArticle.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import LeadMagnet from '~/components/LeadMagnet.astro';
 
 const url = '/vivere/coibentazione-aggiunta-fai-da-te';
 const fullUrl = `https://www.casemobiliusate.com${url}`;
@@ -69,8 +70,8 @@ const faq = [
       <ul>
         <li><strong>Pannelli isolanti</strong>: 25-30 m² totali. Opzioni:
           <ul>
-            <li>Lana minerale 80 mm: 600-900 € (Knauf, Rockwool, Isover). Migliore acustico</li>
-            <li>Pannelli PIR (poliisocianurato) 60 mm: 700-1.000 € (Celotex, Stiferite). Migliore isolamento per spessore minore</li>
+            <li>Lana minerale 80 mm: 600-900 € (marche europee mainstream). Migliore acustico</li>
+            <li>Pannelli PIR (poliisocianurato) 60 mm: 700-1.000 € (marche specializzate). Migliore isolamento per spessore minore</li>
             <li>Polistirene espanso 80 mm: 400-600 €. Più economico, isolamento accettabile</li>
           </ul>
         </li>
@@ -167,6 +168,14 @@ const faq = [
       </ul>
 
       <p>Per chi ha tempo e abilità manuali: opzione 2 è economicamente migliore. Per chi vuole soluzione "chiavi in mano": opzione 1.</p>
+
+      <LeadMagnet
+        title="Vuoi capire se nel tuo caso conviene coibentare?"
+        subtitle="Scrivi a info@casemobiliusate.com con: marca/anno/dimensioni casa mobile, bolletta riscaldamento attuale, problemi eventuali (umidità, freddo invernale). Ti diamo una valutazione tecnica gratuita: ROI atteso e confronto DIY vs tecnico nel tuo caso."
+        ctaLabel="Richiedi valutazione coibentazione"
+        emailSubject="Valutazione coibentazione casa mobile"
+        emailBody={`Salve,\n\nti scrivo per ricevere una valutazione coibentazione per la mia casa mobile.\n\nDati casa mobile:\n- Marca/modello: __\n- Anno: __\n- Dimensioni: __ × __ m\n- Isolamento attuale (se sai): __ mm\n\nUtilizzo:\n- Tipo: [vacanza / stagione lunga / residenza stabile]\n- Bolletta riscaldamento attuale (se rilevante): __ €/anno\n- Problemi attuali: [freddo invernale / umidità / condensa / altro]\n- Zona geografica: __\n\nGrazie.`}
+      />
 
       <h2>Vedi anche</h2>
       <ul>

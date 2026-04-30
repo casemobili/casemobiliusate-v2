@@ -5,17 +5,18 @@ import SchemaArticle from '~/components/SchemaArticle.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import LeadMagnet from '~/components/LeadMagnet.astro';
 
 const url = '/guide-acquisto/dove-comprare-canali';
 const fullUrl = `https://www.casemobiliusate.com${url}`;
 const title = 'Dove comprare casa mobile usata: 5 canali a confronto (2026)';
-const description = 'Dove comprare casa mobile usata 2026: dealer, marketplace specializzati, Subito, mercato grigio campeggi, eventi. Pro/contro/prezzi tipici per ogni canale.';
+const description = 'Dove comprare casa mobile usata 2026: dealer professionali, marketplace specializzati, marketplace generalisti, mercato grigio campeggi, eventi. Pro/contro/profilo rischio.';
 
 const faq = [
-  { q: 'Qual è il canale migliore per non sbagliare?', a: 'Per il primo acquirente senza esperienza: <strong>dealer specializzato</strong> è il più sicuro (pacchetto completo + garanzia 24 mesi + servizio post-vendita). Costo 15-30% sopra mercato secondario, ma "compri tranquillità". Per chi ha esperienza e vuole risparmiare: <strong>marketplace specializzati</strong> (casamobileusata.com, occasionecasemobili.it) offrono buon equilibrio prezzo-qualità con annunci verificati. Da evitare per primo acquirente: <strong>mercato grigio campeggi</strong> (subentro privato senza intermediario) — risparmi 30% ma rischi alti se non sai cosa controllare.' },
-  { q: 'Subito.it vale la pena per casa mobile?', a: 'Sì, ma con cautela. Subito è il marketplace italiano con più annunci di case mobili usate (~3.000 attivi). Vantaggi: prezzi tra i più bassi, ampia scelta. Svantaggi: nessuna verifica annunci (foto false comuni), molti privati senza esperienza vendita, alta percentuale di tentate truffe (10-20% degli annunci sono problematici). <strong>Strategia</strong>: usa Subito per identificare casa mobile, verifica con sopralluogo accurato, contratto formale. Mai pagare prima di vedere di persona. Buona fonte di prezzi di mercato.' },
+  { q: 'Qual è il canale migliore per non sbagliare?', a: 'Per il primo acquirente senza esperienza: <strong>dealer professionale</strong> è il più sicuro (pacchetto completo + garanzia 24 mesi + servizio post-vendita). Costo 15-30% sopra mercato secondario, ma "compri tranquillità". Per chi ha esperienza e vuole risparmiare: <strong>marketplace specializzati di settore</strong> offrono buon equilibrio prezzo-qualità con annunci verificati. Da evitare per primo acquirente: <strong>mercato grigio campeggi</strong> (subentro privato senza intermediario) — risparmi 30% ma rischi alti se non sai cosa controllare.' },
+  { q: 'I marketplace generalisti valgono la pena?', a: 'Sì, ma con cautela. I marketplace generalisti italiani aggregano migliaia di annunci di case mobili usate. Vantaggi: prezzi tra i più bassi, ampia scelta. Svantaggi: <strong>1)</strong> nessuna verifica annunci (foto false comuni); <strong>2)</strong> molti privati senza esperienza vendita; <strong>3)</strong> alta percentuale di annunci problematici (10-20% del totale). <strong>Strategia</strong>: usa marketplace generalisti per identificare casa mobile, verifica con sopralluogo accurato, contratto formale. Mai pagare prima di vedere di persona. Buona fonte di prezzi di mercato per riferimento.' },
   { q: 'Cos\'è il "mercato grigio dei campeggi"?', a: 'Compravendite tra privati DENTRO i campeggi, gestite informalmente, spesso senza intermediari professionali. Il proprietario uscente di una casa mobile in piazzola la cede al nuovo arrivato, che subentra anche nella piazzola. Vantaggi: prezzi più bassi (10-30% sotto mercato), no costo trasporto (la casa è già installata), conoscenza diretta del campeggio. Svantaggi: nessuna garanzia formale, contratti spesso fai-da-te, qualità variabile, difficoltà nell\'identificare opportunità (devi conoscere il campeggio o avere tramite). Adatto a chi ha esperienza e contatti nel settore.' },
-  { q: 'Conviene comprare a un evento di settore?', a: 'Sì, alcune fiere offrono buoni accessi. Eventi principali in Italia: <strong>Fiera Roma Caravaning Outdoor</strong> (settembre), <strong>Salone del Camper di Parma</strong> (settembre), <strong>Caravan Salon Padova</strong> (ottobre). Vantaggi: vedi molte case mobili in un giorno solo, contatti diretti dealer, sconti specifici "fiera" (5-15%). Svantaggi: eventi orientati al nuovo, usato meno presente, decisioni "a caldo" possono essere errate. <strong>Strategia</strong>: vai per orientamento e contatti, fai acquisto con calma a settimane di distanza.' },
+  { q: 'Conviene andare a un evento di settore?', a: 'Sì, per orientamento ed educazione mercato (NON per acquisto immediato). In Italia ci sono diverse fiere annuali del settore caravaning/open-air, tipicamente in autunno. Vantaggi: <strong>1)</strong> vedi molte case mobili in 1 giorno; <strong>2)</strong> contatti dealer per future trattative; <strong>3)</strong> sconti "evento" 5-15% se acquisti durante manifestazione. Svantaggi: eventi orientati al nuovo (esposizione usato limitata), decisioni "a caldo" spesso errate. <strong>Strategia</strong>: vai per orientamento e contatti, fai acquisto con calma a settimane di distanza.' },
 ];
 ---
 
@@ -31,12 +32,12 @@ const faq = [
       <div class="eyebrow mb-3">Guide acquisto · Canali</div>
       <h1>{title}</h1>
       <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
-        Comprare la stessa casa mobile su Subito o da un dealer può variare di 5.000 € (35% del prezzo). Ognuno dei 5 canali ha pro, contro, profilo di rischio e tipologia di acquirente ideale. Ecco come scegliere quello giusto per te.
+        Comprare la stessa casa mobile da un dealer o da un marketplace generalista può variare di 5.000 € (35% del prezzo). Ognuno dei 5 canali ha pro, contro, profilo di rischio e tipologia di acquirente ideale. Ecco come scegliere quello giusto per te.
       </p>
       <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
         <span>A cura di Andrea Bressan</span>
         <span>·</span>
-        <span>Aggiornato il 29 aprile 2026</span>
+        <span>Aggiornato il 30 aprile 2026</span>
         <span>·</span>
         <span>9 min di lettura</span>
       </div>
@@ -44,13 +45,13 @@ const faq = [
 
     <div class="prose-article mt-12">
       <Tldr>
-        <p class="m-0">5 canali principali per casa mobile usata: <strong>1) Dealer specializzati</strong> (sicurezza max, prezzi +15-30%); <strong>2) Marketplace dedicati</strong> (casamobileusata.com, occasionecasemobili.it - equilibrio); <strong>3) Subito</strong> (prezzi minimi, rischio truffe alto); <strong>4) Mercato grigio campeggi</strong> (sconto 10-30%, contatti diretti); <strong>5) Eventi/fiere</strong> (panoramica, decisioni in calma). Per primo acquirente: dealer. Per esperto: marketplace dedicati o campeggio.</p>
+        <p class="m-0">5 canali principali per casa mobile usata: <strong>1) Dealer professionali</strong> (sicurezza max, prezzi +15-30%); <strong>2) Marketplace specializzati di settore</strong> (equilibrio); <strong>3) Marketplace generalisti</strong> (prezzi minimi, rischio truffe alto); <strong>4) Mercato grigio campeggi</strong> (sconto 10-30%, contatti diretti); <strong>5) Eventi/fiere</strong> (panoramica, decisioni in calma). Per primo acquirente: dealer professionale. Per esperto: marketplace specializzati o campeggio.</p>
       </Tldr>
 
-      <h2>Canale 1: Dealer specializzati</h2>
+      <h2>Canale 1: Dealer professionali</h2>
 
       <h3>Cosa sono</h3>
-      <p>Aziende con partita IVA che vendono case mobili nuove e usate, con servizio completo: ispezione tecnica, garanzia legale 24 mesi (norma Codice del Consumo), preparazione documentale, supporto trasporto, post-vendita. Esempi italiani: <strong>Caravan Camping Vicenza</strong>, <strong>Centro Caravan Marche</strong>, <strong>Mobil Home Italia</strong>, <strong>Magazzini Italiani Caravan</strong>.</p>
+      <p>Aziende con partita IVA che vendono case mobili nuove e usate, con servizio completo: ispezione tecnica preliminare, garanzia legale 24 mesi (norma Codice del Consumo), preparazione documentale, supporto trasporto, post-vendita. Sono distribuiti sul territorio italiano principalmente nelle aree con concentrazione casa mobile (Veneto litorale, Garda, Toscana costa, Liguria).</p>
 
       <h3>Pro</h3>
       <ul>
@@ -72,14 +73,14 @@ const faq = [
       <h3>Adatto a</h3>
       <p>Primo acquirente, chi vuole "chiavi in mano", chi privilegia tranquillità su risparmio. Famiglie con bambini per cui errori costano caro.</p>
 
-      <h2>Canale 2: Marketplace specializzati</h2>
+      <h2>Canale 2: Marketplace specializzati di settore</h2>
 
       <h3>Cosa sono</h3>
-      <p>Portali web focalizzati su case mobili e roulotte usate, con annunci da privati, campeggi, dealer. Esempi italiani: <strong>casamobileusata.com</strong>, <strong>occasionecasemobili.it</strong>. Esempi europei: <strong>autoscout24.com</strong> sezione caravan.</p>
+      <p>Portali web focalizzati su case mobili, roulotte e veicoli ricreazionali usati, con annunci da privati, campeggi e dealer. Curano una verifica minima sui venditori e sono frequentati da persone che cercano specificamente questo prodotto.</p>
 
       <h3>Pro</h3>
       <ul>
-        <li>Buon equilibrio prezzo-qualità (5-15% sotto dealer, 10-20% sopra Subito)</li>
+        <li>Buon equilibrio prezzo-qualità (5-15% sotto dealer, 10-20% sopra marketplace generalisti)</li>
         <li>Annunci spesso più dettagliati e con foto adeguate</li>
         <li>Filtri specifici per categoria casa mobile</li>
         <li>Possibile contatto diretto con venditore</li>
@@ -96,10 +97,10 @@ const faq = [
       <h3>Adatto a</h3>
       <p>Acquirente con esperienza minima, chi cerca varietà di scelta, chi vuole prezzo-qualità equilibrato. Buon punto di partenza per qualsiasi acquisto.</p>
 
-      <h2>Canale 3: Subito.it</h2>
+      <h2>Canale 3: Marketplace generalisti</h2>
 
-      <h3>Cosa è</h3>
-      <p>Marketplace generalista italiano numero 1 per annunci. Sezione caravan/camper/case mobili ha ~3.000 annunci attivi.</p>
+      <h3>Cosa sono</h3>
+      <p>Portali generalisti italiani per annunci di ogni tipo. Le sezioni "caravan/camper/case mobili" raccolgono migliaia di annunci attivi (varia tra 2.000 e 5.000 secondo stagione). Il volume è il vantaggio principale.</p>
 
       <h3>Pro</h3>
       <ul>
@@ -115,13 +116,13 @@ const faq = [
         <li>Nessuna verifica venditore</li>
         <li>Privati spesso senza esperienza vendita (documentazione, garanzie, contratti)</li>
         <li>Prezzi spesso "ottimistici" per il venditore (sopravalutazioni)</li>
-        <li>Comunicazione tramite chat Subito può essere lenta o assente</li>
+        <li>Comunicazione tramite chat può essere lenta o assente</li>
       </ul>
 
       <h3>Adatto a</h3>
       <p>Acquirente esperto che sa filtrare annunci, ha tempo per visite numerose, cerca affari. Chi può fare sopralluogo accurato e contratto formale.</p>
 
-      <h3>Strategia su Subito</h3>
+      <h3>Strategia su marketplace generalisti</h3>
       <ol>
         <li>Filtra per "Casa mobile" (NON "caravan" generico)</li>
         <li>Ordina per prezzo crescente</li>
@@ -167,13 +168,7 @@ const faq = [
 
       <h2>Canale 5: Eventi e fiere di settore</h2>
 
-      <h3>Eventi principali Italia</h3>
-      <ul>
-        <li><strong>Fiera Roma Caravaning Outdoor</strong>: settembre, focus turismo open-air</li>
-        <li><strong>Salone del Camper Parma</strong>: settembre, il principale italiano</li>
-        <li><strong>Caravan Salon Padova</strong>: ottobre, focus Veneto + nord-est</li>
-        <li><strong>Open Air Show Carrara</strong>: ottobre, focus Toscana</li>
-      </ul>
+      <p>In Italia diverse fiere annuali coprono il settore caravaning/open-air, tipicamente concentrate in <strong>autunno (settembre-ottobre)</strong>. Sono manifestazioni nazionali con ingresso a pagamento (10-25 €/giorno) e durano 3-5 giorni ciascuna.</p>
 
       <h3>Pro</h3>
       <ul>
@@ -188,7 +183,7 @@ const faq = [
       <ul>
         <li>Eventi orientati al nuovo (esposizione usato limitata)</li>
         <li>Decisioni "a caldo" durante evento spesso errate</li>
-        <li>Costo accesso evento (10-25 €/giorno)</li>
+        <li>Costo accesso evento + viaggio</li>
         <li>Affollamento può limitare conversazioni approfondite con venditori</li>
       </ul>
 
@@ -207,27 +202,35 @@ const faq = [
           <tr><th>Canale</th><th>Prezzo medio</th><th>Rischio</th><th>Adatto a</th></tr>
         </thead>
         <tbody>
-          <tr><td>Dealer specializzato</td><td>+15-30% mercato</td><td>Basso</td><td>Primo acquirente</td></tr>
-          <tr><td>Marketplace dedicato</td><td>Mercato medio</td><td>Medio-basso</td><td>Tutti</td></tr>
-          <tr><td>Subito</td><td>-10-20% mercato</td><td>Medio-alto</td><td>Esperto attento</td></tr>
+          <tr><td>Dealer professionale</td><td>+15-30% mercato</td><td>Basso</td><td>Primo acquirente</td></tr>
+          <tr><td>Marketplace specializzato</td><td>Mercato medio</td><td>Medio-basso</td><td>Tutti</td></tr>
+          <tr><td>Marketplace generalista</td><td>-10-20% mercato</td><td>Medio-alto</td><td>Esperto attento</td></tr>
           <tr><td>Mercato grigio campeggio</td><td>-10-30% mercato</td><td>Medio</td><td>Esperto con contatti</td></tr>
           <tr><td>Evento/fiera</td><td>Mercato medio</td><td>Basso (orientamento)</td><td>Orientamento</td></tr>
         </tbody>
       </table>
+
+      <LeadMagnet
+        title="Non sai quale canale fa per te?"
+        subtitle="Scrivi a info@casemobiliusate.com con il tuo profilo (esperienza, budget, zona, urgenza) e ti consigliamo il canale di acquisto più adatto al tuo caso. Niente vendita, solo orientamento."
+        ctaLabel="Richiedi orientamento personalizzato"
+        emailSubject="Orientamento canale acquisto casa mobile"
+        emailBody={`Salve,\n\nti scrivo per ricevere orientamento sul canale di acquisto migliore nel mio caso.\n\nProfilo:\n- Esperienza casa mobile: [primo acquisto / esperto]\n- Budget approssimativo: __ €\n- Zona geografica preferita per casa mobile: __\n- Uso previsto: [vacanza / stagione lunga / residenza]\n- Urgenza acquisto: [entro 1 mese / 3 mesi / 6 mesi+]\n- Preferenze: [mai sentito di / dealer professionale / marketplace / mercato grigio campeggio]\n\nGrazie.`}
+      />
 
       <h2>Strategia consigliata per 3 profili</h2>
 
       <h3>Profilo "primo acquisto"</h3>
       <ol>
         <li>Visita 1 evento per orientamento generale</li>
-        <li>Studio online tramite marketplace dedicati</li>
-        <li>Acquisto da dealer per garanzia + supporto</li>
+        <li>Studio online tramite marketplace specializzati</li>
+        <li>Acquisto da dealer professionale per garanzia + supporto</li>
       </ol>
 
       <h3>Profilo "esperto risparmiatore"</h3>
       <ol>
-        <li>Studio prezzi su marketplace dedicati (capisci mercato)</li>
-        <li>Cerca su Subito occasioni (con cautela)</li>
+        <li>Studio prezzi su marketplace specializzati (capisci mercato)</li>
+        <li>Cerca su marketplace generalisti occasioni (con cautela)</li>
         <li>Visita campeggi target per opportunità grigie</li>
         <li>Acquisto dove trovi miglior rapporto prezzo/qualità</li>
       </ol>
@@ -246,5 +249,5 @@ const faq = [
     </div>
   </article>
 
-  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+  <SchemaArticle title={title} description={description} datePublished="2026-04-30" dateModified="2026-04-30" url={fullUrl} />
 </BaseLayout>
