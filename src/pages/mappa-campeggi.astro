@@ -1,0 +1,250 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import campeggiData from '~/data/campeggi.json';
+
+const url = '/mappa-campeggi';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Mappa interattiva campeggi che accettano case mobili da privati (2026)';
+const description = 'Mappa interattiva campeggi italiani che ospitano case mobili da privati: 64 aree geografiche, dati aggregati per Comune, prezzi piazzola, stagione, tutto-anno.';
+
+const previewAreas = campeggiData.areas.filter((a: any) => a.preview);
+const totalAreas = campeggiData.areas.length;
+const totalStructures = campeggiData.areas.reduce((sum: number, a: any) => sum + a.totaleStrutture, 0);
+const totalAcceptingPrivati = campeggiData.areas.reduce((sum: number, a: any) => sum + a.accettaPrivati, 0);
+
+const faq = [
+  { q: 'Cosa rappresentano i pin sulla mappa?', a: 'Ogni pin è un\'<strong>area geografica</strong> (Comune o macro-zona) con dati aggregati: numero campeggi presenti che accettano case mobili da privati, numero di quelli aperti tutto l\'anno, range prezzi piazzola tipico, stagione di apertura standard. I pin NON identificano singole strutture: per indicazioni su campeggi specifici, scrivi a info@casemobiliusate.com per consulenza personalizzata.' },
+  { q: 'Perché mi serve l\'iscrizione alla newsletter per vedere tutto?', a: 'La mappa completa con tutti i 64 cluster è il lavoro di mesi di ricerca aggregata. Per accedere completamente, basta iscriverti alla newsletter: una mail al mese con aggiornamenti normativi, prezzi reali e occasioni segnalate. Niente spam, disiscrizione con un click. La preview mostra 10 cluster strategici (1 per macro-area).' },
+  { q: 'Quanto sono aggiornati i dati?', a: 'Aggiornamento principale: <strong>aprile 2026</strong>. Aggiornamenti minori trimestrali (prezzi, aperture). I prezzi piazzola sono indicativi: la realtà varia secondo posizione (vista mare premium, vicinanza servizi, dimensione piazzola). Sempre meglio confermare con il direttore del campeggio prima di prendere decisioni.' },
+  { q: 'I campeggi sono confermati che accettano case mobili da privati?', a: 'Sì, tutti i pin rappresentano aree dove ci sono campeggi che ospitano case mobili di proprietà privata (subentro piazzola, residenza stabile, stagione lunga). Non garantiamo posti disponibili in ogni momento (le piazzole più richieste hanno lista d\'attesa 1-3 anni nelle zone premium). Per opportunità immediate: contattaci.' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Mappa campeggi', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Strumento · Mappa interattiva</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        {totalStructures}+ campeggi italiani in {totalAreas} aree geografiche che accettano casa mobile di proprietà privata. Filtri per regione, prezzi piazzola, stagione, tutto-anno. Sblocca la mappa completa iscrivendoti alla newsletter (gratuita, 1 mail al mese).
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato ad aprile 2026</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0"><strong>{totalAreas} aree</strong> su tutta Italia, <strong>{totalStructures} campeggi</strong> totali di cui <strong>{totalAcceptingPrivati} accettano case mobili da privati</strong>. Cluster principali: Garda, Veneto litorale, Toscana costa, Riviera Romagnola, Sardegna, Liguria, Sicilia. Prezzi piazzola: <strong>1.800–6.500 €/anno</strong> secondo zona. Stagione: aprile-ottobre standard, ~80 strutture aperte 12 mesi (Garda, Cavallino, Toscana, Liguria, Sardegna nord).</p>
+      </Tldr>
+    </div>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <div id="mappa-wrapper" class="relative my-8 rounded-2xl overflow-hidden border" style="border-color:var(--color-linen-300)">
+      <div id="mappa" style="height: 600px; width: 100%; background-color: var(--color-linen-100)"></div>
+
+      <div id="lock-overlay" class="absolute inset-0 flex items-center justify-center p-6" style="background: linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,1) 100%); z-index: 1000; backdrop-filter: blur(2px)">
+        <div class="max-w-md text-center p-8 rounded-2xl border shadow-lg" style="background-color: var(--color-paper); border-color: var(--color-brass-300)">
+          <div class="eyebrow mb-3" style="color:var(--color-brass-500)">Mappa completa · sblocca</div>
+          <h2 class="m-0 mb-3 text-2xl" style="font-family:var(--font-display);color:var(--color-forest-800)">{totalAreas - previewAreas.length} aree extra ti aspettano</h2>
+          <p class="text-base mb-6" style="color:var(--color-ink-700)">
+            Stai vedendo {previewAreas.length} cluster strategici. Iscriviti alla newsletter per accedere a tutti i {totalAreas} cluster con prezzi piazzola, stagione, accettazione privati.
+          </p>
+
+          <form
+            id="unlock-form"
+            action="https://www.aweber.com/scripts/addlead.pl"
+            method="post"
+            target="_blank"
+            class="flex flex-col gap-3"
+          >
+            <input type="hidden" name="meta_redirect_onlist" value="https://www.casemobiliusate.com/grazie" />
+            <input type="hidden" name="meta_message" value="1" />
+            <input type="hidden" name="listname" value="casemobiliusate" />
+            <input type="hidden" name="meta_tags" value="mappa-campeggi" />
+
+            <input
+              type="email"
+              name="email"
+              id="unlock-email"
+              required
+              placeholder="La tua email"
+              class="px-4 py-3 rounded-md border text-base"
+              style="border-color:var(--color-linen-300);background-color:white"
+            />
+            <button type="submit" class="btn-accent text-base py-3">Sblocca tutta la mappa</button>
+          </form>
+
+          <p class="text-xs mt-4" style="color:var(--color-ink-500)">
+            Una mail al mese, niente spam, disiscrizione con un click. <a href="/privacy" class="underline">Privacy policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose-article mt-12">
+      <h2>Come usare la mappa</h2>
+      <ul>
+        <li><strong>Click sul pin</strong>: vedi numero campeggi nell'area, prezzi piazzola, stagione, percentuale tutto-anno</li>
+        <li><strong>Zoom + spostamento</strong>: esplora regione per regione</li>
+        <li><strong>Colore pin</strong>: verde scuro = aree con prevalenza tutto-anno (residenza), oro = aree prevalentemente stagionali</li>
+        <li><strong>Per dettagli su singolo campeggio</strong>: scrivi a <a href="mailto:info@casemobiliusate.com">info@casemobiliusate.com</a> con la zona di interesse, ti diamo orientamento su strutture specifiche</li>
+      </ul>
+
+      <h2>Distribuzione per regione</h2>
+      <p>I cluster con maggiore densità di case mobili da privati:</p>
+      <ul>
+        <li><strong>Veneto + Friuli-Venezia Giulia</strong> (litorale): ~50 strutture</li>
+        <li><strong>Lombardia + Veneto Garda</strong> (Lago di Garda): ~30 strutture</li>
+        <li><strong>Toscana costa</strong>: ~30 strutture</li>
+        <li><strong>Emilia-Romagna</strong> (Riviera Romagnola + Lidi ferraresi): ~25 strutture</li>
+        <li><strong>Sardegna costa</strong>: ~20 strutture</li>
+        <li><strong>Liguria</strong>: ~16 strutture</li>
+        <li><strong>Sicilia costa</strong>: ~15 strutture</li>
+      </ul>
+
+      <h2>Note sull'aggiornamento</h2>
+      <p>I dati sono aggregati per area geografica (Comune o macro-zona) e aggiornati ad aprile 2026. Il numero di campeggi per area può variare leggermente tra anni (apertura/chiusura strutture, cambio gestione). I prezzi piazzola sono indicativi e variano secondo: posizione specifica nel campeggio, dimensione piazzola, qualità servizi inclusi, durata contratto. Per dati specifici e aggiornati su un campeggio in particolare, vale sempre la regola: <strong>chiedere direttamente al direttore</strong>.</p>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sulla mappa" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-30" dateModified="2026-04-30" url={fullUrl} />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script define:vars={{ campeggiData }} is:inline>
+    (function() {
+      const STORAGE_KEY = 'cmu_mappa_unlocked';
+      const isUnlocked = () => localStorage.getItem(STORAGE_KEY) === '1';
+      const setUnlocked = () => localStorage.setItem(STORAGE_KEY, '1');
+
+      function init() {
+        if (typeof L === 'undefined') {
+          setTimeout(init, 200);
+          return;
+        }
+
+        const map = L.map('mappa', {
+          center: [42.5, 12.5],
+          zoom: 6,
+          minZoom: 5,
+          maxZoom: 14,
+          scrollWheelZoom: false,
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom: 18,
+        }).addTo(map);
+
+        map.on('focus', () => map.scrollWheelZoom.enable());
+        map.on('blur', () => map.scrollWheelZoom.disable());
+
+        function makeIcon(isPreview, hasTuttoAnno) {
+          const color = hasTuttoAnno > 2 ? '#2d5a3d' : '#c89b3c';
+          const size = isPreview ? 28 : 22;
+          return L.divIcon({
+            className: 'cmu-pin',
+            html: `<div style="width:${size}px;height:${size}px;border-radius:50% 50% 50% 0;background-color:${color};border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;"><div style="color:white;transform:rotate(45deg);font-size:11px;font-weight:bold;line-height:1;">${hasTuttoAnno}</div></div>`,
+            iconSize: [size, size],
+            iconAnchor: [size/2, size],
+          });
+        }
+
+        function popupHtml(area) {
+          return `
+            <div style="font-family:var(--font-sans, system-ui);min-width:220px;">
+              <div style="font-weight:700;font-size:15px;color:#2d5a3d;margin-bottom:6px;">${area.nome}</div>
+              <div style="font-size:12px;color:#666;margin-bottom:8px;">${area.regione} · ${area.macroArea}</div>
+              <div style="font-size:13px;line-height:1.5;">
+                <div><strong>${area.totaleStrutture}</strong> strutture totali</div>
+                <div><strong>${area.tuttoAnno}</strong> aperte tutto l'anno</div>
+                <div><strong>${area.accettaPrivati}</strong> accettano case mobili da privati</div>
+                <div style="margin-top:6px;">Piazzola: <strong>${area.prezzoPiazzolaMin.toLocaleString('it-IT')}–${area.prezzoPiazzolaMax.toLocaleString('it-IT')} €/anno</strong></div>
+                <div style="font-size:12px;color:#666;margin-top:4px;">Stagione: ${area.stagioneTipica}</div>
+                <div style="font-size:12px;font-style:italic;margin-top:6px;color:#444;">${area.highlights}</div>
+              </div>
+              <a href="mailto:info@casemobiliusate.com?subject=Info%20area%20${encodeURIComponent(area.nome)}&body=Salve%2C%0A%0Ami%20interessano%20informazioni%20su%20campeggi%20nell%27area%20${encodeURIComponent(area.nome)}%20%28${encodeURIComponent(area.regione)}%29.%0A%0AGrazie." style="display:inline-block;margin-top:10px;padding:6px 12px;background:#2d5a3d;color:white;text-decoration:none;border-radius:4px;font-size:12px;">Info su quest'area →</a>
+            </div>
+          `;
+        }
+
+        function previewPopupHtml(area) {
+          return `
+            <div style="font-family:var(--font-sans, system-ui);min-width:200px;text-align:center;">
+              <div style="font-weight:700;font-size:14px;color:#2d5a3d;margin-bottom:8px;">${area.nome}</div>
+              <div style="font-size:13px;color:#666;line-height:1.5;">${area.totaleStrutture} strutture nell'area</div>
+              <div style="font-size:12px;color:#999;margin-top:8px;font-style:italic;">Iscriviti alla newsletter per dettagli completi</div>
+            </div>
+          `;
+        }
+
+        const allAreas = ${JSON.stringify(campeggiData.areas)};
+        const previewAreas = allAreas.filter(a => a.preview);
+        const lockedAreas = allAreas.filter(a => !a.preview);
+
+        const visibleAreas = isUnlocked() ? allAreas : previewAreas;
+
+        visibleAreas.forEach(area => {
+          const marker = L.marker([area.lat, area.lng], {
+            icon: makeIcon(area.preview, area.tuttoAnno),
+          }).addTo(map);
+          marker.bindPopup(popupHtml(area));
+        });
+
+        if (!isUnlocked()) {
+          // Locked-area markers (smaller, gray) only as silhouettes
+          lockedAreas.forEach(area => {
+            const dimIcon = L.divIcon({
+              className: 'cmu-pin-dim',
+              html: `<div style="width:14px;height:14px;border-radius:50%;background-color:#cccccc;border:2px solid #fff;opacity:0.6;"></div>`,
+              iconSize: [14, 14],
+              iconAnchor: [7, 7],
+            });
+            const m = L.marker([area.lat, area.lng], { icon: dimIcon }).addTo(map);
+            m.bindPopup(previewPopupHtml(area));
+          });
+        }
+
+        // Lock overlay management
+        const lockOverlay = document.getElementById('lock-overlay');
+        if (isUnlocked()) {
+          lockOverlay.style.display = 'none';
+        }
+
+        // Form unlock handler
+        const unlockForm = document.getElementById('unlock-form');
+        unlockForm.addEventListener('submit', function() {
+          // Set unlocked immediately on client; backend submit goes through to Aweber in new tab
+          setUnlocked();
+          setTimeout(() => {
+            location.reload();
+          }, 1200);
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+      } else {
+        init();
+      }
+    })();
+  </script>
+</BaseLayout>
