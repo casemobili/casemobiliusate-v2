@@ -9,28 +9,31 @@ interface Props {
   image?: string;
   author?: string;
   url: string;
+  articleSection?: string;
 }
 
-const { title, description, datePublished, dateModified, image, author, url } = Astro.props;
+const { title, description, datePublished, dateModified, image, author, url, articleSection } = Astro.props;
 
 const data = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: title,
   description,
-  image: image ? [image] : undefined,
+  image: image ? [image] : [`${SITE.url}/og-default.jpg`],
   datePublished,
   dateModified: dateModified || datePublished,
+  inLanguage: SITE.locale,
+  isPartOf: { '@id': `${SITE.url}/#website` },
+  articleSection: articleSection || 'Case mobili usate',
   author: {
     '@type': 'Person',
     name: author || AUTHOR.name,
     jobTitle: AUTHOR.role,
     url: `${SITE.url}/chi-siamo`,
+    description: AUTHOR.fieldExperience,
   },
   publisher: {
-    '@type': 'Organization',
-    name: SITE.publisher,
-    logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.png` },
+    '@id': `${SITE.url}/#organization`,
   },
   mainEntityOfPage: {
     '@type': 'WebPage',

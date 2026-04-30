@@ -1,28 +1,65 @@
 ---
 import { SITE, AUTHOR } from '~/lib/site';
-const data = {
+
+const orgId = `${SITE.url}/#organization`;
+const websiteId = `${SITE.url}/#website`;
+
+const graph = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: SITE.name,
-  url: SITE.url,
-  logo: `${SITE.url}/logo.png`,
-  description: SITE.defaultDescription,
-  publisher: {
-    '@type': 'Organization',
-    name: SITE.publisher,
-  },
-  founder: {
-    '@type': 'Person',
-    name: AUTHOR.name,
-    jobTitle: AUTHOR.role,
-    address: { '@type': 'PostalAddress', addressLocality: AUTHOR.city, addressCountry: 'IT' },
-  },
-  sameAs: [
-    SITE.social.facebookGroup,
-    SITE.social.instagram,
-    SITE.social.youtube,
-    SITE.social.reddit,
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': orgId,
+      name: SITE.name,
+      alternateName: 'CMU Edizioni',
+      url: SITE.url,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE.url}/logo.svg`,
+        width: 512,
+        height: 512,
+      },
+      description: SITE.defaultDescription,
+      foundingDate: '2026',
+      founder: {
+        '@type': 'Person',
+        name: AUTHOR.name,
+        jobTitle: AUTHOR.role,
+        description: AUTHOR.fieldExperience,
+      },
+      sameAs: [
+        SITE.social.facebookGroup,
+        SITE.social.instagram,
+        SITE.social.youtube,
+        SITE.social.reddit,
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'info@casemobiliusate.com',
+        contactType: 'customer support',
+        availableLanguage: ['it'],
+      },
+      knowsAbout: [
+        'Case mobili usate',
+        'Normativa case mobili Italia',
+        'Trasporto case mobili',
+        'Marche case mobili',
+        'Residenza casa mobile',
+        'Campeggi tutto l\'anno Italia',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      url: SITE.url,
+      name: SITE.name,
+      description: SITE.defaultDescription,
+      inLanguage: SITE.locale,
+      publisher: { '@id': orgId },
+      copyrightYear: 2026,
+      copyrightHolder: { '@id': orgId },
+    },
   ],
 };
 ---
-<script type="application/ld+json" set:html={JSON.stringify(data)} />
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

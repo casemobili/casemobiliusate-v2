@@ -9,8 +9,8 @@ import campeggiData from '~/data/campeggi.json';
 
 const url = '/mappa-campeggi';
 const fullUrl = `https://www.casemobiliusate.com${url}`;
-const title = 'Mappa interattiva campeggi che accettano case mobili da privati (2026)';
-const description = 'Mappa interattiva campeggi italiani che ospitano case mobili da privati: 64 aree geografiche, dati aggregati per Comune, prezzi piazzola, stagione, tutto-anno.';
+const title = 'Mappa campeggi per case mobili usate in Italia: 64 aree (2026)';
+const description = '480 campeggi italiani in 64 aree geografiche che accettano case mobili usate da privati. Mappa interattiva con prezzi piazzola, stagione, tutto-anno, accettazione subentro. Sblocco gratuito con newsletter.';
 
 const previewAreas = campeggiData.areas.filter((a: any) => a.preview);
 const totalAreas = campeggiData.areas.length;
@@ -36,7 +36,7 @@ const faq = [
       <div class="eyebrow mb-3">Strumento · Mappa interattiva</div>
       <h1>{title}</h1>
       <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
-        {totalStructures}+ campeggi italiani in {totalAreas} aree geografiche che accettano casa mobile di proprietà privata. Filtri per regione, prezzi piazzola, stagione, tutto-anno. Sblocca la mappa completa iscrivendoti alla newsletter (gratuita, 1 mail al mese).
+        Cerchi un campeggio dove portare la tua casa mobile usata? Con lista d'attesa fino a 3 anni nelle zone premium, sapere prima dove guardare vale tempo e soldi. Mappa di {totalStructures} campeggi italiani in {totalAreas} aree, con prezzi piazzola, stagione e accettazione subentro privati. Sblocco gratuito con newsletter.
       </p>
       <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
         <span>A cura di Andrea Bressan</span>
