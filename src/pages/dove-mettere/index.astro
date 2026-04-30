@@ -5,6 +5,13 @@ import SchemaArticle from '~/components/SchemaArticle.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+import ArticleCard from '~/components/ArticleCard.astro';
+
+const correlati = [
+  { href: '/dove-mettere/campeggi-aperti-tutto-anno', category: 'Dove Mettere', title: 'Campeggi aperti tutto l\'anno: panoramica per regione', excerpt: '~200 strutture italiane, distribuzione 9 cluster, prezzi piazzola, lista d\'attesa per zone premium.', readTime: '7 min' },
+  { href: '/dove-mettere/casa-mobile-terreno-privato', category: 'Dove Mettere', title: 'Casa mobile su terreno privato: cosa serve davvero', excerpt: '4 casi legali, 4 abusivismi. Iter 8-14 mesi. Costi 17-42k € oltre alla casa mobile.', readTime: '9 min' },
+  { href: '/dove-mettere/casa-mobile-agriturismo', category: 'Dove Mettere', title: 'Casa mobile in agriturismo: la via meno conosciuta', excerpt: '~200 strutture autorizzate. Prezzi 30-50% sotto campeggio. Toscana, Umbria, Marche.', readTime: '8 min' },
+];
 
 const url = '/dove-mettere';
 const fullUrl = `https://www.casemobiliusate.com${url}`;
@@ -135,6 +142,15 @@ const faq = [
         <FaqAccordion items={faq} title="Domande frequenti su dove mettere una casa mobile" />
       </div>
     </div>
+
+    <section class="mt-24">
+      <div class="flex items-end justify-between mb-8 flex-wrap gap-4">
+        <h2 style="margin-top:0">Approfondimenti del cluster Dove Mettere</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {correlati.map((a) => <ArticleCard {...a} />)}
+      </div>
+    </section>
   </article>
 
   <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />

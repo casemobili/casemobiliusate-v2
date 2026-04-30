@@ -1,0 +1,185 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/vivere/coibentazione-aggiunta-fai-da-te';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Coibentazione aggiunta casa mobile: fai-da-te o tecnico? (2026)';
+const description = 'Coibentazione casa mobile 2026: migliorare isolamento esistente. DIY 1.500-3.500 €, tecnico 4.000-8.000 €. ROI 4-7 anni. Materiali e procedura.';
+
+const faq = [
+  { q: 'Quando vale la pena coibentare?', a: 'In 4 scenari: <strong>1)</strong> casa mobile vecchia (15+ anni) con isolamento standard 60-80 mm; <strong>2)</strong> uso continuativo o residenza stabile (alta utilizzazione = ROI veloce); <strong>3)</strong> bollette riscaldamento &gt;500 €/anno (segno di dispersioni); <strong>4)</strong> condensa interna ricorrente nonostante deumidificatore. Per uso vacanza occasionale (1-2 mesi/anno): coibentazione raramente conviene economicamente, ma può migliorare comfort termico.' },
+  { q: 'Coibentazione interna o esterna: quale scegliere?', a: '<strong>Coibentazione interna</strong>: pannelli isolanti + cartongesso applicati alle pareti interne. Pro: lavoro fai-da-te possibile, costo inferiore, no autorizzazione campeggio. Contro: riduce volume interno casa mobile (8-12 cm per parete = 2-3 m² persi su casa 32 m²), ponti termici al telaio non risolti. <strong>Coibentazione esterna</strong>: pannelli rivestiti applicati all\'esterno. Pro: no perdita volume, soluzione tecnicamente migliore, copre ponti termici. Contro: costo doppio, richiede autorizzazione campeggio (modifica estetica), serve quasi sempre tecnico.' },
+  { q: 'Quanto si risparmia in bolletta?', a: 'Per casa mobile residenza stabile in Nord Italia con bolletta riscaldamento attuale 800 €/anno: <strong>coibentazione 80 mm interna</strong> = -30/35% = risparmio 250-280 €/anno. <strong>Coibentazione 120 mm esterna</strong> = -40/50% = risparmio 320-400 €/anno. Su 10 anni: risparmio 2.500-4.000 € (interna) o 3.200-4.000 € (esterna). ROI rispetto investimento iniziale: 4-7 anni interna, 8-12 anni esterna. Se aggiungi comfort termico aumentato (vivere meglio in inverno), la decisione diventa più favorevole.' },
+  { q: 'Posso fare coibentazione interna fai-da-te?', a: 'Sì, è uno dei progetti DIY più comuni in casa mobile. Difficoltà: <strong>media</strong>. Tempo: 30-50 ore di lavoro per casa mobile media (8x4 m), spalmate su 1-2 settimane. Strumenti necessari (totale 100-200 €): trapano-avvitatore, sega circolare o seghetto alternativo, livella, metro, taglierino, cucitrice manuale industriale. Materiali (1.500-2.500 € per casa media): pannelli lana minerale o PIR, listoni in legno per intelaiatura, cartongesso 12,5 mm, viti, schiuma poliuretanica per giunzioni. Risultato finale paragonabile a tecnico se fai con cura.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Vivere', url: '/vivere' },
+      { name: 'Coibentazione aggiunta', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Vivere · Coibentazione</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Coibentazione aggiunta è il modo più efficace per trasformare casa mobile vecchia in residenza stabile. Investimento upfront 1.500-8.000 €, ROI 4-7 anni, comfort termico paragonabile a casa nuova. Pratico fai-da-te o tecnico secondo budget e abilità.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>10 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Coibentazione aggiunta = riduzione consumi <strong>30-50%</strong>, ROI <strong>4-7 anni</strong>. <strong>Interna fai-da-te</strong>: 1.500-3.500 €, riduce volume 8-12 cm/parete. <strong>Esterna tecnico</strong>: 4.000-8.000 €, no perdita volume, autorizzazione campeggio. Adatta a uso continuativo o residenza stabile, NON a vacanza occasionale.</p>
+      </Tldr>
+
+      <h2>Quando coibentare</h2>
+      <p>4 scenari concreti dove coibentazione aggiunta ha senso economico/comfort:</p>
+
+      <h3>1. Casa mobile vecchia (15+ anni)</h3>
+      <p>Isolamento originale era 60-80 mm. Oggi standard è 100-150 mm. Casa mobile post-2015 ha già coibentazione moderna, post-2020 ha standard premium. Casa mobile pre-2010 quasi sempre beneficia coibentazione.</p>
+
+      <h3>2. Residenza stabile o uso continuativo</h3>
+      <p>Per uso 8-12 mesi/anno l\'investimento si ammortizza. Per uso vacanza 1-2 mesi/anno il ROI sui consumi è troppo lungo (15-25 anni), conviene solo per comfort.</p>
+
+      <h3>3. Bollette riscaldamento eccessive</h3>
+      <p>Casa mobile media in Nord Italia residenza stabile: bolletta 400-700 €/anno gas è normale, &gt;800 € indica dispersioni significative. Coibentazione riduce di 30-50%.</p>
+
+      <h3>4. Condensa interna ricorrente</h3>
+      <p>Pareti fredde + aria interna calda = condensa = muffa. Coibentazione alza temperatura superficiale interna pareti = elimina condensa. Spesso più efficace di deumidificatore strutturalmente.</p>
+
+      <h2>Coibentazione interna fai-da-te</h2>
+
+      <h3>Materiali necessari</h3>
+      <p>Casa mobile 8×4 m, coibentazione su 3 pareti esterne (la 4ª è ingresso, generalmente non si tocca):</p>
+      <ul>
+        <li><strong>Pannelli isolanti</strong>: 25-30 m² totali. Opzioni:
+          <ul>
+            <li>Lana minerale 80 mm: 600-900 € (Knauf, Rockwool, Isover). Migliore acustico</li>
+            <li>Pannelli PIR (poliisocianurato) 60 mm: 700-1.000 € (Celotex, Stiferite). Migliore isolamento per spessore minore</li>
+            <li>Polistirene espanso 80 mm: 400-600 €. Più economico, isolamento accettabile</li>
+          </ul>
+        </li>
+        <li><strong>Listoni in legno</strong> per intelaiatura (40×60 mm): 80-150 €</li>
+        <li><strong>Cartongesso 12,5 mm</strong>: 25-30 m² = 200-300 €</li>
+        <li><strong>Viti, sigilli, schiuma poliuretanica</strong>: 80-150 €</li>
+        <li><strong>Tinteggiatura finale</strong> (pittura + accessori): 80-150 €</li>
+      </ul>
+
+      <p>Totale materiali: <strong>1.500-2.500 €</strong> a seconda scelte. Strumenti DIY: 100-200 € (trapano, sega, livella, metro, cutter, cucitrice).</p>
+
+      <h3>Procedura</h3>
+      <ol>
+        <li><strong>Preparazione pareti esistenti</strong>: rimozione battiscopa, prese elettriche (con ricollegamento esterno temporaneo), pulizia</li>
+        <li><strong>Posa intelaiatura listoni</strong>: viti su parete esistente, listoni verticali ogni 60 cm</li>
+        <li><strong>Inserimento pannelli isolanti</strong>: tagliati a misura, infilati tra listoni, fissati con cucitrice o silicone</li>
+        <li><strong>Sigillatura giunzioni</strong>: schiuma poliuretanica per gap e angoli</li>
+        <li><strong>Eventuale barriera vapore</strong>: foglio plastica polietilene 200 micron, importante in clima freddo (40-80 €)</li>
+        <li><strong>Posa cartongesso</strong>: viti su listoni, distanza 25 cm</li>
+        <li><strong>Stuccatura giunzioni</strong> + carteggiatura</li>
+        <li><strong>Tinteggiatura finale</strong>: 2 mani pittura</li>
+        <li><strong>Ripristino prese elettriche</strong>, battiscopa, accessori vari</li>
+      </ol>
+
+      <p><strong>Tempo totale</strong>: 30-50 ore di lavoro DIY, spalmate su 1-2 settimane. Adatto a chi ha esperienza minima fai-da-te (sa usare trapano, sega, livella).</p>
+
+      <h2>Coibentazione esterna (tecnico)</h2>
+
+      <h3>Materiali e procedura</h3>
+      <p>Sistema "cappotto" applicato all\'esterno:</p>
+      <ul>
+        <li><strong>Pannelli rivestiti</strong>: PIR + finitura (cemento, ceramica, lamiera): 60-80 €/m²</li>
+        <li><strong>Profili di fissaggio</strong> in alluminio</li>
+        <li><strong>Sigilli specifici</strong> per case mobili (movimento minimo del telaio)</li>
+        <li><strong>Finitura cosmetica</strong>: cemento minerale o pittura specifica</li>
+      </ul>
+
+      <p>Casa mobile 8×4 m = circa 50 m² parete esterna. Costo materiali: 3.000-4.000 €. Manodopera tecnico: 1.500-3.500 €. <strong>Totale: 4.500-7.500 €</strong>.</p>
+
+      <h3>Tempi tecnico</h3>
+      <p>5-10 giorni lavorativi per casa mobile media. Casa mobile inutilizzabile in alcune fasi (montaggio impalcatura, applicazione finiture). Pianificazione: meglio fuori stagione (ottobre-aprile).</p>
+
+      <h3>Autorizzazione campeggio</h3>
+      <p>Modifica estetica esterna richiede approvazione direttore campeggio. Alcuni campeggi premium hanno regolamenti rigidi su uniformità estetica. Verifica PRIMA di acquistare materiali.</p>
+
+      <h2>Confronto economico DIY vs tecnico</h2>
+
+      <table>
+        <thead>
+          <tr><th>Aspetto</th><th>Interna DIY</th><th>Esterna tecnico</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Costo totale</td><td>1.500-3.500 €</td><td>4.000-8.000 €</td></tr>
+          <tr><td>Tempo personale</td><td>30-50 ore lavoro DIY</td><td>0 ore (gestione tecnico)</td></tr>
+          <tr><td>Tempo elapsed</td><td>1-2 settimane</td><td>5-10 giorni</td></tr>
+          <tr><td>Riduzione consumi</td><td>30-35%</td><td>40-50%</td></tr>
+          <tr><td>Risparmio annuale (residenza stabile)</td><td>200-300 €</td><td>320-450 €</td></tr>
+          <tr><td>ROI</td><td>5-12 anni</td><td>10-20 anni</td></tr>
+          <tr><td>Volume interno perso</td><td>8-12 cm/parete</td><td>0</td></tr>
+          <tr><td>Autorizzazione campeggio</td><td>Non richiesta</td><td>Richiesta</td></tr>
+          <tr><td>Comfort termico aumento</td><td>Importante</td><td>Massimo</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Errori comuni nella coibentazione DIY</h2>
+      <ul>
+        <li><strong>Saltare barriera vapore</strong>: in clima freddo, condensa si forma DENTRO la coibentazione = degrado isolamento + muffe nascoste</li>
+        <li><strong>Pannelli non aderenti</strong>: gap d\'aria tra pannello e parete = ponti termici e perdita efficienza</li>
+        <li><strong>Tagli imprecisi</strong>: 1 cm di gap tra pannelli = 30% di efficienza persa in quel punto</li>
+        <li><strong>Trascurare angoli e dettagli</strong>: angoli interni, prese elettriche, montanti porte = ponti termici critici</li>
+        <li><strong>Uso pannello sbagliato per il clima</strong>: lana minerale è meglio per casa "stagionale", PIR per casa "continuativa". Polistirene OK per zone calde, NO per Alpi</li>
+        <li><strong>Coibentare solo 2 pareti su 4</strong>: efficienza generale parziale, ROI dimezzato</li>
+        <li><strong>Sottovalutare ricambio aria</strong>: casa più isolata = più condensa interna se non c\'è ventilazione adeguata. Aggiungi VMC o deumidificatore</li>
+      </ul>
+
+      <h2>Casa mobile pre-coibentata vs casa mobile da coibentare</h2>
+      <p>Se stai cercando casa mobile usata e vuoi residenza stabile, considera 2 opzioni alternative:</p>
+
+      <h3>Comprare casa mobile recente già ben isolata</h3>
+      <ul>
+        <li>Casa mobile post-2015 con isolamento 100-130 mm</li>
+        <li>Costo: 22-35.000 € usato in buone condizioni</li>
+        <li>No interventi coibentazione necessari</li>
+        <li>Comfort immediato</li>
+      </ul>
+
+      <h3>Comprare casa mobile vecchia + coibentare</h3>
+      <ul>
+        <li>Casa mobile 2005-2010: 12-18.000 € usata</li>
+        <li>Coibentazione interna DIY: 2.000-3.500 €</li>
+        <li>Totale: 14-22.000 €</li>
+        <li>Risparmio rispetto a opzione 1: 8-13.000 €</li>
+        <li>Tempo extra: 1-2 settimane di lavoro DIY</li>
+      </ul>
+
+      <p>Per chi ha tempo e abilità manuali: opzione 2 è economicamente migliore. Per chi vuole soluzione "chiavi in mano": opzione 1.</p>
+
+      <h2>Vedi anche</h2>
+      <ul>
+        <li><a href="/vivere/vivere-tutto-anno-isolamento">Vivere tutto l\'anno: isolamento e riscaldamento</a></li>
+        <li><a href="/vivere/combattere-umidita-condensa">Umidità e condensa: prevenire e curare</a></li>
+        <li><a href="/vivere/manutenzione-tetto-sigilli">Manutenzione tetto e sigilli</a></li>
+      </ul>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti sulla coibentazione casa mobile" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>

@@ -1,0 +1,182 @@
+---
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+const url = '/vivere/dehor-veranda-trattamento';
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+const title = 'Dehor e veranda in legno casa mobile: trattamento e manutenzione (2026)';
+const description = 'Manutenzione dehor casa mobile 2026: olio, smalto, vernice. Frequenza 1-2 anni. Costo 50-200 €/anno DIY. Errori comuni e tipi di legno.';
+
+const faq = [
+  { q: 'Quanto spesso devo trattare il dehor?', a: '<strong>Ogni anno (giugno)</strong> per dehor esposti a sud o pieno sole. <strong>Ogni 2 anni</strong> per dehor protetti (ombreggiati, lato nord). Verifica condizione: se il legno è "secco al tatto" e con piccole crepe = trattamento necessario. Tempo per trattamento dehor 4×2 m: 4-6 ore di lavoro DIY (preparazione + 2 mani prodotto + asciugatura).' },
+  { q: 'Olio, smalto o vernice: cosa scegliere?', a: '<strong>Olio specifico per legno esterno</strong>: penetra in profondità, mantiene aspetto naturale, durata 1 anno. Costo 15-30 €/litro. Manutenzione facile (riapplica sopra senza rimuovere). Mio preferito per dehor casa mobile. <strong>Smalto/vernice</strong>: forma pellicola superficiale, durata 2-3 anni. Quando si scrosta va completamente rimosso prima del rifacimento (lavoro lungo). Aspetto verniciato meno naturale ma protezione superiore.' },
+  { q: 'Tipologie di legno dehor: c\'è differenza?', a: 'Sì, importante. <strong>Pino impregnato in autoclave</strong>: economico (150-300 € dehor 4×2 m), durata 8-15 anni con manutenzione, manutenzione annuale. <strong>Larice o douglasia</strong>: medio (300-500 €), durata 15-25 anni, manutenzione biennale. <strong>Legni esotici</strong> (ipe, teak, iroko): premium (600-1.200 €), durata 20-40 anni, manutenzione minima ogni 3-5 anni. Per casa mobile uso ricreativo: pino impregnato sufficiente. Per residenza stabile: larice o douglasia il giusto compromesso.' },
+  { q: 'Posso lasciare dehor "naturale" senza trattamenti?', a: 'Sconsigliato. Senza trattamento, il legno: <strong>1)</strong> diventa grigiastro/argentato in 6-12 mesi (UV); <strong>2)</strong> sviluppa crepe da escursione termica entro 2-3 anni; <strong>3)</strong> è soggetto a muffe e funghi (decadimento accelerato); <strong>4)</strong> degrado finale entro 6-10 anni invece dei 15-25 con manutenzione. Risparmio apparente di 40-80 €/anno si paga con sostituzione anticipata 1.000-2.500 €.' },
+];
+---
+
+<BaseLayout title={title} description={description} ogType="article">
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: 'Vivere', url: '/vivere' },
+      { name: 'Dehor veranda', url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">Vivere · Dehor</div>
+      <h1>{title}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        Il dehor o veranda raddoppia lo spazio vivibile della casa mobile. Trascurarlo = vita utile 6-10 anni e sostituzione 2.000 €. Curarlo con 4 ore di lavoro l\'anno + 50 € di prodotto = 20-25 anni di vita. Ecco la guida pratica.
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di Andrea Bressan</span>
+        <span>·</span>
+        <span>Aggiornato il 29 aprile 2026</span>
+        <span>·</span>
+        <span>7 min di lettura</span>
+      </div>
+    </header>
+
+    <div class="prose-article mt-12">
+      <Tldr>
+        <p class="m-0">Dehor in legno = manutenzione <strong>annuale</strong> (esposizione sud) o <strong>biennale</strong> (esposizione protetta). Tempo: 4-6 ore DIY. Costo: <strong>50-200 €/anno</strong> di prodotto. Tipologie: olio (naturale, manutenzione facile), smalto/vernice (più protezione, manutenzione complessa). Senza trattamento: vita utile dimezza da 20 a 8-10 anni.</p>
+      </Tldr>
+
+      <h2>Tipologie di dehor</h2>
+
+      <h3>Dehor a struttura aperta (gazebo, pergolato)</h3>
+      <p>Esposto agli agenti atmosferici totalmente. Manutenzione più frequente (annuale obbligatoria). Vita utile 8-15 anni con manutenzione regolare.</p>
+
+      <h3>Veranda chiusa (pareti + tetto)</h3>
+      <p>Più protetta. Manutenzione biennale spesso sufficiente. Vita utile 15-25 anni. Spesso aggiunge spazio interno utilizzabile in stagione mite.</p>
+
+      <h3>Tettoia copertura accesso</h3>
+      <p>Solo tettoia con pilastri, niente pareti laterali. Manutenzione annuale. Vita utile 12-20 anni.</p>
+
+      <h2>Preparazione (prima del trattamento)</h2>
+
+      <h3>Pulizia profonda</h3>
+      <p>Il legno va pulito accuratamente prima di applicare prodotto:</p>
+      <ul>
+        <li><strong>Spazzola con setole rigide</strong> (NON metalliche): rimuove sporco superficiale</li>
+        <li><strong>Acqua + sapone neutro</strong>: lavaggio generale</li>
+        <li><strong>Per muffe verdi/nere</strong>: detergente antimuffa specifico (15-25 €)</li>
+        <li><strong>Risciacquo abbondante</strong> e asciugatura completa (24-48 ore)</li>
+      </ul>
+
+      <h3>Carteggiatura (se necessaria)</h3>
+      <p>Per dehor con vecchio strato vernice scrostata: serve carta vetrata 80-120 fino a legno nudo. Tempo aggiuntivo: 4-8 ore. Per legno con olio precedente: solo carta vetrata fine 220-320 per "rinfrescare" superficie. Tempo: 1-2 ore.</p>
+
+      <h2>Trattamento con olio</h2>
+
+      <h3>Vantaggi olio</h3>
+      <ul>
+        <li>Penetra in profondità nel legno</li>
+        <li>Mantiene aspetto naturale del legno (venature visibili)</li>
+        <li>Manutenzione facile (riapplica sopra senza rimuovere)</li>
+        <li>Adatto a tutti i tipi di legno</li>
+        <li>Niente "scrostamento": invecchia uniformemente</li>
+      </ul>
+
+      <h3>Svantaggi olio</h3>
+      <ul>
+        <li>Durata limitata (1 anno per esposizione intensa)</li>
+        <li>Protezione meno forte di vernice/smalto</li>
+        <li>Aspetto può variare a seconda dell\'olio (alcuni scuriscono il legno)</li>
+      </ul>
+
+      <h3>Procedura</h3>
+      <ol>
+        <li>Pulizia legno (vedi sopra)</li>
+        <li>Applicazione 1ª mano olio con pennello largo o straccio (15-25 €/litro, copre 8-12 m²)</li>
+        <li>Asciugatura 4-8 ore</li>
+        <li>Applicazione 2ª mano dove legno "ha bevuto" molto (parti più asciutte)</li>
+        <li>Asciugatura 24 ore prima di esporre a pioggia o uso normale</li>
+      </ol>
+
+      <h3>Marche raccomandate</h3>
+      <ul>
+        <li><strong>Sikkens Cetol Wood Stain</strong>: olio classico, ottima copertura</li>
+        <li><strong>Linitop Bio Olio Legno</strong>: ecologico</li>
+        <li><strong>Owatrol Textrol</strong>: penetrazione profonda, durata superiore</li>
+        <li><strong>Saicos Premium Hardwax-Olio</strong>: premium, prezzo alto ma durata 2 anni</li>
+      </ul>
+
+      <h2>Trattamento con vernice/smalto</h2>
+
+      <h3>Vantaggi vernice</h3>
+      <ul>
+        <li>Protezione superiore (forma pellicola)</li>
+        <li>Durata 2-3 anni</li>
+        <li>Disponibile in molti colori</li>
+        <li>Lucidatura possibile (smalti opachi/satinati/lucidi)</li>
+      </ul>
+
+      <h3>Svantaggi vernice</h3>
+      <ul>
+        <li>Quando si scrosta, va rimossa completamente prima del rifacimento (lavoro lungo)</li>
+        <li>Aspetto meno naturale del legno</li>
+        <li>Costo materiali maggiore</li>
+      </ul>
+
+      <h3>Procedura</h3>
+      <ol>
+        <li>Pulizia + carteggiatura (vedi sopra)</li>
+        <li>Primer per legno (15-25 €/litro): blocca tannini e migliora adesione</li>
+        <li>Asciugatura 4-12 ore secondo prodotto</li>
+        <li>Applicazione 1ª mano vernice/smalto (20-40 €/litro)</li>
+        <li>Asciugatura 8-24 ore</li>
+        <li>Carteggiatura leggera</li>
+        <li>2ª mano vernice/smalto</li>
+        <li>Asciugatura 24-48 ore prima di esposizione normale</li>
+      </ol>
+
+      <h3>Marche raccomandate</h3>
+      <ul>
+        <li><strong>Sikkens Cetol BL Universal</strong>: smalto universale per esterno</li>
+        <li><strong>V33 Gel Bois</strong>: facile applicazione, copertura buona</li>
+        <li><strong>Bondex Solid Color</strong>: colorato, copertura totale</li>
+      </ul>
+
+      <h2>Calendario manutenzione</h2>
+      <ul>
+        <li><strong>Maggio</strong>: ispezione visiva post-inverno. Decisione: trattamento questo anno?</li>
+        <li><strong>Giugno</strong> (clima asciutto e caldo): finestra ottimale per trattamento</li>
+        <li><strong>Settembre</strong>: ispezione pre-inverno. Eventuali ritocchi su zone più sollecitate</li>
+        <li><strong>Inverno</strong>: nessun trattamento (umidità + freddo impediscono adesione)</li>
+      </ul>
+
+      <h2>Errori comuni</h2>
+      <ul>
+        <li><strong>Trattare legno bagnato</strong>: prodotto non penetra/non aderisce. Sempre legno asciutto 24+ ore</li>
+        <li><strong>Saltare carteggiatura</strong>: vernice si stacca entro 6-12 mesi</li>
+        <li><strong>1 sola mano</strong>: protezione insufficiente. Sempre 2 mani minime</li>
+        <li><strong>Trattamento in estate piena (35°C)</strong>: prodotto secca troppo in fretta = applicazione disuniforme. Meglio mattino o sera</li>
+        <li><strong>Mescolare olio + vernice</strong>: incompatibili. Una volta scelto sistema, mantienilo</li>
+        <li><strong>Trascurare le parti basse</strong> (terra/pavimento): assorbono più umidità, deteriorano per primi</li>
+      </ul>
+
+      <h2>Quando sostituire vs riparare</h2>
+      <p>Il dehor va sostituito quando:</p>
+      <ul>
+        <li>Pilastri portanti hanno marcito alla base (instabilità strutturale)</li>
+        <li>Pavimento dehor ha cedimenti diffusi</li>
+        <li>Tetto presenta deformazioni gravi</li>
+        <li>Costo riparazione &gt;60% del costo sostituzione integrale</li>
+      </ul>
+
+      <p>Costo nuovo dehor 4×2 m: <strong>800-2.500 €</strong> a seconda materiali (pino impregnato 800-1.200 €, larice 1.500-2.000 €, esotici 2.000-2.500 €). Manodopera installazione 400-800 €.</p>
+
+      <FbCommunityWidget variant="card" />
+
+      <FaqAccordion items={faq} title="Domande frequenti su dehor e veranda" />
+    </div>
+  </article>
+
+  <SchemaArticle title={title} description={description} datePublished="2026-04-29" dateModified="2026-04-29" url={fullUrl} />
+</BaseLayout>
