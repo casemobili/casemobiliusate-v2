@@ -1,0 +1,37 @@
+# Cloudflare Pages — _redirects
+# Migrazione dal sito Lovable preesistente (luglio 2025) al rebuild Astro (aprile 2026)
+# Tutti i redirect 301 (permanenti) per preservare autorità SEO indicizzata su Google
+
+# === HOME e canonical www ===
+# Apex casemobiliusate.com → www.casemobiliusate.com (gestito anche da Cloudflare a livello dominio)
+# https://casemobiliusate.com/* https://www.casemobiliusate.com/:splat 301
+
+# === URL legacy senza corrispondenza diretta — redirect a pagina equivalente nuovo sito ===
+
+# Vecchia "topic page" SEO sulla keyword target → ora è la HOME ottimizzata sulla stessa keyword
+/case-mobili-usate /  301
+
+# Vecchia "blog" → indice articoli (non esiste, redirezioniamo alla HOME che ha le ultime guide)
+/blog /  301
+
+# Vecchia pagina di vendita campeggio → nuovo cluster Dove Mettere
+/vendita-casa-mobile-campeggio /dove-mettere  301
+
+# Vecchia pagina case mobili targate → ora coperta in Normativa (sezione omologazione)
+/case-mobili-targate /normativa  301
+
+# Pagina HUD US standard → ora coperta in Tipologie (vs mobil-home)
+/standard-hud-case-mobili-24cfr3280-guida-2025 /tipologie/casa-mobile-vs-mobil-home  301
+
+# Vecchia pagina FAQ aggregata → ora le FAQ sono in fondo a ogni articolo, mandiamo alla HOME
+/faq /  301
+
+# Vecchia pagina sitemap HTML → sitemap XML standard
+/sitemap /sitemap-index.xml  301
+
+# Privacy URL diverso → unificato a /privacy
+/privacy-policy /privacy  301
+
+# === Pagine pillar principali — STESSA URL nel nuovo sito, nessun redirect necessario ===
+# /normativa, /prezzi, /vivere, /marche, /trasporto, /chi-siamo, /contatti
+# Tutte esistono identiche, Google le ricrawlerà e troverà la nuova versione (più ricca)
