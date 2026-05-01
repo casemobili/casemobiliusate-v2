@@ -1,14 +1,14 @@
-# Decap CMS — configurazione produzione
-# Documentazione: https://decapcms.org/docs/
+# Sveltia CMS — configurazione produzione
+# Drop-in compatibile con Decap CMS spec; UI moderna + OAuth same-window
+# Documentazione: https://github.com/sveltia/sveltia-cms
 
-# === Backend: GitHub OAuth via Cloudflare Pages Functions ===
-# base_url omesso volutamente: Decap usa window.location.origin
-# (così funziona sia su pages.dev preview che su www.casemobiliusate.com)
+# === Backend: GitHub via Personal Access Token (Sveltia) ===
 backend:
   name: github
   repo: casemobili/casemobiliusate-v2
   branch: main
   auth_endpoint: api/auth
+  base_url: https://www.casemobiliusate.com
 
 # Locale italiano per editor
 locale: it
@@ -24,23 +24,58 @@ logo_url: /favicon.svg
 
 # === COLLECTIONS ===
 collections:
-  # ─── Articoli (cluster) ─────────────────────────────────────────────
+  # ─── Articoli (cluster + pillar tutti in MDX) ──────────────────────────
   - name: 'articoli'
     label: 'Articoli'
     label_singular: 'Articolo'
+    description: |
+      Ogni articolo nuovo deve passare il punteggio Rank Math 80+ prima della pubblicazione.
+      Le hint sotto ogni campo sono le regole Rank Math distillate. Seguile alla lettera.
     folder: 'src/content/articoli'
     create: true
     slug: '{{slug}}'
     extension: 'mdx'
     format: 'frontmatter'
     summary: '{{titolo}} · {{pillar}} · {{readingTime}} min'
+    sortable_fields: ['dataPubblicazione', 'titolo', 'pillar']
+    view_filters:
+      - { label: 'Solo Normativa', field: 'pillar', pattern: 'normativa' }
+      - { label: 'Solo Prezzi', field: 'pillar', pattern: 'prezzi' }
+      - { label: 'Solo Marche', field: 'pillar', pattern: 'marche' }
     fields:
-      - { name: 'titolo', label: 'Titolo SEO (H1)', widget: 'string', hint: '30-65 caratteri. Deve contenere la focus keyword.' }
-      - { name: 'sottotitolo', label: 'Sottotitolo (lead di apertura)', widget: 'text', hint: '80-280 caratteri. Compare sotto il titolo.' }
+      # ─── 1. SEO BASICS — Rank Math focus keyword ─────────────────────
+      - name: 'focusKeyword'
+        label: '🎯 Focus keyword (PRIMA cosa da decidere)'
+        widget: 'string'
+        hint: |
+          La query Google per cui vuoi posizionarti. Es: "case mobili usate", "permessi casa mobile".
+          Regole Rank Math: 2-4 parole, deve apparire in titolo + meta + URL slug + primo paragrafo + almeno un H2 + alt immagine.
+
+      - name: 'titolo'
+        label: 'Titolo SEO (H1)'
+        widget: 'string'
+        pattern: ['.{30,65}', 'Tra 30 e 65 caratteri']
+        hint: |
+          REGOLE RANK MATH:
+          • 30-65 caratteri (ideale 50-60). Conta il pixel-width: < 580px.
+          • Focus keyword il piu vicino possibile all'inizio.
+          • Almeno una "power word": Guida, Definitiva, Completa, Migliori, Verita, 2026.
+          • Numero quando ha senso (es: "5 segnali", "200 campeggi", "anno 2026").
+          • Sentiment positivo o negativo (mai neutro).
+
+      - name: 'sottotitolo'
+        label: 'Sottotitolo (lead di apertura)'
+        widget: 'text'
+        pattern: ['.{80,280}', 'Tra 80 e 280 caratteri']
+        hint: |
+          Il "deck" sotto il titolo. Promette il beneficio concreto in 1-2 frasi.
+          Stile Ogilvy: specificita > vaghezza, parla al lettore non al brand.
+
       - name: 'pillar'
         label: 'Pillar di appartenenza'
         widget: 'select'
         default: 'normativa'
+        hint: 'Determina breadcrumb, hero color, internal-link suggestions e schema BreadcrumbList.'
         options:
           - { label: 'Normativa & Permessi', value: 'normativa' }
           - { label: 'Prezzi & Valutazione', value: 'prezzi' }
@@ -50,55 +85,242 @@ collections:
           - { label: 'Dove Mettere & Campeggi', value: 'dove-mettere' }
           - { label: 'Confronti & Tipologie', value: 'tipologie' }
           - { label: "Guide all'Acquisto", value: 'guide-acquisto' }
-      - { name: 'focusKeyword', label: 'Focus keyword SEO', widget: 'string', hint: 'La query principale per cui vuoi posizionarti.' }
-      - { name: 'keywordsSecondarie', label: 'Keyword secondarie (sinonimi, varianti)', widget: 'list', required: false, default: [] }
-      - { name: 'metaDescription', label: 'Meta description (Google snippet)', widget: 'text', hint: 'Tra 120 e 160 caratteri. Deve contenere la focus keyword e promettere un beneficio concreto.' }
-      - { name: 'coverImage', label: 'Immagine di copertina', widget: 'image', required: false, hint: 'JPG ottimizzata, almeno 1280×720, sotto i 400 KB.' }
-      - { name: 'coverImageAlt', label: 'Alt text immagine', widget: 'string', required: false, hint: '10-125 caratteri descrittivi.' }
-      - { name: 'coverImageCredit', label: 'Crediti immagine (autore + fonte)', widget: 'string', required: false }
-      - { name: 'dataPubblicazione', label: 'Data pubblicazione', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
-      - { name: 'dataAggiornamento', label: 'Data ultimo aggiornamento', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD', required: false }
-      - { name: 'autore', label: 'Autore', widget: 'select', default: 'andrea-bressan', options: ['andrea-bressan'] }
-      - { name: 'readingTime', label: 'Minuti di lettura (stima)', widget: 'number', value_type: 'int', default: 5, min: 1, max: 60 }
-      - { name: 'tldr', label: 'Box TL;DR (in sintesi)', widget: 'text', required: false, hint: 'Le 3-5 cose che il lettore deve sapere subito. Aiuta il piazzamento nelle AI Overview.' }
-      - name: 'faq'
-        label: 'FAQ (per schema FAQPage)'
+
+      - name: 'keywordsSecondarie'
+        label: 'Keyword secondarie (sinonimi, varianti long-tail)'
         widget: 'list'
         required: false
-        hint: 'Almeno 5-8 FAQ per articolo. Verranno serializzate come schema FAQPage.'
-        fields:
-          - { name: 'domanda', label: 'Domanda', widget: 'string' }
-          - { name: 'risposta', label: 'Risposta (HTML supportato)', widget: 'text' }
-      - { name: 'articoliCorrelati', label: 'Articoli correlati (slug, max 3)', widget: 'list', required: false, default: [] }
-      - { name: 'noindex', label: 'Nascondi a Google (noindex)', widget: 'boolean', default: false }
-      - { name: 'body', label: "Contenuto articolo", widget: 'markdown', hint: 'Markdown. Almeno 1.500 parole per articoli pillar, 800+ per cluster.' }
+        default: []
+        hint: |
+          3-7 keyword correlate semantiche. Verranno distribuite naturalmente nel body e in H2/H3.
+          Esempio focus="case mobili usate" -> secondarie: ["case mobili seconda mano", "casette mobili usate prezzi", "vendita mobilhome usato"].
 
-  # ─── Pillar (hub) ────────────────────────────────────────────────────
+      - name: 'metaDescription'
+        label: 'Meta description (snippet Google)'
+        widget: 'text'
+        pattern: ['.{120,160}', 'Tra 120 e 160 caratteri (ideale 150-155)']
+        hint: |
+          REGOLE RANK MATH:
+          • 120-160 caratteri (max 158 per safe).
+          • Focus keyword nei primi 130 caratteri.
+          • Promette beneficio concreto + 1 numero specifico se possibile.
+          • Termina con CTA implicita ("Scopri come...", "Tutto quello che serve sapere").
+          • NO virgolette, NO emoji, NO punto esclamativo finale.
+
+      # ─── 2. URL / SLUG ────────────────────────────────────────────────
+      - name: 'slugCustom'
+        label: 'URL slug personalizzato (opzionale)'
+        widget: 'string'
+        required: false
+        pattern: ['^[a-z0-9-]+$', 'Solo lettere minuscole, numeri e trattini']
+        hint: |
+          Default = slug autogenerato dal titolo. Sovrascrivi solo se necessario.
+          REGOLE: kebab-case, max 75 caratteri, contiene focus keyword, NIENTE date, NIENTE stop-word ("il", "la", "di", "per" rimosse).
+          Esempio: focus="permessi casa mobile" -> slug "permessi-casa-mobile-italia".
+
+      # ─── 3. IMMAGINI ─────────────────────────────────────────────────
+      - name: 'coverImage'
+        label: 'Immagine di copertina'
+        widget: 'image'
+        required: false
+        hint: |
+          REGOLE TECNICHE:
+          • Formato: JPG (foto) o WebP (illustrazione).
+          • Dimensioni minime: 1280x720 (16:9). Ideale: 1600x900.
+          • Peso: max 400 KB (Cloudflare comprime automatico).
+          • Nome file: kebab-case con focus keyword. Es: "case-mobili-usate-cavallino.jpg".
+
+      - name: 'coverImageAlt'
+        label: 'Alt text immagine (DEVE contenere focus keyword)'
+        widget: 'string'
+        required: false
+        pattern: ['.{10,125}', 'Tra 10 e 125 caratteri']
+        hint: |
+          Descrive l'immagine per chi non la vede + Google. Include la focus keyword almeno 1 volta.
+          Es: "Casa mobile usata Bardolino vista lago Garda 2026".
+
+      - name: 'coverImageCredit'
+        label: 'Crediti immagine (autore + fonte)'
+        widget: 'string'
+        required: false
+        hint: 'Obbligatorio se foto da terzi. Format: "Foto: Nome Cognome / Fonte" oppure "Archivio CMU Edizioni".'
+
+      # ─── 4. METADATI EDITORIALI ──────────────────────────────────────
+      - name: 'dataPubblicazione'
+        label: 'Data pubblicazione'
+        widget: 'datetime'
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        format: 'YYYY-MM-DD'
+        hint: 'Visibile in fondo all articolo + schema Article.datePublished.'
+
+      - name: 'dataAggiornamento'
+        label: 'Data ultimo aggiornamento'
+        widget: 'datetime'
+        date_format: 'YYYY-MM-DD'
+        time_format: false
+        format: 'YYYY-MM-DD'
+        required: false
+        hint: |
+          IMPORTANTE PER SEO: Google premia il "freshness". Aggiorna quando rivedi il contenuto.
+          Visualizzata come "Aggiornato il [data]" sotto il titolo.
+
+      - name: 'autore'
+        label: 'Autore'
+        widget: 'select'
+        default: 'andrea-bressan'
+        options: ['andrea-bressan']
+        hint: 'Per ora un solo autore (Andrea Bressan, pseudonimo dichiarato in /chi-siamo).'
+
+      - name: 'readingTime'
+        label: 'Minuti di lettura (stima)'
+        widget: 'number'
+        value_type: 'int'
+        default: 5
+        min: 1
+        max: 60
+        hint: 'Calcolo: 200 parole/minuto. Articolo da 1500 parole = 7-8 min.'
+
+      # ─── 5. TL;DR (AI Overview readiness) ────────────────────────────
+      - name: 'tldr'
+        label: 'Box TL;DR (in sintesi)'
+        widget: 'text'
+        required: false
+        pattern: ['.{120,500}', 'Tra 120 e 500 caratteri']
+        hint: |
+          OBBLIGATORIO per Rank Math 80+ e Google AI Overview readiness.
+          Le 3-5 cose che il lettore deve sapere subito. HTML supportato (es. <strong>).
+          Posizionato in box evidenziato dopo il titolo.
+
+      # ─── 6. FAQ (schema FAQPage) ─────────────────────────────────────
+      - name: 'faq'
+        label: 'FAQ (schema FAQPage)'
+        widget: 'list'
+        required: false
+        min: 5
+        max: 12
+        hint: |
+          OBBLIGATORIO MINIMO 5 FAQ per articolo cluster, 8-12 per pillar.
+          Verranno serializzate in schema FAQPage -> rich snippet Google + AI Overview.
+          Domande in linguaggio naturale (come le scriverebbe l'utente).
+          Risposte: 40-300 parole, prima frase = risposta diretta.
+        fields:
+          - { name: 'domanda', label: 'Domanda', widget: 'string', hint: 'Linguaggio naturale, comincia con "Come / Quanto / Dove / Posso / Devo".' }
+          - { name: 'risposta', label: 'Risposta (HTML supportato: <strong>, <em>, <a>, <ul>, <li>)', widget: 'text' }
+
+      # ─── 7. INTERLINKING ─────────────────────────────────────────────
+      - name: 'articoliCorrelati'
+        label: 'Articoli correlati (slug, max 3)'
+        widget: 'list'
+        required: false
+        max: 3
+        default: []
+        hint: |
+          REGOLE RANK MATH INTERNAL LINKING:
+          • Min 3 link interni nel body (oltre questi correlati).
+          • I correlati appaiono nel widget di fondo articolo.
+          • Inserisci slug senza /articoli/ prefix. Es: "permessi-casa-mobile-italia".
+
+      # ─── 8. CONTROLLO INDICIZZAZIONE ─────────────────────────────────
+      - name: 'noindex'
+        label: 'Nascondi a Google (noindex)'
+        widget: 'boolean'
+        default: false
+        hint: 'Solo per pagine evergreen NON ancora finite o sperimentali. Default = pubblico.'
+
+      - name: 'canonical'
+        label: 'URL canonical custom (opzionale)'
+        widget: 'string'
+        required: false
+        hint: 'Lascia vuoto per usare URL autogenerato. Override solo se questo articolo e una variante di un altro.'
+
+      # ─── 9. CONTENUTO ────────────────────────────────────────────────
+      - name: 'body'
+        label: '✍️ Contenuto articolo (Markdown + MDX)'
+        widget: 'markdown'
+        hint: |
+          REGOLE RANK MATH PER IL BODY (TUTTE OBBLIGATORIE):
+
+          📏 LUNGHEZZA
+          • Pillar (hub di pillar): 2.500-4.000 parole
+          • Cluster (articoli profondi): 1.500-2.500 parole
+          • Long-tail (FAQ-style): 800-1.200 parole
+          • MAI sotto 800 parole.
+
+          🎯 FOCUS KEYWORD
+          • Densita: 0.8-1.5% del totale parole (NON di piu, NON di meno).
+          • Nei primi 100 caratteri del body (paragrafo introduttivo).
+          • In almeno 1 H2.
+          • In almeno 1 alt immagine.
+          • Distribuita NATURALE — mai forzata.
+
+          📐 STRUTTURA HEADING
+          • Solo UN H1 (e' il titolo, NON usarlo nel body).
+          • H2 ogni 300-400 parole come massimo (sezioni ben separate).
+          • H3 per sotto-temi sotto un H2.
+          • H4-H6 raramente.
+          • Heading hierarchy SENZA SALTI (no H2 -> H4).
+
+          🔗 LINKING
+          • Internal: minimo 3 link a altri articoli del sito (oltre ai correlati).
+          • External: 1-2 link a fonti autorevoli REALI (Gazzetta Ufficiale, Consiglio di Stato, EN 1647, ANCI, CONFCAMPING). Apri in nuova tab con rel="noopener".
+          • Anchor text descrittivo (mai "clicca qui").
+
+          🖼️ IMMAGINI INLINE
+          • Min 2 immagini nel body (oltre la cover).
+          • Alt text descrittivo + focus keyword in 1 immagine almeno.
+          • Larghezza max 1200px, peso < 200 KB cad.
+
+          📝 PARAGRAFI E FRASI
+          • Paragrafi: max 4 righe (≈ 80-120 parole).
+          • Frasi: max 20 parole (Flesch-Kincaid IT 60+).
+          • Voce attiva > passiva.
+          • Niente cliché motivazionali, niente "rumore", niente emoji.
+
+          📊 LISTE E TABELLE
+          • Almeno 1 lista (ul o ol) per articolo.
+          • Tabelle quando confronti dati (prezzi, marche, regioni).
+
+          💡 ELEMENTI MDX DISPONIBILI
+          • <Tldr>...</Tldr> — gia incluso via campo tldr sopra
+          • <Callout type="warning|tip|info">...</Callout>
+          • <Comparison data={...} /> — tabelle confronto
+
+          ⚠️ COSE DA NON FARE MAI
+          • NON inventare credenziali (numeri d albo, libri pubblicati).
+          • NON menzionare Mattia Ferro, Luxury Camp, Vimana, Open Air Vacanze.
+          • NON usare emoji nel body (solo nel TLDR se serve un simbolo).
+          • NON copiare paragrafi da competitor.
+
+  # ─── Pillar (hub MOC) ─────────────────────────────────────────────────
   - name: 'pillar'
     label: 'Pillar (hub)'
     label_singular: 'Pillar'
+    description: 'Pagine pillar: hub tematici principali. 8 totali, uno per cluster.'
     folder: 'src/content/pillar'
     create: true
     slug: '{{slug}}'
     extension: 'mdx'
     format: 'frontmatter'
     fields:
-      - { name: 'titolo', label: 'Titolo H1', widget: 'string' }
-      - { name: 'descrizione', label: 'Descrizione lead', widget: 'text' }
-      - { name: 'focusKeyword', label: 'Focus keyword', widget: 'string', required: false }
-      - { name: 'metaDescription', label: 'Meta description', widget: 'text', required: false }
+      - { name: 'titolo', label: 'Titolo H1', widget: 'string', hint: '30-65 caratteri. Es: "Normativa case mobili: la guida 2026 completa".' }
+      - { name: 'descrizione', label: 'Descrizione lead', widget: 'text', hint: '120-280 caratteri.' }
+      - { name: 'focusKeyword', label: 'Focus keyword pillar', widget: 'string', required: false }
+      - { name: 'metaDescription', label: 'Meta description', widget: 'text', required: false, pattern: ['.{120,160}', 'Tra 120 e 160 caratteri'] }
       - name: 'faq'
-        label: 'FAQ'
+        label: 'FAQ (8-12 raccomandate)'
         widget: 'list'
         required: false
+        min: 8
         fields:
           - { name: 'domanda', label: 'Domanda', widget: 'string' }
           - { name: 'risposta', label: 'Risposta', widget: 'text' }
-      - { name: 'body', label: 'Contenuto pillar', widget: 'markdown' }
+      - { name: 'body', label: 'Contenuto pillar (2.500-4.000 parole)', widget: 'markdown' }
 
   # ─── Autori ───────────────────────────────────────────────────────────
   - name: 'autori'
     label: 'Autori'
+    label_singular: 'Autore'
     folder: 'src/content/autori'
     create: true
     slug: '{{slug}}'
@@ -107,13 +329,16 @@ collections:
     fields:
       - { name: 'nome', label: 'Nome', widget: 'string' }
       - { name: 'ruolo', label: 'Ruolo', widget: 'string' }
-      - { name: 'bio', label: 'Bio breve', widget: 'text' }
-      - { name: 'avatar', label: 'Avatar', widget: 'image', required: false }
+      - { name: 'bio', label: 'Bio breve (max 280 caratteri)', widget: 'text', pattern: ['.{0,280}', 'Max 280 caratteri'] }
+      - { name: 'avatar', label: 'Avatar (1:1, 400x400 min)', widget: 'image', required: false }
       - { name: 'isPseudonym', label: 'È uno pseudonimo (dichiarato in bio)', widget: 'boolean', default: false }
+      - { name: 'linkedin', label: 'LinkedIn URL', widget: 'string', required: false }
+      - { name: 'expertise', label: 'Aree di expertise (tag)', widget: 'list', required: false, default: [] }
 
   # ─── Settings (singleton) ─────────────────────────────────────────────
   - name: 'settings'
     label: 'Impostazioni sito'
+    description: 'Configurazione globale del sito. Modifica con cautela.'
     files:
       - file: 'src/content/settings.json'
         name: 'general'
@@ -121,10 +346,11 @@ collections:
         fields:
           - { name: 'siteName', label: 'Nome sito', widget: 'string' }
           - { name: 'siteUrl', label: 'URL sito', widget: 'string' }
-          - { name: 'defaultMetaTitle', label: 'Title default', widget: 'string' }
-          - { name: 'defaultMetaDescription', label: 'Meta description default', widget: 'text' }
-          - { name: 'publisher', label: 'Publisher (footer)', widget: 'string' }
-          - { name: 'socialFacebook', label: 'URL Facebook', widget: 'string' }
-          - { name: 'socialInstagram', label: 'URL Instagram', widget: 'string' }
-          - { name: 'socialYoutube', label: 'URL YouTube', widget: 'string' }
-          - { name: 'socialReddit', label: 'URL Reddit', widget: 'string' }
+          - { name: 'defaultMetaTitle', label: 'Title default', widget: 'string', pattern: ['.{30,65}', 'Tra 30 e 65 caratteri'] }
+          - { name: 'defaultMetaDescription', label: 'Meta description default', widget: 'text', pattern: ['.{120,160}', 'Tra 120 e 160 caratteri'] }
+          - { name: 'publisher', label: 'Publisher (footer)', widget: 'string', hint: 'Default: "CMU Edizioni"' }
+          - { name: 'socialFacebook', label: 'URL Facebook', widget: 'string', required: false }
+          - { name: 'socialInstagram', label: 'URL Instagram', widget: 'string', required: false }
+          - { name: 'socialYoutube', label: 'URL YouTube', widget: 'string', required: false }
+          - { name: 'socialReddit', label: 'URL Reddit', widget: 'string', required: false }
+          - { name: 'newsletterUrl', label: 'URL iscrizione newsletter', widget: 'string', required: false }
