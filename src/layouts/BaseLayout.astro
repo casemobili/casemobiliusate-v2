@@ -31,7 +31,11 @@ const isHomePage = path === '/' || path === '';
 const showHero = !hideHero && !isHomePage && firstSegment.length > 0;
 const pillarSlug = firstSegment;
 
-const fullTitle = title === SITE.defaultTitle ? title : `${title} | ${SITE.name}`;
+// Suffix " | CaseMobiliUsate.com" aggiunto SOLO se title-base + suffix sta sotto 65 caratteri.
+// Google tronca i titoli a ~580 pixel (≈ 60-65 char). Sopra, omettiamo il suffix.
+const titleSuffix = ` | ${SITE.name}`;
+const fullTitle = title === SITE.defaultTitle ? title
+  : (title.length + titleSuffix.length <= 65 ? `${title}${titleSuffix}` : title);
 const canonical = new URL(Astro.url.pathname, SITE.url).toString();
 const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
 ---
