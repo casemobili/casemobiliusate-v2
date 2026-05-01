@@ -9,17 +9,21 @@ import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
 
 export async function getStaticPaths() {
   const articoli = await getCollection('articoli', ({ data }) => !data.noindex);
-  return articoli.map((articolo) => ({
-    params: { slug: articolo.slug },
-    props: { articolo },
-  }));
+  return articoli.map((articolo) => {
+    // Astro 5: prefer entry.slug, fallback to id-stripped (e.g. "name.mdx" -> "name")
+    const slug = (articolo as any).slug ?? articolo.id.replace(/\.(mdx?|md)$/i, '');
+    return {
+      params: { slug },
+      props: { articolo, slug },
+    };
+  });
 }
 
-const { articolo } = Astro.props;
+const { articolo, slug } = Astro.props;
 const { Content } = await render(articolo);
 const data = articolo.data;
 
-const url = `/articoli/${articolo.slug}`;
+const url = `/articoli/${slug}`;
 const fullUrl = `https://www.casemobiliusate.com${url}`;
 
 const pillarLabels: Record<string, string> = {
