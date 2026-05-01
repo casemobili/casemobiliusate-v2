@@ -53,6 +53,9 @@ const pagine = defineCollection({
     showInFooter: z.boolean().default(false),
     showInHeader: z.boolean().default(false),
     ordine: z.number().default(99),
+    breadcrumbName: z.string().optional(),
+    h1: z.string().optional(),
+    eyebrow: z.string().optional(),
   }),
 });
 

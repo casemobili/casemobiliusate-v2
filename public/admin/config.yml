@@ -323,6 +323,40 @@ collections:
           - { name: 'risposta', label: 'Risposta', widget: 'text' }
       - { name: 'body', label: 'Contenuto pillar (2.500-4.000 parole)', widget: 'markdown' }
 
+  # ─── Pagine generali (chi-siamo, contatti, privacy, ecc.) ────────────
+  - name: 'pagine'
+    label: 'Pagine generali'
+    label_singular: 'Pagina'
+    description: |
+      Pagine secondarie del sito (chi-siamo, contatti, privacy, affiliate-disclaimer).
+      Modifica testo, titolo, meta. URL preservati: /<slug>/
+    folder: 'src/content/pagine'
+    create: true
+    slug: '{{slug}}'
+    extension: 'mdx'
+    format: 'frontmatter'
+    summary: '{{titolo}} (/{{slug}}) · ordine {{ordine}}'
+    fields:
+      - { name: 'titolo', label: 'Titolo SEO', widget: 'string', pattern: ['.{20,70}', 'Tra 20 e 70 caratteri'] }
+      - { name: 'metaDescription', label: 'Meta description', widget: 'text', pattern: ['.{80,160}', 'Tra 80 e 160 caratteri'] }
+      - { name: 'slug', label: 'URL slug (NON modificare per pagine pubblicate)', widget: 'string', hint: 'Es: chi-siamo, contatti. NIENTE / iniziale.' }
+      - { name: 'breadcrumbName', label: 'Nome breadcrumb (corto)', widget: 'string', required: false }
+      - { name: 'h1', label: 'H1 personalizzato (opzionale)', widget: 'text', required: false, hint: 'Lascia vuoto per usare titolo. Supporta <br/> per a capo.' }
+      - { name: 'eyebrow', label: 'Eyebrow (microtitolo)', widget: 'string', required: false }
+      - name: 'template'
+        label: 'Template'
+        widget: 'select'
+        default: 'standard'
+        options:
+          - { label: 'Standard (max-w-3xl)', value: 'standard' }
+          - { label: 'Wide (max-w-7xl)', value: 'wide' }
+          - { label: 'Narrow (max-w-2xl)', value: 'narrow' }
+      - { name: 'noindex', label: 'Nascondi a Google (noindex)', widget: 'boolean', default: false }
+      - { name: 'showInFooter', label: 'Mostra link in footer', widget: 'boolean', default: true }
+      - { name: 'showInHeader', label: 'Mostra link in header', widget: 'boolean', default: false }
+      - { name: 'ordine', label: 'Ordine visualizzazione', widget: 'number', value_type: 'int', default: 99 }
+      - { name: 'body', label: 'Contenuto', widget: 'markdown' }
+
   # ─── Autori ───────────────────────────────────────────────────────────
   - name: 'autori'
     label: 'Autori'
