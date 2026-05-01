@@ -61,7 +61,33 @@ const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- Favicon e icons (multi-platform) -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#1F2A1B" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="msapplication-TileColor" content="#1F2A1B" />
+
+    <!-- Twitter card extra -->
+    <meta name="twitter:site" content="@casemobiliusate" />
+    <meta name="twitter:creator" content="@casemobiliusate" />
+
+    <!-- OG image dimensions (utili per Facebook/LinkedIn debugger) -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content={fullTitle} />
+
+    <!-- Article meta (per og:type article) -->
+    {ogType === 'article' && (
+      <>
+        <meta property="article:author" content="Andrea Bressan" />
+        <meta property="article:publisher" content="https://www.casemobiliusate.com" />
+      </>
+    )}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
