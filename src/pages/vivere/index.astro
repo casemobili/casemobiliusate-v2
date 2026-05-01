@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaWebPage from '~/components/SchemaWebPage.astro';
 import SchemaArticle from '~/components/SchemaArticle.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
@@ -50,6 +51,7 @@ const correlati = [
 <BaseLayout title={title} description={description}>
   <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
     <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: 'Vivere in Casa Mobile', url: '/vivere' }]} />
+    <SchemaWebPage type="CollectionPage" title={title} description={description} url={url} />
 
     <header class="max-w-3xl">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Vivere in Casa Mobile</div>

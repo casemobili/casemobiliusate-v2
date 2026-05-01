@@ -1,0 +1,43 @@
+---
+import { SITE } from '~/lib/site';
+
+interface Props {
+  type?: 'WebPage' | 'CollectionPage' | 'AboutPage' | 'ContactPage';
+  title: string;
+  description: string;
+  url: string;
+  datePublished?: string;
+  dateModified?: string;
+}
+
+const {
+  type = 'WebPage',
+  title,
+  description,
+  url,
+  datePublished,
+  dateModified,
+} = Astro.props;
+
+const fullUrl = url.startsWith('http') ? url : `${SITE.url}${url}`;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': type,
+  '@id': `${fullUrl}#webpage`,
+  url: fullUrl,
+  name: title,
+  description,
+  isPartOf: {
+    '@id': `${SITE.url}/#website`,
+  },
+  inLanguage: SITE.locale,
+  ...(datePublished && { datePublished }),
+  ...(dateModified && { dateModified }),
+  publisher: {
+    '@id': `${SITE.url}/#organization`,
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

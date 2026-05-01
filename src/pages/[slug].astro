@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaWebPage from '~/components/SchemaWebPage.astro';
 
 export async function getStaticPaths() {
   const pagine = await getCollection('pagine', ({ data }) => !data.noindex);
@@ -14,11 +15,23 @@ export async function getStaticPaths() {
 const { pagina } = Astro.props;
 const { Content } = await render(pagina);
 const data = pagina.data;
+
+// Determina il tipo di schema based on slug:
+// chi-siamo → AboutPage; contatti → ContactPage; altri → WebPage
+const schemaType = data.slug === 'chi-siamo' ? 'AboutPage'
+  : data.slug === 'contatti' ? 'ContactPage'
+  : 'WebPage';
 ---
 
 <BaseLayout title={data.titolo} description={data.metaDescription} noindex={data.noindex}>
   <div class="max-w-3xl mx-auto px-4 md:px-6 py-8 prose-article">
     <SchemaBreadcrumb items={[{ name: 'Home', url: '/' }, { name: data.breadcrumbName ?? data.titolo, url: `/${data.slug}` }]} />
+    <SchemaWebPage
+      type={schemaType}
+      title={data.titolo}
+      description={data.metaDescription}
+      url={`/${data.slug}`}
+    />
 
     {data.eyebrow && <div class="eyebrow mb-3">{data.eyebrow}</div>}
     {data.h1 && <h1 set:html={data.h1.replace(/\n/g, '<br/>')} />}
