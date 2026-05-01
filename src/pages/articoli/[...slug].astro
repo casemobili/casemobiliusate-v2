@@ -1,0 +1,100 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import SchemaArticle from '~/components/SchemaArticle.astro';
+import FaqAccordion from '~/components/FaqAccordion.astro';
+import Tldr from '~/components/Tldr.astro';
+import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
+
+export async function getStaticPaths() {
+  const articoli = await getCollection('articoli', ({ data }) => !data.noindex);
+  return articoli.map((articolo) => ({
+    params: { slug: articolo.slug },
+    props: { articolo },
+  }));
+}
+
+const { articolo } = Astro.props;
+const { Content } = await render(articolo);
+const data = articolo.data;
+
+const url = `/articoli/${articolo.slug}`;
+const fullUrl = `https://www.casemobiliusate.com${url}`;
+
+const pillarLabels: Record<string, string> = {
+  'normativa': 'Normativa & Permessi',
+  'prezzi': 'Prezzi & Valutazione',
+  'marche': 'Marche & Modelli',
+  'trasporto': 'Trasporto & Installazione',
+  'vivere': 'Vivere in Casa Mobile',
+  'dove-mettere': 'Dove Mettere & Campeggi',
+  'tipologie': 'Confronti & Tipologie',
+  'guide-acquisto': "Guide all'Acquisto",
+};
+
+const dataPub = data.dataPubblicazione.toISOString().slice(0, 10);
+const dataUpd = data.dataAggiornamento ? data.dataAggiornamento.toISOString().slice(0, 10) : dataPub;
+const dataUpdHuman = (data.dataAggiornamento ?? data.dataPubblicazione).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const faqItems = (data.faq ?? []).map((f) => ({ q: f.domanda, a: f.risposta }));
+---
+
+<BaseLayout title={data.titolo} description={data.metaDescription} ogType="article" image={data.coverImage} noindex={data.noindex}>
+  <article class="max-w-7xl mx-auto px-4 md:px-6 py-8">
+    <SchemaBreadcrumb items={[
+      { name: 'Home', url: '/' },
+      { name: pillarLabels[data.pillar] ?? data.pillar, url: `/${data.pillar}` },
+      { name: data.titolo, url },
+    ]} />
+
+    <header class="max-w-3xl">
+      <div class="eyebrow mb-3">{pillarLabels[data.pillar] ?? data.pillar}</div>
+      <h1>{data.titolo}</h1>
+      <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
+        {data.sottotitolo}
+      </p>
+      <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
+        <span>A cura di {data.autore === 'andrea-bressan' ? 'Andrea Bressan' : data.autore}</span>
+        <span>·</span>
+        <span>Aggiornato il {dataUpdHuman}</span>
+        <span>·</span>
+        <span>{data.readingTime} min di lettura</span>
+      </div>
+
+      {data.coverImage && (
+        <figure class="mt-8 m-0">
+          <img src={data.coverImage} alt={data.coverImageAlt ?? data.titolo} class="w-full rounded-md shadow-lg" loading="eager" />
+          {data.coverImageCredit && (
+            <figcaption class="text-xs mt-2 text-right" style="color:var(--color-ink-500)">{data.coverImageCredit}</figcaption>
+          )}
+        </figure>
+      )}
+    </header>
+
+    <div class="prose-article mt-12">
+      {data.tldr && (
+        <Tldr>
+          <p class="m-0" set:html={data.tldr} />
+        </Tldr>
+      )}
+
+      <Content />
+
+      <FbCommunityWidget variant="card" />
+
+      {faqItems.length > 0 && (
+        <FaqAccordion items={faqItems} title={`Domande frequenti su ${data.focusKeyword}`} />
+      )}
+    </div>
+  </article>
+
+  <SchemaArticle
+    title={data.titolo}
+    description={data.metaDescription}
+    datePublished={dataPub}
+    dateModified={dataUpd}
+    image={data.coverImage}
+    url={fullUrl}
+  />
+</BaseLayout>

@@ -62,7 +62,8 @@ const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
     <meta name="twitter:image" content={ogImage} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title={`RSS ${SITE.name}`} href="/rss.xml" />
+    <!-- RSS feed: rimosso (non implementato). Riattivare quando si aggiunge /src/pages/rss.xml.ts -->
+    <!-- <link rel="alternate" type="application/rss+xml" title={`RSS ${SITE.name}`} href="/rss.xml" /> -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
