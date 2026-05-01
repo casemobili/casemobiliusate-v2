@@ -7,28 +7,17 @@
     <title>CMU Admin · CaseMobiliUsate</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <style>
-      :root {
-        --primary: #2b3a24;
-        --accent: #b89653;
-      }
-      body { font-family: 'Inter', system-ui, sans-serif; background: #faf7f0; }
-      .nc-app-header { background-color: var(--primary) !important; }
+      :root { color-scheme: light dark; }
+      body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #faf7f0; }
     </style>
-    <!-- Netlify Identity widget (gratuito, login email/password) -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
-    <!-- Decap CMS UI viene iniettata qui -->
-    <script src="https://unpkg.com/decap-cms@^3.6.4/dist/decap-cms.js"></script>
-    <script>
-      // Redirect post-login alla dashboard CMS
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', user => {
-          if (!user) {
-            window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
-          }
-        });
-      }
-    </script>
+    <!--
+      Sveltia CMS — drop-in replacement di Decap CMS.
+      Compatibile al 100% con admin/config.yml di Decap.
+      Vantaggio chiave: OAuth same-window (no popup blocker), UI moderna, performance.
+      https://github.com/sveltia/sveltia-cms
+    -->
+    <script type="module" src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
   </body>
 </html>
