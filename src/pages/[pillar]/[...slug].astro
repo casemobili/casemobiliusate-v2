@@ -1,4 +1,6 @@
 ---
+// Dynamic route per articoli MDX con legacyPath: /[pillar]/[slug]
+// Gestisce TUTTI i 62 articoli migrati da .astro a MDX preservando gli URL originali.
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
@@ -9,24 +11,32 @@ import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
 
 export async function getStaticPaths() {
   const articoli = await getCollection('articoli', ({ data }) => !data.noindex);
-  // Solo articoli SENZA legacyPath (i MDX nuovi creati da CMS)
-  // Gli articoli con legacyPath vengono renderizzati al loro path originale via [pillar]/[slug].astro
+  // Solo articoli CON legacyPath (gli ex-statici migrati)
   return articoli
-    .filter((a) => !a.data.legacyPath)
+    .filter((a) => a.data.legacyPath)
     .map((articolo) => {
-      const slug = articolo.data.slug ?? articolo.id.replace(/\.(mdx?|md)$/i, '');
+      // legacyPath = "/normativa/casa-mobile-terreno-agricolo" o "/normativa/regioni/lazio"
+      const lp = articolo.data.legacyPath!;
+      // Estrai pillar (primo segmento) e slug (resto)
+      const segments = lp.replace(/^\//, '').split('/');
+      const pillar = segments[0];
+      const slugSegments = segments.slice(1);
+      // Per Astro [...slug] (rest param), passare array di segmenti
       return {
-        params: { slug },
-        props: { articolo, slug },
+        params: {
+          pillar,
+          slug: slugSegments.join('/'),
+        },
+        props: { articolo },
       };
     });
 }
 
-const { articolo, slug } = Astro.props;
+const { articolo } = Astro.props;
 const { Content } = await render(articolo);
 const data = articolo.data;
 
-const url = `/articoli/${slug}`;
+const url = articolo.data.legacyPath!;
 const fullUrl = `https://www.casemobiliusate.com${url}`;
 
 const pillarLabels: Record<string, string> = {
@@ -45,6 +55,8 @@ const dataUpd = data.dataAggiornamento ? data.dataAggiornamento.toISOString().sl
 const dataUpdHuman = (data.dataAggiornamento ?? data.dataPubblicazione).toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
 
 const faqItems = (data.faq ?? []).map((f) => ({ q: f.domanda, a: f.risposta }));
+
+const breadcrumbName = data.titolo.length > 50 ? data.titolo.slice(0, 50) + '...' : data.titolo;
 ---
 
 <BaseLayout title={data.titolo} description={data.metaDescription} ogType="article" image={data.coverImage} noindex={data.noindex}>
@@ -52,7 +64,7 @@ const faqItems = (data.faq ?? []).map((f) => ({ q: f.domanda, a: f.risposta }));
     <SchemaBreadcrumb items={[
       { name: 'Home', url: '/' },
       { name: pillarLabels[data.pillar] ?? data.pillar, url: `/${data.pillar}` },
-      { name: data.titolo, url },
+      { name: breadcrumbName, url },
     ]} />
 
     <header class="max-w-3xl">

@@ -24,11 +24,12 @@ logo_url: /favicon.svg
 
 # === COLLECTIONS ===
 collections:
-  # ─── Articoli (cluster + pillar tutti in MDX) ──────────────────────────
+  # ─── Articoli (60 migrati da .astro + nuovi creati da CMS) ──────────────
   - name: 'articoli'
     label: 'Articoli'
     label_singular: 'Articolo'
     description: |
+      60 articoli pillar + cluster gestibili da qui. Modifiche pubblicate automaticamente.
       Ogni articolo nuovo deve passare il punteggio Rank Math 80+ prima della pubblicazione.
       Le hint sotto ogni campo sono le regole Rank Math distillate. Seguile alla lettera.
     folder: 'src/content/articoli'
@@ -42,6 +43,11 @@ collections:
       - { label: 'Solo Normativa', field: 'pillar', pattern: 'normativa' }
       - { label: 'Solo Prezzi', field: 'pillar', pattern: 'prezzi' }
       - { label: 'Solo Marche', field: 'pillar', pattern: 'marche' }
+      - { label: 'Solo Trasporto', field: 'pillar', pattern: 'trasporto' }
+      - { label: 'Solo Vivere', field: 'pillar', pattern: 'vivere' }
+      - { label: 'Solo Dove Mettere', field: 'pillar', pattern: 'dove-mettere' }
+      - { label: 'Solo Tipologie', field: 'pillar', pattern: 'tipologie' }
+      - { label: 'Solo Guide Acquisto', field: 'pillar', pattern: 'guide-acquisto' }
     fields:
       # ─── 1. SEO BASICS — Rank Math focus keyword ─────────────────────
       - name: 'focusKeyword'
