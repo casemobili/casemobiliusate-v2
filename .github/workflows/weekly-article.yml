@@ -1,0 +1,63 @@
+name: Weekly auto-article generation
+
+# Cron: ogni lunedì alle 07:13 UTC (09:13 ora italiana, off-peak per evitare collisioni con altri jobs).
+# Pubblica 1 articolo a settimana via Claude API → commit + push → Cloudflare Pages auto-deploy.
+
+on:
+  schedule:
+    - cron: '13 7 * * 1'
+  workflow_dispatch: # esegui manualmente da GitHub UI
+
+jobs:
+  generate-article:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: draft-site
+        run: npm ci
+
+      - name: Run keyword research
+        working-directory: draft-site
+        run: node scripts/auto-publish/keyword-research.mjs
+
+      - name: Generate article via Claude API
+        working-directory: draft-site
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/auto-publish/generate-article.mjs
+
+      - name: Build site (validation)
+        working-directory: draft-site
+        run: npm run build
+
+      - name: Run SEO ultimate audit
+        working-directory: draft-site
+        run: node scripts/seo-ultimate-audit.mjs || echo "Audit warnings — non bloccanti"
+
+      - name: Commit and push
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions (auto-publish)"
+          git add draft-site/src/content/articoli/*.mdx draft-site/scripts/auto-publish/last-research.json
+          git diff --staged --quiet && exit 0  # niente da committare
+          KEYWORD=$(node -e "console.log(JSON.parse(require('fs').readFileSync('draft-site/scripts/auto-publish/last-research.json')).chosenKeyword)")
+          git commit -m "auto: pubblicato nuovo articolo per keyword \"$KEYWORD\"
+
+          Generato automaticamente via weekly-article workflow.
+          Cloudflare Pages auto-deploy attivo.
+
+          🤖 Generated with weekly-article GitHub Action"
+          git push
