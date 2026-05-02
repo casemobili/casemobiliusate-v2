@@ -1,0 +1,270 @@
+---
+// Cookie banner GDPR + Provvedimento Garante 10/06/2021
+// 3 opzioni equivalenti: "Accetta tutti", "Rifiuta tutti", "Personalizza"
+// Solo cookie tecnici prima del consenso. AWeber/analytics caricati solo dopo opt-in.
+//
+// Stato consenso in localStorage 'cmu_consent_v1':
+//   { v: 1, ts: timestamp, analytics: bool, marketing: bool }
+//
+// API esposta: window.cmuConsent.show(), .get(), .reset()
+// Eventi: 'cmu:consent-updated' detail={analytics, marketing}
+---
+
+<div id="cmu-cookie-banner" class="cmu-cookie-banner" aria-hidden="true" role="dialog" aria-labelledby="cmu-cookie-title" aria-describedby="cmu-cookie-desc">
+  <div class="cmu-cookie-overlay"></div>
+  <div class="cmu-cookie-content" role="document">
+    <h2 id="cmu-cookie-title">Cookie e privacy</h2>
+    <p id="cmu-cookie-desc">
+      Usiamo cookie tecnici (necessari) e, con il tuo consenso, cookie di analytics anonimi e marketing.
+      Puoi accettare tutti, rifiutarli tutti, o scegliere quali categorie.
+      Maggiori dettagli nella <a href="/cookie-policy">Cookie Policy</a> e <a href="/privacy">Privacy Policy</a>.
+    </p>
+
+    <div class="cmu-cookie-categories" data-state="hidden">
+      <label class="cmu-cookie-cat">
+        <input type="checkbox" id="cmu-cat-tech" checked disabled />
+        <span><strong>Tecnici</strong> (sempre attivi) — necessari per il funzionamento del sito</span>
+      </label>
+      <label class="cmu-cookie-cat">
+        <input type="checkbox" id="cmu-cat-analytics" />
+        <span><strong>Analytics anonimi</strong> — misurano traffico aggregato per migliorare il sito (no profilazione)</span>
+      </label>
+      <label class="cmu-cookie-cat">
+        <input type="checkbox" id="cmu-cat-marketing" />
+        <span><strong>Marketing/Newsletter</strong> — caricamento del form di iscrizione AWeber (solo se ti iscrivi)</span>
+      </label>
+    </div>
+
+    <div class="cmu-cookie-actions">
+      <button type="button" id="cmu-accept-all" class="cmu-btn cmu-btn-primary">Accetta tutti</button>
+      <button type="button" id="cmu-reject-all" class="cmu-btn cmu-btn-secondary">Rifiuta tutti</button>
+      <button type="button" id="cmu-customize" class="cmu-btn cmu-btn-text">Personalizza</button>
+      <button type="button" id="cmu-save" class="cmu-btn cmu-btn-primary" style="display:none">Salva preferenze</button>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .cmu-cookie-banner {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .cmu-cookie-banner[data-visible="true"] {
+    display: flex;
+  }
+  @media (min-width: 768px) {
+    .cmu-cookie-banner[data-visible="true"] {
+      align-items: center;
+    }
+  }
+  .cmu-cookie-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(31, 42, 27, 0.45);
+    backdrop-filter: blur(2px);
+  }
+  .cmu-cookie-content {
+    position: relative;
+    background: var(--color-paper, #FAF7F0);
+    color: var(--color-ink-900, #1F2A1B);
+    border: 1px solid var(--color-linen-200, #d4cdb8);
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 640px;
+    width: 100%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    font-family: var(--font-sans, system-ui), Inter, sans-serif;
+  }
+  .cmu-cookie-content h2 {
+    margin: 0 0 0.5rem 0;
+    font-family: var(--font-display, 'Cormorant Garamond Variable'), Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .cmu-cookie-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+    color: var(--color-ink-700, #3a4a35);
+  }
+  .cmu-cookie-content a {
+    color: var(--color-forest-700, #2d5a3d);
+    text-decoration: underline;
+  }
+  .cmu-cookie-categories {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--color-linen-50, #f9f5e8);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  .cmu-cookie-categories[data-state="visible"] {
+    display: flex;
+  }
+  .cmu-cookie-cat {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+  .cmu-cookie-cat input[type="checkbox"] {
+    margin-top: 0.2rem;
+    accent-color: var(--color-forest-700, #2d5a3d);
+  }
+  .cmu-cookie-cat input:disabled + span {
+    opacity: 0.7;
+  }
+  .cmu-cookie-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .cmu-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .cmu-btn-primary {
+    background: var(--color-forest-700, #2d5a3d);
+    color: var(--color-paper, #FAF7F0);
+  }
+  .cmu-btn-primary:hover {
+    background: var(--color-forest-800, #1F2A1B);
+  }
+  .cmu-btn-secondary {
+    background: transparent;
+    color: var(--color-ink-900, #1F2A1B);
+    border-color: var(--color-ink-900, #1F2A1B);
+  }
+  .cmu-btn-secondary:hover {
+    background: var(--color-linen-100, #ebe5d4);
+  }
+  .cmu-btn-text {
+    background: transparent;
+    color: var(--color-forest-700, #2d5a3d);
+    border: none;
+    text-decoration: underline;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = 'cmu_consent_v1';
+    var SIX_MONTHS_MS = 6 * 30 * 24 * 60 * 60 * 1000;
+
+    function get() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return null;
+        var parsed = JSON.parse(raw);
+        // Auto-revoca consenso scaduto (Garante: max 6 mesi)
+        if (Date.now() - parsed.ts > SIX_MONTHS_MS) {
+          localStorage.removeItem(STORAGE_KEY);
+          return null;
+        }
+        return parsed;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function save(analytics, marketing) {
+      var data = {
+        v: 1,
+        ts: Date.now(),
+        analytics: !!analytics,
+        marketing: !!marketing,
+      };
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {}
+      hide();
+      window.dispatchEvent(new CustomEvent('cmu:consent-updated', { detail: data }));
+    }
+
+    function show() {
+      var banner = document.getElementById('cmu-cookie-banner');
+      if (!banner) return;
+      banner.setAttribute('data-visible', 'true');
+      banner.setAttribute('aria-hidden', 'false');
+      // Pre-check categories with current consent
+      var current = get();
+      if (current) {
+        var aEl = document.getElementById('cmu-cat-analytics');
+        var mEl = document.getElementById('cmu-cat-marketing');
+        if (aEl) aEl.checked = !!current.analytics;
+        if (mEl) mEl.checked = !!current.marketing;
+      }
+    }
+
+    function hide() {
+      var banner = document.getElementById('cmu-cookie-banner');
+      if (!banner) return;
+      banner.setAttribute('data-visible', 'false');
+      banner.setAttribute('aria-hidden', 'true');
+    }
+
+    function reset() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+      show();
+    }
+
+    function toggleCustomize() {
+      var cats = document.querySelector('.cmu-cookie-categories');
+      var saveBtn = document.getElementById('cmu-save');
+      var customBtn = document.getElementById('cmu-customize');
+      if (cats.getAttribute('data-state') === 'visible') {
+        cats.setAttribute('data-state', 'hidden');
+        saveBtn.style.display = 'none';
+        customBtn.textContent = 'Personalizza';
+      } else {
+        cats.setAttribute('data-state', 'visible');
+        saveBtn.style.display = 'inline-block';
+        customBtn.textContent = 'Annulla';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Mostra banner solo se nessun consenso registrato
+      if (!get()) {
+        // Piccolo delay per non bloccare LCP
+        setTimeout(show, 800);
+      }
+
+      var btnAccept = document.getElementById('cmu-accept-all');
+      var btnReject = document.getElementById('cmu-reject-all');
+      var btnCustomize = document.getElementById('cmu-customize');
+      var btnSave = document.getElementById('cmu-save');
+
+      if (btnAccept) btnAccept.addEventListener('click', function () { save(true, true); });
+      if (btnReject) btnReject.addEventListener('click', function () { save(false, false); });
+      if (btnCustomize) btnCustomize.addEventListener('click', toggleCustomize);
+      if (btnSave) btnSave.addEventListener('click', function () {
+        var aEl = document.getElementById('cmu-cat-analytics');
+        var mEl = document.getElementById('cmu-cat-marketing');
+        save(aEl && aEl.checked, mEl && mEl.checked);
+      });
+    });
+
+    // Espongo API globale
+    window.cmuConsent = { get: get, show: show, reset: reset };
+  })();
+</script>

@@ -20,22 +20,50 @@ const {
   <h3 style="margin-top:0">{title}</h3>
   <p class="text-base mt-2 mb-6" style="color:var(--color-ink-700)">{subtitle}</p>
 
-  <div class:list={['max-w-xl', variant === 'centered' ? 'mx-auto' : '']}>
+  <div class:list={['max-w-xl', variant === 'centered' ? 'mx-auto' : '']} data-aweber-placeholder>
     <div class="AW-Form-582205026"></div>
   </div>
 
   <p class="text-xs mt-4" style="color:var(--color-ink-500)">
-    Iscrivendoti accetti la nostra <a href="/privacy" class="underline">privacy policy</a>. Disiscrizione con un click in fondo a ogni email.
+    Iscrivendoti accetti la nostra <a href="/privacy" class="underline">privacy policy</a> e la <a href="/cookie-policy" class="underline">cookie policy</a>. Disiscrizione con un click in fondo a ogni email.
   </p>
 </section>
 
 <script is:inline>
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//forms.aweber.com/form/26/582205026.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, "script", "aweber-wjs-eq9v66aor"));
+  // GDPR: AWeber caricato SOLO dopo consenso "marketing" via cookie banner.
+  (function() {
+    function loadAweber() {
+      var d = document, s = 'script', id = 'aweber-wjs-eq9v66aor';
+      if (d.getElementById(id)) return;
+      var fjs = d.getElementsByTagName(s)[0];
+      var js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://forms.aweber.com/form/26/582205026.js';
+      if (fjs && fjs.parentNode) fjs.parentNode.insertBefore(js, fjs);
+      else d.body.appendChild(js);
+    }
+    function showPlaceholder() {
+      var containers = document.querySelectorAll('[data-aweber-placeholder]');
+      containers.forEach(function(c) {
+        if (c.querySelector('button[data-aweber-cta]')) return;
+        c.innerHTML = '<div style="background:rgba(31,42,27,0.04);border:1px dashed rgba(31,42,27,0.2);padding:1.25rem;border-radius:8px;text-align:center;font-size:0.92rem;color:var(--color-ink-700)">' +
+          '<p style="margin:0 0 0.75rem 0">Per visualizzare il form di iscrizione devi accettare i cookie di marketing.</p>' +
+          '<button type="button" data-aweber-cta onclick="window.cmuConsent && window.cmuConsent.show()" style="background:var(--color-forest-700);color:#FAF7F0;padding:0.5rem 1.25rem;border-radius:6px;border:none;font-weight:600;cursor:pointer;font-size:0.9rem">Gestisci preferenze cookie</button>' +
+          '</div>';
+      });
+    }
+    function checkAndLoad() {
+      var consent = window.cmuConsent && window.cmuConsent.get();
+      if (consent && consent.marketing) loadAweber();
+      else showPlaceholder();
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkAndLoad);
+    } else {
+      checkAndLoad();
+    }
+    window.addEventListener('cmu:consent-updated', function(e) {
+      if (e.detail && e.detail.marketing) loadAweber();
+    });
+  })();
 </script>

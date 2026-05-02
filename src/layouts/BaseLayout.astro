@@ -4,6 +4,7 @@ import Header from '~/components/Header.astro';
 import Footer from '~/components/Footer.astro';
 import SchemaOrganization from '~/components/SchemaOrganization.astro';
 import PillarHero from '~/components/PillarHero.astro';
+import CookieBanner from '~/components/CookieBanner.astro';
 import { SITE } from '~/lib/site';
 
 interface Props {
@@ -93,9 +94,7 @@ const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
       </>
     )}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+    {/* Fonts self-hosted via @fontsource (GDPR-compliant, no fonts.googleapis.com) */}
 
     <SchemaOrganization />
     <slot name="head" />
@@ -108,5 +107,6 @@ const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
       <slot />
     </main>
     <Footer />
+    <CookieBanner />
   </body>
 </html>

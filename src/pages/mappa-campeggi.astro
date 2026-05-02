@@ -64,7 +64,7 @@ const faq = [
             Stai vedendo {previewAreas.length} cluster strategici. Iscriviti alla newsletter qui sotto: la mappa completa si sblocca subito dopo l'invio.
           </p>
 
-          <div id="aweber-mappa" class="mb-6">
+          <div id="aweber-mappa" class="mb-6" data-aweber-placeholder>
             <div class="AW-Form-582205026"></div>
           </div>
 
@@ -110,14 +110,46 @@ const faq = [
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
   <script is:inline>
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "//forms.aweber.com/form/26/582205026.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, "script", "aweber-wjs-eq9v66aor"));
+    // GDPR: AWeber form caricato SOLO dopo consenso "marketing" via cookie banner.
+    (function() {
+      function loadAweber() {
+        var d = document, s = 'script', id = 'aweber-wjs-eq9v66aor';
+        if (d.getElementById(id)) return;
+        var fjs = d.getElementsByTagName(s)[0];
+        var js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://forms.aweber.com/form/26/582205026.js';
+        if (fjs && fjs.parentNode) fjs.parentNode.insertBefore(js, fjs);
+        else d.body.appendChild(js);
+      }
+      function showPlaceholder() {
+        var containers = document.querySelectorAll('[data-aweber-placeholder]');
+        containers.forEach(function(c) {
+          c.innerHTML = '<div style="background:var(--color-linen-50);border:1px dashed var(--color-linen-300);padding:1.5rem;border-radius:8px;text-align:center;font-size:0.95rem;color:var(--color-ink-700)">' +
+            '<p style="margin:0 0 0.75rem 0">Per visualizzare il form di iscrizione alla newsletter, devi accettare i cookie di marketing.</p>' +
+            '<button type="button" onclick="window.cmuConsent && window.cmuConsent.show()" style="background:var(--color-forest-700);color:var(--color-paper);padding:0.5rem 1rem;border-radius:6px;border:none;font-weight:600;cursor:pointer">Gestisci preferenze cookie</button>' +
+            '</div>';
+        });
+      }
+      function checkAndLoad() {
+        var consent = window.cmuConsent && window.cmuConsent.get();
+        if (consent && consent.marketing) {
+          loadAweber();
+        } else {
+          showPlaceholder();
+        }
+      }
+      // Run on DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', checkAndLoad);
+      } else {
+        checkAndLoad();
+      }
+      // Listen for consent updates → load AWeber if marketing accepted
+      window.addEventListener('cmu:consent-updated', function(e) {
+        if (e.detail && e.detail.marketing) loadAweber();
+      });
+    })();
   </script>
 
   <script define:vars={{ campeggiData }} is:inline>

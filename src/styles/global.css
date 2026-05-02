@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* Fonts self-hosted (GDPR-compliant: nessuna richiesta a fonts.googleapis.com) */
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+@import "@fontsource-variable/cormorant-garamond";
+@import "@fontsource-variable/cormorant-garamond/wght-italic.css";
+
 /*
  * Palette CaseMobiliUsate.com
  * Coerente con Ogilvy (legno, lino, oro caldo, serif elegante — Ogilvy on Advertising p.708)
