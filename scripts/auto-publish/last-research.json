@@ -1,17 +1,17 @@
 {
-  "week": "2026-05-06",
-  "chosenKeyword": "case mobili usate roma",
+  "week": "2026-05-11",
+  "chosenKeyword": "case mobili usate lazio",
   "score": 75,
-  "slug": "case-mobili-usate-roma",
+  "slug": "case-mobili-usate-lazio",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "case mobili usate in vendita",
     "case mobili usate lazio",
     "case mobili usate campania",
-    "case mobili usate roma",
     "case mobili usate puglia",
     "case mobili usate toscana",
-    "case mobili usate sicilia"
+    "case mobili usate sicilia",
+    "case mobili usate agrigento"
   ],
   "allCandidates": [
     {
@@ -28,10 +28,6 @@
     },
     {
       "kw": "case mobili usate campania",
-      "score": 75
-    },
-    {
-      "kw": "case mobili usate roma",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casette mobili usate in vendita",
+      "score": 75
+    },
+    {
+      "kw": "casette mobili usate sardegna",
       "score": 75
     }
   ]
