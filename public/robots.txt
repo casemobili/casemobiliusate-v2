@@ -7,6 +7,7 @@ Allow: /
 Disallow: /draft/
 Disallow: /admin/
 Disallow: /grazie
+Disallow: /cdn-cgi/
 
 # === AI / LLM crawlers — esplicitamente ammessi (per citations + grounding) ===
 # Vogliamo essere citati da ChatGPT, Claude, Perplexity, Bing Copilot, Gemini, You.com, ecc.
