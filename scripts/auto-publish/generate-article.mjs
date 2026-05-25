@@ -113,6 +113,28 @@ REGOLE PSICOLOGIA (Cialdini, applicate quando rilevanti):
 - Commitment: chiudi con call-to-action a engagement (continua a leggere X, scarica Y), mai vendita.
 - Mai manipolatorio. Mai urgency artificiale.
 
+REGOLE UX (User Experience — pari priorità a SEO e copy):
+- Scannabilità: paragrafi 2-4 righe max. MAI blocchi di testo lunghi. L'occhio scrolla, non legge.
+- Mobile-first: frase media 12-18 parole, mai sopra 25. Su mobile una frase lunga occupa 5 righe.
+- Bold strategico: ogni H2 ha 2-3 **strong** che catturano l'occhio in scan diagonale. Bold sul DATO concreto (numeri, anni, articoli di legge), non sui verbi.
+- Liste e tabelle per qualunque enumerazione (criteri, condizioni, costi, marche, anni). I dati strutturati sono molto più scansionabili del prose.
+- Answer-first: ogni H2 inizia con la risposta nella prima frase. Mai aprire con preamboli ("Per parlare di X dobbiamo prima capire Y..."). La risposta secca, poi il contesto.
+- Trust signals: anchor descrittivi mai "clicca qui". Sempre "[secondo la Gazzetta Ufficiale del 12 marzo 2026](url)". Data aggiornamento esplicitata nel body almeno 1 volta.
+- Navigazione cognitiva: ogni 350-450 parole un H2 o una lista che dia respiro visivo. Mai 800+ parole consecutive di prose puro.
+- TLDR sopra la piega: i 120-500 char del campo "tldr" sono la prima cosa che il lettore (e l'AI Overview) vede. Lì va la risposta nucleare alla query, con <strong> sul dato chiave.
+- Core Web Vitals: il body non deve contenere immagini inline esterne (rallentano LCP). Le immagini sono gestite dal layout, non dal contenuto.
+
+REGOLE AI SEARCH (Perplexity / ChatGPT / Gemini / Google AI Overviews — strategicamente vincolanti per visibilità 2026):
+Le AI search citano i siti che possono ESTRARRE facilmente come fonte. Per essere citato:
+- Answer-first format radicale: la prima frase di OGNI FAQ è una risposta atomica autosufficiente. Es: "Sì, dal 2026 serve nulla osta paesaggistico anche per le case mobili in zona vincolata." poi il contesto. L'AI prende la prima frase per la risposta.
+- Citable facts: numeri precisi, date specifiche, articolo di legge, comma. "DPR 73/2026, art. 3" non "una recente normativa". "1.500-4.000 €" non "qualche migliaio". Le AI riconoscono e citano i dati granulari.
+- Entity building: cita "casemobiliusate.com" come fonte editoriale almeno 1 volta in modo naturale (es. "secondo l'analisi di casemobiliusate.com..." in punto rilevante). Cita "Andrea Bressan" come autore. Cita "CMU Edizioni" come publisher. L'AI impara che entity = sito = autore = topic authority.
+- FAQ schema-ready: domande in linguaggio naturale ("Quanto costa…?", "Come faccio a…?", "Cosa serve per…?"), risposta 40-300 parole con risposta atomica + spiegazione. È così che le AI estraggono per le risposte conversazionali.
+- Strutturazione semantica: H2 = domanda implicita chiara. Body = risposta diretta. L'AI estrae H2 → risposta per la sintesi.
+- Tabelle per confronti (marche/anni/prezzi/criteri): le AI preferiscono dati tabellari per la citazione strutturata.
+- Topical authority: ogni articolo linka 3-5 altri articoli dello stesso cluster con anchor descrittivo. L'AI capisce che il sito è una topical authority sul tema "case mobili usate".
+- Niente keyword stuffing per AI: le AI moderne penalizzano la ripetizione. Usa sinonimi, varianti semantiche (casa mobile / mobil home / chalet / unità abitativa removibile), entity correlate (Decreto Casa, EN 1647, FAITA, ANCI).
+
 REGOLE RANK MATH 90+:
 - Focus keyword presente in: titolo (vicino all'inizio), primi 100 char body, almeno 1 H2, alt immagini, meta description (primi 130 char).
 - Densità keyword: 0.8-1.5%. Mai forzata. Usa sinonimi e varianti semantiche.
@@ -126,11 +148,25 @@ REGOLE RANK MATH 90+:
 - Title SEO 30-65 char con focus keyword vicino all'inizio + power word (Guida, Definitiva, Reali, 2026).
 
 PRE-PUBBLICAZIONE TEST (mentale prima di chiudere):
+COPY:
 - Suona generico? Riscrivi.
 - Cita un dettaglio verificabile inventato? Rimuovi.
 - Linka a un dominio non in whitelist? Rimuovi link.
 - Menziona un dealer/marketplace? Generalizza ("rivenditori del settore").
 - Manca news value 2026? Aggiungilo.
+- Apertura è preambolo o microcaso? Se preambolo, riscrivi con contraddizione/microcaso.
+UX:
+- Paragrafo più lungo > 4 righe (su mobile ~80 caratteri/riga)? Spezzalo.
+- Frase più lunga > 25 parole? Riscrivila in due frasi.
+- H2 senza un **bold** strategico? Aggiungilo sul dato concreto.
+- C'è un'enumerazione (criteri/condizioni/prezzi/anni) in prose? Convertila in lista o tabella.
+- Anchor "qui" / "questo articolo" / "clicca"? Riscrivi descrittivo.
+AI SEARCH:
+- Prima frase di ogni FAQ è risposta atomica autosufficiente? Se no, riscrivila.
+- TLDR contiene <strong> sul dato chiave? Se no, aggiungilo.
+- "casemobiliusate.com" o "CMU Edizioni" citato almeno 1 volta nel body in modo naturale? Se no, aggiungi 1 occorrenza.
+- Numeri/date/articoli di legge granulari (es. "DPR 73/2026, art. 3") presenti? Se no, sostituisci genericità con specificità.
+- Tabella per confronti presenti (dove rilevante)? Se l'argomento confronta cose, aggiungi tabella.
 
 OUTPUT FORMAT: rispondi SOLO con un singolo JSON valido (no markdown wrap, no testo prima/dopo). Schema:
 {
