@@ -1,17 +1,17 @@
 {
-  "week": "2026-05-18",
-  "chosenKeyword": "case mobili usate toscana",
+  "week": "2026-05-25",
+  "chosenKeyword": "case mobili usate in vendita",
   "score": 75,
-  "slug": "case-mobili-usate-toscana",
+  "slug": "case-mobili-usate-in-vendita",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "case mobili usate in vendita",
     "case mobili usate campania",
     "case mobili usate puglia",
-    "case mobili usate toscana",
+    "case mobili usate catania",
     "case mobili usate sicilia",
-    "case mobili usate agrigento",
-    "casa mobile usata 10x4"
+    "casa mobile usata 10x4",
+    "casa mobile usata in regalo ravenna ra"
   ],
   "allCandidates": [
     {
@@ -31,15 +31,11 @@
       "score": 75
     },
     {
-      "kw": "case mobili usate toscana",
+      "kw": "case mobili usate catania",
       "score": 75
     },
     {
       "kw": "case mobili usate sicilia",
-      "score": 75
-    },
-    {
-      "kw": "case mobili usate agrigento",
       "score": 75
     },
     {
@@ -55,11 +51,11 @@
       "score": 75
     },
     {
-      "kw": "casa mobile usata prezzo",
+      "kw": "casa mobile usata in vendita",
       "score": 75
     },
     {
-      "kw": "casa mobile usata in vendita",
+      "kw": "casa mobile usata prezzo",
       "score": 75
     },
     {
@@ -75,7 +71,7 @@
       "score": 75
     },
     {
-      "kw": "casa mobile usata in regalo pisa pi",
+      "kw": "casa mobile usata in regalo catania (ct)",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casette mobili usate con bagno",
+      "score": 75
+    },
+    {
+      "kw": "casette mobili usate bologna",
       "score": 75
     }
   ]
