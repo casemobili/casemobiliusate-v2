@@ -1,14 +1,14 @@
 {
-  "week": "2026-05-25",
-  "chosenKeyword": "case mobili usate campania",
+  "week": "2026-06-01",
+  "chosenKeyword": "case mobili usate catania",
   "score": 75,
-  "slug": "case-mobili-usate-campania",
+  "slug": "case-mobili-usate-catania",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "case mobili usate campania",
     "case mobili usate puglia",
     "case mobili usate catania",
     "case mobili usate sicilia",
+    "case mobili usate agrigento",
     "casa mobile usata 10x4",
     "casa mobile usata in regalo ravenna ra",
     "casa mobile usata sardegna"
@@ -16,10 +16,6 @@
   "allCandidates": [
     {
       "kw": "case mobili usate sardegna",
-      "score": 75
-    },
-    {
-      "kw": "case mobili usate campania",
       "score": 75
     },
     {
@@ -32,6 +28,10 @@
     },
     {
       "kw": "case mobili usate sicilia",
+      "score": 75
+    },
+    {
+      "kw": "case mobili usate agrigento",
       "score": 75
     },
     {
