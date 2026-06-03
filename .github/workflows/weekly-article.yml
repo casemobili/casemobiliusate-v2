@@ -46,12 +46,14 @@ jobs:
         run: node scripts/seo-ultimate-audit.mjs || echo "Audit warnings — non bloccanti"
 
       - name: Commit and push
+        id: commit
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions (auto-publish)"
           git add src/content/articoli/*.mdx scripts/auto-publish/last-research.json
           if git diff --staged --quiet; then
             echo "Niente da committare"
+            echo "committed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           KEYWORD=$(node -e "console.log(JSON.parse(require('fs').readFileSync('scripts/auto-publish/last-research.json')).chosenKeyword)")
@@ -62,3 +64,13 @@ jobs:
 
           🤖 Generated with weekly-article GitHub Action"
           git push
+          echo "committed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Request indexing (IndexNow + Google)
+        if: steps.commit.outputs.committed == 'true'
+        env:
+          GOOGLE_INDEXING_SA_KEY: ${{ secrets.GOOGLE_INDEXING_SA_KEY }}
+        run: |
+          echo "Attendo ~2 min il deploy Cloudflare prima di notificare i motori di ricerca..."
+          sleep 120
+          node scripts/auto-publish/request-indexing.mjs

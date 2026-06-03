@@ -91,3 +91,33 @@ Articoli auto-marcati `noindex: true` se falliscono validazione:
 - body < 1200 parole
 - FAQ < 5
 - internal links < 3
+
+## Indicizzazione automatica (request-indexing.mjs)
+
+Dopo ogni pubblicazione, il workflow notifica i motori di ricerca dell'URL nuovo (+ home).
+Due canali:
+
+### 1. IndexNow — attivo, nessun setup
+Notifica Bing, Yandex, Seznam, Naver (e alcuni crawler AI). Funziona già.
+- Chiave: `c8f7e87cf88cb237a0269d17d8a74d24`
+- File di verifica: `public/c8f7e87cf88cb237a0269d17d8a74d24.txt` (servito su `https://www.casemobiliusate.com/<key>.txt`)
+- NON cancellare quel file: IndexNow verifica la proprietà del dominio leggendolo.
+
+### 2. Google Indexing API — opzionale, attivazione una-tantum
+È il canale che conta per Google. Si attiva da solo appena esiste il secret `GOOGLE_INDEXING_SA_KEY`.
+Setup (una volta sola, richiede Google Cloud + Search Console):
+
+1. Google Cloud Console → crea un progetto → abilita "Indexing API".
+2. Crea un **Service Account** → crea una **chiave JSON** → scaricala.
+3. In Search Console (proprietà casemobiliusate.com) → Impostazioni → Utenti e autorizzazioni → aggiungi l'**email del service account** come **Proprietario**.
+4. In GitHub → repo → Settings → Secrets and variables → Actions → New secret:
+   - Nome: `GOOGLE_INDEXING_SA_KEY`
+   - Valore: incolla l'intero contenuto del file JSON.
+5. Fatto. Dal commit successivo ogni articolo nuovo viene sottoposto a Google automaticamente.
+
+NB: l'Indexing API di Google è ufficialmente per JobPosting/BroadcastEvent ma è prassi diffusa per URL generici e accelera molto la scoperta. Se non attivi questo canale, Google scopre comunque gli articoli via sitemap (più lento).
+
+### Esecuzione manuale (per sottomettere subito un URL già pubblicato)
+```bash
+node scripts/auto-publish/request-indexing.mjs   # usa last-research.json
+```
