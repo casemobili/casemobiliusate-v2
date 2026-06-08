@@ -1,17 +1,17 @@
 {
-  "week": "2026-06-01",
-  "chosenKeyword": "case mobili usate catania",
+  "week": "2026-06-08",
+  "chosenKeyword": "casa mobile usata in regalo ravenna ra",
   "score": 75,
-  "slug": "case-mobili-usate-catania",
+  "slug": "casa-mobile-usata-in-regalo-ravenna-ra",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "case mobili usate puglia",
-    "case mobili usate catania",
     "case mobili usate sicilia",
-    "case mobili usate agrigento",
     "casa mobile usata 10x4",
     "casa mobile usata in regalo ravenna ra",
-    "casa mobile usata sardegna"
+    "casa mobile usata sardegna",
+    "casa mobile usata in vendita",
+    "casa mobile usata prezzo"
   ],
   "allCandidates": [
     {
@@ -23,15 +23,7 @@
       "score": 75
     },
     {
-      "kw": "case mobili usate catania",
-      "score": 75
-    },
-    {
       "kw": "case mobili usate sicilia",
-      "score": 75
-    },
-    {
-      "kw": "case mobili usate agrigento",
       "score": 75
     },
     {
@@ -92,6 +84,14 @@
     },
     {
       "kw": "casette mobili usate prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casette mobili su ruote usate",
+      "score": 75
+    },
+    {
+      "kw": "casette mobili in legno usate",
       "score": 75
     }
   ]
