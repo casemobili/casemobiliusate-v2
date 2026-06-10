@@ -25,7 +25,9 @@ const {
   hideHero = false,
 } = Astro.props;
 
-const path = Astro.url.pathname;
+// build.format 'file' include ".html" nel pathname al build: lo togliamo perché
+// l'URL pubblico servito da Cloudflare è quello pulito (il .html fa redirect).
+const path = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
 const segments = path.split('/').filter(Boolean);
 const firstSegment = segments[0] ?? '';
 const isHomePage = path === '/' || path === '';
@@ -37,7 +39,7 @@ const pillarSlug = firstSegment;
 const titleSuffix = ` | ${SITE.name}`;
 const fullTitle = title === SITE.defaultTitle ? title
   : (title.length + titleSuffix.length <= 65 ? `${title}${titleSuffix}` : title);
-const canonical = new URL(Astro.url.pathname, SITE.url).toString();
+const canonical = new URL(path, SITE.url).toString();
 const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
 ---
 

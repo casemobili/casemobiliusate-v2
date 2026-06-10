@@ -1,7 +1,8 @@
 ---
 import { PILLARS, SITE } from '~/lib/site';
 
-const path = Astro.url.pathname;
+// Pathname pulito dal suffisso .html del build format 'file' (vedi BaseLayout)
+const path = Astro.url.pathname.replace(/\/index\.html$/, '/').replace(/\.html$/, '');
 function isActive(href: string) {
   return path === href || path.startsWith(href + '/');
 }
