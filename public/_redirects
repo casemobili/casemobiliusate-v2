@@ -3,10 +3,12 @@
 # Tutti i redirect 301 (permanenti) per preservare autorità SEO indicizzata su Google
 
 # === HOME e canonical www ===
-# Apex casemobiliusate.com → www.casemobiliusate.com — ATTIVO a livello Pages.
-# Prima era commentata ("gestita da Cloudflare a livello dominio") ma il dominio
-# apex serviva 200: sito intero duplicato, Google aveva indicizzato la home non-www.
-https://casemobiliusate.com/* https://www.casemobiliusate.com/:splat 301
+# NOTA (verificato 2026-06-09): Cloudflare Pages IGNORA le regole cross-dominio
+# in questo file (le source devono essere path relativi — sintassi assoluta è Netlify).
+# L'apex casemobiliusate.com serve 200: il 301 → www va creato nel pannello
+# Cloudflare: Rules → Redirect Rules → "hostname equals casemobiliusate.com"
+# → Dynamic redirect 301 a concat("https://www.casemobiliusate.com", http.request.uri.path)
+# Mitigazione attiva nel frattempo: ogni pagina non-www ha canonical che punta a www.
 
 # === URL legacy senza corrispondenza diretta — redirect a pagina equivalente nuovo sito ===
 
