@@ -3,8 +3,10 @@
 # Tutti i redirect 301 (permanenti) per preservare autorità SEO indicizzata su Google
 
 # === HOME e canonical www ===
-# Apex casemobiliusate.com → www.casemobiliusate.com (gestito anche da Cloudflare a livello dominio)
-# https://casemobiliusate.com/* https://www.casemobiliusate.com/:splat 301
+# Apex casemobiliusate.com → www.casemobiliusate.com — ATTIVO a livello Pages.
+# Prima era commentata ("gestita da Cloudflare a livello dominio") ma il dominio
+# apex serviva 200: sito intero duplicato, Google aveva indicizzato la home non-www.
+https://casemobiliusate.com/* https://www.casemobiliusate.com/:splat 301
 
 # === URL legacy senza corrispondenza diretta — redirect a pagina equivalente nuovo sito ===
 

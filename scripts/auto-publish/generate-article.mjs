@@ -184,15 +184,16 @@ OUTPUT FORMAT: rispondi SOLO con un singolo JSON valido (no markdown wrap, no te
   "body": "Markdown body 1500-2500 parole con ## H2, ### H3, **strong**, [link](/internal-path), liste, ecc."
 }
 
-INTERNAL LINK MAP (usa questi slug nel body e in articoliCorrelati):
-- /normativa/ /normativa/casa-mobile-terreno-agricolo /normativa/decreto-casa-spiegato
-- /prezzi/ /prezzi/quanto-costa-casa-mobile-usata /prezzi/listino-argus-modelli /prezzi/casa-mobile-usata-sotto-5000-euro
-- /marche/ /marche/atlas /marche/willerby /marche/irm /marche/ohara /marche/burstner /marche/crippa-concept /marche/shelbox /marche/sun-roller /marche/adria
-- /trasporto/ /trasporto/costi-reali-2026 /trasporto/eccezionale-permessi-scorte
-- /vivere/ /vivere/residenza-casa-mobile /vivere/vivere-tutto-anno-isolamento /vivere/coibentazione-aggiunta-fai-da-te
-- /dove-mettere/ /dove-mettere/campeggi-aperti-tutto-anno /dove-mettere/casa-mobile-terreno-privato
-- /tipologie/ /tipologie/casa-mobile-vs-roulotte /tipologie/casa-mobile-vs-mobil-home
-- /guide-acquisto/ /guide-acquisto/sopralluogo-checklist /guide-acquisto/10-truffe-piu-comuni`;
+INTERNAL LINK MAP (usa questi slug nel body e in articoliCorrelati — SENZA slash finale, il sito usa trailingSlash never):
+- /normativa /normativa/casa-mobile-terreno-agricolo /normativa/decreto-casa-spiegato
+- /prezzi /prezzi/quanto-costa-casa-mobile-usata /prezzi/listino-argus-modelli /prezzi/casa-mobile-usata-sotto-5000-euro
+- /marche /marche/atlas /marche/willerby /marche/irm /marche/ohara /marche/burstner /marche/crippa-concept /marche/shelbox /marche/sun-roller /marche/adria
+- /trasporto /trasporto/costi-reali-2026 /trasporto/eccezionale-permessi-scorte
+- /vivere /vivere/residenza-casa-mobile /vivere/vivere-tutto-anno-isolamento /vivere/coibentazione-aggiunta-fai-da-te
+- /dove-mettere /dove-mettere/campeggi-aperti-tutto-anno /dove-mettere/casa-mobile-terreno-privato
+- /tipologie /tipologie/casa-mobile-vs-roulotte /tipologie/casa-mobile-vs-mobil-home
+- /guide-acquisto /guide-acquisto/sopralluogo-checklist /guide-acquisto/10-truffe-piu-comuni
+- MAI link interni con slash finale (es. /normativa/ è SBAGLIATO, /normativa è giusto): lo slash finale genera un redirect.`;
 
 // ─── User prompt: keyword + pillar + brief ───────────────────────────
 const userPrompt = `Genera un articolo completo per la keyword target: "${research.chosenKeyword}".

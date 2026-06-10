@@ -8,7 +8,10 @@ export default defineConfig({
   trailingSlash: 'never',
   output: 'static',
   build: {
-    format: 'directory',
+    // 'file' genera pagina.html → Cloudflare serve /pagina con 200 diretto.
+    // Con 'directory' l'URL reale era /pagina/ e ogni riferimento senza slash
+    // (canonical, sitemap, 80+ link interni, trailingSlash 'never') faceva 308.
+    format: 'file',
     inlineStylesheets: 'auto',
   },
   vite: {
