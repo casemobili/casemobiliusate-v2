@@ -1,17 +1,17 @@
 {
-  "week": "2026-06-15",
-  "chosenKeyword": "case mobili usate puglia",
+  "week": "2026-06-22",
+  "chosenKeyword": "casa mobile usata 10x4",
   "score": 75,
-  "slug": "case-mobili-usate-puglia",
+  "slug": "casa-mobile-usata-10x4",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "case mobili usate puglia",
     "case mobili usate sicilia",
+    "case mobili usate lago di garda",
     "casa mobile usata 10x4",
     "casa mobile usata sardegna",
     "casa mobile usata in vendita",
     "casa mobile usata prezzo",
-    "casa mobile usata in regalo provincia di bergamo"
+    "casa mobile usata sicilia"
   ],
   "allCandidates": [
     {
@@ -19,11 +19,11 @@
       "score": 75
     },
     {
-      "kw": "case mobili usate puglia",
+      "kw": "case mobili usate sicilia",
       "score": 75
     },
     {
-      "kw": "case mobili usate sicilia",
+      "kw": "case mobili usate lago di garda",
       "score": 75
     },
     {
@@ -43,15 +43,15 @@
       "score": 75
     },
     {
-      "kw": "casa mobile usata in regalo provincia di bergamo",
-      "score": 75
-    },
-    {
       "kw": "casa mobile usata sicilia",
       "score": 75
     },
     {
       "kw": "casa mobile usata in regalo catania (ct)",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile usata in regalo milano mi",
       "score": 75
     },
     {
@@ -63,11 +63,11 @@
       "score": 75
     },
     {
-      "kw": "casette mobili usate sardegna",
+      "kw": "casette mobili usate con bagno",
       "score": 75
     },
     {
-      "kw": "casette mobili usate con bagno",
+      "kw": "casette mobili usate sardegna",
       "score": 75
     },
     {
@@ -76,6 +76,10 @@
     },
     {
       "kw": "casette mobili usate prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casette mobili usate roma",
       "score": 75
     },
     {
@@ -88,10 +92,6 @@
     },
     {
       "kw": "casette mobili per campeggio usate",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile su terreno agricolo",
       "score": 75
     }
   ]
