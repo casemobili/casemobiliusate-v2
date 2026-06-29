@@ -1,17 +1,17 @@
 {
-  "week": "2026-06-22",
-  "chosenKeyword": "casa mobile usata 10x4",
+  "week": "2026-06-29",
+  "chosenKeyword": "case mobili usate sardegna",
   "score": 75,
-  "slug": "casa-mobile-usata-10x4",
+  "slug": "case-mobili-usate-sardegna",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "case mobili usate sicilia",
     "case mobili usate lago di garda",
-    "casa mobile usata 10x4",
     "casa mobile usata sardegna",
     "casa mobile usata in vendita",
     "casa mobile usata prezzo",
-    "casa mobile usata sicilia"
+    "casa mobile usata sicilia",
+    "casa mobile usata in regalo catania (ct)"
   ],
   "allCandidates": [
     {
@@ -24,10 +24,6 @@
     },
     {
       "kw": "case mobili usate lago di garda",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile usata 10x4",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casette mobili per campeggio usate",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile su terreno agricolo",
       "score": 75
     }
   ]
