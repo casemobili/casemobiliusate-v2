@@ -1,21 +1,25 @@
 {
-  "week": "2026-06-29",
-  "chosenKeyword": "case mobili usate sardegna",
+  "week": "2026-07-06",
+  "chosenKeyword": "case mobili usate sicilia",
   "score": 75,
-  "slug": "case-mobili-usate-sardegna",
+  "slug": "case-mobili-usate-sicilia",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
+    "case mobili usate emilia romagna",
     "case mobili usate sicilia",
-    "case mobili usate lago di garda",
-    "casa mobile usata sardegna",
     "casa mobile usata in vendita",
+    "casa mobile usata sardegna",
     "casa mobile usata prezzo",
     "casa mobile usata sicilia",
     "casa mobile usata in regalo catania (ct)"
   ],
   "allCandidates": [
     {
-      "kw": "case mobili usate sardegna",
+      "kw": "case mobili usate lago di garda",
+      "score": 75
+    },
+    {
+      "kw": "case mobili usate emilia romagna",
       "score": 75
     },
     {
@@ -23,15 +27,11 @@
       "score": 75
     },
     {
-      "kw": "case mobili usate lago di garda",
+      "kw": "casa mobile usata in vendita",
       "score": 75
     },
     {
       "kw": "casa mobile usata sardegna",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile usata in vendita",
       "score": 75
     },
     {
@@ -47,7 +47,7 @@
       "score": 75
     },
     {
-      "kw": "casa mobile usata in regalo milano mi",
+      "kw": "casa mobile usata veneto",
       "score": 75
     },
     {
