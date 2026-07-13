@@ -1,17 +1,17 @@
 {
-  "week": "2026-07-06",
-  "chosenKeyword": "case mobili usate sicilia",
+  "week": "2026-07-13",
+  "chosenKeyword": "casa mobile usata prezzo",
   "score": 75,
-  "slug": "case-mobili-usate-sicilia",
-  "pillar": "guide-acquisto",
+  "slug": "casa-mobile-usata-prezzo",
+  "pillar": "prezzi",
   "secondaryKeywords": [
     "case mobili usate emilia romagna",
-    "case mobili usate sicilia",
     "casa mobile usata in vendita",
     "casa mobile usata sardegna",
     "casa mobile usata prezzo",
     "casa mobile usata sicilia",
-    "casa mobile usata in regalo catania (ct)"
+    "casa mobile usata in regalo catania (ct)",
+    "casa mobile usata veneto"
   ],
   "allCandidates": [
     {
@@ -20,10 +20,6 @@
     },
     {
       "kw": "case mobili usate emilia romagna",
-      "score": 75
-    },
-    {
-      "kw": "case mobili usate sicilia",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile su terreno agricolo",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile su terreno non edificabile",
       "score": 75
     }
   ]
