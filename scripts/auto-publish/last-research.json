@@ -1,17 +1,17 @@
 {
-  "week": "2026-07-13",
-  "chosenKeyword": "casa mobile usata prezzo",
+  "week": "2026-07-27",
+  "chosenKeyword": "case mobili usate brindisi",
   "score": 75,
-  "slug": "casa-mobile-usata-prezzo",
-  "pillar": "prezzi",
+  "slug": "case-mobili-usate-brindisi",
+  "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "case mobili usate emilia romagna",
+    "case mobili usate piemonte",
+    "case mobili usate lecce",
+    "case mobili usate brindisi",
     "casa mobile usata in vendita",
     "casa mobile usata sardegna",
-    "casa mobile usata prezzo",
     "casa mobile usata sicilia",
-    "casa mobile usata in regalo catania (ct)",
-    "casa mobile usata veneto"
+    "casa mobile usata in regalo catania (ct)"
   ],
   "allCandidates": [
     {
@@ -19,7 +19,15 @@
       "score": 75
     },
     {
-      "kw": "case mobili usate emilia romagna",
+      "kw": "case mobili usate piemonte",
+      "score": 75
+    },
+    {
+      "kw": "case mobili usate lecce",
+      "score": 75
+    },
+    {
+      "kw": "case mobili usate brindisi",
       "score": 75
     },
     {
@@ -28,10 +36,6 @@
     },
     {
       "kw": "casa mobile usata sardegna",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile usata prezzo",
       "score": 75
     },
     {
@@ -44,6 +48,14 @@
     },
     {
       "kw": "casa mobile usata veneto",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile usata in regalo pavia pv",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile usata in regalo milano mi",
       "score": 75
     },
     {
@@ -80,18 +92,6 @@
     },
     {
       "kw": "casette mobili in legno usate",
-      "score": 75
-    },
-    {
-      "kw": "casette mobili per campeggio usate",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile su terreno agricolo",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile su terreno non edificabile",
       "score": 75
     }
   ]
