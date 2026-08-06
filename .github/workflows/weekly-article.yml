@@ -8,7 +8,7 @@ name: Weekly auto-article generation
 
 on:
   schedule:
-    - cron: '13 7 * * 1'
+    - cron: '13 7 * * 1,4'
   workflow_dispatch: # esegui manualmente da GitHub UI
 
 jobs:

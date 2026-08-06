@@ -96,14 +96,30 @@ function scoreKeyword(kw, publishedKeywords) {
   if (/come|quanto|dove|quando|perché|quale|migliore|prezzi|costi|usate?|2026|normativa|permessi|vivere|residenza|campeggio|terreno|truffa|errori|attenzione|manutenzione|isolamento|inverno|nuova|differenza/i.test(kw)) score += 15;
   // Contiene "casa mobile" o "case mobili" o "mobil home" (rilevante)
   if (/casa\s+mobile|case\s+mobili|mobil[\s-]home|casette\s+mobili/i.test(kw)) score += 25;
-  // Penalizza se già pubblicato
+  // Penalizza se già pubblicato — confronto su forme normalizzate, non substring:
+  // "casa mobile usata sardegna" e "case mobili usate sardegna" sono la STESSA keyword
+  // (il substring match non vede singolare/plurale e ha già prodotto un doppione reale).
+  const kwTokens = normalizeKwTokens(kw);
   for (const pub of publishedKeywords) {
-    if (kw.includes(pub) || pub.includes(kw)) {
+    const pubTokens = normalizeKwTokens(pub);
+    const [small, big] = kwTokens.size <= pubTokens.size ? [kwTokens, pubTokens] : [pubTokens, kwTokens];
+    if ([...small].every((t) => big.has(t))) {
       score -= 50;
       break;
     }
   }
   return score;
+}
+
+// Riduce le varianti morfologiche italiane a una forma canonica per il dedup
+function normalizeKwTokens(kw) {
+  const canon = {
+    case: 'casa', mobili: 'mobile', usate: 'usata', usati: 'usato',
+    prezzi: 'prezzo', costi: 'costo', vendite: 'vendita', occasioni: 'occasione',
+  };
+  return new Set(
+    kw.toLowerCase().split(/\s+/).filter(Boolean).map((t) => canon[t] ?? t)
+  );
 }
 
 // ─── Pipeline principale ─────────────────────────────────────────────
