@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '~/layouts/BaseLayout.astro';
+import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
+import { PILLARS, SITE } from '~/lib/site';
+
+const articoli = await getCollection('articoli', ({ data }) => !data.noindex);
+
+const withUrl = articoli.map((a) => {
+  const slug = a.data.slug ?? a.id.replace(/\.(mdx?|md)$/i, '');
+  return {
+    url: a.data.legacyPath ?? `/articoli/${slug}`,
+    titolo: a.data.titolo,
+    pillar: a.data.pillar,
+    updated: a.data.dataAggiornamento ?? a.data.dataPubblicazione,
+  };
+});
+
+const byPillar = PILLARS.map((p) => ({
+  slug: p.slug,
+  title: p.title,
+  desc: p.desc,
+  items: withUrl
+    .filter((a) => a.pillar === p.slug)
+    .sort((x, y) => y.updated.getTime() - x.updated.getTime()),
+})).filter((g) => g.items.length > 0);
+
+const total = withUrl.length;
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' });
+
+const title = 'Tutte le guide sulle case mobili usate';
+const description = `Archivio completo delle ${total} guide tecniche di CaseMobiliUsate.com: normativa, prezzi, marche, trasporto, regioni. Aggiornate e senza vendita.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <SchemaBreadcrumb
+    items={[
+      { name: 'Home', url: `${SITE.url}/` },
+      { name: 'Tutte le guide', url: `${SITE.url}/articoli` },
+    ]}
+  />
+
+  <section class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+    <div class="eyebrow mb-2">Archivio · {total} guide</div>
+    <h1 class="text-4xl md:text-5xl m-0">Tutte le guide, in un posto solo</h1>
+    <p class="text-lg mt-4 max-w-2xl" style="color:var(--color-ink-700)">
+      Ogni guida pubblicata sul sito, organizzata per argomento e ordinata dalla più recente.
+      Le date di aggiornamento sono reali: quando una normativa cambia, la guida cambia.
+    </p>
+
+    <div class="mt-12 space-y-12">
+      {byPillar.map((g) => (
+        <div>
+          <div class="flex items-baseline justify-between gap-4 border-b pb-3" style="border-color:var(--color-linen-200)">
+            <h2 class="text-2xl md:text-3xl m-0">
+              <a href={`/${g.slug}`} class="no-underline" style="color:var(--color-forest-800)">{g.title}</a>
+            </h2>
+            <span class="text-sm whitespace-nowrap" style="color:var(--color-ink-500)">{g.items.length} guide</span>
+          </div>
+          <ul class="mt-4 grid md:grid-cols-2 gap-x-8 gap-y-2 list-none p-0 m-0">
+            {g.items.map((a) => (
+              <li class="m-0">
+                <a href={a.url} class="no-underline hover:underline text-base" style="color:var(--color-ink-900)">{a.titolo}</a>
+                <span class="text-xs ml-2 whitespace-nowrap" style="color:var(--color-ink-500)">agg. {fmtDate(a.updated)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

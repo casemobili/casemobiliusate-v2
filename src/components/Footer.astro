@@ -25,6 +25,7 @@ const year = new Date().getFullYear();
       <div>
         <h3 class="text-sm font-semibold uppercase tracking-wider mb-4" style="color:white;font-family:var(--font-sans)">Esplora</h3>
         <ul class="space-y-2 text-sm">
+          <li><a href="/articoli" class="no-underline hover:underline font-semibold" style="color:#e8eee8">Tutte le guide</a></li>
           {PILLARS.slice(0, 4).map((p) => (
             <li><a href={`/${p.slug}`} class="no-underline hover:underline" style="color:#c4d2c4">{p.title}</a></li>
           ))}
