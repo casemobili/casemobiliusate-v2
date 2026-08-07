@@ -112,19 +112,47 @@ const faq = [
   <script is:inline>
     // GDPR: AWeber form caricato SOLO dopo consenso "marketing" via cookie banner.
     (function() {
+      var MOUNT = 'AW-Form-582205026';
+      var SCRIPT_ID = 'aweber-wjs-eq9v66aor';
+
+      function containers() {
+        return document.querySelectorAll('[data-aweber-placeholder]');
+      }
+      function formGiaRenderizzato() {
+        return !!document.querySelector('[data-aweber-placeholder] input[type="email"], [data-aweber-placeholder] form');
+      }
+      // Il segnaposto sostituisce l'innerHTML del contenitore e quindi CANCELLA
+      // il punto di innesto di AWeber: senza ripristinarlo, dopo il consenso lo
+      // script si carica ma non trova dove scrivere e il form non compare mai.
+      function ripristinaMount() {
+        containers().forEach(function(c) {
+          if (!c.querySelector('.' + MOUNT)) c.innerHTML = '<div class="' + MOUNT + '"></div>';
+        });
+      }
       function loadAweber() {
-        var d = document, s = 'script', id = 'aweber-wjs-eq9v66aor';
-        if (d.getElementById(id)) return;
-        var fjs = d.getElementsByTagName(s)[0];
-        var js = d.createElement(s);
-        js.id = id;
+        if (formGiaRenderizzato()) return;
+        ripristinaMount();
+        var d = document;
+        var vecchio = d.getElementById(SCRIPT_ID);
+        if (vecchio && vecchio.parentNode) vecchio.parentNode.removeChild(vecchio);
+        var js = d.createElement('script');
+        js.id = SCRIPT_ID;
+        js.async = true;
         js.src = 'https://forms.aweber.com/form/26/582205026.js';
-        if (fjs && fjs.parentNode) fjs.parentNode.insertBefore(js, fjs);
-        else d.body.appendChild(js);
+        d.body.appendChild(js);
+        setTimeout(function() {
+          if (formGiaRenderizzato()) return;
+          containers().forEach(function(c) {
+            if (!c.querySelector('.' + MOUNT)) return;
+            c.innerHTML = '<div style="background:var(--color-linen-50);border:1px dashed var(--color-linen-300);padding:1.5rem;border-radius:8px;text-align:center;font-size:0.95rem;color:var(--color-ink-700)">' +
+              '<p style="margin:0 0 0.75rem 0">Non riusciamo a caricare il modulo di iscrizione. Riprova, oppure scrivici a <a href="mailto:info@casemobiliusate.com?subject=Sblocco%20mappa%20campeggi" style="text-decoration:underline">info@casemobiliusate.com</a>.</p>' +
+              '<button type="button" onclick="window.location.reload()" style="background:var(--color-forest-700);color:var(--color-paper);padding:0.5rem 1rem;border-radius:6px;border:none;font-weight:600;cursor:pointer">Riprova</button>' +
+              '</div>';
+          });
+        }, 6000);
       }
       function showPlaceholder() {
-        var containers = document.querySelectorAll('[data-aweber-placeholder]');
-        containers.forEach(function(c) {
+        containers().forEach(function(c) {
           c.innerHTML = '<div style="background:var(--color-linen-50);border:1px dashed var(--color-linen-300);padding:1.5rem;border-radius:8px;text-align:center;font-size:0.95rem;color:var(--color-ink-700)">' +
             '<p style="margin:0 0 0.75rem 0">Per visualizzare il form di iscrizione alla newsletter, devi accettare i cookie di marketing.</p>' +
             '<button type="button" onclick="window.cmuConsent && window.cmuConsent.show()" style="background:var(--color-forest-700);color:var(--color-paper);padding:0.5rem 1rem;border-radius:6px;border:none;font-weight:600;cursor:pointer">Gestisci preferenze cookie</button>' +
@@ -145,9 +173,10 @@ const faq = [
       } else {
         checkAndLoad();
       }
-      // Listen for consent updates → load AWeber if marketing accepted
+      // Vale nei due versi: revocando il consenso il form va tolto.
       window.addEventListener('cmu:consent-updated', function(e) {
         if (e.detail && e.detail.marketing) loadAweber();
+        else showPlaceholder();
       });
     })();
   </script>
