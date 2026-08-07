@@ -24,28 +24,30 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pub = path.join(root, 'public');
 
 const FOREST = '#1F2A1B';
-const GRAD = `<linearGradient id="cmu" x1="32" y1="18" x2="32" y2="48" gradientUnits="userSpaceOnUse">
+const GRAD = `<linearGradient id="cmu" x1="32" y1="17" x2="32" y2="46" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="#E6D094"/><stop offset="1" stop-color="#B89653"/>
   </linearGradient>`;
 
-// Tetto a falda bassa con gronda sporgente: e' il profilo che distingue
-// una casa mobile da una casa tradizionale (che ha il tetto a punta).
-const ROOF = `<path d="M22 18 H42 L58 26 H6 Z" fill="url(#cmu)"/>`;
+// Disegnato sulla referenza fotografica reale (public/images/hero-casa-mobile.jpg).
+// Le tre cose che fanno la differenza rispetto a un'icona generica di casa:
+// tetto come fascia STACCATA (materiale diverso dal rivestimento), corpo molto
+// lungo e basso con gronda sporgente, unita' SOLLEVATA da terra sugli appoggi.
+const ROOF = `<path d="M25 17 H39 L59 24 H5 Z" fill="url(#cmu)"/>`;
+const BASE = `<rect x="12" y="43" width="40" height="3" rx="1.5" fill="url(#cmu)" opacity="0.9"/>`;
 
-// Piena: facciata asimmetrica — fascia finestre lunga a sinistra, porta al bordo
-// destro, gradino d'ingresso. L'asimmetria e' cio' che la rende un'unita' da
-// campeggio e non un'icona generica di casa. Da 32px in su.
+// Piena: finestre a nastro + porta stretta in fondo (facciata asimmetrica). Da 32px.
 const MARK_FULL = `${ROOF}
-  <rect x="10" y="26" width="44" height="16" rx="1" fill="url(#cmu)"/>
-  <rect x="15" y="30" width="24" height="6" rx="1.5" fill="${FOREST}"/>
-  <rect x="43" y="30" width="8" height="12" rx="1" fill="${FOREST}"/>
-  <rect x="6" y="45" width="52" height="3" rx="1.5" fill="url(#cmu)" opacity="0.85"/>`;
+  <rect x="9" y="26.5" width="46" height="14" rx="1" fill="url(#cmu)"/>
+  <rect x="13" y="30" width="30" height="6" rx="1.5" fill="${FOREST}"/>
+  <rect x="46" y="30" width="6" height="10.5" rx="1" fill="${FOREST}"/>
+  ${BASE}`;
 
-// Semplificata: stessa sagoma, la porta diventa un intaglio sul bordo inferiore
-// (un intaglio nella silhouette sopravvive dove un foro interno si impasta).
-// Solo per il 16px.
-const MARK_SIMPLE = `${ROOF}
-  <path d="M10 26 H54 V42 H49 V33 H40 V42 H10 Z" fill="url(#cmu)"/>`;
+// Semplificata per il 16px. A quella taglia lo stacco del tetto e quello della
+// base valgono mezzo pixel: diventano sporcizia. Qui tetto e corpo sono una
+// silhouette continua e la porta e' un intaglio sul bordo (un intaglio
+// sopravvive dove un foro interno si impasta). Niente basamento.
+const MARK_SIMPLE = `<path d="M25 19 H39 L59 26 H5 Z" fill="url(#cmu)"/>
+  <path d="M9 26 H55 V42 H49 V33 H41 V42 H9 Z" fill="url(#cmu)"/>`;
 
 const tab = (mark) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>${GRAD}</defs><rect width="64" height="64" rx="14" fill="${FOREST}"/>${mark}</svg>`;
