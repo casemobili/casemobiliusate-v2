@@ -24,7 +24,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pub = path.join(root, 'public');
 
 const FOREST = '#1F2A1B';
-const GRAD = `<linearGradient id="cmu" x1="32" y1="18" x2="32" y2="47" gradientUnits="userSpaceOnUse">
+const GRAD = `<linearGradient id="cmu" x1="32" y1="18" x2="32" y2="48" gradientUnits="userSpaceOnUse">
     <stop offset="0" stop-color="#E6D094"/><stop offset="1" stop-color="#B89653"/>
   </linearGradient>`;
 
@@ -39,7 +39,7 @@ const MARK_FULL = `${ROOF}
   <rect x="10" y="26" width="44" height="16" rx="1" fill="url(#cmu)"/>
   <rect x="15" y="30" width="24" height="6" rx="1.5" fill="${FOREST}"/>
   <rect x="43" y="30" width="8" height="12" rx="1" fill="${FOREST}"/>
-  <rect x="41" y="43.5" width="12" height="3" rx="1.5" fill="url(#cmu)"/>`;
+  <rect x="6" y="45" width="52" height="3" rx="1.5" fill="url(#cmu)" opacity="0.85"/>`;
 
 // Semplificata: stessa sagoma, la porta diventa un intaglio sul bordo inferiore
 // (un intaglio nella silhouette sopravvive dove un foro interno si impasta).
