@@ -1,13 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CaseMobiliUsate.com">
   <defs>
-    <linearGradient id="cmu" x1="32" y1="16" x2="32" y2="49" gradientUnits="userSpaceOnUse">
+    <linearGradient id="cmu" x1="32" y1="22" x2="32" y2="55" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#E6D094"/>
       <stop offset="1" stop-color="#B89653"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="#1F2A1B"/>
-  <!-- Tetto a falda bassa con gronda sporgente: profilo della casa mobile, non della casetta -->
-  <path d="M25 16 H39 L54 31 H10 Z" fill="url(#cmu)"/>
-  <!-- Corpo largo e basso, con la porta in negativo -->
-  <path d="M14 31 H50 V49 H37.5 V38.5 H26.5 V49 H14 Z" fill="url(#cmu)"/>
+  <!-- Tetto a falda bassissima: una casa mobile non ha il tetto a punta -->
+  <path d="M23 22 H41 L57 30 H7 Z" fill="url(#cmu)"/>
+  <!-- Gronda sporgente su tutta la larghezza: e' la firma del profilo -->
+  <rect x="4" y="30" width="56" height="3" rx="1.5" fill="url(#cmu)"/>
+  <!-- Corpo largo e basso (quasi 3:1) con la porta intagliata sul bordo -->
+  <path d="M10 33 H54 V48 H42 V38.5 H34 V48 H10 Z" fill="url(#cmu)"/>
+  <!-- Fascia finestre orizzontale -->
+  <rect x="14" y="37.5" width="16" height="5.5" rx="1" fill="#1F2A1B"/>
+  <!-- Basamento: appoggiata sulla piazzola, non fondata a terra -->
+  <rect x="13" y="51" width="38" height="4" rx="2" fill="url(#cmu)"/>
 </svg>
