@@ -1,17 +1,17 @@
 {
-  "week": "2026-08-10",
-  "chosenKeyword": "case mobili usate piemonte",
+  "week": "2026-08-13",
+  "chosenKeyword": "casa mobile usata in regalo quartu sant'elena (ca)",
   "score": 75,
-  "slug": "case-mobili-usate-piemonte",
+  "slug": "casa-mobile-usata-in-regalo-quartu-santelena-ca",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "case mobili usate piemonte",
-    "case mobili usate lecce",
     "casa mobile usata veneto",
-    "casa mobile usata in regalo pavia pv",
+    "casa mobile usata in regalo quartu sant'elena (ca)",
     "casa mobile usata in regalo milano mi",
+    "casa mobile usata in regalo pavia pv",
     "quanto costa una casa mobile usata",
-    "casette mobili usate in vendita"
+    "casette mobili usate in vendita",
+    "casette mobili usate con bagno"
   ],
   "allCandidates": [
     {
@@ -19,23 +19,19 @@
       "score": 75
     },
     {
-      "kw": "case mobili usate piemonte",
-      "score": 75
-    },
-    {
-      "kw": "case mobili usate lecce",
-      "score": 75
-    },
-    {
       "kw": "casa mobile usata veneto",
       "score": 75
     },
     {
-      "kw": "casa mobile usata in regalo pavia pv",
+      "kw": "casa mobile usata in regalo quartu sant'elena (ca)",
       "score": 75
     },
     {
       "kw": "casa mobile usata in regalo milano mi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile usata in regalo pavia pv",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile come si sposta",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile come abitazione",
       "score": 75
     }
   ]
