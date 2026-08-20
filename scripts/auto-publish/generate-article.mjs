@@ -248,6 +248,31 @@ try {
   process.exit(1);
 }
 
+// ─── Sanificazione MDX ───────────────────────────────────────────────
+// In MDX un "<" seguito da cifra/spazio/simbolo apre un nome JSX e fa
+// esplodere la build ("<2.000 €" → "Unexpected character `2` before name",
+// successo il 20/08). Idem le graffe, che aprono un'espressione JS.
+// Preserviamo i tag veri (<strong>, </strong>, <!--): escape solo dei "<"
+// NON seguiti da lettera, "/" o "!".
+function sanitizeAngles(s) {
+  if (typeof s !== 'string') return s;
+  return s.replace(/<(?![A-Za-z/!])/g, '&lt;');
+}
+
+function sanitizeMdxBody(s) {
+  if (typeof s !== 'string') return s;
+  return sanitizeAngles(s).replace(/\{/g, '&#123;').replace(/\}/g, '&#125;');
+}
+
+articleData.body = sanitizeMdxBody(articleData.body);
+articleData.tldr = sanitizeAngles(articleData.tldr);
+if (Array.isArray(articleData.faq)) {
+  for (const f of articleData.faq) {
+    f.domanda = sanitizeAngles(f.domanda);
+    f.risposta = sanitizeAngles(f.risposta);
+  }
+}
+
 // ─── Validation Rank Math ────────────────────────────────────────────
 function validate(d) {
   const errors = [];
