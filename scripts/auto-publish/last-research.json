@@ -1,17 +1,17 @@
 {
-  "week": "2026-08-17",
-  "chosenKeyword": "casette mobili usate in vendita",
+  "week": "2026-08-20",
+  "chosenKeyword": "casette mobili usate con bagno",
   "score": 75,
-  "slug": "casette-mobili-usate-in-vendita",
+  "slug": "casette-mobili-usate-con-bagno",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
+    "case mobili usate lecce",
+    "case mobili usate emilia romagna",
     "casa mobile usata veneto",
-    "quanto costa una casa mobile usata",
-    "casette mobili usate in vendita",
     "casette mobili usate con bagno",
-    "casette mobili usate sardegna",
     "casette mobili usate bologna",
-    "casette mobili usate prezzi"
+    "casette mobili su ruote usate",
+    "casette mobili in legno usate"
   ],
   "allCandidates": [
     {
@@ -19,15 +19,15 @@
       "score": 75
     },
     {
+      "kw": "case mobili usate lecce",
+      "score": 75
+    },
+    {
+      "kw": "case mobili usate emilia romagna",
+      "score": 75
+    },
+    {
       "kw": "casa mobile usata veneto",
-      "score": 75
-    },
-    {
-      "kw": "quanto costa una casa mobile usata",
-      "score": 75
-    },
-    {
-      "kw": "casette mobili usate in vendita",
       "score": 75
     },
     {
@@ -35,19 +35,7 @@
       "score": 75
     },
     {
-      "kw": "casette mobili usate sardegna",
-      "score": 75
-    },
-    {
       "kw": "casette mobili usate bologna",
-      "score": 75
-    },
-    {
-      "kw": "casette mobili usate prezzi",
-      "score": 75
-    },
-    {
-      "kw": "casette mobili usate roma",
       "score": 75
     },
     {
@@ -60,10 +48,6 @@
     },
     {
       "kw": "casette mobili per campeggio usate",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile su terreno agricolo",
       "score": 75
     },
     {
@@ -83,6 +67,10 @@
       "score": 75
     },
     {
+      "kw": "casa mobile come si chiama",
+      "score": 75
+    },
+    {
       "kw": "casa mobile dove si puo mettere",
       "score": 75
     },
@@ -91,7 +79,19 @@
       "score": 75
     },
     {
-      "kw": "casa mobile quanto costa",
+      "kw": "case mobili 50 mq prezzi",
+      "score": 75
+    },
+    {
+      "kw": "case mobili su ruote prezzi chiavi in mano",
+      "score": 75
+    },
+    {
+      "kw": "case mobili prezzi chiavi in mano",
+      "score": 75
+    },
+    {
+      "kw": "case mobili come funzionano",
       "score": 75
     }
   ]
