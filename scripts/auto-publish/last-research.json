@@ -1,17 +1,17 @@
 {
-  "week": "2026-08-20",
-  "chosenKeyword": "casette mobili usate con bagno",
+  "week": "2026-08-24",
+  "chosenKeyword": "case mobili usate lago di garda",
   "score": 75,
-  "slug": "casette-mobili-usate-con-bagno",
+  "slug": "case-mobili-usate-lago-di-garda",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "case mobili usate lecce",
     "case mobili usate emilia romagna",
     "casa mobile usata veneto",
-    "casette mobili usate con bagno",
     "casette mobili usate bologna",
     "casette mobili su ruote usate",
-    "casette mobili in legno usate"
+    "casette mobili in legno usate",
+    "casette mobili per campeggio usate"
   ],
   "allCandidates": [
     {
@@ -28,10 +28,6 @@
     },
     {
       "kw": "casa mobile usata veneto",
-      "score": 75
-    },
-    {
-      "kw": "casette mobili usate con bagno",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "case mobili come funzionano",
+      "score": 75
+    },
+    {
+      "kw": "case mobili come sono fatte",
       "score": 75
     }
   ]
