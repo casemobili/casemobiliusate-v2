@@ -1,29 +1,21 @@
 {
-  "week": "2026-08-24",
-  "chosenKeyword": "case mobili usate lago di garda",
+  "week": "2026-08-27",
+  "chosenKeyword": "casa mobile usata veneto",
   "score": 75,
-  "slug": "case-mobili-usate-lago-di-garda",
+  "slug": "casa-mobile-usata-veneto",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "case mobili usate lecce",
-    "case mobili usate emilia romagna",
     "casa mobile usata veneto",
     "casette mobili usate bologna",
     "casette mobili su ruote usate",
     "casette mobili in legno usate",
-    "casette mobili per campeggio usate"
+    "casette mobili per campeggio usate",
+    "casa mobile in vendita in campeggio",
+    "casa mobile come funziona"
   ],
   "allCandidates": [
     {
-      "kw": "case mobili usate lago di garda",
-      "score": 75
-    },
-    {
       "kw": "case mobili usate lecce",
-      "score": 75
-    },
-    {
-      "kw": "case mobili usate emilia romagna",
       "score": 75
     },
     {
@@ -92,6 +84,14 @@
     },
     {
       "kw": "case mobili come sono fatte",
+      "score": 75
+    },
+    {
+      "kw": "case mobili come si chiamano",
+      "score": 75
+    },
+    {
+      "kw": "case mobili dove si possono mettere",
       "score": 75
     }
   ]
