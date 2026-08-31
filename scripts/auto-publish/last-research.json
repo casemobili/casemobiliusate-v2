@@ -1,25 +1,21 @@
 {
-  "week": "2026-08-27",
-  "chosenKeyword": "casa mobile usata veneto",
+  "week": "2026-08-31",
+  "chosenKeyword": "casette mobili su ruote usate",
   "score": 75,
-  "slug": "casa-mobile-usata-veneto",
+  "slug": "casette-mobili-su-ruote-usate",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "casa mobile usata veneto",
     "casette mobili usate bologna",
     "casette mobili su ruote usate",
     "casette mobili in legno usate",
     "casette mobili per campeggio usate",
     "casa mobile in vendita in campeggio",
-    "casa mobile come funziona"
+    "casa mobile come funziona",
+    "casa mobile come si sposta"
   ],
   "allCandidates": [
     {
       "kw": "case mobili usate lecce",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile usata veneto",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "case mobili dove si possono mettere",
+      "score": 75
+    },
+    {
+      "kw": "case mobili dove comprarle",
       "score": 75
     }
   ]
