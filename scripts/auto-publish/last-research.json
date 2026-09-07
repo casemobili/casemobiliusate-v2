@@ -1,17 +1,17 @@
 {
-  "week": "2026-09-03",
-  "chosenKeyword": "casette mobili in legno usate",
+  "week": "2026-09-07",
+  "chosenKeyword": "casa mobile in vendita in campeggio",
   "score": 75,
-  "slug": "casette-mobili-in-legno-usate",
-  "pillar": "guide-acquisto",
+  "slug": "casa-mobile-in-vendita-in-campeggio",
+  "pillar": "dove-mettere",
   "secondaryKeywords": [
     "casette mobili usate bologna",
-    "casette mobili in legno usate",
     "casette mobili per campeggio usate",
     "casa mobile in vendita in campeggio",
     "casa mobile come funziona",
     "casa mobile come si sposta",
-    "casa mobile come abitazione"
+    "casa mobile come abitazione",
+    "casa mobile come si chiama"
   ],
   "allCandidates": [
     {
@@ -20,10 +20,6 @@
     },
     {
       "kw": "casette mobili usate bologna",
-      "score": 75
-    },
-    {
-      "kw": "casette mobili in legno usate",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "case mobili quanto durano",
+      "score": 75
+    },
+    {
+      "kw": "noleggio casa mobile prezzi",
       "score": 75
     }
   ]
