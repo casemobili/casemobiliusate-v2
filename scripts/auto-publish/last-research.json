@@ -1,17 +1,17 @@
 {
-  "week": "2026-09-07",
-  "chosenKeyword": "casa mobile in vendita in campeggio",
+  "week": "2026-09-10",
+  "chosenKeyword": "casa mobile come si sposta",
   "score": 75,
-  "slug": "casa-mobile-in-vendita-in-campeggio",
-  "pillar": "dove-mettere",
+  "slug": "casa-mobile-come-si-sposta",
+  "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "casette mobili usate bologna",
     "casette mobili per campeggio usate",
-    "casa mobile in vendita in campeggio",
     "casa mobile come funziona",
     "casa mobile come si sposta",
     "casa mobile come abitazione",
-    "casa mobile come si chiama"
+    "casa mobile come si chiama",
+    "casa mobile dove si puo mettere"
   ],
   "allCandidates": [
     {
@@ -24,10 +24,6 @@
     },
     {
       "kw": "casette mobili per campeggio usate",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile in vendita in campeggio",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "noleggio casa mobile prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile italia prezzi",
       "score": 75
     }
   ]
