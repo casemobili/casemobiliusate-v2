@@ -1,17 +1,17 @@
 {
-  "week": "2026-09-10",
-  "chosenKeyword": "casa mobile come si sposta",
+  "week": "2026-09-14",
+  "chosenKeyword": "case mobili usate lecce",
   "score": 75,
-  "slug": "casa-mobile-come-si-sposta",
+  "slug": "case-mobili-usate-lecce",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "casette mobili usate bologna",
     "casette mobili per campeggio usate",
     "casa mobile come funziona",
-    "casa mobile come si sposta",
     "casa mobile come abitazione",
     "casa mobile come si chiama",
-    "casa mobile dove si puo mettere"
+    "casa mobile dove si puo mettere",
+    "casa mobile dove posso metterla"
   ],
   "allCandidates": [
     {
@@ -28,10 +28,6 @@
     },
     {
       "kw": "casa mobile come funziona",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile come si sposta",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile italia prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile moderna prezzi",
       "score": 75
     }
   ]
