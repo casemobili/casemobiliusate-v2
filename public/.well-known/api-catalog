@@ -1,0 +1,52 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.casemobiliusate.com/",
+      "service-doc": [
+        {
+          "href": "https://www.casemobiliusate.com/llms.txt",
+          "type": "text/plain",
+          "title": "Sintesi del sito per agenti: struttura, pillar tematici, domande coperte"
+        },
+        {
+          "href": "https://www.casemobiliusate.com/llms-full.txt",
+          "type": "text/plain",
+          "title": "Versione estesa con i contenuti chiave in forma testuale"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://www.casemobiliusate.com/.well-known/agents/index.json",
+          "type": "application/json",
+          "title": "Indice di discovery: risorse machine-readable, licenza d'uso, contatto"
+        }
+      ],
+      "index": [
+        {
+          "href": "https://www.casemobiliusate.com/sitemap-index.xml",
+          "type": "application/xml",
+          "title": "Sitemap completa delle pagine indicizzabili"
+        }
+      ],
+      "alternate": [
+        {
+          "href": "https://www.casemobiliusate.com/index.md",
+          "type": "text/markdown",
+          "title": "Home in Markdown. Ogni pagina ha la stessa URL con suffisso .md, oppure si ottiene con Accept: text/markdown"
+        },
+        {
+          "href": "https://www.casemobiliusate.com/rss.xml",
+          "type": "application/rss+xml",
+          "title": "Feed RSS delle guide pubblicate"
+        }
+      ],
+      "author": [
+        {
+          "href": "https://www.casemobiliusate.com/chi-siamo",
+          "type": "text/html",
+          "title": "Andrea Bressan, curatore tecnico (pseudonimo dichiarato) — CMU Edizioni"
+        }
+      ]
+    }
+  ]
+}

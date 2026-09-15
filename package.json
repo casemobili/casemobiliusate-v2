@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev --host",
-    "build": "astro build",
+    "build": "astro build && node scripts/generate-markdown.mjs",
     "preview": "astro preview --host",
     "astro": "astro"
   },

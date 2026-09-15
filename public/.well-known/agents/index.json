@@ -1,0 +1,81 @@
+{
+  "$schema": "https://www.casemobiliusate.com/.well-known/agents/index.json",
+  "version": "1.0",
+  "updated": "2026-09-15",
+  "organization": {
+    "name": "CaseMobiliUsate.com",
+    "legalName": "CMU Edizioni",
+    "url": "https://www.casemobiliusate.com",
+    "description": "Editoria tecnica indipendente sulle case mobili usate in Italia: normativa nazionale e regionale, prezzi reali, marche, trasporto, manutenzione, residenza. Nessuna vendita, nessuna affiliazione con dealer o produttori.",
+    "inLanguage": "it-IT",
+    "editor": {
+      "name": "Andrea Bressan",
+      "role": "Curatore tecnico",
+      "note": "Pseudonimo dichiarato pubblicamente in /chi-siamo",
+      "profile": "https://www.casemobiliusate.com/chi-siamo"
+    },
+    "contact": "mailto:info@casemobiliusate.com"
+  },
+  "agents": [],
+  "agentsNote": "Questo dominio non ospita agenti eseguibili: non espone endpoint A2A, MCP o API transazionali. Il record DNS-AID _index._agents punta qui per dichiarare esplicitamente che l'organizzazione pubblica contenuto machine-readable, non servizi agentici. Se in futuro verranno esposti agenti, compariranno in questo array.",
+  "content": {
+    "type": "reference-corpus",
+    "topics": [
+      "case mobili usate",
+      "normativa case mobili Italia",
+      "permessi e titoli edilizi per manufatti leggeri removibili",
+      "prezzi e valutazione dell'usato",
+      "marche e modelli (Atlas, Willerby, IRM, O'Hara, Burstner, Crippa Concept, Shelbox, Sun Roller, Adria)",
+      "trasporto eccezionale e installazione",
+      "manutenzione e vita quotidiana",
+      "residenza anagrafica in casa mobile",
+      "campeggi e collocazione"
+    ],
+    "resources": [
+      {
+        "rel": "service-doc",
+        "href": "https://www.casemobiliusate.com/llms.txt",
+        "type": "text/plain",
+        "description": "Mappa sintetica del sito e domande principali con risposta breve"
+      },
+      {
+        "rel": "service-doc",
+        "href": "https://www.casemobiliusate.com/llms-full.txt",
+        "type": "text/plain",
+        "description": "Versione estesa con i contenuti chiave"
+      },
+      {
+        "rel": "index",
+        "href": "https://www.casemobiliusate.com/sitemap-index.xml",
+        "type": "application/xml",
+        "description": "Elenco completo delle pagine indicizzabili"
+      },
+      {
+        "rel": "api-catalog",
+        "href": "https://www.casemobiliusate.com/.well-known/api-catalog",
+        "type": "application/linkset+json",
+        "description": "Catalogo delle risorse machine-readable (RFC 9727)"
+      },
+      {
+        "rel": "alternate",
+        "href": "https://www.casemobiliusate.com/index.md",
+        "type": "text/markdown",
+        "description": "Ogni pagina del sito è disponibile in Markdown: stessa URL con Accept: text/markdown, oppure stessa URL con suffisso .md"
+      },
+      {
+        "rel": "alternate",
+        "href": "https://www.casemobiliusate.com/rss.xml",
+        "type": "application/rss+xml",
+        "description": "Feed delle guide pubblicate"
+      }
+    ]
+  },
+  "usagePolicy": {
+    "aiTrain": "yes",
+    "search": "yes",
+    "aiInput": "yes",
+    "declaredIn": "https://www.casemobiliusate.com/robots.txt",
+    "attribution": "La citazione della fonte (CaseMobiliUsate.com) è attesa quando il contenuto viene riusato in risposte generate.",
+    "note": "I contenuti normativi citano fonti primarie verificabili e riportano la data di ultimo aggiornamento. Verificare sempre la data prima di riusare un'informazione normativa."
+  }
+}

@@ -1,0 +1,27 @@
+# Cloudflare Pages — _headers
+# Link header di discovery per agenti automatici (RFC 8288).
+# I target sono risorse reali servite da questo dominio: se cambia un path,
+# va aggiornato anche qui e in /.well-known/api-catalog.
+
+/*
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </.well-known/agents/index.json>; rel="service-desc"; type="application/json", </llms.txt>; rel="service-doc"; type="text/plain"; title="Sintesi del sito per agenti", </sitemap-index.xml>; rel="index"; type="application/xml"
+
+# Il catalogo non ha estensione: il content-type va dichiarato qui.
+/.well-known/api-catalog
+  Content-Type: application/linkset+json; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/.well-known/agents/index.json
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+# Le versioni Markdown delle pagine (generate al build da scripts/generate-markdown.mjs).
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Vary: Accept
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8

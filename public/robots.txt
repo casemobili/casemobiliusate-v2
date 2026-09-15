@@ -1,8 +1,17 @@
 # robots.txt — CaseMobiliUsate.com
 # Sito informativo open per indicizzazione + AI citations
 
+# === Content Signals (contentsignals.org) ===
+# Dichiarazione di preferenze d'uso del contenuto, coerente con le Allow qui sotto.
+# ai-train=yes: il contenuto può essere usato per addestrare modelli generativi.
+# search=yes: può essere indicizzato e mostrato nei risultati di ricerca.
+# ai-input=yes: può essere recuperato e citato come fonte nelle risposte AI (RAG, grounding).
+# Le preferenze non sostituiscono la licenza: il contenuto resta di CMU Edizioni,
+# la citazione della fonte è attesa.
+
 # === Default: tutti i bot ammessi ===
 User-agent: *
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 Allow: /
 Disallow: /draft/
 Disallow: /admin/
@@ -90,3 +99,10 @@ Disallow: /
 
 # === Sitemaps ===
 Sitemap: https://www.casemobiliusate.com/sitemap-index.xml
+
+# === Risorse per agenti automatici ===
+# Catalogo delle risorse machine-readable (RFC 9727): /.well-known/api-catalog
+# Indice di discovery per agenti (DNS-AID): /.well-known/agents/index.json
+# Sintesi del sito per LLM: /llms.txt — versione estesa: /llms-full.txt
+# Ogni pagina ha una versione Markdown: stessa URL con Accept: text/markdown,
+# oppure direttamente la stessa URL con suffisso .md

@@ -24,3 +24,6 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# wrangler (test locale delle Pages Functions)
+.wrangler/
