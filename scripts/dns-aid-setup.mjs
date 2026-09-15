@@ -58,7 +58,9 @@ const desired = {
   data: {
     priority: 1,
     target: `${TARGET}.`,
-    value: 'alpn="h2" port="443"',
+    // mandatory: come nell'esempio della draft DNS-AID — dichiara che alpn e port
+    // vanno compresi dal client, altrimenti il record va ignorato.
+    value: 'alpn="h2" port="443" mandatory="alpn,port"',
   },
 };
 
@@ -93,7 +95,7 @@ if (existing) {
   const same =
     existing.data?.priority === desired.data.priority &&
     (existing.data?.target || '').replace(/\.$/, '') === TARGET &&
-    (existing.data?.value || '').includes('alpn');
+    (existing.data?.value || '') === desired.data.value;
   if (same) {
     console.log(`Record già corretto: ${RECORD_NAME}`);
     process.exit(0);
