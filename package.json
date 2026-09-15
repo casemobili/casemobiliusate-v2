@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev --host",
     "start": "astro dev --host",
-    "build": "astro build && node scripts/generate-markdown.mjs && node scripts/build-agent-skills-index.mjs",
+    "build": "astro build && node scripts/generate-markdown.mjs && node scripts/build-agent-skills-index.mjs && node scripts/build-mcp-index.mjs",
     "preview": "astro preview --host",
     "astro": "astro"
   },

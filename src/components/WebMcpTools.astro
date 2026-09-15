@@ -1,0 +1,133 @@
+---
+// WebMCP: espone all'agente che naviga la pagina gli stessi strumenti che un
+// visitatore umano trova sul sito. I tool fanno lavoro vero — la stima usa la
+// formula del calcolatore su /strumenti, la ricerca interroga l'indice del corpus.
+//
+// L'API è sperimentale e presente solo in alcuni browser: tutto è dietro
+// feature detection, e dove l'API non c'è non viene eseguito nulla.
+---
+
+<script>
+  (function () {
+    const registra = () => {
+      const mc = (navigator as any).modelContext;
+      if (!mc) return;
+
+      const MARCHE: Record<string, number> = {
+        atlas: 3.5, willerby: 3.8, shelbox: 3.0, irm: 3.6, ohara: 3.7, "o'hara": 3.7,
+        burstner: 3.4, 'crippa concept': 4.0, crippa: 4.0, adria: 3.2, 'sun roller': 3.0, altro: 2.8,
+      };
+      const ANNI: Record<string, number> = {
+        '2023-2025': 1.4, '2018-2022': 1.2, '2013-2017': 1.0, '2008-2012': 0.7, 'prima-2008': 0.5,
+      };
+      const DIMENSIONI: Record<string, number> = {
+        compact: 0.6, standard: 0.85, family: 1.0, plus: 1.25, xl: 1.55,
+      };
+      const CONDIZIONI: Record<string, number> = {
+        'pari-al-nuovo': 1.3, buone: 1.0, usurate: 0.75, 'da-ristrutturare': 0.5,
+      };
+      const ACCESSORI: Record<string, number> = {
+        veranda: 0.1, 'aria-condizionata': 0.06, casetta: 0.05, mobili: 0.04, targata: 0.03,
+      };
+      const euro = (n: number) =>
+        '€ ' + (Math.round(n / 100) * 100).toLocaleString('it-IT');
+
+      const tools = [
+        {
+          name: 'stima_prezzo_casa_mobile',
+          description:
+            'Stima la fascia di prezzo di una casa mobile usata in base a marca, anno, dimensione, condizioni e accessori. Restituisce un intervallo indicativo, non una quotazione; il trasporto non è incluso.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              marca: { type: 'string', description: "Atlas, Willerby, Shelbox, IRM, O'Hara, Burstner, Crippa Concept, Adria, Sun Roller, altro" },
+              anno: { type: 'string', description: '2023-2025 | 2018-2022 | 2013-2017 | 2008-2012 | prima-2008' },
+              dimensione: { type: 'string', description: 'compact | standard | family | plus | xl' },
+              condizioni: { type: 'string', description: 'pari-al-nuovo | buone | usurate | da-ristrutturare' },
+              accessori: { type: 'array', items: { type: 'string' }, description: 'veranda, aria-condizionata, casetta, mobili, targata' },
+            },
+            required: ['anno', 'dimensione', 'condizioni'],
+          },
+          async execute(args: Record<string, any>) {
+            const mMarca = MARCHE[String(args.marca || 'altro').toLowerCase().trim()] ?? MARCHE.altro;
+            const mAnno = ANNI[String(args.anno || '').toLowerCase().trim()];
+            const mDim = DIMENSIONI[String(args.dimensione || '').toLowerCase().trim()];
+            const mCond = CONDIZIONI[String(args.condizioni || '').toLowerCase().trim()];
+            if (mAnno === undefined || mDim === undefined || mCond === undefined) {
+              return { content: [{ type: 'text', text: 'Valori non riconosciuti. Controllare anno, dimensione e condizioni.' }] };
+            }
+            const bonus = (Array.isArray(args.accessori) ? args.accessori : [])
+              .reduce((t: number, a: string) => t + (ACCESSORI[String(a).toLowerCase().trim()] ?? 0), 0);
+            const centro = 5500 * mMarca * mAnno * mDim * mCond * (1 + bonus);
+            const testo = [
+              `Fascia stimata: ${euro(centro * 0.85)} – ${euro(centro * 1.15)}`,
+              `Valore centrale: ${euro(centro)}`,
+              'Il trasporto non è incluso: tipicamente 1.500-4.000 € in più.',
+              'Stima indicativa su benchmark 2026, non una quotazione. Fonte: CaseMobiliUsate.com',
+            ].join('\n');
+            return { content: [{ type: 'text', text: testo }] };
+          },
+        },
+        {
+          name: 'cerca_guide_case_mobili',
+          description:
+            'Cerca tra le guide di CaseMobiliUsate.com su normativa, prezzi, marche, trasporto, manutenzione e residenza, e restituisce le più pertinenti con il relativo indirizzo.',
+          inputSchema: {
+            type: 'object',
+            properties: {
+              query: { type: 'string', description: 'Parole chiave in italiano, per esempio "terreno agricolo permessi"' },
+            },
+            required: ['query'],
+          },
+          async execute(args: Record<string, any>) {
+            try {
+              const res = await fetch('/mcp/corpus-index.json');
+              const dati = await res.json();
+              const termini = String(args.query || '').toLowerCase().split(/\s+/).filter((t: string) => t.length > 2);
+              const risultati = (dati.pagine || [])
+                .map((p: any) => {
+                  let score = 0;
+                  const titolo = (p.titolo || '').toLowerCase();
+                  const testo = `${p.descrizione || ''} ${p.estratto || ''}`.toLowerCase();
+                  for (const t of termini) {
+                    if (titolo.includes(t)) score += 10;
+                    if ((p.path || '').includes(t)) score += 6;
+                    if (testo.includes(t)) score += 2;
+                  }
+                  return { p, score };
+                })
+                .filter((x: any) => x.score > 0)
+                .sort((a: any, b: any) => b.score - a.score)
+                .slice(0, 8)
+                .map((x: any) => `- ${x.p.titolo}\n  https://www.casemobiliusate.com${x.p.path}${x.p.aggiornamento ? `\n  aggiornata il ${x.p.aggiornamento}` : ''}`);
+              return {
+                content: [{
+                  type: 'text',
+                  text: risultati.length ? risultati.join('\n') : 'Nessuna guida trovata. Provare termini più generici.',
+                }],
+              };
+            } catch {
+              return { content: [{ type: 'text', text: 'Ricerca non disponibile in questo momento.' }] };
+            }
+          },
+        },
+      ];
+
+      try {
+        if (typeof mc.provideContext === 'function') {
+          mc.provideContext({ tools });
+        } else if (typeof mc.registerTool === 'function') {
+          for (const t of tools) mc.registerTool(t);
+        }
+      } catch {
+        /* l'API è sperimentale: se cambia forma, la pagina resta comunque intatta */
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', registra);
+    } else {
+      registra();
+    }
+  })();
+</script>

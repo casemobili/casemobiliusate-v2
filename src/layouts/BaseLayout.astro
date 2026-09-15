@@ -5,6 +5,7 @@ import Footer from '~/components/Footer.astro';
 import SchemaOrganization from '~/components/SchemaOrganization.astro';
 import PillarHero from '~/components/PillarHero.astro';
 import CookieBanner from '~/components/CookieBanner.astro';
+import WebMcpTools from '~/components/WebMcpTools.astro';
 import { SITE } from '~/lib/site';
 
 interface Props {
@@ -115,5 +116,6 @@ const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
     </main>
     <Footer />
     <CookieBanner />
+    <WebMcpTools />
   </body>
 </html>

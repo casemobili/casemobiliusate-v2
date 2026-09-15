@@ -21,6 +21,18 @@
       ]
     },
     {
+      "identifier": "urn:air:casemobiliusate.com:server:corpus-mcp",
+      "displayName": "Server MCP del corpus",
+      "description": "Server MCP pubblico in sola lettura: cerca nelle guide, legge una guida in Markdown, stima la fascia di prezzo di una casa mobile usata. Nessuna autenticazione, nessuna scrittura.",
+      "type": "application/mcp-server-card+json",
+      "url": "https://www.casemobiliusate.com/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "cerca guide sulla normativa delle case mobili",
+        "stima il prezzo di una casa mobile usata del 2018",
+        "leggi la guida sul trasporto di una casa mobile"
+      ]
+    },
+    {
       "identifier": "urn:air:casemobiliusate.com:index:sitemap",
       "displayName": "Indice completo delle pagine",
       "description": "Sitemap XML di tutte le pagine indicizzabili del sito, con data di ultimo aggiornamento.",

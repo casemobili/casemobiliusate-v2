@@ -1,0 +1,45 @@
+{
+  "serverInfo": {
+    "name": "casemobiliusate-corpus",
+    "title": "CaseMobiliUsate.com — corpus tecnico",
+    "version": "1.0.0",
+    "description": "Interroga il corpus tecnico indipendente sulle case mobili usate in Italia: normativa nazionale e delle 20 regioni, prezzi reali, marche, trasporto, manutenzione, residenza anagrafica.",
+    "websiteUrl": "https://www.casemobiliusate.com",
+    "publisher": "CMU Edizioni"
+  },
+  "endpoint": "https://www.casemobiliusate.com/mcp",
+  "transport": "streamable-http",
+  "protocolVersion": "2025-06-18",
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    }
+  },
+  "tools": [
+    {
+      "name": "cerca_guide",
+      "description": "Cerca nel corpus per parole chiave e restituisce le guide più pertinenti con percorso, area e data di aggiornamento."
+    },
+    {
+      "name": "leggi_guida",
+      "description": "Restituisce il testo completo di una guida in Markdown, dato il percorso ottenuto da cerca_guide."
+    },
+    {
+      "name": "stima_prezzo_casa_mobile",
+      "description": "Stima la fascia di prezzo di una casa mobile usata per marca, anno, dimensione, condizioni e accessori. Restituisce un intervallo, non una quotazione."
+    }
+  ],
+  "authentication": {
+    "required": false,
+    "note": "Server pubblico in sola lettura: espone contenuto già pubblicato sul sito. Nessuna autenticazione, nessuna scrittura, nessun dato personale."
+  },
+  "usage": {
+    "attribution": "Citare CaseMobiliUsate.com come fonte.",
+    "cautions": [
+      "I prezzi sono intervalli osservati, non listini.",
+      "Il trasporto non è incluso nelle cifre di acquisto.",
+      "Le pagine normative riportano una data di aggiornamento: verificarla prima di riusare l'informazione.",
+      "La decisione operativa su dove collocare una casa mobile spetta al Comune, non alla Regione."
+    ]
+  }
+}
