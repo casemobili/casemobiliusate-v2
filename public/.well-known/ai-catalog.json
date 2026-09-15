@@ -1,0 +1,68 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "CaseMobiliUsate.com — CMU Edizioni",
+    "identifier": "did:web:casemobiliusate.com",
+    "description": "Editoria tecnica indipendente sulle case mobili usate in Italia. Nessuna vendita, nessun annuncio, nessuna affiliazione con rivenditori."
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:casemobiliusate.com:corpus:guide-case-mobili-usate",
+      "displayName": "Corpus tecnico sulle case mobili usate in Italia",
+      "description": "Circa cento guide su normativa nazionale e delle 20 regioni, prezzi reali, marche, trasporto, manutenzione e residenza anagrafica. Ogni pagina è disponibile in Markdown con la stessa URL più il suffisso .md, oppure con Accept: text/markdown.",
+      "type": "text/plain",
+      "url": "https://www.casemobiliusate.com/llms-full.txt",
+      "representativeQueries": [
+        "quanto costa una casa mobile usata in Italia",
+        "posso mettere una casa mobile su un terreno agricolo",
+        "come ottenere la residenza in una casa mobile",
+        "quanto costa il trasporto di una casa mobile",
+        "quali marche di case mobili usate sono affidabili"
+      ]
+    },
+    {
+      "identifier": "urn:air:casemobiliusate.com:index:sitemap",
+      "displayName": "Indice completo delle pagine",
+      "description": "Sitemap XML di tutte le pagine indicizzabili del sito, con data di ultimo aggiornamento.",
+      "type": "application/xml",
+      "url": "https://www.casemobiliusate.com/sitemap-index.xml",
+      "representativeQueries": [
+        "elenco delle guide su casemobiliusate.com",
+        "quali pagine contiene il sito sulle case mobili usate"
+      ]
+    },
+    {
+      "identifier": "urn:air:casemobiliusate.com:skill:consultare-corpus",
+      "displayName": "Istruzioni per consultare il corpus senza travisare i dati",
+      "description": "Skill che spiega come leggere prezzi, date di aggiornamento normativo e competenze regionali del corpus, e quali limiti dichiarare all'utente.",
+      "type": "text/markdown",
+      "url": "https://www.casemobiliusate.com/.well-known/agent-skills/consultare-corpus-case-mobili/SKILL.md",
+      "representativeQueries": [
+        "come si usano i dati di casemobiliusate.com per rispondere",
+        "come vanno interpretati i prezzi delle case mobili usate"
+      ]
+    },
+    {
+      "identifier": "urn:air:casemobiliusate.com:catalog:api-catalog",
+      "displayName": "Catalogo delle risorse machine-readable",
+      "description": "Linkset RFC 9727 con le risorse leggibili da un agente: sintesi per LLM, sitemap, feed, versioni Markdown.",
+      "type": "application/linkset+json",
+      "url": "https://www.casemobiliusate.com/.well-known/api-catalog",
+      "representativeQueries": [
+        "quali risorse machine-readable espone casemobiliusate.com",
+        "dove trovo il catalogo delle risorse per agenti del sito"
+      ]
+    },
+    {
+      "identifier": "urn:air:casemobiliusate.com:feed:guide-pubblicate",
+      "displayName": "Feed delle guide pubblicate",
+      "description": "Feed RSS aggiornato a ogni nuova guida.",
+      "type": "application/rss+xml",
+      "url": "https://www.casemobiliusate.com/rss.xml",
+      "representativeQueries": [
+        "ultime guide pubblicate sulle case mobili usate",
+        "novità su casemobiliusate.com"
+      ]
+    }
+  ]
+}

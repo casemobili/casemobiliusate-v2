@@ -40,6 +40,18 @@
           "title": "Feed RSS delle guide pubblicate"
         }
       ],
+      "related": [
+        {
+          "href": "https://www.casemobiliusate.com/.well-known/agent-skills/index.json",
+          "type": "application/json",
+          "title": "Indice delle skill: come consultare il corpus senza travisare prezzi e date normative"
+        },
+        {
+          "href": "https://www.casemobiliusate.com/.well-known/ai-catalog.json",
+          "type": "application/json",
+          "title": "Manifesto ARD delle risorse pubblicate, con query rappresentative"
+        }
+      ],
       "author": [
         {
           "href": "https://www.casemobiliusate.com/chi-siamo",
