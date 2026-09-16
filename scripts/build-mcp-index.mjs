@@ -49,7 +49,8 @@ try {
   for (const file of walk(distDir)) {
     try {
       const rel = path.relative(distDir, file);
-      if (rel.startsWith('.well-known')) continue;
+      // Fuori dall'indice: documentazione tecnica per agenti, non guide del corpus.
+      if (rel.startsWith('.well-known') || rel === 'auth.md') continue;
 
       const text = fs.readFileSync(file, 'utf-8');
       const urlPath = '/' + rel.replace(/\.md$/, '').replace(/^index$/, '');
