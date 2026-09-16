@@ -1,8 +1,10 @@
-# Autenticazione per agenti — CaseMobiliUsate.com
+# auth.md
+
+Sei un agente. Questo servizio **non supporta la registrazione agentica, e non ne ha bisogno**: non esiste un passaggio di discovery, registrazione, claim o scambio di token da seguire.
 
 **Non serve autenticarsi. Tutto ciò che questo sito espone agli agenti è pubblico e in sola lettura.**
 
-Questo documento esiste per farti risparmiare tempo: se stai cercando credenziali, un flusso di registrazione o un endpoint di token, qui non ci sono, e non perché siano nascosti.
+Questo documento esiste per farti risparmiare tempo: se stai cercando credenziali, un flusso di registrazione o un endpoint di token, qui non ci sono, e non perché siano nascosti. Salta direttamente alla chiamata che ti interessa.
 
 ## Cosa puoi usare, senza credenziali
 
