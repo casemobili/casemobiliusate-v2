@@ -1,23 +1,19 @@
 {
-  "week": "2026-09-14",
-  "chosenKeyword": "case mobili usate lecce",
+  "week": "2026-09-17",
+  "chosenKeyword": "casette mobili per campeggio usate",
   "score": 75,
-  "slug": "case-mobili-usate-lecce",
-  "pillar": "guide-acquisto",
+  "slug": "casette-mobili-per-campeggio-usate",
+  "pillar": "dove-mettere",
   "secondaryKeywords": [
-    "casette mobili usate bologna",
     "casette mobili per campeggio usate",
     "casa mobile come funziona",
     "casa mobile come abitazione",
     "casa mobile come si chiama",
     "casa mobile dove si puo mettere",
-    "casa mobile dove posso metterla"
+    "casa mobile dove posso metterla",
+    "case mobili 50 mq prezzi"
   ],
   "allCandidates": [
-    {
-      "kw": "case mobili usate lecce",
-      "score": 75
-    },
     {
       "kw": "casette mobili usate bologna",
       "score": 75
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile moderna prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile vpf prezzi",
       "score": 75
     }
   ]
