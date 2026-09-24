@@ -1,12 +1,12 @@
 {
-  "week": "2026-09-21",
-  "chosenKeyword": "casa mobile come abitazione",
+  "week": "2026-09-24",
+  "chosenKeyword": "casa mobile come si chiama",
   "score": 75,
-  "slug": "casa-mobile-come-abitazione",
-  "pillar": "vivere",
+  "slug": "casa-mobile-come-si-chiama",
+  "pillar": "guide-acquisto",
   "secondaryKeywords": [
+    "casa mobile su terreno non edificabile",
     "casa mobile come funziona",
-    "casa mobile come abitazione",
     "casa mobile come si chiama",
     "casa mobile dove si puo mettere",
     "casa mobile dove posso metterla",
@@ -19,11 +19,11 @@
       "score": 75
     },
     {
-      "kw": "casa mobile come funziona",
+      "kw": "casa mobile su terreno non edificabile",
       "score": 75
     },
     {
-      "kw": "casa mobile come abitazione",
+      "kw": "casa mobile come funziona",
       "score": 75
     },
     {
@@ -51,7 +51,11 @@
       "score": 75
     },
     {
-      "kw": "case mobili come funzionano",
+      "kw": "case mobili 30 mq prezzi",
+      "score": 75
+    },
+    {
+      "kw": "case mobili come funziona",
       "score": 75
     },
     {
@@ -88,10 +92,6 @@
     },
     {
       "kw": "casa mobile vpf prezzi",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile legno prezzi",
       "score": 75
     }
   ]
