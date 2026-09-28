@@ -1,19 +1,31 @@
 {
-  "week": "2026-09-24",
-  "chosenKeyword": "casa mobile come si chiama",
+  "week": "2026-09-28",
+  "chosenKeyword": "casa mobile su terreno non edificabile",
   "score": 75,
-  "slug": "casa-mobile-come-si-chiama",
-  "pillar": "guide-acquisto",
+  "slug": "casa-mobile-su-terreno-non-edificabile",
+  "pillar": "normativa",
   "secondaryKeywords": [
+    "case mobili usate livorno",
+    "case mobili usate mazara del vallo",
+    "casette mobili usate bologna",
     "casa mobile su terreno non edificabile",
     "casa mobile come funziona",
-    "casa mobile come si chiama",
     "casa mobile dove si puo mettere",
-    "casa mobile dove posso metterla",
-    "case mobili 50 mq prezzi",
-    "case mobili su ruote prezzi chiavi in mano"
+    "casa mobile dove posso metterla"
   ],
   "allCandidates": [
+    {
+      "kw": "case mobili usate lombardia",
+      "score": 75
+    },
+    {
+      "kw": "case mobili usate livorno",
+      "score": 75
+    },
+    {
+      "kw": "case mobili usate mazara del vallo",
+      "score": 75
+    },
     {
       "kw": "casette mobili usate bologna",
       "score": 75
@@ -24,10 +36,6 @@
     },
     {
       "kw": "casa mobile come funziona",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile come si chiama",
       "score": 75
     },
     {
@@ -84,14 +92,6 @@
     },
     {
       "kw": "casa mobile italia prezzi",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile moderna prezzi",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile vpf prezzi",
       "score": 75
     }
   ]
