@@ -1,23 +1,19 @@
 {
-  "week": "2026-10-01",
-  "chosenKeyword": "casette mobili usate bologna",
+  "week": "2026-10-05",
+  "chosenKeyword": "casa mobile dove si puo mettere",
   "score": 75,
-  "slug": "casette-mobili-usate-bologna",
+  "slug": "casa-mobile-dove-si-puo-mettere",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "casa mobile come funziona",
     "casa mobile dove si puo mettere",
     "casa mobile dove posso metterla",
     "case mobili 50 mq prezzi",
-    "case mobili su ruote prezzi chiavi in mano",
     "case mobili 30 mq prezzi",
-    "case mobili prezzi chiavi in mano"
+    "case mobili prezzi chiavi in mano",
+    "case mobili su ruote prezzi chiavi in mano",
+    "case mobili come funziona"
   ],
   "allCandidates": [
-    {
-      "kw": "casette mobili usate bologna",
-      "score": 75
-    },
     {
       "kw": "casa mobile come funziona",
       "score": 75
@@ -35,15 +31,15 @@
       "score": 75
     },
     {
-      "kw": "case mobili su ruote prezzi chiavi in mano",
-      "score": 75
-    },
-    {
       "kw": "case mobili 30 mq prezzi",
       "score": 75
     },
     {
       "kw": "case mobili prezzi chiavi in mano",
+      "score": 75
+    },
+    {
+      "kw": "case mobili su ruote prezzi chiavi in mano",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile o hara prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile per campeggio prezzi",
       "score": 75
     }
   ]
