@@ -1,0 +1,38 @@
+---
+// Schema Dataset per le pagine di statistiche: le rende leggibili da Google Dataset Search.
+// I dati restano nel testo della pagina; qui si dichiara cosa contiene e da quali fonti viene.
+import { SITE, AUTHOR } from '~/lib/site';
+
+interface Fonte { nome: string; url?: string }
+interface Props {
+  nome: string;
+  descrizione: string;
+  copertura: string;
+  area: string;
+  parole?: string[];
+  fonti?: Fonte[];
+  url: string;
+  dateModified: string;
+}
+
+const { nome, descrizione, copertura, area, parole = [], fonti = [], url, dateModified } = Astro.props;
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: nome,
+  description: descrizione,
+  url,
+  sameAs: url,
+  inLanguage: SITE.locale,
+  temporalCoverage: copertura,
+  spatialCoverage: { '@type': 'Place', name: area },
+  keywords: parole,
+  isAccessibleForFree: true,
+  dateModified,
+  creator: { '@type': 'Person', name: AUTHOR.name, url: `${SITE.url}/chi-siamo` },
+  publisher: { '@id': `${SITE.url}/#organization` },
+  isBasedOn: fonti.map((f) => (f.url ? { '@type': 'CreativeWork', name: f.nome, url: f.url } : { '@type': 'CreativeWork', name: f.nome })),
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

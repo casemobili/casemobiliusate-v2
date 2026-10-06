@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '~/layouts/BaseLayout.astro';
 import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
 import SchemaArticle from '~/components/SchemaArticle.astro';
+import SchemaDataset from '~/components/SchemaDataset.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
@@ -106,4 +107,7 @@ const faqItems = (data.faq ?? []).map((f) => ({ q: f.domanda, a: f.risposta }));
     image={data.coverImage}
     url={fullUrl}
   />
+  {data.dataset && (
+    <SchemaDataset {...data.dataset} url={fullUrl} dateModified={dataUpd} />
+  )}
 </BaseLayout>

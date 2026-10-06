@@ -26,6 +26,15 @@ const articoli = defineCollection({
     articoliCorrelati: z.array(z.string()).optional().default([]),
     noindex: z.boolean().default(false),
     legacyPath: z.string().optional(),
+    // Pagine di statistiche: genera lo schema Dataset (Google Dataset Search)
+    dataset: z.object({
+      nome: z.string(),
+      descrizione: z.string(),
+      copertura: z.string(),
+      area: z.string().default('Italia'),
+      parole: z.array(z.string()).optional().default([]),
+      fonti: z.array(z.object({ nome: z.string(), url: z.string().optional() })).optional().default([]),
+    }).optional(),
   }),
 });
 
