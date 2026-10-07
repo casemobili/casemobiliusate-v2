@@ -6,6 +6,7 @@ import BaseLayout from '~/layouts/BaseLayout.astro';
 import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
 import SchemaArticle from '~/components/SchemaArticle.astro';
 import SchemaDataset from '~/components/SchemaDataset.astro';
+import LicenzaDati from '~/components/LicenzaDati.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
@@ -102,6 +103,8 @@ const breadcrumbName = data.titolo.length > 50 ? data.titolo.slice(0, 50) + '...
       )}
 
       <Content components={{ FbCommunityWidget, FaqAccordion, Tldr }} />
+
+      {data.dataset && <LicenzaDati />}
 
       <FbCommunityWidget variant="card" />
 
