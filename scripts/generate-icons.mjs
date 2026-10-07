@@ -3,7 +3,7 @@
   Genera tutto il set di icone del marchio CaseMobiliUsate.
     node scripts/generate-icons.mjs
 
-  Il marchio e' la casa mobile SU RUOTE approvata da Mattia: generata in Canva
+  Il marchio e' la casa mobile SU RUOTE approvata in redazione: generata in Canva
   (design "Compact Prefab House Logo Design 1", DAHRnjYyvQ4) e poi ricalcata qui
   in vettoriale con la palette del sito. Casa vera — tetto, porta, finestre — su
   due ruote: deve leggersi come un'abitazione che sta su ruote, non un veicolo.

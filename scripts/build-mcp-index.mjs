@@ -49,8 +49,10 @@ try {
   for (const file of walk(distDir)) {
     try {
       const rel = path.relative(distDir, file);
-      // Fuori dall'indice: documentazione tecnica per agenti, non guide del corpus.
+      // Fuori dall'indice: documentazione tecnica per agenti e file di servizio
+      // copiati da public/ (CREDITS.md, README.md, admin/), che non sono guide.
       if (rel.startsWith('.well-known') || rel === 'auth.md') continue;
+      if (/^(images|admin|fonts)\//.test(rel) || /(^|\/)[A-Z][A-Z0-9_-]*\.md$/.test(rel)) continue;
 
       const text = fs.readFileSync(file, 'utf-8');
       const urlPath = '/' + rel.replace(/\.md$/, '').replace(/^index$/, '');

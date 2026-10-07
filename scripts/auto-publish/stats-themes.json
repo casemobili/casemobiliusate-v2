@@ -1,0 +1,63 @@
+{
+  "_nota": "Temi delle pagine di statistiche mensili (una al mese, la prima uscita del mese). Si usa il primo tema il cui slug non esiste ancora in src/content/articoli. Per aggiungerne uno basta metterlo in coda. Fonti preferite: ISTAT, Eurostat, enti regionali, federazioni di settore. Mai nomi di rivenditori.",
+  "attivo": false,
+  "_attivo": "Si accende (true) solo dopo una prova completa riuscita e verificata contro le fonti. Spenta dal 7 ottobre 2026: l'ultima prova verificata aveva ancora errori di significato, poi corretti nel codice ma non ancora riprovati.",
+  "temi": [
+    {
+      "slug": "statistiche-turisti-stranieri-campeggi-italia",
+      "pillar": "dove-mettere",
+      "focusKeyword": "turisti stranieri campeggi italia",
+      "tema": "I turisti stranieri nei campeggi e villaggi turistici italiani: da quali paesi arrivano, quante notti passano, quanto pesano sul totale, confronto con gli italiani.",
+      "fontiSuggerite": "ISTAT (movimento clienti negli esercizi ricettivi, per paese di residenza), Eurostat tour_occ_ninat e tabelle per paese di residenza, uffici statistici regionali (Veneto, Toscana, Trentino-Alto Adige, Friuli Venezia Giulia)."
+    },
+    {
+      "slug": "statistiche-campeggi-europa",
+      "pillar": "dove-mettere",
+      "focusKeyword": "campeggi in europa numeri",
+      "tema": "I campeggi in Europa paese per paese: numero di strutture, posti letto, notti trascorse, posizione dell'Italia rispetto a Francia, Germania, Spagna, Paesi Bassi e Croazia.",
+      "fontiSuggerite": "Eurostat (tour_cap_nat, tour_occ_ninat, tour_occ_nim, comunicati Statistics Explained sul turismo), istituti statistici nazionali."
+    },
+    {
+      "slug": "statistiche-stagionalita-campeggi-italia",
+      "pillar": "dove-mettere",
+      "focusKeyword": "stagionalità campeggi italia",
+      "tema": "Quando si va in campeggio in Italia: distribuzione delle notti per mese e per trimestre, concentrazione estiva, strutture aperte tutto l'anno, differenze tra italiani e stranieri.",
+      "fontiSuggerite": "ISTAT (movimento turistico mensile, flussi turistici trimestrali), Eurostat tour_occ_nim, uffici statistici regionali."
+    },
+    {
+      "slug": "statistiche-campeggi-per-regione",
+      "pillar": "dove-mettere",
+      "focusKeyword": "campeggi per regione italia",
+      "tema": "I campeggi regione per regione: strutture, posti letto e notti per ciascuna regione italiana, le prime cinque, le più piccole, la crescita recente.",
+      "fontiSuggerite": "ISTAT (capacità degli esercizi ricettivi per regione), Eurostat tour_cap_nuts2 e tour_occ_nin2, uffici statistici regionali."
+    },
+    {
+      "slug": "statistiche-camper-caravan-italia-europa",
+      "pillar": "tipologie",
+      "focusKeyword": "statistiche camper caravan italia",
+      "tema": "Caravan, camper e case mobili: immatricolazioni e mercato in Italia e in Europa, ultimi anni disponibili, confronto tra paesi.",
+      "fontiSuggerite": "European Caravan Federation (statistiche di immatricolazione), ACI (parco circolante), federazioni nazionali del settore, National Caravan Council per il Regno Unito."
+    },
+    {
+      "slug": "statistiche-seconde-case-italia",
+      "pillar": "vivere",
+      "focusKeyword": "seconde case in italia numeri",
+      "tema": "Seconde case e abitazioni per vacanza in Italia: quante sono, dove si concentrano, quante restano vuote, quanto pesano sul turismo. Contesto per chi valuta una casa mobile come seconda casa.",
+      "fontiSuggerite": "ISTAT (censimento permanente della popolazione e delle abitazioni), Agenzia delle Entrate e OMI (Gli immobili in Italia), Eurostat."
+    },
+    {
+      "slug": "statistiche-vacanze-italiani-campeggio",
+      "pillar": "vivere",
+      "focusKeyword": "vacanze degli italiani in campeggio",
+      "tema": "Le vacanze degli italiani: quanti viaggi fanno, dove dormono, quanta parte sceglie campeggi, villaggi e alloggi all'aria aperta, durata media e spesa.",
+      "fontiSuggerite": "ISTAT (Viaggi e vacanze in Italia e all'estero), Banca d'Italia (turismo internazionale), Eurostat (tour_dem)."
+    },
+    {
+      "slug": "statistiche-mercato-case-mobili-europa",
+      "pillar": "marche",
+      "focusKeyword": "mercato case mobili europa",
+      "tema": "Il mercato delle case mobili da vacanza in Europa: produzione e spedizioni, i paesi dove si fabbricano, il parco installato nei campeggi, la norma EN 1647.",
+      "fontiSuggerite": "National Caravan Council (Regno Unito), European Caravan Federation, Eurostat (statistiche di produzione PRODCOM), CEN per la norma EN 1647."
+    }
+  ]
+}

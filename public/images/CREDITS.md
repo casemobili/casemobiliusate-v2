@@ -38,5 +38,5 @@ Tutte le immagini in questa cartella sono usate sotto licenza che ne consente l'
 
 1. Ogni nuova foto aggiunta a questa cartella deve avere una entry qui con: soggetto, fonte URL, autore, licenza
 2. Per Wikimedia Commons, verificare la licenza specifica della singola foto (alcune sono CC0, altre CC-BY, altre CC-BY-SA): adattare l'attribuzione di conseguenza
-3. Mai usare foto da siti di vendita di case mobili (concorrenti) né da Luxury Camp / network privato
+3. Mai usare foto da siti di vendita di case mobili (concorrenti) né da strutture ricettive o siti privati
 4. Privilegiare foto editoriali eleganti, sfondi naturali, evitare estetica "trailer park americano"

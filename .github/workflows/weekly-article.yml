@@ -1,7 +1,10 @@
 name: Weekly auto-article generation
 
-# Cron: ogni lunedì alle 07:13 UTC (09:13 ora italiana, off-peak per evitare collisioni con altri jobs).
-# Pubblica 1 articolo a settimana via Claude API → commit + push → Cloudflare Pages auto-deploy.
+# Cron: lunedì e giovedì alle 07:13 UTC (09:13 ora italiana, off-peak per evitare collisioni con altri jobs).
+# Pubblica 1 articolo per uscita via Claude API → commit + push → Cloudflare Pages auto-deploy.
+# Una volta al mese (la prima uscita del mese) pubblica invece una pagina di statistiche
+# con schema Dataset (generate-stats.mjs). Se non trova abbastanza dati verificati,
+# ripiega sull'articolo normale e la pagina di statistiche ci riprova all'uscita dopo.
 #
 # IMPORTANTE: il repo GitHub ha tutto alla root (no sottocartella draft-site).
 # Tutti i path sono relativi alla root del repo.
@@ -31,16 +34,33 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Decide mode (statistiche una volta al mese)
+        id: mode
+        run: node scripts/auto-publish/choose-mode.mjs
+
+      - name: Generate monthly statistics page
+        id: stats
+        if: steps.mode.outputs.mode == 'stats'
+        continue-on-error: true
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/auto-publish/generate-stats.mjs
+
       - name: Run keyword research
+        if: steps.mode.outputs.mode != 'stats' || steps.stats.outcome != 'success'
         run: node scripts/auto-publish/keyword-research.mjs
 
       - name: Generate article via Claude API
+        if: steps.mode.outputs.mode != 'stats' || steps.stats.outcome != 'success'
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: node scripts/auto-publish/generate-article.mjs
 
       - name: Build site (validation)
         run: npm run build
+
+      - name: Identity separation check (blocca se compaiono nomi estranei al progetto)
+        run: node scripts/check-identita.mjs dist src/content
 
       - name: Run SEO ultimate audit
         run: node scripts/seo-ultimate-audit.mjs || echo "Audit warnings — non bloccanti"
@@ -50,7 +70,8 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions (auto-publish)"
-          git add src/content/articoli/*.mdx scripts/auto-publish/last-research.json
+          git add src/content/articoli/*.mdx public/images/*.jpg scripts/auto-publish/last-research.json
+          git add scripts/auto-publish/last-stats-report.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "Niente da committare"
             echo "committed=false" >> "$GITHUB_OUTPUT"

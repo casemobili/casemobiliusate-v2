@@ -1,12 +1,29 @@
 # Pipeline auto-publish settimanale
 
-Pipeline che ogni lunedì alle 09:13 (ora italiana) genera un articolo nuovo:
+Pipeline che ogni lunedì e giovedì alle 09:13 (ora italiana) pubblica un contenuto nuovo:
 
-1. **Keyword research** — fetch Google Suggest su 18 seed keyword + modificatori → 100+ candidati ranked
-2. **Article generation** — Claude API (claude-opus-4-5) con system prompt strutturato
-3. **Validation** — controllo Rank Math 90+ score (title, meta, body length, FAQ count, internal links)
-4. **Build + SEO audit** — Astro build + scripts/seo-ultimate-audit.mjs
-5. **Commit + push** — auto-commit, Cloudflare Pages deploy automatico
+1. **Modalità** — `choose-mode.mjs`: la prima uscita di ogni mese è una pagina di statistiche, le altre sono articoli
+2. **Keyword research** — fetch Google Suggest su 18 seed keyword + modificatori → 100+ candidati ranked
+3. **Article generation** — Claude API (claude-opus-4-5) con system prompt strutturato più `conoscenze-seo-geo.md`
+4. **Validation** — controllo Rank Math 90+ score (title, meta, body length, FAQ count, internal links)
+5. **Build + controlli** — Astro build, `check-identita.mjs` (blocca se compaiono nomi estranei al progetto), scripts/seo-ultimate-audit.mjs
+6. **Commit + push** — auto-commit, Cloudflare Pages deploy automatico
+
+## Conoscenze SEO e GEO (`conoscenze-seo-geo.md`)
+
+Regole operative distillate dalle note di studio e dalle fonti ufficiali (Google Search Central e simili), una riga ciascuna con la fonte tra parentesi. Il generatore degli articoli le aggiunge al system prompt a ogni uscita; in caso di conflitto vince il system prompt. Si aggiornano una volta a settimana con un'attività pianificata, che verifica ogni regola nuova contro la fonte prima del commit. Il generatore delle statistiche non le usa: ha il proprio metodo.
+
+## Pagina di statistiche mensile (`generate-stats.mjs`)
+
+Una al mese, sul primo tema libero di `stats-themes.json`. Metodo dei linkable asset: titoli a domanda con la risposta subito, tabelle, immagine con i numeri, schema Dataset con licenza CC BY 4.0, link dagli articoli collegati.
+
+1. **Ricerca** — la ricerca web trova 8-14 documenti di enti pubblici e federazioni (senza aprirli).
+2. **Estrazione e verifica** — ogni documento si scarica e si legge da solo; un verificatore ostile, con il documento davanti, deve ritrovare la frase esatta di ogni numero e correggere la descrizione del dato (unità, totale, area, periodo).
+3. **Scrittura** — solo con i dati verificati; niente calcoli, classifiche su elenchi incompleti, osservazioni o consigli.
+4. **Controllo meccanico** — ogni numero del testo deve corrispondere a un dato verificato; link esterni solo agli URL esatti delle fonti di dominio ammesso.
+5. **Revisione del significato** — due revisori con compiti diversi; le correzioni le applica lo script, dal secondo giro solo togliendo frasi.
+
+Se mancano dati verificati o i controlli non passano, lo script esce con codice 3 senza scrivere nulla: quell'uscita diventa un articolo normale e la pagina di statistiche ci riprova all'uscita successiva. Rapporto di ogni tentativo in `last-stats-report.json`. Prova senza pubblicare: `DRY_RUN=1 node scripts/auto-publish/generate-stats.mjs` (scrive in `stats-dry-run/`).
 
 ## Setup iniziale (UNA TANTUM)
 
@@ -46,7 +63,7 @@ npm run build
 - **Pillar mapping**: ogni keyword classificata automaticamente nel pillar pertinente
 - **Internal linking**: ogni articolo deve avere min 3 link a pillar/cluster correlati
 - **Schema markup**: BaseLayout aggiunge automatic Article + BreadcrumbList + FAQPage
-- **Validation**: articoli che falliscono Rank Math sono marcati `noindex: true` finché Mattia non li rivede dal CMS
+- **Validation**: articoli che falliscono Rank Math sono marcati `noindex: true` finché non vengono rivisti dal CMS
 
 ## Override / pause manuale
 
@@ -76,7 +93,7 @@ node scripts/auto-publish/generate-article.mjs
 
 ## Modifica articoli generati
 
-Tutti gli articoli auto-generati finiscono in `src/content/articoli/<slug>.mdx`. Sono **modificabili da CMS Sveltia** all'admin/ → categoria "Articoli". Mattia può:
+Tutti gli articoli auto-generati finiscono in `src/content/articoli/<slug>.mdx`. Sono **modificabili da CMS Sveltia** all'admin/ → categoria "Articoli". Dal CMS si può:
 
 - Editare titolo, body, FAQ, focus keyword, meta description
 - Aggiungere coverImage personalizzata (override del default og-default.jpg)

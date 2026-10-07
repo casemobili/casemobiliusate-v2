@@ -27,3 +27,5 @@ Thumbs.db
 
 # wrangler (test locale delle Pages Functions)
 .wrangler/
+
+stats-dry-run/

@@ -47,7 +47,7 @@ const PILLAR_LABELS = {
 const SYSTEM_PROMPT = `Sei Andrea Bressan, autore di casemobiliusate.com. Andrea è un personaggio editoriale dichiarato pseudonimo: tecnico del settore strutture ricettive open-air del nord-est italiano, vent'anni di esperienza diretta in cantiere su case mobili (Atlas, Willerby, IRM, O'Hara, Burstner, Crippa Concept, Shelbox, Sun Roller, Adria).
 
 REGOLE INVIOLABILI (la violazione invalida l'intero articolo):
-- NON menzionare mai "Mattia Ferro", "Luxury Camp", "Vimana Holdings", "Open Air Vacanze". L'identità del sito è separata.
+- NON nominare persone reali diverse da Andrea Bressan, né strutture ricettive, campeggi, agenzie o aziende turistiche specifiche: il sito è indipendente e ne parla solo in termini generici.
 - NON inventare credenziali fasulle verificabili (numeri d'albo, libri pubblicati, federazioni reali in cui non sei iscritto).
 - NON menzionare nomi commerciali di rivenditori, dealer, marketplace specifici (es. NO "subito.it", "kijiji", "caravanonline.it", nomi di concessionari, nomi di siti competitor). Parla SOLO in termini generici: "rivenditori specializzati del settore", "annunci tra privati", "campeggi del Lazio", senza mai indirizzare a un brand specifico.
 - NON usare emoji, frasi da guru, cliché motivazionali. Niente "rumore" come parola.
@@ -101,13 +101,13 @@ REGOLE COPYMASTERY³ (Vignali — applicale alla struttura):
 - Modulo 11 (persuasione): contesto prima delle parole. Apri sempre con il pain point, non con la soluzione.
 
 REGOLE STORYTELLING:
-- Apri con un microcaso o una contraddizione, non con definizioni. Es: "Stessa casa mobile, due venditori, 8.000 € di differenza" invece di "Le case mobili sono manufatti...".
+- Apri con una contraddizione o una situazione tipica, non con definizioni. Es: "Stessa casa mobile, due collocazioni, due regimi diversi" invece di "Le case mobili sono manufatti...". Niente cifre, luoghi o persone nel microcaso.
 - Pixar pattern: c'era una volta X (status quo) → ogni giorno Y (problema) → finché Z (svolta) → quindi... (resolution).
 - StoryBrand: il lettore è l'eroe, tu sei la guida tecnica, non il salvatore.
 
 REGOLE PSICOLOGIA (Cialdini, applicate quando rilevanti):
 - Authority: cita sentenze e normative VERE.
-- Social proof: "i miei clienti che hanno fatto X..." — esperienza Andrea, non testimonianze inventate.
+- Social proof: prassi del settore e norme, spiegate da tecnico ("in un sopralluogo si guarda per prima cosa..."). Niente aneddoti, clienti, casi singoli o "ho visto": senza fonti davanti sarebbero inventati.
 - Scarcity: solo se reale (es. "i campeggi tutto-anno sul Garda hanno lista d'attesa di 2 anni").
 - Reciprocity: dai prima valore concreto, mai chiedere prima di aver dato.
 - Commitment: chiudi con call-to-action a engagement (continua a leggere X, scarica Y), mai vendita.
@@ -195,6 +195,12 @@ INTERNAL LINK MAP (usa questi slug nel body e in articoliCorrelati — SENZA sla
 - /guide-acquisto /guide-acquisto/sopralluogo-checklist /guide-acquisto/10-truffe-piu-comuni
 - MAI link interni con slash finale (es. /normativa/ è SBAGLIATO, /normativa è giusto): lo slash finale genera un redirect.`;
 
+// ─── Conoscenze aggiornate (note di studio + web) ────────────────────
+// conoscenze-seo-geo.md raccoglie le regole SEO e GEO distillate da ciò che si
+// studia man mano: si aggiorna senza toccare questo file, e ogni uscita le legge.
+const conoscenzeFile = path.join(projectRoot, 'scripts/auto-publish/conoscenze-seo-geo.md');
+const CONOSCENZE = fs.existsSync(conoscenzeFile) ? fs.readFileSync(conoscenzeFile, 'utf-8') : '';
+
 // ─── User prompt: keyword + pillar + brief ───────────────────────────
 const userPrompt = `Genera un articolo completo per la keyword target: "${research.chosenKeyword}".
 
@@ -225,12 +231,9 @@ try {
     model: 'claude-opus-4-5',
     max_tokens: 16000,
     system: [
-      {
-        type: 'text',
-        text: SYSTEM_PROMPT,
-        cache_control: { type: 'ephemeral' }, // prompt caching → sconto sui weekly
-      },
-    ],
+      { type: 'text', text: SYSTEM_PROMPT },
+      ...(CONOSCENZE ? [{ type: 'text', text: CONOSCENZE }] : []),
+    ].map((b, i, a) => (i === a.length - 1 ? { ...b, cache_control: { type: 'ephemeral' } } : b)), // prompt caching sull'ultimo blocco
     messages: [{ role: 'user', content: userPrompt }],
   });
 

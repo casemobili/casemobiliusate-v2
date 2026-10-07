@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const distDir = '/Users/mattia/Documents/CLAUDE/casemobiliusate/draft-site/dist';
+const distDir = new URL('../dist', import.meta.url).pathname;
 
 function findHtml(dir, results = []) {
   for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
