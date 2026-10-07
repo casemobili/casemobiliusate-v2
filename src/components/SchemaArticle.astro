@@ -19,7 +19,8 @@ const data = {
   '@type': 'Article',
   headline: title,
   description,
-  image: image ? [image] : [`${SITE.url}/og-default.jpg`],
+  // Google vuole l'URL assoluto: dal frontmatter arriva spesso "/images/...".
+  image: image ? [new URL(image, SITE.url).href] : [`${SITE.url}/og-default.jpg`],
   datePublished,
   dateModified: dateModified || datePublished,
   inLanguage: SITE.locale,
