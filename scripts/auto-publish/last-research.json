@@ -1,25 +1,21 @@
 {
-  "week": "2026-10-05",
-  "chosenKeyword": "casa mobile dove si puo mettere",
+  "week": "2026-10-08",
+  "chosenKeyword": "case mobili 50 mq prezzi",
   "score": 75,
-  "slug": "casa-mobile-dove-si-puo-mettere",
-  "pillar": "guide-acquisto",
+  "slug": "case-mobili-50-mq-prezzi",
+  "pillar": "prezzi",
   "secondaryKeywords": [
-    "casa mobile dove si puo mettere",
     "casa mobile dove posso metterla",
     "case mobili 50 mq prezzi",
     "case mobili 30 mq prezzi",
     "case mobili prezzi chiavi in mano",
     "case mobili su ruote prezzi chiavi in mano",
-    "case mobili come funziona"
+    "case mobili come funziona",
+    "case mobili come si chiamano"
   ],
   "allCandidates": [
     {
       "kw": "casa mobile come funziona",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile dove si puo mettere",
       "score": 75
     },
     {
@@ -91,7 +87,11 @@
       "score": 75
     },
     {
-      "kw": "casa mobile per campeggio prezzi",
+      "kw": "casa mobile in legno prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile senza permessi",
       "score": 75
     }
   ]
