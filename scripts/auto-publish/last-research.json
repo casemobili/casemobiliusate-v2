@@ -1,33 +1,25 @@
 {
-  "week": "2026-10-12",
-  "chosenKeyword": "case mobili 30 mq prezzi",
+  "week": "2026-10-15",
+  "chosenKeyword": "case mobili come funziona",
   "score": 75,
-  "slug": "case-mobili-30-mq-prezzi",
-  "pillar": "prezzi",
+  "slug": "case-mobili-come-funziona",
+  "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "casa mobile come funziona",
     "casa mobile dove posso metterla",
-    "case mobili 30 mq prezzi",
     "case mobili prezzi chiavi in mano",
     "case mobili su ruote prezzi chiavi in mano",
     "case mobili come funziona",
-    "case mobili come si chiamano"
+    "case mobili come si chiamano",
+    "case mobili dove si possono mettere",
+    "case mobili dove comprarle"
   ],
   "allCandidates": [
-    {
-      "kw": "case mobili usate livorno",
-      "score": 75
-    },
     {
       "kw": "casa mobile come funziona",
       "score": 75
     },
     {
       "kw": "casa mobile dove posso metterla",
-      "score": 75
-    },
-    {
-      "kw": "case mobili 30 mq prezzi",
       "score": 75
     },
     {
@@ -92,6 +84,14 @@
     },
     {
       "kw": "casa mobile senza permessi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile servono permessi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile che permessi servono",
       "score": 75
     }
   ]
