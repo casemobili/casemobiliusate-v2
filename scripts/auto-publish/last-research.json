@@ -1,17 +1,17 @@
 {
-  "week": "2026-10-26",
-  "chosenKeyword": "case mobili come si chiamano",
+  "week": "2026-10-29",
+  "chosenKeyword": "case mobili dove si possono installare",
   "score": 75,
-  "slug": "case-mobili-come-si-chiamano",
-  "pillar": "guide-acquisto",
+  "slug": "case-mobili-dove-si-possono-installare",
+  "pillar": "trasporto",
   "secondaryKeywords": [
     "case mobili come funzionano",
-    "case mobili come si chiamano",
     "case mobili dove si possono mettere",
     "case mobili dove si possono installare",
     "case mobili dove comprarle",
     "case mobili quanto durano",
-    "noleggio casa mobile prezzi"
+    "noleggio casa mobile prezzi",
+    "casa mobile italia prezzi"
   ],
   "allCandidates": [
     {
@@ -20,10 +20,6 @@
     },
     {
       "kw": "case mobili come funzionano",
-      "score": 75
-    },
-    {
-      "kw": "case mobili come si chiamano",
       "score": 75
     },
     {
@@ -59,15 +55,15 @@
       "score": 75
     },
     {
-      "kw": "casa mobile campeggio prezzi",
-      "score": 75
-    },
-    {
       "kw": "casa mobile su ruote prezzi",
       "score": 75
     },
     {
       "kw": "casa mobile o hara prezzi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile per campeggio prezzi",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile su ruote senza permessi",
+      "score": 75
+    },
+    {
+      "kw": "mini casa mobile senza permessi",
       "score": 75
     }
   ]
