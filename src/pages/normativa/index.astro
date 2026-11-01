@@ -11,12 +11,12 @@ import ArticleCard from '~/components/ArticleCard.astro';
 const url = '/normativa';
 const fullUrl = `https://www.casemobiliusate.com${url}`;
 const title = 'Casa mobile in Italia: cosa puoi e non puoi fare per legge (2026)';
-const description = 'Decreto Casa, permesso di costruire, residenza, omologazione, sentenze 2026: i 6 confini che separano l\'uso legale dall\'abuso edilizio..';
+const description = 'Art. 3 del DPR 380/2001, permesso di costruire, DPR 73/2026, residenza: dove una casa mobile è legale e dove diventa abuso edilizio.';
 
 const toc = [
   { id: 'cosa-dice-la-legge', label: 'Cosa dice la legge nel 2026' },
   { id: 'casa-mobile-vs-costruzione', label: 'Casa mobile o costruzione: la sottile linea giuridica' },
-  { id: 'decreto-casa', label: 'Il Decreto Casa e l\'eccezione delle strutture ricettive' },
+  { id: 'decreto-casa', label: 'L\'eccezione delle strutture ricettive all\'aperto' },
   { id: 'paesaggistica', label: 'Autorizzazione paesaggistica: la novità DPR 73/2026' },
   { id: 'terreno-privato', label: 'Casa mobile su terreno privato' },
   { id: 'terreno-agricolo', label: 'Casa mobile su terreno agricolo' },
@@ -28,20 +28,20 @@ const toc = [
 ];
 
 const faq = [
-  { q: 'Serve un permesso per mettere una casa mobile in campeggio?', a: 'No. Il <strong>Decreto Casa</strong> ha eliminato il titolo abilitativo edilizio per le case mobili installate dentro strutture turistico-ricettive all\'aperto (campeggi, villaggi vacanze, resort). È l\'unico contesto in cui non serve permesso di costruire.' },
-  { q: 'Posso mettere una casa mobile sul mio terreno privato?', a: 'Sì, ma con permesso di costruire se l\'installazione è permanente. Se mantieni le ruote funzionanti, gli allacciamenti smontabili e l\'uso temporaneo, in alcuni casi può essere considerata bene mobile (Cassazione 2023). La giurisprudenza è in evoluzione: meglio chiedere parere al Comune.' },
-  { q: 'E sul terreno agricolo?', a: 'Solo per uso temporaneo legato all\'attività agricola (es. ricovero attrezzi stagionale). <strong>Mai</strong> come abitazione permanente. Sentenze recenti del Consiglio di Stato confermano che casa mobile su agricolo abitata stabilmente = nuova costruzione, soggetta a permesso edilizio. Vedi <a href="/normativa/casa-mobile-terreno-agricolo">la guida dedicata</a>.' },
+  { q: 'Serve un permesso per mettere una casa mobile in campeggio?', a: 'In genere no. L\'<strong>art. 3, comma 1, lettera e.5) del DPR 380/2001</strong> esclude dalla nuova costruzione le unità abitative mobili con meccanismi di rotazione in funzione, collocate in strutture ricettive all\'aperto già autorizzate, senza collegamento permanente al terreno e nel rispetto delle norme regionali.' },
+  { q: 'Posso mettere una casa mobile sul mio terreno privato?', a: 'Sì, ma con permesso di costruire se l\'installazione è permanente. Se mantieni le ruote funzionanti, gli allacciamenti smontabili e l\'uso temporaneo, in alcuni casi può essere considerata bene mobile (art. 3, lettera e.5, DPR 380/2001). Prima di comprare chiedi parere scritto al Comune.' },
+  { q: 'E sul terreno agricolo?', a: 'Solo per uso temporaneo legato all\'attività agricola (es. ricovero attrezzi stagionale). <strong>Mai</strong> come abitazione permanente. Una casa mobile abitata stabilmente è nuova costruzione ai sensi dell\'art. 3 del DPR 380/2001, soggetta a permesso di costruire. Vedi <a href="/normativa/casa-mobile-terreno-agricolo">la guida dedicata</a>.' },
   { q: 'Posso prendere la residenza in una casa mobile?', a: 'Sì, in alcuni casi. La residenza si ottiene quando il Comune verifica che la casa mobile è dimora stabile della persona. Possibile se: (a) la casa è in campeggio aperto tutto l\'anno; (b) è su terreno privato con permessi regolari; (c) è usata come "fittizia residenza" per persone senza fissa dimora.' },
   { q: 'La casa mobile va omologata e targata?', a: 'Solo se la trasporti su strada come veicolo a traino. Per case installate stabilmente in campeggio non serve. Per spostarla in strada serve omologazione presso la Motorizzazione Civile come "rimorchio speciale" + libretto + revisione + targa.' },
-  { q: 'Cos\'è la direttiva EN 1647?', a: 'È la <strong>norma europea</strong> di costruzione per i "leisure accommodation vehicles" (veicoli per alloggio del tempo libero), che include case mobili e maxi-caravan. Definisce requisiti di sicurezza strutturale, antincendio, impianti, isolamento. Chiedi sempre la conformità EN 1647 prima di acquistare un\'usata.' },
-  { q: 'Cosa cambia con il Decreto Salva Casa 2024?', a: 'Il Decreto Salva Casa 2024-2026 ha ulteriormente semplificato l\'installazione di case mobili in strutture ricettive open-air, eliminando praticamente ogni residuo requisito edilizio in quel contesto. Per uso fuori da strutture, restano i requisiti generali del Testo Unico Edilizia.' },
-  { q: 'Le sentenze del Consiglio di Stato cambiano qualcosa?', a: 'Sì. Le sentenze 2020-2026 hanno consolidato il principio: <strong>conta l\'uso, non i materiali</strong>. Una casa mobile usata come abitazione stabile = nuova costruzione, anche se ha le ruote. Una casa mobile usata occasionalmente = bene mobile. La distinzione è giuridica, non tecnica.' },
+  { q: 'Cos\'è la norma EN 1647?', a: 'È la <strong>norma europea</strong> di costruzione per i "leisure accommodation vehicles" (veicoli per alloggio del tempo libero), che include case mobili e maxi-caravan. Definisce requisiti di sicurezza strutturale, antincendio, impianti, isolamento. Chiedi sempre la conformità EN 1647 prima di acquistare un\'usata.' },
+  { q: 'Cosa cambia con il Decreto Salva Casa 2024?', a: 'Per le case mobili, nulla di specifico. Il <strong>DL 69/2024</strong>, convertito dalla legge 105/2024, non nomina case mobili né campeggi e non tocca la lettera e.5) dell\'art. 3 del DPR 380/2001. La novità vera del 2026 è il <strong>DPR 73/2026</strong>, sul paesaggio.' },
+  { q: 'Le sentenze del Consiglio di Stato cambiano qualcosa?', a: 'Sì. Il criterio è la precarietà, che il Consiglio di Stato (sez. II, 1489/2023) legge come «temporale, funzionale e costruttiva». Vale per tutto ciò che si dichiara amovibile: <strong>conta l\'uso, non i materiali</strong>. Le ruote da sole non bastano.' },
 ];
 
 const correlati = [
-  { href: '/normativa/casa-mobile-terreno-agricolo', category: 'Normativa', title: 'Casa mobile su terreno agricolo: cosa dice davvero la legge nel 2026', excerpt: 'Sentenze, eccezioni del Decreto Casa, casi reali di chi ce l\'ha fatta e di chi è stato multato.', readTime: '8 min' },
+  { href: '/normativa/casa-mobile-terreno-agricolo', category: 'Normativa', title: 'Casa mobile su terreno agricolo: cosa dice davvero la legge nel 2026', excerpt: 'Cosa dice il DPR 380/2001, cosa cambia con la funzione agricola, quali rischi corri.', readTime: '8 min' },
   { href: '/vivere/residenza-casa-mobile', category: 'Vivere', title: 'Residenza in casa mobile: come ottenerla nel 2026', excerpt: 'Iter completo per ottenere la residenza in casa mobile, in campeggio o su terreno privato.', readTime: '6 min' },
-  { href: '/normativa/decreto-casa-spiegato', category: 'Normativa', title: 'Il Decreto Casa spiegato: cosa cambia per le case mobili (2026)', excerpt: 'Cosa il Decreto Casa sblocca davvero per le case mobili e cosa invece lascia ancora in zona grigia.', readTime: '9 min' },
+  { href: '/normativa/decreto-casa-spiegato', category: 'Normativa', title: 'Decreto Casa e Salva Casa: cosa cambia davvero per le case mobili', excerpt: 'Il Salva Casa non nomina le case mobili. Da dove viene davvero la regola sui campeggi.', readTime: '9 min' },
 ];
 ---
 
@@ -54,7 +54,7 @@ const correlati = [
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-4" style="background-color:var(--color-forest-100);color:var(--color-forest-800)">Pilastro · Normativa</div>
       <h1>{title}</h1>
       <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
-        Ordinanza di rimozione, multa fino a 50.000 €, denuncia per abuso edilizio. È quello che rischia chi installa una casa mobile dove non si può. Il problema: <em>dove si può</em> non è scritto in un punto solo. È diviso tra Decreto Casa, 20 leggi regionali, 15 sentenze del Consiglio di Stato 2020-2026. Questa guida le mette in fila.
+        Ordine di rimozione, arresto fino a due anni, ammenda da 5.164 a 51.645 euro: è il quadro dell'art. 44 del DPR 380/2001 per chi costruisce senza permesso. Il problema: <em>dove si può</em> non è scritto in un punto solo. È diviso tra Testo Unico Edilizia, DPR 73/2026, leggi regionali e sentenze. Questa guida le mette in fila.
       </p>
       <div class="flex items-center gap-4 mt-6 text-sm" style="color:var(--color-ink-500)">
         <span>A cura di Andrea Bressan</span>
@@ -84,7 +84,7 @@ const correlati = [
         <Tldr>
           <p class="m-0"><strong>Le 5 cose da sapere subito</strong></p>
           <ol class="my-2">
-            <li>In <strong>campeggio o villaggio</strong>: nessun permesso edilizio necessario (Decreto Casa).</li>
+            <li>In <strong>campeggio o villaggio</strong>: nessun titolo edilizio, alle condizioni dell'art. 3 del DPR 380/2001.</li>
             <li>Su <strong>terreno privato</strong>: permesso di costruire se l'installazione è permanente.</li>
             <li>Su <strong>terreno agricolo</strong>: solo uso temporaneo, mai abitazione stabile.</li>
             <li>La <strong>residenza è ottenibile</strong> in alcune condizioni (vedi sezione dedicata).</li>
@@ -93,13 +93,13 @@ const correlati = [
         </Tldr>
 
         <h2 id="cosa-dice-la-legge">Cosa dice la legge nel 2026</h2>
-        <p>La normativa italiana sulle case mobili è cambiata in modo significativo tra il 2024 e il 2026. Tre sono i pilastri normativi che devi conoscere:</p>
+        <p>Tre sono i riferimenti che devi conoscere. Il <a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.legge:2024-05-29;69">Salva Casa (DL 69/2024)</a> non è fra questi: non nomina case mobili né campeggi.</p>
         <ol>
-          <li><strong>Testo Unico Edilizia (DPR 380/2001)</strong> — la legge madre dell'edilizia italiana, applicata a qualunque struttura permanente.</li>
-          <li><strong>Decreto Casa (legge di conversione 2024)</strong> — ha esentato dal titolo abilitativo edilizio le case mobili installate in strutture ricettive open-air.</li>
-          <li><strong>Decreto Salva Casa 2024</strong> — ha ulteriormente semplificato l'installazione e regolarizzato situazioni preesistenti.</li>
+          <li><a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:2001-06-06;380~art3"><strong>Testo Unico Edilizia (DPR 380/2001), art. 3, lettera e.5)</strong></a>: dice quando una casa mobile è nuova costruzione e quando no. È la regola che conta.</li>
+          <li><strong>DPR 73/2026</strong>: in vigore dal 27 maggio 2026, toglie l'autorizzazione paesaggistica nei campeggi già autorizzati, a condizioni precise.</li>
+          <li><strong>Normative regionali</strong>: le caratteristiche delle strutture ricettive all'aperto e delle unità ammesse le fissano le Regioni.</li>
         </ol>
-        <p>A queste si aggiungono le <strong>normative regionali</strong> (Veneto, Toscana, Lazio, Campania, Sicilia hanno regole differenti) e la <strong>direttiva europea EN 1647</strong> sui requisiti di costruzione.</p>
+        <p>A questi si aggiunge la <strong>norma tecnica europea EN 1647</strong>, che fissa i requisiti di salute e sicurezza delle case mobili da vacanza. È una norma tecnica, non una legge.</p>
 
         <h2 id="casa-mobile-vs-costruzione">Casa mobile o costruzione: la sottile linea giuridica</h2>
         <p>Il dibattito giuridico chiave è uno: <strong>quando una casa mobile diventa "costruzione"?</strong> La risposta non sta nei materiali (legno, alluminio, ruote), ma nell'<strong>uso</strong>:</p>
@@ -107,21 +107,21 @@ const correlati = [
           <li>Casa mobile <strong>itinerante</strong> o <strong>temporanea</strong> → bene mobile, no permesso.</li>
           <li>Casa mobile <strong>ancorata stabilmente</strong>, con allacciamenti permanenti, abitata in modo continuativo → equivalente a nuova costruzione, sì permesso.</li>
         </ul>
-        <p>Questo principio è stato confermato dalle sentenze del Consiglio di Stato del 2022 e 2024, ed è ormai giurisprudenza consolidata.</p>
+        <p>Il Consiglio di Stato parla di precarietà «temporale, funzionale e costruttiva» (<a href="https://mdp.giustizia-amministrativa.it/visualizza/?nodeRef=&schema=cds&nrg=202204426&nomeFile=202301489_11.html&subDir=Provvedimenti">sezione II, sentenza 1489/2023</a>).</p>
 
-        <h2 id="decreto-casa">Il Decreto Casa e l'eccezione delle strutture ricettive</h2>
-        <p>La novità più importante per chi acquista una casa mobile usata da installare in <strong>campeggio o villaggio</strong>: il Decreto Casa ha eliminato qualsiasi titolo abilitativo edilizio per queste installazioni. Significa che:</p>
+        <h2 id="decreto-casa">L'eccezione delle strutture ricettive all'aperto</h2>
+        <p>Se la casa mobile va in <strong>campeggio o villaggio</strong>, non è nuova costruzione quando sono vere tutte queste condizioni (<a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:2001-06-06;380~art3">art. 3, comma 1, lettera e.5, DPR 380/2001</a>): meccanismi di rotazione in funzione, struttura già autorizzata, nessun collegamento permanente al terreno, norme regionali rispettate. Significa che:</p>
         <ul>
           <li>Non serve <strong>permesso di costruire</strong>.</li>
           <li>Non serve <strong>SCIA</strong> né <strong>CILA</strong>.</li>
-          <li>Basta il regolamento interno della struttura ricettiva.</li>
+          <li>Valgono il regolamento della struttura e le regole regionali su dimensioni e caratteristiche.</li>
         </ul>
         <p>È la situazione in cui l'iter è più semplice. Per terreno privato e agricolo si torna alle regole ordinarie (sotto). Per il caso "campeggio in zona vincolata" è cambiato tutto a maggio 2026: vedi la sezione seguente.</p>
 
         <h2 id="paesaggistica">Autorizzazione paesaggistica: la novità DPR 73/2026</h2>
         <p>Fino al maggio 2026, una casa mobile in un campeggio sottoposto a <strong>vincolo paesaggistico</strong> poteva richiedere il nulla osta paesaggistico preventivo: iter lungo, esiti incerti. <strong>Dal 27 maggio 2026 non è più così.</strong></p>
         <p>Il <strong>DPR 73/2026</strong> (Gazzetta Ufficiale n.108 del 12 maggio 2026), modificando il DPR 31/2017, <strong>esclude dall'autorizzazione paesaggistica</strong> la collocazione di case mobili, caravan e autocaravan dentro strutture turistico-ricettive all'aperto già autorizzate — a sei condizioni precise (la prima: la struttura deve avere l'autorizzazione paesaggistica riferita anche alle aree attrezzate).</p>
-        <p>Da non confondere con il Decreto Casa: quello toglie il titolo <strong>edilizio</strong>, il DPR 73/2026 toglie il nulla osta <strong>paesaggistico</strong>. Presupposti diversi, vanno verificati entrambi. <a href="/normativa/case-mobili-autorizzazione-paesaggistica">Le sei condizioni esatte e cosa fare in pratica nella guida dedicata</a>.</p>
+        <p>Sono due piani: l'art. 3 del DPR 380/2001 riguarda il titolo <strong>edilizio</strong>, il DPR 73/2026 il nulla osta <strong>paesaggistico</strong>. Presupposti diversi, vanno verificati entrambi. <a href="/normativa/case-mobili-autorizzazione-paesaggistica">Le sei condizioni esatte e cosa fare in pratica nella guida dedicata</a>.</p>
 
         <h2 id="terreno-privato">Casa mobile su terreno privato</h2>
         <p>Su un terreno di tua proprietà puoi installare una casa mobile, ma con distinzioni importanti:</p>
@@ -170,11 +170,9 @@ const correlati = [
         </ul>
 
         <h2 id="sentenze">Sentenze chiave del Consiglio di Stato</h2>
+        <p>Citiamo solo ciò che abbiamo letto alla fonte.</p>
         <ul>
-          <li><strong>CdS 2022 n. 4536</strong>: una casa mobile su ruote ma stabilmente abitata richiede permesso di costruire.</li>
-          <li><strong>CdS 2023 n. 1287</strong>: i materiali leggeri non escludono il regime edilizio se l'uso è permanente.</li>
-          <li><strong>CdS 2024 n. 7102</strong>: confermato che il Decreto Casa esenta solo le strutture ricettive open-air, non i terreni privati.</li>
-          <li><strong>CdS 2025 n. 1834</strong>: il maxi-caravan resta bene mobile solo se l'installazione è genuinamente temporanea.</li>
+          <li><a href="https://mdp.giustizia-amministrativa.it/visualizza/?nodeRef=&schema=cds&nrg=202204426&nomeFile=202301489_11.html&subDir=Provvedimenti"><strong>CdS, sez. II, 1489/2023</strong></a>: la precarietà va intesa in un'accezione «che è nel contempo temporale, funzionale e costruttiva». Il caso riguardava un'altra struttura, ma il principio vale per tutto ciò che si dichiara amovibile.</li>
         </ul>
 
         <FbCommunityWidget variant="card" />

@@ -11,20 +11,19 @@ const year = new Date().getFullYear();
           CaseMobili<span style="color:var(--color-linen-300)">Usate</span>.com
         </div>
         <p class="text-sm leading-relaxed" style="color:#c4d2c4">
-          Il portale italiano di riferimento per chi cerca, valuta o vive in una casa mobile usata.
-          Guide imparziali, dati reali, strumenti pratici. Vivere in libertà.
+          Guide tecniche sulle case mobili usate in Italia: prezzi, normativa, trasporto, marche.
+          Nessuna vendita, nessuna affiliazione con dealer.
         </p>
         <div class="mt-6 flex gap-3">
           <a href={SITE.social.facebookGroup} target="_blank" rel="noopener" class="text-sm underline" style="color:#c4d2c4">Gruppo Facebook</a>
           <a href={SITE.social.instagram} target="_blank" rel="noopener" class="text-sm underline" style="color:#c4d2c4">Instagram</a>
-          <a href={SITE.social.youtube} target="_blank" rel="noopener" class="text-sm underline" style="color:#c4d2c4">YouTube</a>
-          <a href={SITE.social.reddit} target="_blank" rel="noopener" class="text-sm underline" style="color:#c4d2c4">Reddit</a>
         </div>
       </div>
 
       <div>
         <h3 class="text-sm font-semibold uppercase tracking-wider mb-4" style="color:white;font-family:var(--font-sans)">Esplora</h3>
         <ul class="space-y-2 text-sm">
+          <li><a href="/" class="no-underline hover:underline font-semibold" style="color:#e8eee8">Case mobili usate: la guida</a></li>
           <li><a href="/articoli" class="no-underline hover:underline font-semibold" style="color:#e8eee8">Tutte le guide</a></li>
           {PILLARS.slice(0, 4).map((p) => (
             <li><a href={`/${p.slug}`} class="no-underline hover:underline" style="color:#c4d2c4">{p.title}</a></li>

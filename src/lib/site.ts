@@ -13,8 +13,6 @@ export const SITE = {
   social: {
     facebookGroup: 'https://www.facebook.com/groups/casemobili/',
     instagram: 'https://www.instagram.com/casemobiliitalia/',
-    youtube: 'https://www.youtube.com/@CaseMobili',
-    reddit: 'https://www.reddit.com/r/casemobili/',
   },
 } as const;
 

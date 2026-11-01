@@ -7,6 +7,7 @@ import PillarHero from '~/components/PillarHero.astro';
 import CookieBanner from '~/components/CookieBanner.astro';
 import WebMcpTools from '~/components/WebMcpTools.astro';
 import { SITE } from '~/lib/site';
+import titoliSeo from '~/data/titoli-seo.json';
 
 interface Props {
   title?: string;
@@ -35,11 +36,13 @@ const isHomePage = path === '/' || path === '';
 const showHero = !hideHero && !isHomePage && firstSegment.length > 0;
 const pillarSlug = firstSegment;
 
-// Suffix " | CaseMobiliUsate.com" aggiunto SOLO se title-base + suffix sta sotto 65 caratteri.
-// Google tronca i titoli a ~580 pixel (≈ 60-65 char). Sopra, omettiamo il suffix.
+// Titolo SEO a mano per le pagine in cui il titolo editoriale (H1) supera i 60 caratteri:
+// src/data/titoli-seo.json, chiave = percorso. L'H1 resta quello editoriale.
+// Suffix aggiunto solo se il totale sta entro 60 caratteri.
 const titleSuffix = ` | ${SITE.name}`;
-const fullTitle = title === SITE.defaultTitle ? title
-  : (title.length + titleSuffix.length <= 65 ? `${title}${titleSuffix}` : title);
+const titoloBase = (titoliSeo as Record<string, string>)[path] ?? title;
+const fullTitle = titoloBase === SITE.defaultTitle ? titoloBase
+  : (titoloBase.length + titleSuffix.length <= 60 ? `${titoloBase}${titleSuffix}` : titoloBase);
 const canonical = new URL(path, SITE.url).toString();
 const ogImage = image.startsWith('http') ? image : `${SITE.url}${image}`;
 ---

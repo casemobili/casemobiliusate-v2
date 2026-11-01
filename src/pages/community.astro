@@ -4,8 +4,8 @@ import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
 import { SITE } from '~/lib/site';
 
-const title = 'Community Casa Mobili Italia: gruppo Facebook, Instagram, YouTube';
-const description = 'La community italiana delle case mobili: gruppo Facebook con migliaia di proprietari, canale YouTube, Instagram. Esperienze reali, annunci verificati.';
+const title = 'Community case mobili: gruppo Facebook e Instagram';
+const description = 'Dove si parla di case mobili in Italia: il gruppo Facebook e il profilo Instagram legati a CaseMobiliUsate.com.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,7 +15,7 @@ const description = 'La community italiana delle case mobili: gruppo Facebook co
     <header class="text-center max-w-3xl mx-auto mb-12">
       <h1>La community italiana delle case mobili</h1>
       <p class="text-lg md:text-xl mt-6 leading-relaxed" style="color:var(--color-ink-700)">
-        Migliaia di proprietari, futuri acquirenti, vacanzieri e curiosi. Una rete di esperienze reali su Facebook, Instagram, YouTube e Reddit.
+        Proprietari, futuri acquirenti e curiosi. Due posti dove fare domande e confrontare esperienze.
       </p>
     </header>
 
@@ -28,7 +28,7 @@ const description = 'La community italiana delle case mobili: gruppo Facebook co
           <h3 class="m-0" style="font-family:var(--font-display)">Gruppo Facebook</h3>
         </div>
         <p class="text-sm mb-4" style="color:var(--color-ink-700)">
-          Il cuore della community. Annunci, esperienze, domande, segnalazioni di truffe. Migliaia di membri attivi ogni giorno.
+          Il cuore della community: esperienze, domande, segnalazioni di truffe.
         </p>
         <a href={SITE.social.facebookGroup} target="_blank" rel="noopener" class="btn-primary text-sm">Unisciti al gruppo →</a>
       </div>
@@ -44,27 +44,7 @@ const description = 'La community italiana delle case mobili: gruppo Facebook co
         <a href={SITE.social.instagram} target="_blank" rel="noopener" class="btn-secondary text-sm">Seguici →</a>
       </div>
 
-      <div class="p-6 rounded-xl border" style="border-color:var(--color-linen-200);background-color:white">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style="background-color:#ff0000">▶</div>
-          <h3 class="m-0" style="font-family:var(--font-display)">YouTube</h3>
-        </div>
-        <p class="text-sm mb-4" style="color:var(--color-ink-700)">
-          Video tour di case mobili, interviste a proprietari, guide pratiche all'ispezione e al trasporto.
-        </p>
-        <a href={SITE.social.youtube} target="_blank" rel="noopener" class="btn-secondary text-sm">Iscriviti al canale →</a>
-      </div>
 
-      <div class="p-6 rounded-xl border" style="border-color:var(--color-linen-200);background-color:white">
-        <div class="flex items-center gap-3 mb-3">
-          <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold" style="background-color:#ff4500">R</div>
-          <h3 class="m-0" style="font-family:var(--font-display)">Reddit</h3>
-        </div>
-        <p class="text-sm mb-4" style="color:var(--color-ink-700)">
-          Discussioni più tecniche, recensioni di modelli, dibattiti normativi. Adatto a chi cerca confronti approfonditi.
-        </p>
-        <a href={SITE.social.reddit} target="_blank" rel="noopener" class="btn-secondary text-sm">Vai a r/casemobili →</a>
-      </div>
     </section>
   </div>
 </BaseLayout>

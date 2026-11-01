@@ -1,12 +1,12 @@
 # CaseMobiliUsate.com — Indice completo articoli
 
-> Sito informativo italiano sulle case mobili usate. 80 articoli aggiornati aprile 2026. Curato da Andrea Bressan (pseudonimo dichiarato), CMU Edizioni. Nessuna vendita, nessuna affiliazione dealer.
+> Sito informativo italiano sulle case mobili usate. Oltre 100 articoli, aggiornato il 1 novembre 2026. Curato da Andrea Bressan (pseudonimo dichiarato), CMU Edizioni. Nessuna vendita, nessuna affiliazione dealer.
 
 ## Pillar 1: Normativa & Permessi
 
 ### Articoli generali
-- [Casa mobile su terreno agricolo: cosa dice davvero la legge nel 2026](https://www.casemobiliusate.com/normativa/casa-mobile-terreno-agricolo) — Sentenze, eccezioni Decreto Casa, casi reali multati. 8 min
-- [Decreto Casa spiegato](https://www.casemobiliusate.com/normativa/decreto-casa-spiegato) — Esenzione titolo edilizio in campeggi e villaggi turistici
+- [Casa mobile su terreno agricolo: cosa dice davvero la legge nel 2026](https://www.casemobiliusate.com/normativa/casa-mobile-terreno-agricolo) — Cosa dice il DPR 380/2001, eccezioni, rischi. Casi reali multati. 8 min
+- [Salva Casa e case mobili](https://www.casemobiliusate.com/normativa/decreto-casa-spiegato) — Il Salva Casa non nomina le case mobili: la regola sui campeggi sta nell'art. 3 del DPR 380/2001
 
 ### Per regione (20 articoli, 1 per regione italiana)
 - [Veneto](https://www.casemobiliusate.com/normativa/regioni/veneto) — Cavallino-Treporti, Caorle, Bibione, Lignano. 50 strutture, prassi residenza consolidate

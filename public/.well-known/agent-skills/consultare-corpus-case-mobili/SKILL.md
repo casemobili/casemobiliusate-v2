@@ -30,7 +30,7 @@ Otto aree tematiche, ognuna con una pagina hub e le sue guide:
 
 | Area | Hub | Cosa copre |
 |---|---|---|
-| Normativa e permessi | `/normativa` | Titoli edilizi, terreno agricolo, vincolo paesaggistico, Decreto Salva Casa, più una pagina per ciascuna delle 20 regioni sotto `/normativa/regioni/` |
+| Normativa e permessi | `/normativa` | Titoli edilizi, terreno agricolo, vincolo paesaggistico, DPR 380/2001 art. 3, DPR 73/2026, più una pagina per ciascuna delle 20 regioni sotto `/normativa/regioni/` |
 | Prezzi e valutazione | `/prezzi` | Fasce di prezzo reali, valutazione per modello e anno, finanziamento |
 | Marche e modelli | `/marche` | Nove costruttori: Atlas, Willerby, IRM, O'Hara, Burstner, Crippa Concept, Shelbox, Sun Roller, Adria |
 | Trasporto e installazione | `/trasporto` | Costi reali, trasporto eccezionale, scorta tecnica, preparazione |

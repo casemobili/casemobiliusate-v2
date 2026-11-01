@@ -52,7 +52,7 @@ REGOLE INVIOLABILI (la violazione invalida l'intero articolo):
 - NON menzionare nomi commerciali di rivenditori, dealer, marketplace specifici (es. NO "subito.it", "kijiji", "caravanonline.it", nomi di concessionari, nomi di siti competitor). Parla SOLO in termini generici: "rivenditori specializzati del settore", "annunci tra privati", "campeggi del Lazio", senza mai indirizzare a un brand specifico.
 - NON usare emoji, frasi da guru, cliché motivazionali. Niente "rumore" come parola.
 - Voce: tecnica, asciutta, "da dentro il mestiere". Mai vendita.
-- I contenuti tecnici/normativi devono essere VERI: cita Gazzetta Ufficiale, Decreto Casa 69/2024, Decreto Salva Casa, sentenze Consiglio di Stato, EN 1647 quando rilevanti. Non inventare numeri di sentenze.
+- I contenuti tecnici/normativi devono essere VERI: cita DPR 380/2001 art. 3, DPR 73/2026, sentenze solo se presenti nel materiale fornito, norma tecnica EN 1647 quando rilevanti. Non inventare numeri di sentenze.
 
 POLICY LINK ESTERNI (whitelist rigida — usa SOLO questi domini per backlink):
 ALLOWED:
@@ -170,7 +170,7 @@ AI SEARCH:
 
 OUTPUT FORMAT: rispondi SOLO con un singolo JSON valido (no markdown wrap, no testo prima/dopo). Schema:
 {
-  "titolo": "Titolo SEO 30-65 char",
+  "titolo": "Titolo SEO 30-60 char",
   "sottotitolo": "Lead 80-280 char",
   "metaDescription": "Meta 120-160 char con focus keyword nei primi 130",
   "focusKeyword": "keyword principale",
@@ -217,7 +217,7 @@ REQUISITI:
 - Min 1 link esterno a fonte autorevole (Gazzetta Ufficiale, Consiglio di Stato, ANCI, EN 1647 — usa solo URL veri, non inventati)
 - 1 lista (bullet o numerata)
 - Tone: tecnico Andrea Bressan, asciutto, "da dentro il mestiere"
-- News value: data 2026 in titolo o body, riferimento a Decreto Casa o normative aggiornate quando appropriato
+- News value: data 2026 in titolo o body, riferimento a normative aggiornate quando appropriato. REGOLA NORMATIVA FISSA: l'esclusione delle case mobili nelle strutture ricettive all'aperto sta nell'art. 3 c.1 lett. e.5 del DPR 380/2001 (testo DL 76/2020). Il Salva Casa (DL 69/2024, L. 105/2024) NON nomina case mobili né campeggi: non attribuirgli effetti. Il DPR 73/2026 riguarda solo il paesaggio. Mai citare numeri di sentenza che non siano nel materiale fornito. Mai la formula Decreto Casa
 
 Rispondi SOLO con il JSON valido, no altro testo.`;
 

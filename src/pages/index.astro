@@ -6,6 +6,8 @@ import ArticleCard from '~/components/ArticleCard.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
 import NewsletterSignup from '~/components/NewsletterSignup.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
+import SchemaWebPage from '~/components/SchemaWebPage.astro';
+import Tldr from '~/components/Tldr.astro';
 import { PILLARS, SITE } from '~/lib/site';
 
 // ─── Freshness dinamica ──────────────────────────────────────────────
@@ -41,6 +43,7 @@ const ultimaDataSito = articoliOrdinati.length
   ? new Date(dataDi(articoliOrdinati[0]))
   : new Date();
 const ultimoAggiornamento = formatDataIT(ultimaDataSito);
+const numeroGuide = tuttiArticoli.length;
 
 // I 3 contenuti più freschi vanno in "Guide in evidenza"
 const articoliFeatured = articoliOrdinati.slice(0, 3).map((a) => ({
@@ -52,19 +55,28 @@ const articoliFeatured = articoliOrdinati.slice(0, 3).map((a) => ({
   readTime: `${a.data.readingTime} min`,
 }));
 
+const titoloHome = 'Case mobili usate: prezzi, permessi e dove comprarle (2026)';
+const descrizioneHome = 'Case mobili usate in Italia: quanto costano, dove si comprano, dove si possono mettere. Fasce di prezzo, normativa per 20 regioni. Nessuna vendita.';
+
 const faqHome = [
-  { q: 'Cosa si intende per casa mobile usata?', a: 'Una <strong>casa mobile usata</strong> è una struttura abitativa prefabbricata, montata su telaio con ruote, già utilizzata in precedenza da privati, campeggi o villaggi turistici. È costruita secondo direttiva europea EN 1647 e può essere installata in strutture ricettive open-air o, con permessi, su terreno privato.' },
-  { q: 'Quanto costa una casa mobile usata in Italia?', a: 'Nel 2026 i prezzi vanno da circa <strong>5.000 €</strong> per modelli vecchi da ristrutturare fino a <strong>50.000 €</strong> per modelli recenti pari al nuovo con accessori. La fascia più comune è 10.000–20.000 € per case di 2018–2022 in buone condizioni. Usa il <a href="/strumenti">nostro calcolatore</a> per una stima personalizzata.' },
-  { q: 'Posso vivere tutto l\'anno in una casa mobile?', a: 'Sì, è tecnicamente possibile e la <a href="/vivere/residenza-casa-mobile">residenza è ottenibile</a> in alcune condizioni, ma servono permessi specifici se la casa non è in struttura ricettiva. Il Decreto Casa esenta dall\'autorizzazione edilizia solo all\'interno di campeggi e villaggi turistici.' },
-  { q: 'Quali permessi servono per installare una casa mobile?', a: 'Dentro un campeggio o villaggio: <strong>nessun permesso edilizio</strong> (Decreto Casa). Su terreno privato: <strong>permesso di costruire</strong> se l\'installazione è permanente (ruote bloccate, allacciamenti fissi). Su terreno agricolo: solo per uso temporaneo legato all\'attività, mai abitativo permanente. Vedi <a href="/normativa">la guida normativa completa</a>.' },
-  { q: 'Quali sono le marche più affidabili di case mobili?', a: 'Le marche storiche più cercate nell\'usato sono <strong>Atlas, Willerby, IRM, O\'Hara, Burstner, Crippa Concept</strong>. Shelbox, italiana storica, è chiusa dal 2014 ma il suo usato è ancora molto richiesto per qualità costruttiva. Vedi <a href="/marche">il pillar marche</a>.' },
+  { q: 'Cosa si intende per casa mobile usata?', a: 'Una <strong>casa mobile usata</strong> è un\'unità abitativa prefabbricata su telaio con ruote, già utilizzata da privati, campeggi o villaggi turistici. La norma tecnica europea di riferimento per le case mobili da vacanza è la EN 1647. Non è un immobile: si compra con scrittura privata, senza notaio.' },
+  { q: 'Quanto costa una casa mobile usata in Italia?', a: 'Dai <strong>5.000 €</strong> per modelli vecchi da ristrutturare fino a <strong>50.000 €</strong> per modelli recenti con accessori. La fascia più comune è 10.000–20.000 € per case del 2018–2022 in buone condizioni. Sono stime di mercato: usa il <a href="/strumenti">calcolatore</a> per il tuo caso.' },
+  { q: 'Dove si trovano case mobili usate in vendita?', a: 'Nei campeggi che rinnovano il parco, negli annunci tra privati e presso rivenditori specializzati. Il campeggio dà una storia nota, il privato il prezzo più basso, il rivenditore la fattura. Il confronto è nella guida <a href="/guide-acquisto/dove-comprare-canali">dove comprare</a>.' },
+  { q: 'Dove si può mettere una casa mobile usata?', a: 'In una struttura ricettiva all\'aperto autorizzata, senza titolo edilizio, alle condizioni dell\'art. 3 del DPR 380/2001. Su terreno privato edificabile, con permesso di costruire se la usi come abitazione. Su terreno agricolo solo in casi limitati. Vedi <a href="/guide-acquisto/casa-mobile-dove-si-puo-mettere">la guida</a>.' },
+  { q: 'Serve un permesso per una casa mobile in campeggio?', a: 'Di norma no, se le condizioni reggono: meccanismi di rotazione in funzione, nessun collegamento permanente al terreno, struttura autorizzata, norme regionali rispettate. La regola sta nell\'<strong>art. 3, comma 1, lettera e.5) del DPR 380/2001</strong>. Il Salva Casa non nomina le case mobili.' },
+  { q: 'Posso mettere una casa mobile sul mio terreno?', a: 'Sì, con permesso di costruire se la usi come abitazione, ambiente di lavoro o deposito e non per esigenze meramente temporanee. Le ruote non bastano a evitarlo. Senza permesso l\'art. 44 del DPR 380/2001 prevede arresto fino a due anni e ammenda da 5.164 a 51.645 €.' },
+  { q: 'Posso vivere tutto l\'anno in una casa mobile?', a: 'Tecnicamente sì, con isolamento adeguato e una struttura aperta dodici mesi. La <a href="/vivere/residenza-casa-mobile">residenza</a> si dichiara all\'Anagrafe del Comune dove vivi abitualmente. Fuori dalle strutture ricettive, abitarci stabilmente richiede il titolo edilizio.' },
+  { q: 'Quali sono le marche più cercate di case mobili usate?', a: 'Nell\'usato italiano si incontrano soprattutto <strong>Atlas, Willerby, IRM, O\'Hara, Burstner, Crippa Concept</strong> e Shelbox. Conta più lo stato della singola unità che il marchio. Trovi le schede nel <a href="/marche">pilastro marche</a>.' },
+  { q: 'Quanto costa il trasporto di una casa mobile usata?', a: 'Si paga quasi sempre a parte: indicativamente 1.000–4.000 € sui percorsi medi, di più verso Sud e isole o con trasporto eccezionale. Il prezzo dipende da distanza, larghezza e accessi. Chiedi un preventivo scritto prima di firmare. Vedi <a href="/trasporto/costi-reali-2026">i costi</a>.' },
+  { q: 'CaseMobiliUsate.com vende case mobili?', a: 'No. È un sito informativo: non vende case mobili, non pubblica annunci e non ha affiliazioni con dealer. Serve a capire prezzi, regole e rischi prima di trattare con chi vende. È curato da Andrea Bressan, pseudonimo dichiarato nella pagina <a href="/chi-siamo">chi siamo</a>.' },
 ];
 ---
 
 <BaseLayout
-  title="Case mobili usate: prezzi, normativa, dove comprare in Italia (2026)"
-  description="Case mobili usate in Italia 2026: prezzi reali 5.000–50.000 €, normativa per 20 regioni, marche, trasporto, residenza. Sito indipendente."
+  title={titoloHome}
+  description={descrizioneHome}
 >
+  <SchemaWebPage title={titoloHome} description={descrizioneHome} url="/" dateModified={ultimaDataSito.toISOString()} />
   <section class="relative overflow-hidden">
     <div class="absolute inset-0" style="background:linear-gradient(135deg,var(--color-forest-50) 0%,var(--color-linen-50) 100%);"></div>
     <div class="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 grid lg:grid-cols-5 gap-12 items-center">
@@ -73,11 +85,11 @@ const faqHome = [
           Aggiornato il {ultimoAggiornamento}
         </div>
         <h1 class="mb-6" style="line-height:1.05">
-          Comprare casa mobile usata<br/>
-          <span style="color:var(--color-brass-600)">senza sbagliare</span> in Italia.
+          Case mobili usate:<br/>
+          come comprarle <span style="color:var(--color-brass-600)">senza sbagliare</span>.
         </h1>
         <p class="text-lg md:text-xl mt-6 mb-8 max-w-2xl leading-relaxed" style="color:var(--color-ink-700)">
-          80 guide tecniche su prezzi reali (5.000–50.000 €), normativa regione per regione, trasporto, residenza, manutenzione. Scritte da chi lavora nel settore, non da chi vuole venderti qualcosa.
+          {numeroGuide} guide tecniche su prezzi (5.000–50.000 €), normativa regione per regione, trasporto, residenza, manutenzione. Qui non si vende nulla: si impara a valutare prima di comprare.
         </p>
         <div class="flex flex-wrap gap-3">
           <a href="/strumenti" class="btn-primary">Stima il prezzo della tua casa mobile →</a>
@@ -85,7 +97,7 @@ const faqHome = [
         </div>
         <div class="mt-8 flex flex-wrap gap-6 text-sm" style="color:var(--color-ink-500)">
           <div class="flex items-center gap-2">
-            <span style="color:var(--color-forest-600)">●</span> 80 guide tecniche
+            <span style="color:var(--color-forest-600)">●</span> {numeroGuide} guide tecniche
           </div>
           <div class="flex items-center gap-2">
             <span style="color:var(--color-forest-600)">●</span> 20 regioni coperte
@@ -116,10 +128,31 @@ const faqHome = [
     </div>
   </section>
 
+  <section class="max-w-3xl mx-auto px-4 md:px-6 pt-12 prose-article">
+    <Tldr>
+      <p class="m-0">Le <strong>case mobili usate</strong> sono unità abitative prefabbricate su telaio con ruote, già utilizzate in un campeggio o da un privato. Si comprano da campeggi che rinnovano, da privati e da rivenditori specializzati. Costano in genere da <strong>5.000 a 50.000 €</strong>, trasporto escluso. La fascia più frequente è <strong>10.000–20.000 €</strong> per modelli 2018–2022. In una struttura ricettiva all'aperto autorizzata non servono titoli edilizi, a precise condizioni. Altrove, se ci abiti, è nuova costruzione.</p>
+    </Tldr>
+
+    <h2>Quanto costano le case mobili usate?</h2>
+    <p>Da 5.000 a 50.000 € secondo anno, marca, misure e stato. Sono fasce che ricaviamo dall'osservazione del mercato, non un listino ufficiale: un listino ufficiale non esiste. Sotto i 10.000 € trovi modelli datati o da rimettere a posto. Tra 10.000 e 20.000 € sta il grosso del mercato. Sopra i 25.000 € entri nei modelli recenti o di fascia alta. Al prezzo aggiungi trasporto, piazzola e installazione. <a href="/prezzi">Le fasce di prezzo complete</a> e il <a href="/strumenti#calc-prezzi">calcolatore</a> ti dicono se un annuncio è in linea.</p>
+
+    <h2>Dove si comprano le case mobili usate?</h2>
+    <p>Tre canali, tre rischi diversi. I <strong>campeggi</strong> che rinnovano il parco vendono unità con storia nota, spesso già in piazzola. I <strong>privati</strong> costano meno, ma la verifica è tutta sulle tue spalle. I <strong>rivenditori specializzati</strong> ricondizionano e fatturano, e il prezzo sale. Noi non vendiamo e non segnaliamo venditori: ti diciamo come valutarli. Parti da <a href="/guide-acquisto/case-mobili-usate-in-vendita">case mobili usate in vendita</a> e dal <a href="/guide-acquisto/dove-comprare-canali">confronto dei canali</a>.</p>
+
+    <h2>Dove si può mettere una casa mobile usata?</h2>
+    <p>La via sicura è il campeggio autorizzato. L'<a href="https://www.normattiva.it/uri-res/N2Ls?urn:nir:stato:decreto.del.presidente.della.repubblica:2001-06-06;380~art3">art. 3 del DPR 380/2001, lettera e.5</a> la tiene fuori dalla nuova costruzione se ha i meccanismi di rotazione in funzione, nessun collegamento permanente al terreno e rispetta le norme regionali. Su terreno privato, se la usi come abitazione, serve il permesso di costruire. Su terreno agricolo le strade sono strette. Leggi <a href="/guide-acquisto/casa-mobile-dove-si-puo-mettere">dove si può mettere una casa mobile</a> e la <a href="/normativa">guida alla normativa</a>.</p>
+
+    <h2>Cosa controllare prima di comprare?</h2>
+    <p>Tetto e sigilli, pavimento, telaio, impianti, targhetta del costruttore, conformità alla norma EN 1647, contratto di piazzola. Porta la <a href="/guide-acquisto/sopralluogo-checklist">checklist del sopralluogo</a>, leggi <a href="/guide-acquisto/10-truffe-piu-comuni">le truffe più comuni</a> e usa il <a href="/guide-acquisto/contratto-compravendita-modello">modello di contratto</a>.</p>
+
+    <h2>Quanto costa spostarla?</h2>
+    <p>Il trasporto si paga quasi sempre a parte: indicativamente 1.000–4.000 € sui percorsi medi, di più verso Sud e isole o con trasporto eccezionale. Prima di firmare chiedi un preventivo scritto. Dettagli nella guida ai <a href="/trasporto/costi-reali-2026">costi di trasporto</a>.</p>
+  </section>
+
   <section class="max-w-7xl mx-auto px-4 md:px-6 py-16">
     <div class="text-center mb-12">
       <div class="text-xs uppercase tracking-wider font-semibold mb-3" style="color:var(--color-brass-700)">Le 8 aree che decidono l'acquisto</div>
-      <h2 style="margin-top:0">Dove sbaglia il 90% di chi compra usato</h2>
+      <h2 style="margin-top:0">Le otto cose da capire prima di comprare usato</h2>
       <p class="text-lg mt-3 max-w-2xl mx-auto" style="color:var(--color-ink-700)">
         Normativa, prezzi, marche, trasporto, dove installare, come vivere. Per ognuna abbiamo costruito il pillar di riferimento — guide lunghe, dati concreti, decisioni informate.
       </p>
@@ -192,20 +225,24 @@ const faqHome = [
       un'unità e cosa controllare al sopralluogo. Parti da qui:
     </p>
     <div class="mt-6 grid md:grid-cols-2 gap-x-8 gap-y-2">
-      <a href="/guide-acquisto/case-mobili-usate-in-vendita" class="text-base font-semibold">Case mobili usate in vendita: la guida completa 2026 →</a>
-      <a href="/prezzi" class="text-base font-semibold">Prezzi delle case mobili usate: fasce reali 2026 →</a>
+      <a href="/guide-acquisto/case-mobili-usate-in-vendita" class="text-base font-semibold">Case mobili usate in vendita: la guida completa →</a>
+      <a href="/prezzi" class="text-base font-semibold">Prezzi delle case mobili usate: le fasce →</a>
     </div>
     <p class="text-sm mt-6 mb-2 font-semibold uppercase tracking-wider" style="color:var(--color-ink-500)">Il mercato regione per regione</p>
     <div class="flex flex-wrap gap-x-5 gap-y-2 text-base">
-      <a href="/guide-acquisto/case-mobili-usate-sardegna">Sardegna</a>
-      <a href="/guide-acquisto/case-mobili-usate-sicilia">Sicilia</a>
-      <a href="/guide-acquisto/case-mobili-usate-puglia">Puglia</a>
-      <a href="/guide-acquisto/case-mobili-usate-campania">Campania</a>
-      <a href="/guide-acquisto/case-mobili-usate-toscana">Toscana</a>
-      <a href="/guide-acquisto/case-mobili-usate-lazio">Lazio</a>
-      <a href="/guide-acquisto/case-mobili-usate-roma">Roma</a>
-      <a href="/guide-acquisto/case-mobili-usate-catania">Catania</a>
-      <a href="/guide-acquisto/case-mobili-usate-brindisi">Brindisi</a>
+      <a href="/guide-acquisto/case-mobili-usate-sardegna">Case mobili usate in Sardegna</a>
+      <a href="/guide-acquisto/case-mobili-usate-sicilia">Case mobili usate in Sicilia</a>
+      <a href="/guide-acquisto/case-mobili-usate-puglia">Case mobili usate in Puglia</a>
+      <a href="/guide-acquisto/case-mobili-usate-campania">Case mobili usate in Campania</a>
+      <a href="/guide-acquisto/case-mobili-usate-toscana">Case mobili usate in Toscana</a>
+      <a href="/guide-acquisto/case-mobili-usate-lazio">Case mobili usate in Lazio</a>
+      <a href="/guide-acquisto/casa-mobile-usata-veneto">Case mobili usate in Veneto</a>
+      <a href="/guide-acquisto/case-mobili-usate-piemonte">Case mobili usate in Piemonte</a>
+      <a href="/guide-acquisto/case-mobili-usate-lago-di-garda">Case mobili usate sul Lago di Garda</a>
+      <a href="/guide-acquisto/case-mobili-usate-roma">Case mobili usate a Roma</a>
+      <a href="/guide-acquisto/case-mobili-usate-catania">Case mobili usate a Catania</a>
+      <a href="/guide-acquisto/case-mobili-usate-lecce">Case mobili usate a Lecce</a>
+      <a href="/guide-acquisto/case-mobili-usate-brindisi">Case mobili usate a Brindisi</a>
     </div>
   </section>
 

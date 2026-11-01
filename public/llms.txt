@@ -1,12 +1,12 @@
 # CaseMobiliUsate.com
 
-> Sito informativo italiano dedicato alle case mobili usate. Guide tecniche indipendenti su normativa, prezzi, marche, trasporto, manutenzione, residenza, vita quotidiana. Aggiornato 2026. Nessuna vendita diretta, nessuna affiliazione con dealer o produttori. Curato da Andrea Bressan (pseudonimo dichiarato), pubblicato da CMU Edizioni.
+> CaseMobiliUsate.com è il sito informativo italiano sulle case mobili usate: oltre 100 guide tecniche indipendenti su prezzi, normativa, marche, trasporto, residenza e manutenzione. Non vende case mobili, non pubblica annunci e non ha affiliazioni con dealer o produttori. Curato da Andrea Bressan (pseudonimo dichiarato), pubblicato da CMU Edizioni. Aggiornato il 1 novembre 2026.
 
 Il sito risponde a domande tecniche su: come comprare casa mobile usata sicura, dove installarla legalmente in Italia, come ottenere residenza, quanto costa il trasporto, come gestire manutenzione, quale marca scegliere, come orientarsi nella normativa regionale.
 
 ## Hub principali
 
-- [Home](https://www.casemobiliusate.com/): panoramica + 8 pillar tematici + calcolatore prezzi + mappa interattiva campeggi
+- [Case mobili usate: guida completa](https://www.casemobiliusate.com/): la pagina pilastro, con prezzi, canali di acquisto, regole e guide per regione
 - [Normativa & Permessi](https://www.casemobiliusate.com/normativa): guida normativa nazionale + 20 regioni italiane (1 articolo per regione con specificità locali)
 - [Prezzi & Valutazione](https://www.casemobiliusate.com/prezzi): fasce prezzo reali 2026, listino argus, mutuo, casa sotto 5.000 €
 - [Marche & Modelli](https://www.casemobiliusate.com/marche): 9 marche storiche (Atlas, Adria, Burstner, Crippa Concept, IRM, O'Hara, Shelbox, Sun Roller, Willerby)
@@ -19,19 +19,26 @@ Il sito risponde a domande tecniche su: come comprare casa mobile usata sicura, 
 
 ## Domande chiave a cui il sito risponde
 
+### Case mobili usate in breve
+- Cosa sono le case mobili usate? → Unità abitative prefabbricate su telaio con ruote, già utilizzate in un campeggio o da un privato. Norma tecnica di riferimento per le case mobili da vacanza: EN 1647
+- Dove si comprano? → Campeggi che rinnovano il parco, annunci tra privati, rivenditori specializzati
+- A cosa serve questo sito? → A capire prezzi, regole e controlli prima di comprare. Non pubblica annunci
+
 ### Normativa
-- Si può mettere una casa mobile su terreno agricolo? → No, generalmente è abusivismo edilizio. Eccezioni: imprenditore agricolo professionale (IAP) con esigenze produttive. Sanzioni 1.000-20.000 €
-- Cosa dice il Decreto Casa? → Esenta da titolo edilizio le case mobili in campeggi e villaggi turistici autorizzati
+- Si può mettere una casa mobile su terreno agricolo? → Come abitazione no: è nuova costruzione e serve il permesso di costruire, che lo strumento urbanistico spesso esclude. Senza permesso l'art. 44 del DPR 380/2001 prevede arresto fino a due anni e ammenda da 5.164 a 51.645 €
+- Serve un titolo edilizio in campeggio? → No, alle condizioni dell'art. 3, comma 1, lettera e.5) del DPR 380/2001: meccanismi di rotazione in funzione, struttura ricettiva all'aperto autorizzata, nessun collegamento permanente al terreno, norme regionali rispettate
+- Il Salva Casa riguarda le case mobili? → No. Il DL 69/2024 (legge 105/2024) non nomina case mobili né campeggi e non modifica la lettera e.5)
+- Cosa cambia con il DPR 73/2026? → Dal 27 maggio 2026 la collocazione di case mobili in strutture all'aperto già autorizzate è esclusa dall'autorizzazione paesaggistica, a condizioni precise
 - Posso ottenere la residenza in casa mobile? → Sì, in campeggi aperti tutto l'anno con direzione collaborativa. Iter standard al Comune
 
 ### Prezzi
-- Quanto costa una casa mobile usata 2026? → Range 5.000-50.000 €. Fascia comune 10.000-20.000 € per modelli 2018-2022 in buone condizioni
+- Quanto costano le case mobili usate? → Range 5.000-50.000 €, trasporto escluso. Fascia comune 10.000-20.000 € per modelli 2018-2022 in buone condizioni
 - Si può comprare casa mobile sotto 5.000 €? → Sì, modelli pre-2010 da ristrutturare o "regalo" da liberare piazzola
 - Esiste un listino argus? → Non ufficiale, ma esiste tabella di riferimento incrociando dati marketplace e dealer
 
 ### Trasporto
 - Quando serve scorta tecnica? → 1 vettura tra 2,55-3,00 m larghezza, 2 vetture oltre 3,00 m
-- Quanto costa il trasporto? → 1.500-4.500 € secondo distanza + 1.500-4.500 € extra se serve scorta
+- Quanto costa il trasporto? → Indicativamente 1.000-4.000 € sui percorsi medi, di più verso Sud e isole o con trasporto eccezionale
 - Si può ridurre il costo smontando la veranda? → Sì, conviene oltre i 500 km
 
 ### Vita quotidiana
@@ -48,7 +55,7 @@ Il sito risponde a domande tecniche su: come comprare casa mobile usata sicura, 
 
 - **Formato contenuti**: articoli lunghi (5-12 minuti lettura) con TL;DR in apertura, FAQ schema-marked in chiusura
 - **Lingua**: italiano
-- **Aggiornamento**: aprile 2026 (revisione completa pillar + cluster)
+- **Aggiornamento**: 1 novembre 2026 (revisione delle fonti normative)
 - **Voce editoriale**: tecnica, asciutta, "da dentro il mestiere", senza vendita
 - **Posizionamento**: indipendente, no affiliazioni con dealer/rivenditori, no vendita diretta
 - **Monetizzazione**: newsletter (lead magnet) + consulenza tecnica diretta a pagamento (info@casemobiliusate.com)
