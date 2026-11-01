@@ -7,6 +7,7 @@ import SchemaBreadcrumb from '~/components/SchemaBreadcrumb.astro';
 import SchemaArticle from '~/components/SchemaArticle.astro';
 import SchemaDataset from '~/components/SchemaDataset.astro';
 import LicenzaDati from '~/components/LicenzaDati.astro';
+import LeggiAnche from '~/components/LeggiAnche.astro';
 import FaqAccordion from '~/components/FaqAccordion.astro';
 import Tldr from '~/components/Tldr.astro';
 import FbCommunityWidget from '~/components/FbCommunityWidget.astro';
@@ -111,6 +112,8 @@ const breadcrumbName = data.titolo.length > 50 ? data.titolo.slice(0, 50) + '...
       {faqItems.length > 0 && (
         <FaqAccordion items={faqItems} title={`Domande frequenti su ${data.focusKeyword ?? data.titolo}`} />
       )}
+
+      {data.legacyPath && <LeggiAnche path={data.legacyPath} />}
     </div>
   </article>
 

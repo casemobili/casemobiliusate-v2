@@ -1,0 +1,24 @@
+---
+// Link interni fra guide dello stesso tema: ogni pagina linka le quattro successive
+// in ordine alfabetico (a giro), così nessuna guida resta con un solo link in entrata.
+import { getCollection } from 'astro:content';
+
+interface Props { path: string }
+const { path } = Astro.props;
+
+const tutte = (await getCollection('articoli', ({ data }) => !data.noindex && !!data.legacyPath))
+  .map((a) => ({ href: a.data.legacyPath as string, titolo: a.data.titolo }))
+  .sort((a, b) => a.href.localeCompare(b.href));
+const gruppo = (h: string) => (h.includes('/regioni/') ? 'regioni' : h.split('/')[1]);
+const stesse = tutte.filter((a) => gruppo(a.href) === gruppo(path));
+const i = stesse.findIndex((a) => a.href === path);
+const scelte = i < 0 ? [] : Array.from({ length: Math.min(4, stesse.length - 1) }, (_, k) => stesse[(i + k + 1) % stesse.length]);
+---
+{scelte.length > 0 && (
+  <nav aria-label="Leggi anche" class="mt-12">
+    <h2>Leggi anche</h2>
+    <ul>
+      {scelte.map((a) => <li><a href={a.href}>{a.titolo}</a></li>)}
+    </ul>
+  </nav>
+)}
