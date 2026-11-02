@@ -1,17 +1,17 @@
 {
-  "week": "2026-10-29",
-  "chosenKeyword": "case mobili dove si possono installare",
+  "week": "2026-11-02",
+  "chosenKeyword": "case mobili dove comprarle",
   "score": 75,
-  "slug": "case-mobili-dove-si-possono-installare",
-  "pillar": "trasporto",
+  "slug": "case-mobili-dove-comprarle",
+  "pillar": "guide-acquisto",
   "secondaryKeywords": [
     "case mobili come funzionano",
     "case mobili dove si possono mettere",
-    "case mobili dove si possono installare",
     "case mobili dove comprarle",
     "case mobili quanto durano",
     "noleggio casa mobile prezzi",
-    "casa mobile italia prezzi"
+    "casa mobile italia prezzi",
+    "casa mobile moderna prezzi"
   ],
   "allCandidates": [
     {
@@ -24,10 +24,6 @@
     },
     {
       "kw": "case mobili dove si possono mettere",
-      "score": 75
-    },
-    {
-      "kw": "case mobili dove si possono installare",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "mini casa mobile senza permessi",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile campeggio croazia",
       "score": 75
     }
   ]
