@@ -1,23 +1,19 @@
 {
-  "week": "2026-11-09",
-  "chosenKeyword": "case mobili usate mazara del vallo",
+  "week": "2026-11-12",
+  "chosenKeyword": "case mobili dove si possono mettere",
   "score": 75,
-  "slug": "case-mobili-usate-mazara-del-vallo",
+  "slug": "case-mobili-dove-si-possono-mettere",
   "pillar": "guide-acquisto",
   "secondaryKeywords": [
-    "case mobili come funzionano",
     "case mobili dove si possono mettere",
     "case mobili quanto durano",
     "noleggio casa mobile prezzi",
     "casa mobile moderna prezzi",
     "casa mobile vpf prezzi",
-    "casa mobile su ruote prezzi"
+    "casa mobile su ruote prezzi",
+    "casa mobile o hara prezzi"
   ],
   "allCandidates": [
-    {
-      "kw": "case mobili usate mazara del vallo",
-      "score": 75
-    },
     {
       "kw": "case mobili come funzionano",
       "score": 75
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile campeggio toscana",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile campeggio montagna",
       "score": 75
     }
   ]
