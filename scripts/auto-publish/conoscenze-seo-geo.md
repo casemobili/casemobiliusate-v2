@@ -1,8 +1,8 @@
 # Conoscenze SEO e GEO per gli articoli
-Aggiornato: 11 ottobre 2026. Fonti tra parentesi: note di studio o documentazione ufficiale datata.
+Aggiornato: 15 novembre 2026.
 
 Queste regole si aggiungono al system prompt e non vanno citate nell'articolo. In caso di conflitto vincono sempre il system prompt, in ogni sua sezione, e i REQUISITI del messaggio utente (lunghezza, H2, FAQ, link, lista, news value): queste regole servono a scegliere come rispettarli, mai a ridurli.
-Scrivi senza documenti davanti: un modello non recupera fatti, predice parole, anche in titolo, meta description, FAQ e tldr (Google Search Central, 2026-10-01; il tldr: progetto). Ciò che non sai con certezza si toglie, anche se un esempio del system prompt lo mostra: gli esempi danno la forma, non i fatti. «Progetto» tra parentesi: cautela nostra, non della nota.
+Scrivi senza documenti davanti: un modello non recupera fatti, predice parole, anche in titolo, meta description, FAQ e tldr (Google Search Central, 2026-10-01; il tldr: progetto). Ciò che non sai con certezza si toglie, anche se un esempio del system prompt lo mostra: gli esempi danno la forma, non i fatti. Tra parentesi: fonti; «progetto»: cautela nostra, non loro.
 
 ## Intento e formato
 
@@ -43,7 +43,7 @@ Scrivi senza documenti davanti: un modello non recupera fatti, predice parole, a
 
 ## Freschezza
 
-- Scrivi nel corpo la data di aggiornamento in forma estesa, presa dalla data del prompt («aggiornato a ottobre 2026»), mai il solo anno. (CHECKLIST-geo-ai-search, 2026-06-02-linksthatrank-geo-5-step; forma estesa: progetto)
+- Scrivi nel corpo la data di aggiornamento in forma estesa, presa dalla data del prompt («aggiornato a novembre 2026»), mai il solo anno. (CHECKLIST-geo-ai-search, 2026-06-02-linksthatrank-geo-5-step; forma estesa: progetto)
 - Se una norma può cambiare (aliquote, bonus, regole locali), dillo e nomina l'ente che la pubblica, senza «situazione a [mese]»: sarebbe una verifica mai fatta. (progetto)
 - Costruisci l'articolo su fatti stabili, senza sezioni di novità, opinione o promozione, che le AI citano poco; il news value viene dalla data di aggiornamento e da norme recenti dagli estremi certi. (2026-06-02-searchlogistics-ottimizzare-ai-overviews)
 - Se il tema ha una stagione (chiusura invernale, trasporti), spiega cosa conviene nei vari periodi ed evidenzia quello in corso secondo la data del prompt; niente date di apertura, prezzi stagionali o divieti di calendario. (seo; tutti i periodi e i divieti: progetto)
@@ -79,5 +79,6 @@ Scrivi senza documenti davanti: un modello non recupera fatti, predice parole, a
 
 ## Novità ufficiali
 
-- 2026-10-01: la guida sui contenuti AI, aggiornata, rimanda alle linee guida dei valutatori (contenuto in scala o con poco valore aggiunto) e chiede la verifica dei fatti anche nei metadati; recepita in apertura e in Numeri. (Google Search Central, 2026-10-01)
+- 2026-11-10: core update, rollout fino a due settimane; da non nominare nell'articolo. (Google Search Status Dashboard, 2026-11-15)
+- 2026-10-01: la guida sui contenuti AI aggiornata rimanda alle linee guida dei valutatori (contenuto in scala o con poco valore aggiunto) e chiede la verifica dei fatti anche nei metadati. (Google Search Central, 2026-10-01)
 - 2026-09-24: spam update, concluso l'8 ottobre. (Google Search Status Dashboard, 2026-10-08)
