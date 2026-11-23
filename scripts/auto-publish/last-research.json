@@ -1,17 +1,17 @@
 {
-  "week": "2026-11-19",
-  "chosenKeyword": "casa mobile vpf prezzi",
+  "week": "2026-11-23",
+  "chosenKeyword": "casa mobile o hara prezzi",
   "score": 75,
-  "slug": "casa-mobile-vpf-prezzi",
+  "slug": "casa-mobile-o-hara-prezzi",
   "pillar": "prezzi",
   "secondaryKeywords": [
     "case mobili quanto durano",
     "casa mobile moderna prezzi",
-    "casa mobile vpf prezzi",
     "casa mobile su ruote prezzi",
     "casa mobile o hara prezzi",
     "casa mobile per campeggio prezzi",
-    "casa mobile in legno prezzi"
+    "casa mobile in legno prezzi",
+    "casa mobile senza permessi"
   ],
   "allCandidates": [
     {
@@ -24,10 +24,6 @@
     },
     {
       "kw": "casa mobile moderna prezzi",
-      "score": 75
-    },
-    {
-      "kw": "casa mobile vpf prezzi",
       "score": 75
     },
     {
@@ -92,6 +88,10 @@
     },
     {
       "kw": "casa mobile campeggio jesolo",
+      "score": 75
+    },
+    {
+      "kw": "casa mobile campeggio liguria",
       "score": 75
     }
   ]
